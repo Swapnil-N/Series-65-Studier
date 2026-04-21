@@ -8,7 +8,7 @@ import {
 import type { ChoiceIndex } from "../components/shared/QuestionCard";
 import { loadContent } from "../lib/content";
 import { db } from "../lib/db";
-import type { Question, TopicId } from "../types/content";
+import type { Question } from "../types/content";
 import type { Attempt } from "../types/state";
 
 // Scratch key used for in-progress quiz recovery across an accidental reload.
@@ -35,16 +35,6 @@ interface PersistedSession {
   index: number;
   answers: (ChoiceIndex | null)[];
   startedAt: number;
-}
-
-/**
- * Return `topicId` derived from `subtopicId` ("1.3" → "1"). Default "1" is
- * only a defensive fallback; loadContent feeds valid shapes.
- */
-function topicOf(subtopicId: string): TopicId {
-  const head = subtopicId.split(".")[0];
-  if (head === "1" || head === "2" || head === "3" || head === "4") return head;
-  return "1";
 }
 
 /**
