@@ -6,7 +6,18 @@
   html {
     height: 100dvh;
     -webkit-tap-highlight-color: transparent;
-    font-size: 16px;
+    font-size: calc(16px * var(--font-scale, 1));
+  }
+
+  html.high-contrast {
+    --tw-text-opacity: 1;
+  }
+  html.high-contrast body {
+    @apply bg-white text-black;
+  }
+  html.high-contrast.dark body,
+  html.dark.high-contrast body {
+    @apply bg-black text-white;
   }
 
   body {

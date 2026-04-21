@@ -10,6 +10,7 @@ import {
   ReviewedBadge,
   type RatingGrade,
 } from "./shared";
+import EditPencil from "./EditPencil";
 import { newCardState, review } from "../lib/srs";
 
 export interface FlashcardSessionProps {
@@ -256,6 +257,14 @@ export function FlashcardSession({
         className="rounded-xl border border-neutral-200 bg-white p-4 shadow-sm dark:border-neutral-800 dark:bg-ink-surface"
         data-testid="flashcard-front"
       >
+        <div className="mb-2 flex justify-end">
+          <EditPencil
+            type="card"
+            itemId={current.id}
+            currentText={revealed ? current.back : current.front}
+            field={revealed ? "back" : "front"}
+          />
+        </div>
         <MarkdownRenderer>{current.front}</MarkdownRenderer>
       </div>
 

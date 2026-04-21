@@ -7,6 +7,7 @@ import {
   MarkdownRenderer,
   ReviewedBadge,
 } from "./shared";
+import EditPencil from "./EditPencil";
 
 export interface LessonReaderProps {
   lesson: Lesson;
@@ -212,6 +213,12 @@ export default function LessonReader({ lesson, onReviewed }: LessonReaderProps) 
         >
           {bookmarked ? "Bookmarked" : "Bookmark"}
         </button>
+        <EditPencil
+          type="lesson"
+          itemId={lesson.subtopicId}
+          currentText={lesson.bodyMd}
+          field="bodyMd"
+        />
       </section>
 
       {reviewError ? (

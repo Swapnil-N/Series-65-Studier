@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { QuizRunner } from "../components/QuizRunner";
+import EditPencil from "../components/EditPencil";
 import {
   EmptyState,
   TopicPicker,
@@ -335,14 +336,36 @@ export default function Quiz() {
     );
   }
 
+  // EditPencil for the currently-displayed question. Scoped here (rather than
+  // inside QuestionCard, which A4 owns) so we don't stray from A11's Owns set.
+  const activeQuestion =
+    session.index < session.questions.length
+      ? session.questions[session.index]
+      : null;
+
   return (
-    <QuizRunner
-      questions={session.questions}
-      initialIndex={session.index}
-      initialAnswers={session.answers}
-      onAnswer={handleAnswer}
-      onProgress={handleProgress}
-      onRestart={handleRestart}
-    />
+    <div className="flex flex-col">
+      {activeQuestion ? (
+        <div
+          className="mx-auto flex w-full max-w-2xl justify-end px-4 pt-2"
+          data-testid="quiz-edit-pencil-wrap"
+        >
+          <EditPencil
+            type="question"
+            itemId={activeQuestion.id}
+            currentText={activeQuestion.stem}
+            field="stem"
+          />
+        </div>
+      ) : null}
+      <QuizRunner
+        questions={session.questions}
+        initialIndex={session.index}
+        initialAnswers={session.answers}
+        onAnswer={handleAnswer}
+        onProgress={handleProgress}
+        onRestart={handleRestart}
+      />
+    </div>
   );
 }
