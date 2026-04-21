@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import Fuse from "fuse.js";
+import Fuse, { type IFuseOptions } from "fuse.js";
 import { MarkdownRenderer } from "../components/shared/MarkdownRenderer";
 import { EmptyState } from "../components/shared/EmptyState";
 import { Citation } from "../components/shared/Citation";
@@ -8,17 +8,19 @@ import { glossary, type GlossaryEntry } from "../content/reference/glossary";
 
 type Tab = "formulas" | "glossary";
 
-const FUSE_OPTS_FORMULAS = {
+// Fuse's type uses a mutable `keys` array, so we declare these as plain
+// mutable arrays (not `as const`) to match the `IFuseOptions` contract.
+const FUSE_OPTS_FORMULAS: IFuseOptions<Formula> = {
   keys: ["name", "description", "tags"],
   threshold: 0.4,
   ignoreLocation: true,
-} as const;
+};
 
-const FUSE_OPTS_GLOSSARY = {
+const FUSE_OPTS_GLOSSARY: IFuseOptions<GlossaryEntry> = {
   keys: ["term", "definition", "related"],
   threshold: 0.4,
   ignoreLocation: true,
-} as const;
+};
 
 export default function Reference() {
   const [tab, setTab] = useState<Tab>("formulas");
