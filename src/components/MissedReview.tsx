@@ -68,10 +68,25 @@ export function MissedReview({ questionsById, now }: MissedReviewProps) {
 
   const revealed = selected !== null;
 
+  // Track whether the current card is "complete" — i.e., we already hit 2
+  // consecutive corrects and should drop it on advance rather than rotate it.
+  const [completeCurrent, setCompleteCurrent] = useState(false);
+
   const advance = useCallback(() => {
     setSelected(null);
-    setQueue((q) => (q ? q.slice(1) : q));
-  }, []);
+    setQueue((q) => {
+      if (!q || q.length === 0) return q;
+      const [head, ...rest] = q;
+      if (completeCurrent) {
+        // Drop this item from the in-memory queue (already removed from Dexie).
+        return rest;
+      }
+      // Rotate the head to the back so other items surface before it recycles.
+      if (q.length === 1) return q; // nothing to rotate against
+      return [...rest, { ...head, addedAt: clock() }];
+    });
+    setCompleteCurrent(false);
+  }, [completeCurrent, clock]);
 
   const handleSelect = useCallback(
     async (choice: ChoiceIndex) => {
@@ -86,34 +101,17 @@ export function MissedReview({ questionsById, now }: MissedReviewProps) {
         setStreakByQid((s) => ({ ...s, [qid]: nextStreak }));
         if (nextStreak >= 2) {
           // Two correct in a row → retire from the persistent missed queue.
+          // The in-memory queue is adjusted on `advance` via `completeCurrent`.
           await db.missedQueue.delete(qid);
-          // Remove *all* entries for this qid from our in-memory queue so we
-          // don't re-show it later in the session.
-          setQueue((q) => (q ? q.filter((x) => x.questionId !== qid) : q));
-          // Clear selection so the advance into the next slot is clean.
-          setSelected(null);
-          return;
+          setCompleteCurrent(true);
         }
-        // 1st correct — move item to the back of the in-memory queue so the
-        // user sees other items before the same one resurfaces.
-        setQueue((q) => {
-          if (!q) return q;
-          if (q.length <= 1) return q; // only item → keep it
-          const [head, ...rest] = q;
-          return [...rest, { ...head, addedAt: clock() }];
-        });
       } else {
-        // Wrong → reset streak, cycle back (keep item in queue, send to back).
+        // Wrong → reset streak. Item remains in queue and will rotate on
+        // `advance`.
         setStreakByQid((s) => ({ ...s, [qid]: 0 }));
-        setQueue((q) => {
-          if (!q) return q;
-          if (q.length <= 1) return q;
-          const [head, ...rest] = q;
-          return [...rest, { ...head, addedAt: clock() }];
-        });
       }
     },
-    [currentItem, currentQuestion, revealed, streakByQid, clock],
+    [currentItem, currentQuestion, revealed, streakByQid],
   );
 
   // Loading state: queue still null.
