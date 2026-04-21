@@ -15,10 +15,7 @@ import {
   LessonSchema,
   QuestionsArraySchema,
 } from "../src/lib/zodSchemas.ts";
-import {
-  CARDS_JSON_SHAPE,
-  renderCardsPrompt,
-} from "./prompts/cards.ts";
+import { CARDS_JSON_SHAPE, renderCardsPrompt } from "./prompts/cards.ts";
 import { LESSON_JSON_SHAPE, renderLessonPrompt } from "./prompts/lesson.ts";
 import {
   QUESTIONS_JSON_SHAPE,
@@ -41,205 +38,137 @@ Examples:
   tsx scripts/generate-content.ts --validate path/to/cards.json
 `;
 
-function print(msg: string): void {
-  process.stdout.write(msg + "\n");
-}
+const out = (s: string): void => void process.stdout.write(s + "\n");
+const err = (s: string): void => void process.stderr.write(s + "\n");
 
-function printErr(msg: string): void {
-  process.stderr.write(msg + "\n");
-}
-
-interface Subtopic {
-  id: string;
-  title: string;
-  outlineText: string;
-}
+interface Subtopic { id: string; title: string; outlineText: string }
 
 export function parseOutline(md: string): Subtopic[] {
-  const lines = md.split(/\r?\n/);
-  const subtopics: Subtopic[] = [];
-  let current: Subtopic | null = null;
+  const subs: Subtopic[] = [];
+  let cur: Subtopic | null = null;
   const subRe = /^###\s+(\d+\.\d+)\s+(.+?)\s*$/;
-  const topicRe = /^##\s+\d+\.\s+.+$/;
-
-  for (const line of lines) {
-    const trimmed = line.trim();
-    if (trimmed.startsWith("<!--") || trimmed === "") {
-      if (current) current.outlineText += line + "\n";
-      continue;
-    }
+  for (const line of md.split(/\r?\n/)) {
     const sub = line.match(subRe);
     if (sub) {
-      if (current) subtopics.push(current);
-      current = { id: sub[1], title: sub[2].trim(), outlineText: "" };
+      if (cur) subs.push(cur);
+      cur = { id: sub[1], title: sub[2].trim(), outlineText: "" };
       continue;
     }
-    if (topicRe.test(line) || /^#\s+/.test(line)) {
-      if (current) {
-        subtopics.push(current);
-        current = null;
-      }
+    // Any other heading (# or ##) closes the current subtopic block.
+    if (/^#{1,2}\s+/.test(line)) {
+      if (cur) { subs.push(cur); cur = null; }
       continue;
     }
-    if (current) current.outlineText += line + "\n";
+    if (cur) cur.outlineText += line + "\n";
   }
-  if (current) subtopics.push(current);
-  return subtopics;
+  if (cur) subs.push(cur);
+  return subs;
 }
 
 type Allowlist = Record<string, string[]>;
 
 function loadAllowlist(): Allowlist {
-  const p = path.resolve(
-    path.dirname(new URL(import.meta.url).pathname),
-    "citation-allowlist.json",
-  );
-  return JSON.parse(fs.readFileSync(p, "utf8")) as Allowlist;
+  const here = path.dirname(new URL(import.meta.url).pathname);
+  return JSON.parse(
+    fs.readFileSync(path.join(here, "citation-allowlist.json"), "utf8"),
+  ) as Allowlist;
 }
 
-interface Citation {
-  source?: string;
-  ref?: string;
-}
+interface Citation { source?: string; ref?: string }
 
 function collectCitations(data: unknown): Citation[] {
   const out: Citation[] = [];
   const walk = (v: unknown): void => {
     if (!v || typeof v !== "object") return;
-    if (Array.isArray(v)) {
-      for (const item of v) walk(item);
-      return;
-    }
+    if (Array.isArray(v)) { for (const x of v) walk(x); return; }
     const obj = v as Record<string, unknown>;
-    if (
-      "source" in obj &&
-      "ref" in obj &&
-      typeof obj.source === "string" &&
-      typeof obj.ref === "string"
-    ) {
+    if (typeof obj.source === "string" && typeof obj.ref === "string") {
       out.push({ source: obj.source, ref: obj.ref });
     }
-    for (const val of Object.values(obj)) walk(val);
+    for (const x of Object.values(obj)) walk(x);
   };
   walk(data);
   return out;
 }
 
-function checkCitations(
-  data: unknown,
-  allow: Allowlist,
-): { mismatches: Citation[]; count: number } {
-  const cites = collectCitations(data);
-  const bad: Citation[] = [];
-  for (const c of cites) {
-    const src = c.source ?? "";
-    const ref = c.ref ?? "";
-    const entries = allow[src];
-    if (!entries || !entries.includes(ref)) bad.push(c);
-  }
-  return { mismatches: bad, count: bad.length };
+function checkCitations(data: unknown, allow: Allowlist): Citation[] {
+  return collectCitations(data).filter(
+    (c) => !(allow[c.source ?? ""]?.includes(c.ref ?? "")),
+  );
 }
 
-function tryValidate(data: unknown): { ok: boolean; kind?: string; error?: string } {
-  // Heuristic: arrays of objects with `front`/`back` → cards,
-  // with `stem`/`choices` → questions.
+interface SchemaResult { ok: boolean; kind: string; error?: string }
+
+function tryValidate(data: unknown): SchemaResult {
+  // Heuristic: array of cards vs questions by distinguishing field names.
   if (Array.isArray(data)) {
-    const first = data[0];
+    const first = data[0] as Record<string, unknown> | undefined;
     if (first && typeof first === "object") {
       if ("front" in first || "back" in first) {
         const r = CardsArraySchema.safeParse(data);
-        return r.success
-          ? { ok: true, kind: "cards" }
-          : { ok: false, kind: "cards", error: r.error.message };
+        return { ok: r.success, kind: "cards", error: r.success ? undefined : r.error.message };
       }
       if ("stem" in first || "choices" in first) {
         const r = QuestionsArraySchema.safeParse(data);
-        return r.success
-          ? { ok: true, kind: "questions" }
-          : { ok: false, kind: "questions", error: r.error.message };
+        return { ok: r.success, kind: "questions", error: r.success ? undefined : r.error.message };
       }
     }
-    // Empty or ambiguous array — try both.
     const c = CardsArraySchema.safeParse(data);
     if (c.success) return { ok: true, kind: "cards" };
     const q = QuestionsArraySchema.safeParse(data);
     if (q.success) return { ok: true, kind: "questions" };
-    return {
-      ok: false,
-      kind: "array",
-      error: `cards: ${c.error.message}\nquestions: ${q.error.message}`,
-    };
+    return { ok: false, kind: "array", error: `cards: ${c.error.message}\nquestions: ${q.error.message}` };
   }
-  const lesson = LessonSchema.safeParse(data);
-  if (lesson.success) return { ok: true, kind: "lesson" };
-  return { ok: false, kind: "lesson", error: lesson.error.message };
+  const l = LessonSchema.safeParse(data);
+  return l.success
+    ? { ok: true, kind: "lesson" }
+    : { ok: false, kind: "lesson", error: l.error.message };
 }
 
 function runValidate(filePath: string): number {
   const abs = path.resolve(filePath);
-  if (!fs.existsSync(abs)) {
-    printErr(`--validate: file not found: ${abs}`);
-    return 1;
-  }
+  if (!fs.existsSync(abs)) { err(`--validate: file not found: ${abs}`); return 1; }
   let data: unknown;
-  try {
-    data = JSON.parse(fs.readFileSync(abs, "utf8"));
-  } catch (e) {
-    printErr(`--validate: JSON parse failed: ${(e as Error).message}`);
+  try { data = JSON.parse(fs.readFileSync(abs, "utf8")); }
+  catch (e) { err(`--validate: JSON parse failed: ${(e as Error).message}`); return 1; }
+  const sr = tryValidate(data);
+  if (!sr.ok) {
+    err(`Zod validation failed (${sr.kind}):`);
+    err(sr.error ?? "unknown error");
     return 1;
   }
-  const schemaResult = tryValidate(data);
-  if (!schemaResult.ok) {
-    printErr(`Zod validation failed (${schemaResult.kind}):`);
-    printErr(schemaResult.error ?? "unknown error");
+  const bad = checkCitations(data, loadAllowlist());
+  if (bad.length > 0) {
+    err(`Citation allowlist mismatches: ${bad.length}`);
+    for (const m of bad) err(`  - ${m.source} :: ${m.ref}`);
     return 1;
   }
-  const allow = loadAllowlist();
-  const citeCheck = checkCitations(data, allow);
-  if (citeCheck.count > 0) {
-    printErr(
-      `Citation allowlist mismatches: ${citeCheck.count}`,
-    );
-    for (const m of citeCheck.mismatches) {
-      printErr(`  - ${m.source} :: ${m.ref}`);
-    }
-    return 1;
-  }
-  print(`OK: ${schemaResult.kind} (${path.basename(abs)}) — citations clean.`);
+  out(`OK: ${sr.kind} (${path.basename(abs)}) — citations clean.`);
   return 0;
 }
 
 function runDryRun(subId: string, outlinePath: string): number {
   const abs = path.resolve(outlinePath);
-  if (!fs.existsSync(abs)) {
-    printErr(`--dry-run: outline not found: ${abs}`);
-    return 1;
-  }
-  const md = fs.readFileSync(abs, "utf8");
-  const subs = parseOutline(md);
+  if (!fs.existsSync(abs)) { err(`--dry-run: outline not found: ${abs}`); return 1; }
+  const subs = parseOutline(fs.readFileSync(abs, "utf8"));
   const sub = subs.find((s) => s.id === subId);
   if (!sub) {
-    printErr(
-      `--dry-run: subtopic "${subId}" not found in ${abs}. Available: ${subs.map((s) => s.id).join(", ") || "(none)"}`,
-    );
+    err(`--dry-run: subtopic "${subId}" not found in ${abs}. Available: ${subs.map((s) => s.id).join(", ") || "(none)"}`);
     return 1;
   }
   const input = { id: sub.id, title: sub.title, outlineText: sub.outlineText };
-
-  print("=== lesson prompt ===");
-  print(renderLessonPrompt(input));
-  print("\nExpected JSON shape:");
-  print(LESSON_JSON_SHAPE.replace(/\s+/g, " ").trim());
-
-  print("\n=== cards prompt ===");
-  print(renderCardsPrompt(input));
-  print("\nExpected JSON shape:");
-  print(CARDS_JSON_SHAPE.replace(/\s+/g, " ").trim());
-
-  print("\n=== questions prompt ===");
-  print(renderQuestionsPrompt(input));
-  print("\nExpected JSON shape:");
-  print(QUESTIONS_JSON_SHAPE.replace(/\s+/g, " ").trim());
+  const sections: [string, string, string][] = [
+    ["lesson", renderLessonPrompt(input), LESSON_JSON_SHAPE],
+    ["cards", renderCardsPrompt(input), CARDS_JSON_SHAPE],
+    ["questions", renderQuestionsPrompt(input), QUESTIONS_JSON_SHAPE],
+  ];
+  for (const [name, body, shape] of sections) {
+    out(`=== ${name} prompt ===`);
+    out(body);
+    out("\nExpected JSON shape:");
+    out(shape.replace(/\s+/g, " ").trim());
+    out("");
+  }
   return 0;
 }
 
@@ -261,62 +190,42 @@ function main(argv: string[]): number {
       strict: true,
     });
   } catch (e) {
-    printErr((e as Error).message);
-    printErr(USAGE);
+    err((e as Error).message);
+    err(USAGE);
     return 2;
   }
-  const v = parsed.values as {
-    subtopic?: string;
-    outline?: string;
-    "dry-run"?: boolean;
-    validate?: string;
-    force?: boolean;
-    "spend-ceiling"?: string;
-    help?: boolean;
-  };
+  const v = parsed.values as Record<string, string | boolean | undefined>;
 
-  if (v.help) {
-    print(USAGE);
-    return 2;
-  }
-
-  if (v.validate) {
-    return runValidate(v.validate);
-  }
+  if (v.help) { out(USAGE); return 2; }
+  if (typeof v.validate === "string") return runValidate(v.validate);
 
   if (v["dry-run"]) {
-    if (!v.subtopic) {
-      printErr("--dry-run requires --subtopic <id>.");
-      printErr(USAGE);
+    if (typeof v.subtopic !== "string") {
+      err("--dry-run requires --subtopic <id>.");
+      err(USAGE);
       return 2;
     }
-    return runDryRun(v.subtopic, v.outline ?? "scripts/nasaa-outline.md");
+    return runDryRun(v.subtopic, (v.outline as string) ?? "scripts/nasaa-outline.md");
   }
 
-  // Real run path. Spend ceiling is parsed for side-effect (log it) so the
-  // env-var path is exercised even though we don't call the API here.
-  const ceilingRaw =
-    v["spend-ceiling"] ?? process.env.SPEND_CEILING_USD ?? "200";
+  // Real run path. Parse the spend ceiling so the env-var path is exercised
+  // even though we don't call the API in this phase.
+  const ceilingRaw = (v["spend-ceiling"] as string) ?? process.env.SPEND_CEILING_USD ?? "200";
   const ceiling = Number(ceilingRaw);
   if (!Number.isFinite(ceiling) || ceiling <= 0) {
-    printErr(`Invalid --spend-ceiling: ${ceilingRaw}`);
+    err(`Invalid --spend-ceiling: ${ceilingRaw}`);
     return 2;
   }
-
-  if (!v.subtopic && !v.force) {
-    print(USAGE);
+  if (typeof v.subtopic !== "string" && !v.force) {
+    out(USAGE);
     return 2;
   }
-
-  print(
-    "Install `@anthropic-ai/sdk` and set `ANTHROPIC_API_KEY` before running for real. For now, only --dry-run and --validate are supported out of the box. See scripts/README.md.",
-  );
-  print(`(spend-ceiling acknowledged: $${ceiling})`);
+  out("Install `@anthropic-ai/sdk` and set `ANTHROPIC_API_KEY` before running for real. For now, only --dry-run and --validate are supported out of the box. See scripts/README.md.");
+  out(`(spend-ceiling acknowledged: $${ceiling})`);
   return 0;
 }
 
-const entry = new URL(import.meta.url).pathname;
 const invoked = process.argv[1] ? path.resolve(process.argv[1]) : "";
-if (entry === invoked || invoked.endsWith("generate-content.ts")) {
+if (invoked.endsWith("generate-content.ts")) {
   process.exit(main(process.argv.slice(2)));
 }
