@@ -8,6 +8,7 @@ import Missed from "./routes/Missed";
 import Reference from "./routes/Reference";
 import Saved from "./routes/Saved";
 import Settings from "./routes/Settings";
+import UIKitDemo from "./routes/__UIKit";
 import TabBar from "./components/TabBar";
 
 export default function App() {
@@ -24,6 +25,9 @@ export default function App() {
           <Route path="/reference" element={<Reference />} />
           <Route path="/saved" element={<Saved />} />
           <Route path="/settings" element={<Settings />} />
+          {import.meta.env.DEV && (
+            <Route path="/__uikit" element={<UIKitDemo />} />
+          )}
         </Routes>
       </main>
       <TabBar />
