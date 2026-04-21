@@ -1,0 +1,71 @@
+import { describe, expect, it } from "vitest";
+import { cardId, normalizeText, questionId } from "./ids";
+
+describe("normalizeText", () => {
+  it("lowercases and trims", () => {
+    expect(normalizeText("  Hello World  ")).toBe("hello world");
+  });
+
+  it("collapses whitespace runs", () => {
+    expect(normalizeText("a   b\t\nc")).toBe("a b c");
+  });
+
+  it("strips punctuation and symbols", () => {
+    expect(normalizeText("Hello, world!! (really?)")).toBe(
+      "hello world really",
+    );
+  });
+
+  it("is stable across capitalization and punctuation differences", () => {
+    expect(normalizeText("What's GDP?")).toBe(
+      normalizeText("what s  gdp"),
+    );
+  });
+});
+
+describe("cardId / questionId", () => {
+  it("produces a 12-char hex string", async () => {
+    const id = await cardId("1.1", "Define GDP");
+    expect(id).toMatch(/^[0-9a-f]{12}$/);
+  });
+
+  it("is deterministic for identical inputs", async () => {
+    const a = await cardId("1.1", "Define GDP");
+    const b = await cardId("1.1", "Define GDP");
+    expect(a).toBe(b);
+  });
+
+  it("is insensitive to capitalization / extra spaces / punctuation", async () => {
+    const a = await cardId("1.1", "Define GDP");
+    const b = await cardId("1.1", "  define, gdp!! ");
+    expect(a).toBe(b);
+  });
+
+  it("differs for different subtopicIds", async () => {
+    const a = await cardId("1.1", "Define GDP");
+    const b = await cardId("1.2", "Define GDP");
+    expect(a).not.toBe(b);
+  });
+
+  it("differs for different text", async () => {
+    const a = await cardId("1.1", "Define GDP");
+    const b = await cardId("1.1", "Define CPI");
+    expect(a).not.toBe(b);
+  });
+
+  it("questionId follows the same contract", async () => {
+    const a = await questionId("2.3", "What is the Sharpe ratio?");
+    const b = await questionId("2.3", "what is the sharpe ratio");
+    expect(a).toBe(b);
+    expect(a).toMatch(/^[0-9a-f]{12}$/);
+  });
+
+  it("cardId and questionId with identical normalized inputs collide by design", async () => {
+    // They both hash `subtopicId|normalized` with no type prefix; this is
+    // fine because cards live in cardState and questions in attempts, keyed
+    // in different tables. Documented here so a future refactor is deliberate.
+    const c = await cardId("1.1", "foo");
+    const q = await questionId("1.1", "foo");
+    expect(c).toBe(q);
+  });
+});
