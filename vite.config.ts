@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
@@ -55,8 +56,9 @@ export default defineConfig({
         globPatterns: ["**/*.{js,css,html,ico,png,svg,webmanifest,woff,woff2}"],
         runtimeCaching: [
           {
-            urlPattern: ({ url, sameOrigin }) =>
-              sameOrigin && url.pathname.startsWith("/"),
+            // Same-origin only. `sameOrigin` comes from Workbox's route matcher
+            // context; we never cache cross-origin requests at runtime.
+            urlPattern: ({ sameOrigin }) => sameOrigin,
             handler: "StaleWhileRevalidate",
             options: {
               cacheName: "s65-runtime",

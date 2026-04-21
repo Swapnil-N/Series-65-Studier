@@ -6,6 +6,13 @@ dist-ssr/
 .vite/
 coverage/
 
+# TS build artifacts (tsc -b emits these next to config files)
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
+tailwind.config.js
+tailwind.config.d.ts
+
 # Editor
 .vscode/
 .idea/
