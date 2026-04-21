@@ -1,0 +1,63 @@
+{
+  "NASAA": [
+    "Section 1.A",
+    "Section 1.B",
+    "Section 1.C",
+    "Section 1.D",
+    "Section 2",
+    "Section 2.A",
+    "Section 2.B",
+    "Section 2.C",
+    "Section 2.D",
+    "Section 3",
+    "Section 3.A",
+    "Section 3.B",
+    "Section 3.C",
+    "Section 3.D",
+    "Section 3.E",
+    "Section 4",
+    "Section 4.A",
+    "Section 4.B",
+    "Section 4.C",
+    "Section 4.D"
+  ],
+  "SEC": [
+    "17 CFR 240",
+    "Rule 10b-5",
+    "Rule 144",
+    "Rule 147",
+    "Rule 501",
+    "Rule 504",
+    "Rule 505",
+    "Rule 506",
+    "Regulation D",
+    "Regulation A",
+    "Regulation S-P",
+    "Regulation S-K",
+    "Securities Act of 1933",
+    "Securities Exchange Act of 1934",
+    "Investment Company Act of 1940"
+  ],
+  "IA_ACT": [
+    "Section 202(a)(11)",
+    "Section 203",
+    "Section 204",
+    "Section 205",
+    "Section 206",
+    "Section 207",
+    "Section 208",
+    "Section 209"
+  ],
+  "NASAA_MODEL_RULE": [
+    "NASAA MR 102(a)",
+    "NASAA MR 102(d)",
+    "NASAA MR 102(e)",
+    "NASAA MR 201",
+    "NASAA MR 202",
+    "NASAA MR 401",
+    "NASAA MR 501",
+    "NASAA MR 502",
+    "NASAA MR 503",
+    "NASAA MR IA-USA"
+  ]
+}
