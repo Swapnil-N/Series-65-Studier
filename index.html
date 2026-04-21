@@ -6,7 +6,8 @@
     <meta name="theme-color" content="#0a0a0a" />
     <meta name="description" content="Offline study app for NASAA Series 65." />
 
-    <link rel="manifest" href="/manifest.webmanifest" />
+    <!-- `vite-plugin-pwa` auto-injects <link rel="manifest"> so we do not
+         declare it manually here (avoids a duplicate tag in dist/index.html). -->
     <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png" />
     <link rel="icon" type="image/png" sizes="512x512" href="/icons/icon-512.png" />
 
