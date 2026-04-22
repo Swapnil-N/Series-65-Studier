@@ -60,12 +60,12 @@ describe("cardId / questionId", () => {
     expect(a).toMatch(/^[0-9a-f]{12}$/);
   });
 
-  it("cardId and questionId with identical normalized inputs collide by design", async () => {
-    // They both hash `subtopicId|normalized` with no type prefix; this is
-    // fine because cards live in cardState and questions in attempts, keyed
-    // in different tables. Documented here so a future refactor is deliberate.
+  it("cardId and questionId never collide for identical normalized inputs", async () => {
+    // db.edits and db.bookmarks key by itemId without a type discriminator,
+    // so card IDs and question IDs must live in disjoint hash spaces. Hash
+    // inputs are prefixed with "c|" / "q|" to enforce this.
     const c = await cardId("1.1", "foo");
     const q = await questionId("1.1", "foo");
-    expect(c).toBe(q);
+    expect(c).not.toBe(q);
   });
 });

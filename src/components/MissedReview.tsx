@@ -1,6 +1,21 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import type { Question } from "../types/content";
+import type { Question, TopicId } from "../types/content";
 import type { MissedItem } from "../types/state";
+
+function topicIdOf(subtopicId: string): TopicId {
+  const head = subtopicId.split(".")[0];
+  return head === "1" || head === "2" || head === "3" || head === "4"
+    ? head
+    : "1";
+}
+
+function todayKey(now: number): string {
+  const d = new Date(now);
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
 import { db } from "../lib/db";
 import { loadContent } from "../lib/content";
 import { EmptyState, QuestionCard, type ChoiceIndex } from "./shared";
@@ -95,6 +110,9 @@ export function MissedReview({ questionsById, now }: MissedReviewProps) {
 
       const correct = choice === currentQuestion.answerIndex;
       const qid = currentItem.questionId;
+      const ts = clock();
+      const dateKey = todayKey(ts);
+      const topicId = topicIdOf(currentQuestion.subtopicId);
 
       if (correct) {
         const nextStreak = (streakByQid[qid] ?? 0) + 1;
@@ -107,11 +125,33 @@ export function MissedReview({ questionsById, now }: MissedReviewProps) {
         }
       } else {
         // Wrong → reset streak. Item remains in queue and will rotate on
-        // `advance`.
+        // `advance`. Don't re-upsert into missedQueue: it's already there and
+        // re-bumping addedAt would churn ordering.
         setStreakByQid((s) => ({ ...s, [qid]: 0 }));
       }
+
+      // Persist this attempt so missed-mode practice contributes to readiness,
+      // streak, and daily-goal tracking. Single transaction keeps the two
+      // tables consistent if Dexie throws.
+      await db.transaction("rw", db.attempts, db.dailyActivity, async () => {
+        await db.attempts.add({
+          questionId: qid,
+          subtopicId: currentQuestion.subtopicId,
+          topicId,
+          correct,
+          mode: "missed",
+          timestamp: ts,
+        });
+        const existing = await db.dailyActivity.get(dateKey);
+        await db.dailyActivity.put({
+          date: dateKey,
+          cardsReviewed: existing?.cardsReviewed ?? 0,
+          questionsAnswered: (existing?.questionsAnswered ?? 0) + 1,
+          lessonsCompleted: existing?.lessonsCompleted ?? 0,
+        });
+      });
     },
-    [currentItem, currentQuestion, revealed, streakByQid],
+    [currentItem, currentQuestion, revealed, streakByQid, clock],
   );
 
   // Loading state: queue still null.

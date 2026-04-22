@@ -21,6 +21,8 @@ function makeQ(id: string, answerIndex: 0 | 1 | 2 | 3 = 0): Question {
 describe("MissedReview", () => {
   beforeEach(async () => {
     await db.missedQueue.clear();
+    await db.attempts.clear();
+    await db.dailyActivity.clear();
   });
 
   it("renders the empty state when the missed queue is clear", async () => {
@@ -81,6 +83,32 @@ describe("MissedReview", () => {
     // q2 remains.
     const remaining = await db.missedQueue.toArray();
     expect(remaining.some((m) => m.questionId === "q2")).toBe(true);
+  });
+
+  it("writes an Attempt with mode='missed' and bumps dailyActivity for each answer (B2 fix)", async () => {
+    await db.missedQueue.put({ questionId: "q1", topicId: "1", addedAt: 1 });
+    const map = new Map<string, Question>();
+    map.set("q1", makeQ("q1", 0));
+
+    render(<MissedReview questionsById={map} now={() => 1_700_000_000_000} />);
+    await waitFor(() =>
+      expect(screen.getByTestId("missed-review")).toBeInTheDocument(),
+    );
+
+    // Answer wrong — should still produce an Attempt.
+    fireEvent.click(screen.getByRole("button", { name: /^2\. B$/ }));
+
+    await waitFor(async () => {
+      const rows = await db.attempts.toArray();
+      expect(rows).toHaveLength(1);
+      expect(rows[0].mode).toBe("missed");
+      expect(rows[0].correct).toBe(false);
+      expect(rows[0].questionId).toBe("q1");
+      expect(rows[0].topicId).toBe("1");
+    });
+    const day = await db.dailyActivity.toArray();
+    expect(day).toHaveLength(1);
+    expect(day[0].questionsAnswered).toBe(1);
   });
 
   it("wrong answer resets the correct-streak counter", async () => {

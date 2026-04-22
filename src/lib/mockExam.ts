@@ -227,3 +227,94 @@ export function scoreMock(
 function round1(n: number): number {
   return Math.round(n * 10) / 10;
 }
+
+function dateKeyOf(now: number): string {
+  const d = new Date(now);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+
+/**
+ * On mock-exam completion, persist downstream state in a single transaction:
+ *   - mockSessions row marked "completed"
+ *   - one Attempt per answered question (mode "mock", carrying mockId)
+ *   - missedQueue upsert for every wrong answer
+ *   - dailyActivity.questionsAnswered incremented for today by answered count
+ *
+ * Skipped questions (answer === null) and unknown question IDs are ignored.
+ */
+export async function persistMockCompletion(
+  session: MockExamSession,
+  questions: Question[],
+  database: Pick<
+    Series65DB,
+    "mockSessions" | "attempts" | "missedQueue" | "dailyActivity"
+  > & { transaction: Series65DB["transaction"] },
+  now: number = Date.now(),
+): Promise<{
+  attemptsWritten: number;
+  missedAdded: number;
+  questionsAnswered: number;
+}> {
+  const byId = new Map(questions.map((q) => [q.id, q]));
+  const dateKey = dateKeyOf(now);
+  const attemptRows: import("../types/state").Attempt[] = [];
+  const missedIds = new Set<string>();
+  let answeredCount = 0;
+  for (let i = 0; i < session.questionIds.length; i++) {
+    const ans = session.answers[i];
+    if (ans === null) continue;
+    const q = byId.get(session.questionIds[i]);
+    if (!q) continue;
+    const t = topicOf(q.subtopicId);
+    if (!t) continue;
+    answeredCount += 1;
+    const correct = ans === q.answerIndex;
+    attemptRows.push({
+      questionId: q.id,
+      subtopicId: q.subtopicId,
+      topicId: t,
+      correct,
+      mode: "mock",
+      mockId: session.id,
+      timestamp: now,
+    });
+    if (!correct) missedIds.add(q.id);
+  }
+  await database.transaction(
+    "rw",
+    database.mockSessions,
+    database.attempts,
+    database.missedQueue,
+    database.dailyActivity,
+    async () => {
+      await database.mockSessions.put({ ...session, status: "completed" });
+      if (attemptRows.length) await database.attempts.bulkAdd(attemptRows);
+      for (const id of missedIds) {
+        const q = byId.get(id);
+        if (!q) continue;
+        const t = topicOf(q.subtopicId);
+        if (!t) continue;
+        await database.missedQueue.put({
+          questionId: id,
+          topicId: t,
+          addedAt: now,
+        });
+      }
+      if (answeredCount > 0) {
+        const existing = await database.dailyActivity.get(dateKey);
+        await database.dailyActivity.put({
+          date: dateKey,
+          cardsReviewed: existing?.cardsReviewed ?? 0,
+          questionsAnswered:
+            (existing?.questionsAnswered ?? 0) + answeredCount,
+          lessonsCompleted: existing?.lessonsCompleted ?? 0,
+        });
+      }
+    },
+  );
+  return {
+    attemptsWritten: attemptRows.length,
+    missedAdded: missedIds.size,
+    questionsAnswered: answeredCount,
+  };
+}

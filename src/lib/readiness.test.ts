@@ -253,18 +253,48 @@ describe("computeTopicScore", () => {
 describe("computeReadiness", () => {
   const now = 1_700_000_000_000;
 
-  it("returns null overall when any topic is insufficient", () => {
-    // Topic 1 only. Other topics empty → insufficient.
+  it("returns a partial-rollup overall when at least one topic is sufficient", () => {
+    // Topic 1 only. Other topics empty → insufficient. Plan says insufficient
+    // topics are excluded from the rollup, not that overall goes null while
+    // any data exists.
     const attempts: Attempt[] = [];
     for (let i = 0; i < 20; i++) {
       attempts.push(make(`q${i}`, "1", true, now - (i + 1) * DAY));
     }
     const r = computeReadiness(attempts, now);
-    expect(r.sufficient).toBe(false);
-    expect(r.overall).toBeNull();
+    expect(r.sufficient).toBe(false); // not all four topics yet
+    expect(r.overall).not.toBeNull();
+    expect(r.overall).toBeCloseTo(100, 1); // topic 1 = 100%, only contributor
+    expect(r.contributingTopics).toEqual(["1"]);
     expect(r.perTopic).toHaveLength(4);
     expect(r.perTopic[0].sufficient).toBe(true);
     expect(r.perTopic[1].sufficient).toBe(false);
+  });
+
+  it("returns null overall only when no topic is sufficient", () => {
+    const attempts: Attempt[] = [];
+    for (let i = 0; i < 5; i++) {
+      attempts.push(make(`q${i}`, "1", true, now - (i + 1) * DAY));
+    }
+    const r = computeReadiness(attempts, now);
+    expect(r.overall).toBeNull();
+    expect(r.sufficient).toBe(false);
+    expect(r.contributingTopics).toEqual([]);
+  });
+
+  it("renormalises NASAA weights across contributing topics", () => {
+    // Topics 1 (15%) and 2 (25%) sufficient; 3 and 4 not. Renormalised:
+    // weight1 = 15/(15+25) = 0.375, weight2 = 25/40 = 0.625.
+    // Topic 1 = 100%, topic 2 = 80% → 100*0.375 + 80*0.625 = 87.5.
+    const attempts: Attempt[] = [];
+    for (let i = 0; i < 20; i++) {
+      attempts.push(make(`a${i}`, "1", true, now - (i + 1) * DAY));
+      attempts.push(make(`b${i}`, "2", i < 16, now - (i + 1) * DAY));
+    }
+    const r = computeReadiness(attempts, now);
+    expect(r.overall).toBeCloseTo(87.5, 1);
+    expect(r.contributingTopics).toEqual(["1", "2"]);
+    expect(r.sufficient).toBe(false);
   });
 
   it("computes a NASAA-weighted overall when all topics are sufficient", () => {
@@ -344,7 +374,12 @@ describe("studyNextTopic", () => {
   it("falls back to topic 1 when perTopic is empty (defensive)", () => {
     // Directly construct an empty ReadinessResult.
     expect(
-      studyNextTopic({ perTopic: [], overall: null, sufficient: false }),
+      studyNextTopic({
+        perTopic: [],
+        overall: null,
+        sufficient: false,
+        contributingTopics: [],
+      }),
     ).toBe("1");
   });
 });

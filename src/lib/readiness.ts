@@ -203,17 +203,26 @@ export function computeTopicScore(
 
 export interface ReadinessResult {
   perTopic: TopicScore[];
-  /** Weighted overall (percent), or null if any topic is insufficient. */
+  /**
+   * Weighted overall (percent) over only sufficient topics, with weights
+   * renormalised among them. Null only when **no** topic is yet sufficient.
+   */
   overall: number | null;
   /** True when every topic meets MIN_N_PER_TOPIC. */
   sufficient: boolean;
+  /** Topic ids that contributed to `overall`. Empty when overall is null. */
+  contributingTopics: TopicId[];
 }
 
 /**
- * Full readiness rollup for all four NASAA topics. Overall is the
- * NASAA-weighted sum of per-topic points, but **only** when every topic has
- * met MIN_N_PER_TOPIC — otherwise we return null overall and still surface the
- * per-topic bars for UI rendering.
+ * Full readiness rollup for all four NASAA topics.
+ *
+ * Per the plan: insufficient topics are reported but excluded from the
+ * weighted rollup. We renormalise the NASAA weights among contributing
+ * (sufficient) topics so the headline number is meaningful as soon as any
+ * topic crosses MIN_N, instead of staying null until all four do.
+ *
+ * `sufficient` remains `true` only when every topic crosses MIN_N.
  */
 export function computeReadiness(
   attempts: Attempt[],
@@ -221,15 +230,30 @@ export function computeReadiness(
 ): ReadinessResult {
   const topics: TopicId[] = ["1", "2", "3", "4"];
   const perTopic = topics.map((t) => computeTopicScore(attempts, t, now));
-  const allSufficient = perTopic.every((t) => t.sufficient);
-  if (!allSufficient) {
-    return { perTopic, overall: null, sufficient: false };
+  const sufficient = perTopic.filter((t) => t.sufficient);
+  const allSufficient = sufficient.length === perTopic.length;
+  if (sufficient.length === 0) {
+    return {
+      perTopic,
+      overall: null,
+      sufficient: false,
+      contributingTopics: [],
+    };
   }
+  const weightSum = sufficient.reduce(
+    (acc, t) => acc + NASAA_WEIGHTS[t.topicId],
+    0,
+  );
   let overall = 0;
-  for (const t of perTopic) {
-    overall += (t.point ?? 0) * NASAA_WEIGHTS[t.topicId];
+  for (const t of sufficient) {
+    overall += (t.point ?? 0) * (NASAA_WEIGHTS[t.topicId] / weightSum);
   }
-  return { perTopic, overall, sufficient: true };
+  return {
+    perTopic,
+    overall,
+    sufficient: allSufficient,
+    contributingTopics: sufficient.map((t) => t.topicId),
+  };
 }
 
 /**

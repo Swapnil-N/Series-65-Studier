@@ -7,6 +7,7 @@ import {
   TOPIC_COUNTS,
   composeExam,
   getExcludedIds,
+  persistMockCompletion,
 } from "../lib/mockExam";
 import type { Question, TopicId } from "../types/content";
 import type { MockExamSession } from "../types/state";
@@ -108,11 +109,13 @@ export default function Mock() {
     setResumable(null);
   }, [resumable]);
 
-  const handleComplete = useCallback(async (session: MockExamSession) => {
-    // MockExam already persists status:"completed" but we re-assert here in
-    // case anything upstream races with a stale copy.
-    await db.mockSessions.put({ ...session, status: "completed" });
-  }, []);
+  const handleComplete = useCallback(
+    async (session: MockExamSession) => {
+      if (!questions) return;
+      await persistMockCompletion(session, questions, db);
+    },
+    [questions],
+  );
 
   const handleAbandon = useCallback(async (session: MockExamSession) => {
     await db.mockSessions.put({ ...session, status: "abandoned" });

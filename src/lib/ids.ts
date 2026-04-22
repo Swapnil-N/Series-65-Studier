@@ -24,12 +24,12 @@ export async function cardId(
   subtopicId: string,
   front: string,
 ): Promise<string> {
-  return sha1Hex12(`${subtopicId}|${normalizeText(front)}`);
+  return sha1Hex12(`c|${subtopicId}|${normalizeText(front)}`);
 }
 
 export async function questionId(
   subtopicId: string,
   stem: string,
 ): Promise<string> {
-  return sha1Hex12(`${subtopicId}|${normalizeText(stem)}`);
+  return sha1Hex12(`q|${subtopicId}|${normalizeText(stem)}`);
 }
