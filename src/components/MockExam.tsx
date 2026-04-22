@@ -114,6 +114,12 @@ export function MockExam({
 
   const persist = useCallback(
     async (next: MockExamSession) => {
+      // `status: "completed"` is owned by the parent's persistMockCompletion
+      // transaction, which writes mockSessions alongside attempts /
+      // missedQueue / dailyActivity atomically. Skipping it here prevents a
+      // racing unawaited write that could land the status flip without the
+      // downstream rows.
+      if (next.status === "completed") return;
       try {
         await database.mockSessions.put(next);
       } catch {

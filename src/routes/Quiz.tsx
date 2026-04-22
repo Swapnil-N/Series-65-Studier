@@ -113,32 +113,40 @@ function clearPersisted(): void {
  * recently-missed items surface first in the Missed review flow.
  */
 async function persistAttempt(attempt: Attempt): Promise<void> {
-  await db.attempts.add(attempt);
-
   const dateKey = toDateKey(attempt.timestamp);
-  const existing = await db.dailyActivity.get(dateKey);
-  if (existing) {
-    await db.dailyActivity.put({
-      ...existing,
-      questionsAnswered: existing.questionsAnswered + 1,
-    });
-  } else {
-    await db.dailyActivity.put({
-      date: dateKey,
-      cardsReviewed: 0,
-      questionsAnswered: 1,
-      lessonsCompleted: 0,
-    });
-  }
-
-  if (!attempt.correct) {
-    // Upsert — Dexie's `put` replaces on primary-key match (questionId).
-    await db.missedQueue.put({
-      questionId: attempt.questionId,
-      topicId: attempt.topicId,
-      addedAt: attempt.timestamp,
-    });
-  }
+  // All three writes run in a single transaction so we can't end up with a
+  // recorded attempt whose dailyActivity count is off, or a miss that never
+  // reaches the queue.
+  await db.transaction(
+    "rw",
+    db.attempts,
+    db.dailyActivity,
+    db.missedQueue,
+    async () => {
+      await db.attempts.add(attempt);
+      const existing = await db.dailyActivity.get(dateKey);
+      if (existing) {
+        await db.dailyActivity.put({
+          ...existing,
+          questionsAnswered: existing.questionsAnswered + 1,
+        });
+      } else {
+        await db.dailyActivity.put({
+          date: dateKey,
+          cardsReviewed: 0,
+          questionsAnswered: 1,
+          lessonsCompleted: 0,
+        });
+      }
+      if (!attempt.correct) {
+        await db.missedQueue.put({
+          questionId: attempt.questionId,
+          topicId: attempt.topicId,
+          addedAt: attempt.timestamp,
+        });
+      }
+    },
+  );
 }
 
 export default function Quiz() {

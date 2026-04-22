@@ -158,6 +158,39 @@ describe("MockExam", () => {
     expect(screen.getByTestId("mock-scorecard")).toBeInTheDocument();
   });
 
+  it("does NOT self-persist status='completed' — parent's transaction owns that write (B6 fix)", async () => {
+    // persistMockCompletion's transaction is the only writer that should
+    // promote status. If MockExam fires its own mockSessions.put at
+    // completion, the two writes race and a partial failure leaves the
+    // session marked completed with zero downstream rows.
+    await db.mockSessions.clear();
+    const session = makeSession({ questionIds: ["q1"], currentIndex: 0 });
+    await db.mockSessions.put(session);
+    let t = START;
+    const now = () => t;
+    const onComplete = vi.fn();
+    render(
+      <MockExam
+        questions={[makeQ("q1", "1.1", 0)]}
+        initialSession={session}
+        database={db}
+        now={now}
+        onComplete={onComplete}
+      />,
+    );
+    // Select a correct answer.
+    fireEvent.click(screen.getByRole("button", { name: /^1\. A$/ }));
+    // Advance past the last question to trigger completion.
+    fireEvent.click(screen.getByRole("button", { name: /submit/i }));
+    await act(async () => {
+      await Promise.resolve();
+    });
+    expect(onComplete).toHaveBeenCalledTimes(1);
+    const stored = await db.mockSessions.get(session.id);
+    // MockExam must not have flipped status on its own.
+    expect(stored?.status).toBe("active");
+  });
+
   it("shows a resume/abandon prompt if lastActivityTs was more than 10 minutes ago", () => {
     const session = makeSession();
     // 15 minutes gap since last activity.

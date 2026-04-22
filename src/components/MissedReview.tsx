@@ -113,43 +113,44 @@ export function MissedReview({ questionsById, now }: MissedReviewProps) {
       const ts = clock();
       const dateKey = todayKey(ts);
       const topicId = topicIdOf(currentQuestion.subtopicId);
+      const priorStreak = streakByQid[qid] ?? 0;
+      const nextStreak = correct ? priorStreak + 1 : 0;
+      const shouldRetire = correct && nextStreak >= 2;
+      // Update in-memory streak synchronously so a rapid next-click sees the
+      // new value before the Dexie await resolves. Transaction-failure
+      // rollback would leave a one-step-ahead counter in memory, which resets
+      // on reload — an acceptable tradeoff vs stale-closure bugs.
+      setStreakByQid((s) => ({ ...s, [qid]: nextStreak }));
 
-      if (correct) {
-        const nextStreak = (streakByQid[qid] ?? 0) + 1;
-        setStreakByQid((s) => ({ ...s, [qid]: nextStreak }));
-        if (nextStreak >= 2) {
-          // Two correct in a row → retire from the persistent missed queue.
-          // The in-memory queue is adjusted on `advance` via `completeCurrent`.
-          await db.missedQueue.delete(qid);
-          setCompleteCurrent(true);
-        }
-      } else {
-        // Wrong → reset streak. Item remains in queue and will rotate on
-        // `advance`. Don't re-upsert into missedQueue: it's already there and
-        // re-bumping addedAt would churn ordering.
-        setStreakByQid((s) => ({ ...s, [qid]: 0 }));
-      }
+      // Single transaction covers every mutation this answer triggers so a
+      // partial Dexie failure can't, say, retire the item without recording
+      // the answer that earned the retirement.
+      await db.transaction(
+        "rw",
+        db.attempts,
+        db.dailyActivity,
+        db.missedQueue,
+        async () => {
+          await db.attempts.add({
+            questionId: qid,
+            subtopicId: currentQuestion.subtopicId,
+            topicId,
+            correct,
+            mode: "missed",
+            timestamp: ts,
+          });
+          const existing = await db.dailyActivity.get(dateKey);
+          await db.dailyActivity.put({
+            date: dateKey,
+            cardsReviewed: existing?.cardsReviewed ?? 0,
+            questionsAnswered: (existing?.questionsAnswered ?? 0) + 1,
+            lessonsCompleted: existing?.lessonsCompleted ?? 0,
+          });
+          if (shouldRetire) await db.missedQueue.delete(qid);
+        },
+      );
 
-      // Persist this attempt so missed-mode practice contributes to readiness,
-      // streak, and daily-goal tracking. Single transaction keeps the two
-      // tables consistent if Dexie throws.
-      await db.transaction("rw", db.attempts, db.dailyActivity, async () => {
-        await db.attempts.add({
-          questionId: qid,
-          subtopicId: currentQuestion.subtopicId,
-          topicId,
-          correct,
-          mode: "missed",
-          timestamp: ts,
-        });
-        const existing = await db.dailyActivity.get(dateKey);
-        await db.dailyActivity.put({
-          date: dateKey,
-          cardsReviewed: existing?.cardsReviewed ?? 0,
-          questionsAnswered: (existing?.questionsAnswered ?? 0) + 1,
-          lessonsCompleted: existing?.lessonsCompleted ?? 0,
-        });
-      });
+      if (shouldRetire) setCompleteCurrent(true);
     },
     [currentItem, currentQuestion, revealed, streakByQid, clock],
   );
