@@ -327,3 +327,81 @@ Suggested fix: long-press to confirm, or a 5-second "Undid clear" toast, or a re
 EditPencil's pencil button (line 199-210) has `aria-label="Edit this item"` and an `sr-only` "Edit". Good. Other icon-only buttons (TabBar) likely OK; check below.
 
 
+## Pass 3 (focused)
+
+### Schema fidelity
+
+- `src/types/content.ts:7-13` introduces `CitationSource` as an **added field** not in plan; plan spec inlines `source: "NASAA"|"SEC"|"IA_ACT"|"NASAA_MODEL_RULE"` directly. Functionally equivalent (same string union) — cosmetic, not a violation.
+- `src/types/content.ts:46-65` adds `ContentItem` union + `isLesson`/`isCard`/`isQuestion` narrowers. Not in plan's normative block. Additive helpers only — not a violation, but the file's own top comment ("do not add fields without updating the plan") is mildly undermined.
+- All of `CardState`, `Attempt`, `MissedItem`, `Bookmark`, `Note`, `ContentEdit`, `DailyActivity`, `MockExamSession`, `AppSettings` in `src/types/state.ts` match plan field-for-field, type-for-type, including the narrowed literal unions `state: 0|1|2|3`, `answerIndex: 0|1|2|3`, `mode: "quiz"|"mock"|"missed"`, `status: "active"|"completed"|"abandoned"`, `answers: (0|1|2|3|null)[]`. Good.
+- `db.version(1).stores({…})` in `src/lib/db.ts:46-56` matches plan char-for-char: all 9 tables, same primary keys, same indexes, same order.
+- No missing, renamed, or off-type fields detected.
+
+### Test quality
+
+- `src/lib/srs.test.ts:44-56` ("advances through all four grades") — weak. Asserts only `reps >= 1`, `lastReview === now`, `due >= now` — all true by construction (FSRS never schedules in the past). No grade-ordering assertion; the test would pass even if every grade produced identical schedules. Tautological-ish.
+- `src/lib/srs.test.ts:87-105` (cram caps at 7d) — meaningful. Primes the state so the natural interval exceeds the cap, then asserts `scheduledDays <= 7` and `due <= now + 7d`. Exercises the thing under test without mocking.
+- `src/lib/srs.test.ts:80-85` ("deterministic") — low-signal. `toEqual(b)` on two identical `review(fresh, 3, {now})` calls mostly confirms ts-fsrs is pure. Would only catch a stray `Date.now()` leak inside `review`.
+- `src/lib/db.test.ts:26-42` ("instantiates with expected tables") — tautological. Reads table names from the same `db` instance just constructed from the schema; does not cross-check against an external spec. Would not catch a renamed table.
+- `src/lib/db.test.ts:74-114` (round-trip) — smoke test only. Indexes (`where("topicId")`, `where("mode")`) never exercised; auto-increment monotonicity past 1 not verified; timestamp-index ordering not verified.
+- `src/components/QuizRunner.test.tsx:98-107` (double-click → 1 Attempt) — meaningful. Exercises a real re-entrancy guard via DOM `disabled`, no mock. Solid.
+- `src/components/QuizRunner.test.tsx:146-169` (resume from initialIndex) — meaningful. Confirms prior answers are not replayed as `onAnswer` calls on mount. Good.
+- `src/routes/Settings.test.tsx:125-169` (export → import round-trip) — **re-implements** `dumpAll`/`restoreAll` inline instead of invoking the component's click handlers. If the component's paths diverge (e.g., a new table added), this test stays green. Classic mocking-the-thing-under-test antipattern.
+- `src/routes/Settings.test.tsx:55-90` (export download) — asserts only that `URL.createObjectURL` was called. No assertion on blob contents or filename, no validation that the downloaded JSON parses.
+- `grep -rn "\.skip\|\.todo\|\.only("` across `src/` and `scripts/` returns no matches. Clean.
+
+### XSS / security
+
+- `src/components/shared/MarkdownRenderer.tsx:92-103` — react-markdown is used with no `rehype-raw`, no `skipHtml: false`. react-markdown defaults to `skipHtml: false` but without `rehype-raw` raw HTML is rendered as **text**, not parsed. So `<img onerror=...>` in `bodyMd` or a `notes.body` prints literal `<img onerror=...>`. **No active HTML-injection path.** Script/event-handler injection via standard markdown (`[x](javascript:...)`, autolink attrs) — react-markdown drops `javascript:` URLs by default via its `urlTransform`. Acceptable.
+- `src/components/shared/MarkdownRenderer.tsx:43-48` — `a` component passes `{...props}` without an `href` sanitizer of its own. Trusts react-markdown's built-in `urlTransform`. Fine today; if someone swaps `rehype-raw` in later, this becomes a hole. No `rel="noopener noreferrer"` / `target` handling — not a security hole but a minor UX nit.
+- `src/routes/Settings.tsx:109-116` — **M4 still unfixed**. `isStateExport` validates only `version === 1` and `tables[name]` is an Array. No row shape validation. Every point in the Pass-2 M4 finding is still true: numeric-id collisions, bogus TopicId, `fontScale: NaN` all land in Dexie unchecked. Pass-2 commit `d99666f` claimed M4 fixed — IT IS NOT.
+- `src/routes/Quiz.tsx:76-90` `loadPersisted` — only checks `version === 1` and `Array.isArray(questions)`. Does NOT validate `questions[i]` shape (no `id`, `subtopicId`, `choices[4]`, `answerIndex ∈ 0..3` checks). A crafted sessionStorage payload (or a stale payload from a prior schema) can feed `<QuizRunner>` a Question with undefined `choices`, which crashes `QuestionCard` at render. Low severity (sessionStorage is same-origin) but a reload after schema change corrupts UX.
+
+### Dead code / deps / bundle
+
+- `grep -rn "TODO\|FIXME\|XXX\|HACK" src/ scripts/` returns 0 results. Clean (except `vite.config.ts:6-8` TODO about GH Pages `base` path — not in src/scripts scope, legitimate deploy-time note).
+- `grep -rn "console\.\(log\|debug\|info\)" src/` returns 0 results. `console.warn` still at `src/lib/content.ts:42, 84` unconditional — see m3 status below.
+- `package.json` declared deps — all imported. `katex` is imported only as CSS (`katex/dist/katex.min.css` in `MarkdownRenderer.tsx:9`) and transitively via `rehype-katex` — direct declaration is justified because CSS-only import of a transitive dep would desync on `react-markdown` upgrade. Fine.
+- `workbox-window` declared in devDependencies but not imported anywhere; `vite-plugin-pwa` pulls it in transitively. Dead declared dep — can be removed (safe: Vite PWA plugin handles registerSW via `injectRegister: "auto"`).
+- `@types/node` pinned to `^25.6.0` while `typescript` is `^5.5.4` — @types/node 25 targets Node 23+. Overkill for a browser-only Vite app; cosmetic.
+- Main bundle: `dist/assets/index-DrZEh8fk.js` is **1.2 MB uncompressed** (single chunk, no manual code-splitting). Grep hits in the bundle: `katex` (3), `recharts` (8), `fsrs` (1), `fuse` (3), `remark`/`rehype` (2 each), `zod` (4). All heavy vendor libs live in the one chunk. `vite.config.ts:53-72` has no `build.rollupOptions.output.manualChunks` and no `React.lazy` anywhere (`grep -rn "React\.lazy\|lazy(" src/` = 0 hits) — every route's code is in the entry. This is why the "chunk > 500 KB" warning fires. Recharts alone is ~300 KB; lazy-loading the dashboard chart or splitting vendor via `manualChunks` would halve first-paint JS.
+- No `React.lazy` / dynamic `import()` for route-level code splitting in `src/App.tsx`. Mock exam (which imports `mockExam.ts`, 130-Q state) is loaded even on a user who only reads lessons.
+
+### Git hygiene
+
+- `git log --oneline -20` shows 20 commits on branch, ending at `d99666f`. Five commits are marked `(wip)` but labelled as intermediate phase snapshots — they are NOT broken/half-baked in the "WIP: don't push" sense. Each `(wip)` commit is followed by a `phase-N complete` commit. Acceptable.
+- Commit graph from `git log --graph --oneline -20` is strictly linear — no merges, no rebases, clean history. Good.
+- Two "agent stream timeout" commits (`5e6610a`, `8276cf1`) contain only `docs/review-findings.md` edits — harmless checkpoints, appropriate given the task.
+- Only `.env.example` is tracked (`ANTHROPIC_API_KEY=` empty + `SPEND_CEILING_USD=200`); no real `.env` committed. Full-history secret scan: `git log -p | grep -iE "^\+.*(secret|api_key|password|bearer|private_key)"` returns only doc/README references to `ANTHROPIC_API_KEY` as an env var name (never a literal value). Clean.
+- No `.pem`, `.key`, `.p12`, `.crt` files in the index.
+
+### iOS PWA static checks
+
+- `src/App.tsx:17` main wraps in `pt-safe pl-safe pr-safe pb-20` — safe-area OK on the top/sides, bottom uses fixed `pb-20` not `pb-safe`. TabBar is fixed (`src/components/TabBar.tsx:58`) and has `pb-[env(safe-area-inset-bottom)]`. Main's `pb-20` covers a 44-tall TabBar with ~32px spare, so a 34px home-indicator iPhone still clears. Marginal — on a 13 Pro Max in landscape the safe area can eat the TabBar's label bottom-row. Not a bug but tight.
+- `src/components/EditPencil.tsx:217` fixed modal wrapper `fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4` — no explicit safe-area padding. The inner modal card (`L222-223`) is centered; on a notched iPhone with dynamic keyboard, the modal can overlap the home indicator. Minor.
+- `src/routes/Settings.tsx:652` import-confirm modal — same pattern, no safe-area. Minor.
+- `src/components/TabBar.tsx:30` sheet overlay `fixed inset-0 z-40 flex items-end` — inner sheet `L34` has `pb-[calc(env(safe-area-inset-bottom)+1rem)]`. Good.
+- Icon-only button audit (`<button>` with only SVG/emoji/sr-only): EditPencil pencil button at `src/components/EditPencil.tsx:201-210` has `aria-label="Edit this item"` + `sr-only` text — PASS. TabBar "More" button at `TabBar.tsx:80-88` has visible `<span>More</span>` — not icon-only. FlashcardSession reveal button at `FlashcardSession.tsx` has `aria-label="Reveal answer"` — PASS. QuizRunner buttons have text children. No icon-only unlabeled buttons found.
+- `src/index.css:12-21` `.high-contrast` rule: only affects body bg/text to pure white-on-black (or black-on-white when `.dark` is also set). Does NOT restyle borders, inputs, or buttons — a cram-mode toggle, FSRS rating buttons, or muted-neutral subtext remain neutral-500/600. So "high contrast" visibly recolours the base body text but leaves most UI chrome at the same contrast ratio. Partially effective; the effect is underwhelming on dense screens. Not a bug but a product miss.
+- `src/main.tsx:9` `void getSettings().then(applyAppearanceSettings)` — appearance IS applied at boot. M6 FOUC still stands because `getSettings()` is Dexie-async and React renders first; confirmed below.
+
+### Outstanding status (M1, M2, Q1, Q2, M3-M6, m1-m3, m6)
+
+- **M1 Wilson CI over weighted counts** — UNFIXED. `src/lib/readiness.ts:189-192` still calls `wilsonInterval(weightedCorrect, weightedTotal)` with the exact acknowledging comment preserved. No split of point-estimate vs CI denominator.
+- **M2 loadContent memoization** — UNFIXED. `src/lib/content.ts:13-70` re-runs Zod validation + `db.edits.toArray()` on every call. No module-level cache or `bustCache()` export. Every route mount still re-loads everything.
+- **Q1 mock timer pause-on-background** — UNCHANGED (design choice per `MockExam.tsx:152-157` comment). Still the modal-interval credit only.
+- **Q2 lastActivityTs always startedAt** — UNFIXED. `src/routes/Mock.tsx:133` still `lastActivityTs={activeSession.startedAt}`. No `lastActivityAt` field added to `MockExamSession`. Over-eager BACKGROUND_WARN prompt on resume after a short reload still reproduces.
+- **M3 `navigator.storage.persist()` only in Settings** — UNFIXED. `src/routes/Settings.tsx:151-172` is still the only caller. `src/main.tsx` does not invoke it at boot. User who never opens Settings never requests persistence.
+- **M4 Settings import trusts file** — UNFIXED despite pass-2 commit `d99666f` claiming otherwise. `src/routes/Settings.tsx:109-116` still only Array-checks table keys; no Zod row validation. `restoreAll` at `:99-107` still blind-`bulkPut`s. Every Pass-2 M4 corruption vector is still open. **Regression/false claim.**
+- **M5 Attempt.mockId dead field** — UNFIXED, but partially mitigated. `grep -rn "mockId" src/` shows consumers: only `src/lib/mockExam.ts:278` (write), `src/types/state.ts:23` (type), and a test assertion `src/routes/Mock.test.tsx:61`. No reader in the app UI — still dead field.
+- **M6 FOUC on first paint** — UNFIXED. `src/main.tsx:9` still `void getSettings().then(applyAppearanceSettings)` — async Dexie read after React renders. No synchronous `localStorage` shadow or inline `<script>` in `index.html`.
+- **m1 5 duplicated date-key helpers** — UNFIXED. Still 5 impls: `streak.ts:29` (canonical `dateKey`), `mockExam.ts:231` (`dateKeyOf`), `MissedReview.tsx:12` (`todayKey`), `Quiz.tsx:45` (`toDateKey`), `Settings.tsx:39` (`today`).
+- **m2 MissedReview import ordering** — UNFIXED. `src/components/MissedReview.tsx:19-21` still has `import { db }` and `import { loadContent }` *after* the two local function declarations at lines 5-18.
+- **m3 console.warn unconditional in loadContent** — UNFIXED. `src/lib/content.ts:42-44, 84` still unguarded by `import.meta.env.DEV`.
+- **m4 Quiz persistAttempt transaction** — FIXED. `src/routes/Quiz.tsx:120-149` now wraps `attempts.add` + `dailyActivity.put` + `missedQueue.put` in `db.transaction("rw", ...)`. Matches the pass-2 commit `d99666f` claim.
+- **m6 EditPencil Clear-override single-click** — UNFIXED. `src/components/EditPencil.tsx:253-262` Clear button still fires `handleClearOverride` (line 178) directly — no `confirm()`, no two-step, no undo toast. Destructive button still adjacent to Save.
+
+### Final verdict
+
+Not ready to ship. Pass-2 claimed M4 fixed in commit `d99666f`, but the Settings import path is unchanged and still accepts arbitrary row shapes into every Dexie table — that is a self-inflicted corruption surface and a credibility problem with the fix log. The bigger residual risk is plan-fidelity rot: M1/M2/M3/M6/Q2 and five minor cleanup items (m1, m2, m3, m5, m6) are all unfixed, the 1.2 MB single-chunk bundle has no route-level code splitting, and `MarkdownRenderer` is safe only because no one has added `rehype-raw` yet — a one-line future PR turns it into an XSS hole. Recommended next move: a small, focused "pass-3 cleanup" PR that (a) actually Zod-validates import rows, (b) moves `navigator.storage.persist()` + inline appearance bootstrap into `main.tsx`/`index.html` to kill FOUC and satisfy M3, (c) tracks `lastActivityAt` on `MockExamSession` for Q2, (d) memoizes `loadContent` with an edit-change invalidator, and (e) adds `manualChunks` for recharts/react-markdown to get first-paint JS under 600 KB. Everything else (M1, m1-m6) can stay on the backlog without blocking a Phase-5 content generation.
+
