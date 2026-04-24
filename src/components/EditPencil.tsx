@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { Card, Lesson, Question } from "../types/content";
 import type { ContentEdit } from "../types/state";
 import { db } from "../lib/db";
-import { loadContent } from "../lib/content";
+import { bustContentCache, loadContent } from "../lib/content";
 
 // The set of editable fields we support per item type. Lessons get `bodyMd`,
 // cards get `front`/`back`, questions get `stem`/`rationale`. Callers pick one
@@ -99,6 +99,7 @@ export default function EditPencil({
   const [loading, setLoading] = useState(false);
   const [busy, setBusy] = useState(false);
   const [hasExisting, setHasExisting] = useState(false);
+  const [confirmingClear, setConfirmingClear] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
 
@@ -165,6 +166,7 @@ export default function EditPencil({
         updatedAt: Date.now(),
       };
       await db.edits.put(edit);
+      bustContentCache();
       window.dispatchEvent(new Event(CONTENT_EDITS_CHANGED));
       setHasExisting(true);
       setOpen(false);
@@ -177,12 +179,19 @@ export default function EditPencil({
 
   async function handleClearOverride() {
     if (busy) return;
+    // Two-step confirm so a single fat-finger tap can't destroy an edit.
+    if (!confirmingClear) {
+      setConfirmingClear(true);
+      return;
+    }
     setBusy(true);
     setError(null);
     try {
       await db.edits.delete(itemId);
+      bustContentCache();
       window.dispatchEvent(new Event(CONTENT_EDITS_CHANGED));
       setHasExisting(false);
+      setConfirmingClear(false);
       setOpen(false);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Could not clear override.");
@@ -217,7 +226,7 @@ export default function EditPencil({
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"
           data-testid="edit-pencil-modal"
         >
-          <div className="w-full max-w-xl rounded-xl border border-neutral-200 bg-white p-4 shadow-xl dark:border-neutral-800 dark:bg-ink-surface">
+          <div className="w-full max-w-xl rounded-xl border border-neutral-200 bg-white p-4 pb-[calc(env(safe-area-inset-bottom)+1rem)] shadow-xl dark:border-neutral-800 dark:bg-ink-surface">
             <h2
               id={dialogLabelId}
               className="mb-2 text-lg font-semibold"
@@ -254,10 +263,14 @@ export default function EditPencil({
                   type="button"
                   onClick={handleClearOverride}
                   disabled={busy}
-                  className="min-h-[44px] rounded-md border border-red-300 bg-white px-3 py-2 text-sm font-medium text-red-700 hover:bg-red-50 disabled:opacity-50 dark:border-red-800 dark:bg-ink-surface dark:text-red-300 dark:hover:bg-red-950"
+                  className={
+                    confirmingClear
+                      ? "min-h-[44px] rounded-md border border-red-600 bg-red-600 px-3 py-2 text-sm font-semibold text-white hover:bg-red-700 disabled:opacity-50"
+                      : "min-h-[44px] rounded-md border border-red-300 bg-white px-3 py-2 text-sm font-medium text-red-700 hover:bg-red-50 disabled:opacity-50 dark:border-red-800 dark:bg-ink-surface dark:text-red-300 dark:hover:bg-red-950"
+                  }
                   data-testid="edit-pencil-clear"
                 >
-                  Clear override
+                  {confirmingClear ? "Really clear?" : "Clear override"}
                 </button>
               ) : null}
               <button

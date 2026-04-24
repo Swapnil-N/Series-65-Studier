@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { z } from "zod";
 import { QuizRunner } from "../components/QuizRunner";
 import EditPencil from "../components/EditPencil";
 import {
@@ -38,17 +39,8 @@ interface PersistedSession {
   startedAt: number;
 }
 
-/**
- * Today's date in YYYY-MM-DD using local time — matches the shared
- * dailyActivity key convention used by FlashcardSession.
- */
-function toDateKey(ts: number): string {
-  const d = new Date(ts);
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, "0");
-  const day = String(d.getDate()).padStart(2, "0");
-  return `${y}-${m}-${day}`;
-}
+import { dateKeyFromMs } from "../lib/streak";
+const toDateKey = dateKeyFromMs;
 
 /**
  * Fisher-Yates. We intentionally do not seed this — the quiz is ephemeral and
@@ -73,17 +65,54 @@ function filterByTopic(
   return pool.filter((q) => q.subtopicId.startsWith(prefix));
 }
 
+// Zod schema for sessionStorage-resumed quiz sessions. Hostile / stale
+// payloads would crash QuestionCard or our handlers otherwise; anything that
+// doesn't match the shape is dropped silently as if no session existed.
+const PersistedSessionSchema = z.object({
+  version: z.literal(1),
+  topic: z.union([
+    z.literal("all"),
+    z.literal("1"),
+    z.literal("2"),
+    z.literal("3"),
+    z.literal("4"),
+  ]),
+  count: z.union([z.literal(10), z.literal(25), z.literal(50)]),
+  questions: z
+    .array(
+      z.object({
+        id: z.string(),
+        subtopicId: z.string(),
+        stem: z.string(),
+        choices: z.tuple([z.string(), z.string(), z.string(), z.string()]),
+        answerIndex: z.union([
+          z.literal(0),
+          z.literal(1),
+          z.literal(2),
+          z.literal(3),
+        ]),
+        rationale: z.string(),
+        citation: z.object({ source: z.string(), ref: z.string() }),
+        difficulty: z.enum(["easy", "medium", "hard"]),
+        reviewed: z.boolean(),
+      }),
+    )
+    .min(1),
+  index: z.number().int().nonnegative(),
+  answers: z.array(
+    z.union([z.literal(0), z.literal(1), z.literal(2), z.literal(3), z.null()]),
+  ),
+  startedAt: z.number(),
+});
+
 function loadPersisted(): PersistedSession | null {
   if (typeof window === "undefined") return null;
   try {
     const raw = window.sessionStorage.getItem(SESSION_KEY);
     if (!raw) return null;
-    const parsed = JSON.parse(raw) as PersistedSession;
-    if (!parsed || parsed.version !== 1) return null;
-    if (!Array.isArray(parsed.questions) || parsed.questions.length === 0) {
-      return null;
-    }
-    return parsed;
+    const parsed = PersistedSessionSchema.safeParse(JSON.parse(raw));
+    if (!parsed.success) return null;
+    return parsed.data as PersistedSession;
   } catch {
     return null;
   }

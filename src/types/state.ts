@@ -64,6 +64,13 @@ export interface MockExamSession {
   answers: (0 | 1 | 2 | 3 | null)[];
   currentIndex: number;
   status: "active" | "completed" | "abandoned";
+  /**
+   * Epoch ms of the last user-visible activity on this session (answer, next,
+   * resume click). Used to decide whether to surface the "you were away"
+   * prompt on resume — without this field a crash-and-relaunch would always
+   * trigger the prompt regardless of how long the user was actually away.
+   */
+  lastActivityAt?: number;
 }
 
 export interface AppSettings {

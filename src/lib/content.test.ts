@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { db } from "./db";
 import {
+  bustContentCache,
   getAllSubtopics,
   getCards,
   getLesson,
@@ -12,6 +13,9 @@ import {
 beforeEach(async () => {
   await db.delete();
   await db.open();
+  // loadContent memoises its merged result; wipe per test so each scenario
+  // is independent. Production busts via CONTENT_EDITS_CHANGED on write.
+  bustContentCache();
 });
 
 afterEach(async () => {
@@ -36,6 +40,7 @@ describe("loadContent", () => {
       patch: { front: "EDITED FRONT" },
       updatedAt: Date.now(),
     });
+    bustContentCache();
     const { cards: after } = await loadContent();
     const edited = after.find((c) => c.id === target.id);
     expect(edited?.front).toBe("EDITED FRONT");
@@ -52,6 +57,7 @@ describe("loadContent", () => {
       patch: { title: "EDITED TITLE" },
       updatedAt: Date.now(),
     });
+    bustContentCache();
     const { lessons: after } = await loadContent();
     expect(after.find((l) => l.subtopicId === target.subtopicId)?.title).toBe(
       "EDITED TITLE",
@@ -66,6 +72,7 @@ describe("loadContent", () => {
       patch: { front: "ghost" },
       updatedAt: Date.now(),
     });
+    bustContentCache();
     const result = await loadContent();
     expect(result.cards.find((c) => c.front === "ghost")).toBeUndefined();
     expect(warn).toHaveBeenCalled();

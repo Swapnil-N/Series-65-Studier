@@ -9,15 +9,44 @@
     font-size: calc(16px * var(--font-scale, 1));
   }
 
+  /* High-contrast mode. Applied in addition to light/dark — goes harder on
+   * text/bg contrast and makes borders + focus rings unambiguous. */
   html.high-contrast {
     --tw-text-opacity: 1;
   }
   html.high-contrast body {
     @apply bg-white text-black;
   }
+  html.high-contrast input,
+  html.high-contrast textarea,
+  html.high-contrast select,
+  html.high-contrast button {
+    @apply border border-black text-black;
+  }
+  html.high-contrast a {
+    @apply underline text-blue-800;
+  }
+  html.high-contrast *:focus-visible {
+    outline: 2px solid black;
+    outline-offset: 2px;
+  }
+
   html.high-contrast.dark body,
   html.dark.high-contrast body {
     @apply bg-black text-white;
+  }
+  html.dark.high-contrast input,
+  html.dark.high-contrast textarea,
+  html.dark.high-contrast select,
+  html.dark.high-contrast button {
+    @apply border border-white text-white;
+  }
+  html.dark.high-contrast a {
+    @apply underline text-yellow-300;
+  }
+  html.dark.high-contrast *:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 2px;
   }
 
   body {

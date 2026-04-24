@@ -1,8 +1,125 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { z } from "zod";
 import { db, DEFAULT_SETTINGS, getSettings, saveSettings } from "../lib/db";
 import type { AppSettings, ContentEdit } from "../types/state";
-import { loadContent } from "../lib/content";
+import { bustContentCache, loadContent } from "../lib/content";
 import { CONTENT_EDITS_CHANGED } from "../components/EditPencil";
+
+// -----------------------------------------------------------------------------
+// Row-level Zod schemas for the state-export import flow. These do NOT have to
+// match Dexie 1:1 — they're defensive against malformed / malicious export
+// files (M4 review finding). Anything that fails validation is dropped and the
+// import is aborted before a single row lands in Dexie.
+// -----------------------------------------------------------------------------
+
+const TopicIdSchema = z.enum(["1", "2", "3", "4"]);
+const FiniteNumberSchema = z
+  .number()
+  .refine((n) => Number.isFinite(n), "must be a finite number");
+
+const CardStateRowSchema = z.object({
+  cardId: z.string().min(1),
+  stability: FiniteNumberSchema,
+  difficulty: FiniteNumberSchema,
+  elapsedDays: FiniteNumberSchema,
+  scheduledDays: FiniteNumberSchema,
+  reps: FiniteNumberSchema,
+  lapses: FiniteNumberSchema,
+  state: z.union([z.literal(0), z.literal(1), z.literal(2), z.literal(3)]),
+  lastReview: FiniteNumberSchema,
+  due: FiniteNumberSchema,
+});
+
+const AttemptRowSchema = z.object({
+  // Strip autoincrement ids on import — letting the user control `id` lets a
+  // crafted export overwrite existing rows. Dexie will re-assign on bulkPut.
+  id: z.undefined().optional(),
+  questionId: z.string().min(1),
+  subtopicId: z.string().min(1),
+  topicId: TopicIdSchema,
+  correct: z.boolean(),
+  mode: z.enum(["quiz", "mock", "missed"]),
+  mockId: z.string().optional(),
+  timestamp: FiniteNumberSchema,
+});
+
+const MissedItemRowSchema = z.object({
+  questionId: z.string().min(1),
+  topicId: TopicIdSchema,
+  addedAt: FiniteNumberSchema,
+});
+
+const BookmarkRowSchema = z.object({
+  itemId: z.string().min(1),
+  type: z.enum(["card", "question", "lesson"]),
+  createdAt: FiniteNumberSchema,
+});
+
+const NoteRowSchema = z.object({
+  itemId: z.string().min(1),
+  body: z.string(),
+  updatedAt: FiniteNumberSchema,
+});
+
+const EditRowSchema = z.object({
+  itemId: z.string().min(1),
+  type: z.enum(["card", "question", "lesson"]),
+  patch: z.record(z.string(), z.unknown()),
+  updatedAt: FiniteNumberSchema,
+});
+
+const DailyActivityRowSchema = z.object({
+  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  cardsReviewed: FiniteNumberSchema,
+  questionsAnswered: FiniteNumberSchema,
+  lessonsCompleted: FiniteNumberSchema,
+});
+
+const MockSessionRowSchema = z.object({
+  id: z.string().min(1),
+  startedAt: FiniteNumberSchema,
+  pausedMs: FiniteNumberSchema,
+  questionIds: z.array(z.string()),
+  answers: z.array(
+    z.union([
+      z.literal(0),
+      z.literal(1),
+      z.literal(2),
+      z.literal(3),
+      z.null(),
+    ]),
+  ),
+  currentIndex: FiniteNumberSchema,
+  status: z.enum(["active", "completed", "abandoned"]),
+  lastActivityAt: FiniteNumberSchema.optional(),
+});
+
+const SettingsRowSchema = z.object({
+  key: z.string(),
+  value: z.object({
+    darkMode: z.enum(["auto", "light", "dark"]),
+    highContrast: z.boolean(),
+    fontScale: FiniteNumberSchema,
+    newCardsPerDay: FiniteNumberSchema,
+    targetRetention: FiniteNumberSchema,
+    cramMode: z.boolean(),
+    dailyGoalCards: FiniteNumberSchema,
+    dailyGoalQuestions: FiniteNumberSchema,
+    lastExportAt: FiniteNumberSchema,
+  }),
+});
+
+const IMPORT_ROW_SCHEMAS = {
+  cardState: CardStateRowSchema,
+  attempts: AttemptRowSchema,
+  missedQueue: MissedItemRowSchema,
+  bookmarks: BookmarkRowSchema,
+  notes: NoteRowSchema,
+  edits: EditRowSchema,
+  dailyActivity: DailyActivityRowSchema,
+  mockSessions: MockSessionRowSchema,
+  settings: SettingsRowSchema,
+} as const;
 
 // -----------------------------------------------------------------------------
 // Settings route (A11)
@@ -35,13 +152,10 @@ export interface StateExport {
   tables: Record<ExportTable, unknown[]>;
 }
 
+import { dateKey as dateKeyFromDate } from "../lib/streak";
 /** YYYY-MM-DD for the downloaded-file name. */
 function today(): string {
-  const d = new Date();
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, "0");
-  const dd = String(d.getDate()).padStart(2, "0");
-  return `${y}-${m}-${dd}`;
+  return dateKeyFromDate(new Date());
 }
 
 /**
@@ -86,7 +200,7 @@ function triggerDownload(blob: Blob, filename: string): void {
   setTimeout(() => URL.revokeObjectURL(url), 0);
 }
 
-async function dumpAll(): Promise<StateExport> {
+export async function dumpAll(): Promise<StateExport> {
   const tables = {} as Record<ExportTable, unknown[]>;
   for (const name of EXPORT_TABLES) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -96,12 +210,46 @@ async function dumpAll(): Promise<StateExport> {
   return { version: 1, exportedAt: Date.now(), tables };
 }
 
-async function restoreAll(exported: StateExport): Promise<void> {
+export interface ValidatedImport {
+  /** Per-table parsed rows, each already Zod-validated. */
+  rows: Record<ExportTable, unknown[]>;
+  /** Non-fatal issues (rows dropped during validation). */
+  warnings: string[];
+}
+
+/**
+ * Parse every row in an incoming StateExport through its Zod schema. Rows
+ * that fail validation are DROPPED (not tolerated in-place) and a warning is
+ * recorded. Returns null if the top-level shape itself is invalid — caller
+ * should abort the import in that case.
+ */
+export function validateImport(raw: unknown): ValidatedImport | null {
+  if (!isStateExport(raw)) return null;
+  const rows = {} as Record<ExportTable, unknown[]>;
+  const warnings: string[] = [];
+  for (const name of EXPORT_TABLES) {
+    const schema = IMPORT_ROW_SCHEMAS[name];
+    const inRows = raw.tables[name] ?? [];
+    const outRows: unknown[] = [];
+    for (let i = 0; i < inRows.length; i++) {
+      const parsed = schema.safeParse(inRows[i]);
+      if (parsed.success) {
+        outRows.push(parsed.data);
+      } else {
+        warnings.push(`${name}[${i}]: ${parsed.error.issues[0]?.message ?? "invalid"}`);
+      }
+    }
+    rows[name] = outRows;
+  }
+  return { rows, warnings };
+}
+
+export async function restoreAll(exported: ValidatedImport): Promise<void> {
   for (const name of EXPORT_TABLES) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const table = (db as unknown as Record<string, any>)[name];
     await table.clear();
-    const rows = exported.tables[name] ?? [];
+    const rows = exported.rows[name] ?? [];
     if (rows.length > 0) await table.bulkPut(rows);
   }
 }
@@ -122,7 +270,10 @@ export default function Settings() {
   const [loaded, setLoaded] = useState(false);
   const [persisted, setPersisted] = useState<boolean | null>(null);
   const [staleEdits, setStaleEdits] = useState<ContentEdit[]>([]);
-  const [importConfirm, setImportConfirm] = useState<StateExport | null>(null);
+  const [importConfirm, setImportConfirm] = useState<ValidatedImport | null>(
+    null,
+  );
+  const [importWarnings, setImportWarnings] = useState<string[]>([]);
   const [importError, setImportError] = useState<string | null>(null);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
 
@@ -234,16 +385,19 @@ export default function Settings() {
   const handleImportFile = useCallback(
     async (f: File) => {
       setImportError(null);
+      setImportWarnings([]);
       try {
         const text = await f.text();
         const parsed = JSON.parse(text);
-        if (!isStateExport(parsed)) {
+        const validated = validateImport(parsed);
+        if (!validated) {
           setImportError(
             "That file doesn't look like a study-export v1 JSON.",
           );
           return;
         }
-        setImportConfirm(parsed);
+        setImportConfirm(validated);
+        setImportWarnings(validated.warnings);
       } catch (e) {
         setImportError(
           e instanceof Error
@@ -259,6 +413,7 @@ export default function Settings() {
     if (!importConfirm) return;
     try {
       await restoreAll(importConfirm);
+      bustContentCache();
       setImportConfirm(null);
       setStatusMessage("Imported.");
       await loadAll();
@@ -276,6 +431,7 @@ export default function Settings() {
   const handleRemoveStaleEdit = useCallback(
     async (itemId: string) => {
       await db.edits.delete(itemId);
+      bustContentCache();
       window.dispatchEvent(new Event(CONTENT_EDITS_CHANGED));
       await loadAll();
     },
@@ -652,12 +808,32 @@ export default function Settings() {
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"
           data-testid="import-confirm"
         >
-          <div className="w-full max-w-sm rounded-xl border border-neutral-200 bg-white p-4 shadow-xl dark:border-neutral-800 dark:bg-ink-surface">
+          <div className="w-full max-w-sm rounded-xl border border-neutral-200 bg-white p-4 pb-[calc(env(safe-area-inset-bottom)+1rem)] shadow-xl dark:border-neutral-800 dark:bg-ink-surface">
             <h2 className="mb-2 text-lg font-semibold">Replace local data?</h2>
-            <p className="mb-4 text-sm text-neutral-600 dark:text-neutral-400">
+            <p className="mb-2 text-sm text-neutral-600 dark:text-neutral-400">
               Importing replaces every table with the contents of the file.
               This cannot be undone.
             </p>
+            {importWarnings.length > 0 ? (
+              <div
+                className="mb-3 max-h-32 overflow-auto rounded border border-amber-300 bg-amber-50 p-2 text-xs dark:border-amber-700 dark:bg-amber-950"
+                data-testid="import-warnings"
+              >
+                <div className="font-semibold">
+                  {importWarnings.length} row
+                  {importWarnings.length === 1 ? "" : "s"} dropped during
+                  validation:
+                </div>
+                <ul className="mt-1 list-disc pl-4">
+                  {importWarnings.slice(0, 5).map((w, i) => (
+                    <li key={i}>{w}</li>
+                  ))}
+                  {importWarnings.length > 5 ? (
+                    <li>… and {importWarnings.length - 5} more</li>
+                  ) : null}
+                </ul>
+              </div>
+            ) : null}
             <div className="flex justify-end gap-2">
               <button
                 type="button"

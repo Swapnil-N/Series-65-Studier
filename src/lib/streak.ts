@@ -33,6 +33,12 @@ export function dateKey(d: Date): string {
   return `${y}-${m}-${day}`;
 }
 
+/** Convenience: `dateKey(new Date(ms))`. Use this across the app so there's
+ * exactly one local-time YYYY-MM-DD formatter. */
+export function dateKeyFromMs(ms: number): string {
+  return dateKey(new Date(ms));
+}
+
 /** Returns true iff at least one qualifying activity was logged this day. */
 export function dayQualifies(activity: DailyActivity): boolean {
   return (

@@ -1,6 +1,10 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { Question, TopicId } from "../types/content";
 import type { MissedItem } from "../types/state";
+import { db } from "../lib/db";
+import { loadContent } from "../lib/content";
+import { dateKeyFromMs } from "../lib/streak";
+import { EmptyState, QuestionCard, type ChoiceIndex } from "./shared";
 
 function topicIdOf(subtopicId: string): TopicId {
   const head = subtopicId.split(".")[0];
@@ -8,17 +12,6 @@ function topicIdOf(subtopicId: string): TopicId {
     ? head
     : "1";
 }
-
-function todayKey(now: number): string {
-  const d = new Date(now);
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, "0");
-  const day = String(d.getDate()).padStart(2, "0");
-  return `${y}-${m}-${day}`;
-}
-import { db } from "../lib/db";
-import { loadContent } from "../lib/content";
-import { EmptyState, QuestionCard, type ChoiceIndex } from "./shared";
 
 export interface MissedReviewProps {
   /**
@@ -111,7 +104,7 @@ export function MissedReview({ questionsById, now }: MissedReviewProps) {
       const correct = choice === currentQuestion.answerIndex;
       const qid = currentItem.questionId;
       const ts = clock();
-      const dateKey = todayKey(ts);
+      const dateKey = dateKeyFromMs(ts);
       const topicId = topicIdOf(currentQuestion.subtopicId);
       const priorStreak = streakByQid[qid] ?? 0;
       const nextStreak = correct ? priorStreak + 1 : 0;

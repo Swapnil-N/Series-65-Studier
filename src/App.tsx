@@ -14,7 +14,7 @@ import TabBar from "./components/TabBar";
 export default function App() {
   return (
     <div className="flex min-h-[100dvh] flex-col">
-      <main className="flex-1 overflow-y-auto pt-safe pl-safe pr-safe pb-20">
+      <main className="flex-1 overflow-y-auto pt-safe pl-safe pr-safe pb-[calc(5rem+env(safe-area-inset-bottom))]">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/learn" element={<Learn />} />

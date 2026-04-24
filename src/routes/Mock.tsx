@@ -130,7 +130,6 @@ export default function Mock() {
         initialSession={activeSession}
         database={db}
         now={Date.now}
-        lastActivityTs={activeSession.startedAt}
         onComplete={handleComplete}
         onAbandon={handleAbandon}
       />

@@ -95,7 +95,12 @@ export function MockExam({
 
   const [resumePrompt, setResumePrompt] = useState<ResumePromptState>(() => {
     if (initialSession.status !== "active") return "none";
-    const delta = now() - (lastActivityTs ?? initialSession.startedAt);
+    // Prefer the per-session `lastActivityAt` (bumped on every answer/next/
+    // resume) over the caller-passed fallback. Fresh sessions have neither,
+    // so we fall through to `startedAt` and the `delta` will be tiny.
+    const ref =
+      initialSession.lastActivityAt ?? lastActivityTs ?? initialSession.startedAt;
+    const delta = now() - ref;
     return delta > BACKGROUND_WARN_MS ? "awaiting" : "none";
   });
   // When the user is deciding whether to resume or abandon we treat that
@@ -149,18 +154,30 @@ export function MockExam({
     return () => window.clearInterval(id);
   }, [session.status]);
 
-  // visibilitychange: persist when the user is leaving the tab. Don't touch
-  // pausedMs here — the 180-minute timer on a real exam does not pause just
-  // because you checked another app.
+  // visibilitychange: pause the timer while the tab is hidden. Record when
+  // the tab became hidden; on return, add the gap to `pausedMs` so the
+  // displayed remaining time doesn't bleed away while the user was in another
+  // app. (Deliberate deviation from real-exam realism — this is a study app,
+  // not a proctor.) Also persist on hide so a kill-during-background still
+  // has the most recent state.
+  const hiddenAtRef = useRef<number | null>(null);
   useEffect(() => {
     function onVis() {
       if (document.hidden) {
+        if (sessionRef.current.status !== "active") return;
+        hiddenAtRef.current = now();
         void persist(sessionRef.current);
+      } else if (hiddenAtRef.current !== null) {
+        const gap = Math.max(0, now() - hiddenAtRef.current);
+        hiddenAtRef.current = null;
+        if (gap > 0 && sessionRef.current.status === "active") {
+          updateSession((prev) => ({ ...prev, pausedMs: prev.pausedMs + gap }));
+        }
       }
     }
     document.addEventListener("visibilitychange", onVis);
     return () => document.removeEventListener("visibilitychange", onVis);
-  }, [persist]);
+  }, [persist, updateSession, now]);
 
   // Clock read — one call per render so child components all see the same
   // snapshot.
@@ -200,10 +217,10 @@ export function MockExam({
       updateSession((prev) => {
         const answers = prev.answers.slice();
         answers[prev.currentIndex] = choice;
-        return { ...prev, answers };
+        return { ...prev, answers, lastActivityAt: now() };
       });
     },
-    [session.status, session.answers, session.currentIndex, resumePrompt, updateSession],
+    [session.status, session.answers, session.currentIndex, resumePrompt, updateSession, now],
   );
 
   const handleNext = useCallback(() => {
@@ -211,13 +228,18 @@ export function MockExam({
     if (resumePrompt === "awaiting") return;
     const isLast = session.currentIndex >= session.questionIds.length - 1;
     if (isLast) {
-      const next = updateSession((prev) => ({ ...prev, status: "completed" }));
+      const next = updateSession((prev) => ({
+        ...prev,
+        status: "completed",
+        lastActivityAt: now(),
+      }));
       onComplete?.(next);
       return;
     }
     updateSession((prev) => ({
       ...prev,
       currentIndex: Math.min(prev.currentIndex + 1, prev.questionIds.length - 1),
+      lastActivityAt: now(),
     }));
     // Sync the UI's selected-choice state with the next slot's answer (usually
     // null unless the user is flipping back through prior answers).
@@ -231,6 +253,7 @@ export function MockExam({
     resumePrompt,
     updateSession,
     onComplete,
+    now,
   ]);
 
   // Enter advances from an answered question.

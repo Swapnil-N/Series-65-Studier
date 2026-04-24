@@ -186,16 +186,20 @@ export function computeTopicScore(
     };
   }
 
-  // Wilson over weighted counts. Wilson expects integer trial counts; weighted
-  // counts are a reasonable approximation here and match what the plan calls
-  // for ("Wilson 95% CI shown alongside the point estimate").
-  const wilson = wilsonInterval(weightedCorrect, weightedTotal);
+  // Wilson CI over RAW last-50 distinct counts — its half-width should
+  // reflect sample-size uncertainty, not an age-decay artefact. Point
+  // estimate stays age-decay-weighted so recent performance dominates.
+  // (M1 review finding.)
+  let rawCorrect = 0;
+  for (const a of last50) if (a.correct) rawCorrect += 1;
+  const wilson = wilsonInterval(rawCorrect, distinctN);
+  const point = weightedTotal === 0 ? 0 : (weightedCorrect / weightedTotal) * 100;
   return {
     topicId,
     n: distinctN,
     correct: weightedCorrect,
     total: weightedTotal,
-    point: wilson.point,
+    point,
     halfWidth: wilson.halfWidth,
     sufficient: true,
   };

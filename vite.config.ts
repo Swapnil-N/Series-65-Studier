@@ -8,6 +8,30 @@ import { VitePWA } from "vite-plugin-pwa";
 // the `gh-pages` branch is configured as the root.
 export default defineConfig({
   base: "/",
+  build: {
+    // Split the biggest third-party trees into named vendor chunks so the
+    // app's own code can update without busting a 1.2 MB monolith. Each
+    // chunk names a concern the reviewer can easily reason about.
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          "vendor-react": ["react", "react-dom", "react-router-dom"],
+          "vendor-markdown": [
+            "react-markdown",
+            "remark-gfm",
+            "remark-math",
+            "rehype-katex",
+          ],
+          "vendor-katex": ["katex"],
+          "vendor-recharts": ["recharts"],
+          "vendor-dexie": ["dexie"],
+          "vendor-zod": ["zod"],
+          "vendor-fsrs": ["ts-fsrs"],
+          "vendor-fuse": ["fuse.js"],
+        },
+      },
+    },
+  },
   plugins: [
     react(),
     VitePWA({

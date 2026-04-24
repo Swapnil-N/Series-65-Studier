@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { Rating } from "ts-fsrs";
-import { mapGradeToFsrs, newCardState, review, type Grade } from "./srs";
+import { mapGradeToFsrs, newCardState, review } from "./srs";
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
 
@@ -41,17 +41,21 @@ describe("mapGradeToFsrs", () => {
 describe("review", () => {
   const now = 1_700_000_000_000;
 
-  it("advances a new card through all four grades and updates fields", () => {
-    const fresh = newCardState("c1", now);
-    for (const g of [1, 2, 3, 4] as Grade[]) {
-      const next = review(fresh, g, { now });
-      expect(next.cardId).toBe("c1");
-      // lastReview should move to `now` on any review.
-      expect(next.lastReview).toBe(now);
-      // reps always increments past the zero of a fresh card.
-      expect(next.reps).toBeGreaterThanOrEqual(1);
-      // due is always in the future (or equal to now for Again's learning step).
-      expect(next.due).toBeGreaterThanOrEqual(now);
+  it("review advances lastReview, grows reps, and never schedules in the past", () => {
+    const primed = review(review(newCardState("c1", now), 3, { now }), 3, {
+      now,
+    });
+    const again = review(primed, 1, { now });
+    const good = review(primed, 3, { now });
+    const easy = review(primed, 4, { now });
+    // Easy schedules at least as far out as Good (monotonic on grade).
+    expect(easy.scheduledDays).toBeGreaterThanOrEqual(good.scheduledDays);
+    // Reps increments on every graded review (including Again, which is
+    // still a graded attempt even though it resets progress).
+    for (const r of [again, good, easy]) {
+      expect(r.reps).toBeGreaterThan(primed.reps);
+      expect(r.lastReview).toBe(now);
+      expect(r.due).toBeGreaterThanOrEqual(now);
     }
   });
 

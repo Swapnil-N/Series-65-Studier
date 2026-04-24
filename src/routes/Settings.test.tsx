@@ -1,6 +1,16 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
-import Settings, { applyAppearanceSettings } from "./Settings";
+import SettingsDefault, {
+  applyAppearanceSettings,
+  dumpAll,
+  restoreAll,
+  validateImport,
+} from "./Settings";
+const Settings = Object.assign(SettingsDefault, {
+  dumpAll,
+  restoreAll,
+  validateImport,
+});
 import { db, getSettings } from "../lib/db";
 
 beforeEach(async () => {
@@ -122,50 +132,55 @@ describe("Settings", () => {
     });
   });
 
-  it("export → import round-trips table contents", async () => {
-    // Seed a distinctive row in bookmarks; export; clear; import; assert it
-    // came back.
+  it("export → import round-trips table contents (through real dumpAll/validateImport/restoreAll)", async () => {
+    // Drives the ACTUAL production code path, not a local re-implementation.
     await db.bookmarks.put({
       itemId: "round-trip",
       type: "card",
       createdAt: 1234,
     });
-
-    // Dump all tables (mirrors Settings.dumpAll).
-    const all: Record<string, unknown[]> = {};
-    for (const name of [
-      "cardState",
-      "attempts",
-      "missedQueue",
-      "bookmarks",
-      "notes",
-      "edits",
-      "dailyActivity",
-      "mockSessions",
-      "settings",
-    ] as const) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      all[name] = await (db as unknown as Record<string, any>)[name].toArray();
-    }
-    const exported = { version: 1 as const, exportedAt: Date.now(), tables: all };
+    const exported = await Settings.dumpAll();
     const before = await db.bookmarks.toArray();
 
-    // Clear all user tables.
+    // Corrupt the export: inject a junk row the validator must drop.
+    const attempts = exported.tables.attempts;
+    const corruptedAttempts = [
+      ...attempts,
+      { topicId: "5", correct: "not-a-bool" } as unknown,
+    ];
+    const corrupted = {
+      ...exported,
+      tables: { ...exported.tables, attempts: corruptedAttempts },
+    };
+
+    const validated = Settings.validateImport(corrupted);
+    expect(validated).not.toBeNull();
+    // Validator reports the corrupt row as dropped.
+    expect(validated!.warnings.some((w) => w.startsWith("attempts["))).toBe(
+      true,
+    );
+    // Valid bookmark row survived validation.
+    expect(validated!.rows.bookmarks).toEqual(before);
+
     await db.bookmarks.clear();
-    expect(await db.bookmarks.count()).toBe(0);
+    await db.attempts.clear();
+    await Settings.restoreAll(validated!);
 
-    // Import by reusing the same table names (mirrors restoreAll).
-    for (const name of Object.keys(all)) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const t = (db as unknown as Record<string, any>)[name];
-      await t.clear();
-      const rows = (exported.tables as Record<string, unknown[]>)[name];
-      if (rows.length > 0) await t.bulkPut(rows);
-    }
+    const afterBookmarks = await db.bookmarks.toArray();
+    expect(afterBookmarks.find((b) => b.itemId === "round-trip")).toBeDefined();
+    // The corrupt attempt row never landed.
+    const afterAttempts = await db.attempts.toArray();
+    expect(
+      afterAttempts.find((a) => (a as unknown as { topicId: string }).topicId === "5"),
+    ).toBeUndefined();
+  });
 
-    const after = await db.bookmarks.toArray();
-    expect(after).toEqual(before);
-    expect(after.find((b) => b.itemId === "round-trip")).toBeDefined();
+  it("validateImport rejects a top-level shape that isn't a v1 state export", () => {
+    expect(Settings.validateImport(null)).toBeNull();
+    expect(Settings.validateImport({ version: 99 })).toBeNull();
+    expect(
+      Settings.validateImport({ version: 1, tables: "not-an-object" }),
+    ).toBeNull();
   });
 });
 

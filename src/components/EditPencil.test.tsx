@@ -90,7 +90,12 @@ describe("EditPencil", () => {
     fireEvent.click(screen.getByRole("button", { name: /edit this item/i }));
 
     // Clear button appears only when an existing edit row is loaded.
+    // Two-step confirm: first click arms; second click commits the delete.
     const clear = await screen.findByTestId("edit-pencil-clear");
+    fireEvent.click(clear);
+    // First click MUST NOT have deleted yet.
+    expect(await db.edits.get("card-with-edit")).toBeDefined();
+    expect(clear.textContent).toMatch(/really clear/i);
     fireEvent.click(clear);
 
     await waitFor(async () => {

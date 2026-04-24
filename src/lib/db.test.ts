@@ -23,22 +23,39 @@ afterEach(async () => {
 });
 
 describe("Series65DB", () => {
-  it("instantiates with the expected tables", () => {
+  it("instantiates with the plan's Dexie v1 schema (tables + primary keys + indexes)", () => {
     expect(db).toBeInstanceOf(Series65DB);
-    const names = db.tables.map((t) => t.name).sort();
-    expect(names).toEqual(
-      [
-        "attempts",
-        "bookmarks",
-        "cardState",
-        "dailyActivity",
-        "edits",
-        "missedQueue",
-        "mockSessions",
-        "notes",
-        "settings",
-      ].sort(),
-    );
+    // Tie the test to the plan's normative schema block — table name, primary
+    // key, and every declared index. A drift in any of these would silently
+    // break readiness queries or the attempts FIFO-prune.
+    const schema = new Map<string, { pk: string; indexes: string[] }>();
+    for (const t of db.tables) {
+      schema.set(t.name, {
+        pk: t.schema.primKey.keyPath as string,
+        indexes: t.schema.indexes.map((ix) => ix.keyPath as string).sort(),
+      });
+    }
+    expect(schema.get("cardState")).toEqual({ pk: "cardId", indexes: [] });
+    expect(schema.get("attempts")?.pk).toBe("id");
+    expect(schema.get("attempts")?.indexes).toEqual([
+      "mode",
+      "questionId",
+      "timestamp",
+      "topicId",
+    ]);
+    expect(schema.get("missedQueue")).toEqual({
+      pk: "questionId",
+      indexes: ["addedAt", "topicId"],
+    });
+    expect(schema.get("bookmarks")?.pk).toBe("itemId");
+    expect(schema.get("notes")?.pk).toBe("itemId");
+    expect(schema.get("edits")?.pk).toBe("itemId");
+    expect(schema.get("dailyActivity")?.pk).toBe("date");
+    expect(schema.get("mockSessions")).toEqual({
+      pk: "id",
+      indexes: ["startedAt", "status"],
+    });
+    expect(schema.get("settings")?.pk).toBe("key");
   });
 
   it("round-trips a cardState row", async () => {

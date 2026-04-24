@@ -7,24 +7,58 @@ import {
   QuestionSchema,
 } from "./zodSchemas";
 
+// Validated shipped content is computed once at module load (Zod is the only
+// meaningful cost there). Merged content (shipped + db.edits overlay) is
+// memoised across calls and invalidated whenever the edits table mutates via
+// `bustContentCache()`.
+let validatedShipped: {
+  lessons: Lesson[];
+  cards: Card[];
+  questions: Question[];
+} | null = null;
+let mergedCache: Promise<{
+  lessons: Lesson[];
+  cards: Card[];
+  questions: Question[];
+}> | null = null;
+
+/** Drop the memoised loadContent result. Call after writing to db.edits. */
+export function bustContentCache(): void {
+  mergedCache = null;
+}
+
 // Apply any user edits (from db.edits) on top of shipped content, keyed by
 // itemId. Edits whose itemId no longer exists in the shipped corpus are
 // logged (and surfaced elsewhere in Settings) but dropped from the merge.
-export async function loadContent(): Promise<{
+export function loadContent(): Promise<{
   lessons: Lesson[];
   cards: Card[];
   questions: Question[];
 }> {
-  const { lessons: rawLessons, cards: rawCards, questions: rawQuestions } =
-    allContent;
+  if (mergedCache) return mergedCache;
+  mergedCache = loadContentUncached();
+  return mergedCache;
+}
 
-  const validLessons = filterValid<Lesson>(rawLessons, LessonSchema, "lesson");
-  const validCards = filterValid<Card>(rawCards, CardSchema, "card");
-  const validQuestions = filterValid<Question>(
-    rawQuestions,
-    QuestionSchema,
-    "question",
-  );
+async function loadContentUncached(): Promise<{
+  lessons: Lesson[];
+  cards: Card[];
+  questions: Question[];
+}> {
+  if (!validatedShipped) {
+    const { lessons: rawLessons, cards: rawCards, questions: rawQuestions } =
+      allContent;
+    validatedShipped = {
+      lessons: filterValid<Lesson>(rawLessons, LessonSchema, "lesson"),
+      cards: filterValid<Card>(rawCards, CardSchema, "card"),
+      questions: filterValid<Question>(rawQuestions, QuestionSchema, "question"),
+    };
+  }
+  const {
+    lessons: validLessons,
+    cards: validCards,
+    questions: validQuestions,
+  } = validatedShipped;
 
   const edits = await db.edits.toArray();
   const lessonEdits = new Map<string, Partial<Lesson>>();
@@ -38,10 +72,12 @@ export async function loadContent(): Promise<{
 
   for (const edit of edits) {
     if (!knownIds.has(edit.itemId)) {
-      // eslint-disable-next-line no-console
-      console.warn(
-        `[content] stale edit ignored: itemId=${edit.itemId} type=${edit.type}`,
-      );
+      if (import.meta.env.DEV) {
+        // eslint-disable-next-line no-console
+        console.warn(
+          `[content] stale edit ignored: itemId=${edit.itemId} type=${edit.type}`,
+        );
+      }
       continue;
     }
     if (edit.type === "lesson") {
@@ -79,7 +115,7 @@ function filterValid<T>(
     const res = schema.safeParse(item);
     if (res.success) {
       out.push(item);
-    } else {
+    } else if (import.meta.env.DEV) {
       // eslint-disable-next-line no-console
       console.warn(`[content] dropped invalid ${label}`, item);
     }

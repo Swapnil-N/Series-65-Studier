@@ -228,10 +228,8 @@ function round1(n: number): number {
   return Math.round(n * 10) / 10;
 }
 
-function dateKeyOf(now: number): string {
-  const d = new Date(now);
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
-}
+import { dateKeyFromMs } from "./streak";
+const dateKeyOf = dateKeyFromMs;
 
 /**
  * On mock-exam completion, persist downstream state in a single transaction:

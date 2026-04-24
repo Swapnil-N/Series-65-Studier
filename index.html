@@ -18,6 +18,36 @@
     <meta name="apple-mobile-web-app-title" content="S65" />
 
     <title>Series 65 Studier</title>
+
+    <!-- Pre-mount appearance bootstrap. Reads a localStorage shadow of the
+         user's appearance preferences (written whenever Dexie settings are
+         saved) and applies .dark / .high-contrast classes + the
+         --font-scale variable before React hydrates. Prevents the one-frame
+         light-theme flash for users on dark mode. Silently falls through
+         on a fresh install or if localStorage is disabled. -->
+    <script>
+      (function () {
+        try {
+          var raw = window.localStorage.getItem("s65-appearance");
+          var s = raw ? JSON.parse(raw) : null;
+          var wantDark = false;
+          if (s && s.darkMode === "dark") wantDark = true;
+          else if (!s || s.darkMode === "auto") {
+            wantDark =
+              typeof window.matchMedia === "function" &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches;
+          }
+          var root = document.documentElement;
+          if (wantDark) root.classList.add("dark");
+          if (s && s.highContrast === true) root.classList.add("high-contrast");
+          if (s && typeof s.fontScale === "number" && isFinite(s.fontScale)) {
+            root.style.setProperty("--font-scale", String(s.fontScale));
+          }
+        } catch (_) {
+          /* pre-mount appearance is best effort */
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
