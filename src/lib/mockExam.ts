@@ -131,8 +131,11 @@ export async function getExcludedIds(
   lastK = 3,
 ): Promise<Set<string>> {
   const all = await database.mockSessions.toArray();
+  // "Last 3 mock sessions" means last 3 *completed* — active (in-progress)
+  // sessions are handled by the resume banner separately and shouldn't
+  // burn an exclusion slot for the new exam pool.
   const eligible = all
-    .filter((s) => s.status !== "abandoned")
+    .filter((s) => s.status === "completed")
     .sort((a, b) => b.startedAt - a.startedAt)
     .slice(0, lastK);
 
@@ -151,14 +154,17 @@ export async function getExcludedIds(
  * backgrounded or suspended resumes with the correct value regardless of
  * how many setInterval ticks actually fired.
  *
- * Clamped to >= 0; the caller is responsible for auto-submitting at zero.
+ * Clamped to [0, MOCK_DURATION_MS]; the caller is responsible for auto-
+ * submitting at zero. Upper-cap protects against clock-backward NTP
+ * corrections, time-zone changes, and pausedMs running ahead of wall
+ * elapsed (review M5).
  */
 export function computeRemainingMs(
   session: Pick<MockExamSession, "startedAt" | "pausedMs">,
   now: number = Date.now(),
 ): number {
   const elapsed = now - session.startedAt - session.pausedMs;
-  return Math.max(0, MOCK_DURATION_MS - elapsed);
+  return Math.max(0, Math.min(MOCK_DURATION_MS, MOCK_DURATION_MS - elapsed));
 }
 
 export interface TopicScore {
@@ -258,15 +264,19 @@ export async function persistMockCompletion(
   const attemptRows: import("../types/state").Attempt[] = [];
   const missedIds = new Set<string>();
   let answeredCount = 0;
+  // Unified null-answer policy (review M4): scoreMock counts unanswered
+  // slots as wrong toward the percentage; persistMockCompletion mirrors
+  // that — every question in the exam yields an Attempt row, with
+  // unanswered slots stored as `correct: false`. Without this, readiness
+  // and the scorecard would disagree on what "answering the mock" means.
   for (let i = 0; i < session.questionIds.length; i++) {
     const ans = session.answers[i];
-    if (ans === null) continue;
     const q = byId.get(session.questionIds[i]);
     if (!q) continue;
     const t = topicOf(q.subtopicId);
     if (!t) continue;
-    answeredCount += 1;
-    const correct = ans === q.answerIndex;
+    if (ans !== null) answeredCount += 1;
+    const correct = ans !== null && ans === q.answerIndex;
     attemptRows.push({
       questionId: q.id,
       subtopicId: q.subtopicId,

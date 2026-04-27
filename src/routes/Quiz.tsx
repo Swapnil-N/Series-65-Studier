@@ -103,7 +103,10 @@ const PersistedSessionSchema = z.object({
     z.union([z.literal(0), z.literal(1), z.literal(2), z.literal(3), z.null()]),
   ),
   startedAt: z.number(),
-});
+}).refine(
+  (data) => data.answers.length === data.questions.length,
+  { message: "answers length must match questions length" },
+);
 
 function loadPersisted(): PersistedSession | null {
   if (typeof window === "undefined") return null;

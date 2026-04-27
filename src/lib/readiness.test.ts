@@ -382,4 +382,20 @@ describe("studyNextTopic", () => {
       }),
     ).toBe("1");
   });
+
+  it("prefers an n=0 topic when at least one sufficient topic is past BUFFER (review W9)", () => {
+    // Topic 1 sufficient at 95% (mastered), topic 2 has 0 attempts. Plan
+    // says "study next" should send the user to the unstarted topic, not
+    // tell them to keep drilling what they already know.
+    const attempts: Attempt[] = [];
+    for (let i = 0; i < 20; i++) {
+      attempts.push(make(`q${i}`, "1", true, now - (i + 1) * DAY));
+    }
+    const r = computeReadiness(attempts, now);
+    expect(r.perTopic[0].sufficient).toBe(true);
+    expect(r.perTopic[0].point).toBeGreaterThanOrEqual(80);
+    expect(r.perTopic[1].n).toBe(0);
+    // Without the W9 carve-out this would return "1" (lowest sufficient).
+    expect(studyNextTopic(r)).toBe("2");
+  });
 });

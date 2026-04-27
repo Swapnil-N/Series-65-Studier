@@ -114,7 +114,10 @@ describe("Mock completion persistence (B1 fix)", () => {
     expect(stored?.status).toBe("completed");
   });
 
-  it("skips unknown question IDs and unanswered slots", async () => {
+  it("skips unknown question IDs but records every known slot (answered or not)", async () => {
+    // Unanswered slots are recorded as `correct: false` so readiness sees
+    // the same denominator scoreMock uses on the scorecard. Unknown IDs
+    // (no matching question content) are still skipped. (Review M4.)
     const questions = [Q("q1", "1.1", 0)];
     const session: MockExamSession = {
       id: "mock-5",
@@ -126,7 +129,14 @@ describe("Mock completion persistence (B1 fix)", () => {
       status: "active",
     };
     const result = await persistMockCompletion(session, questions, db);
-    expect(result.attemptsWritten).toBe(1);
+    // 2 known questionIds (q1 twice), 1 unknown (ghost) → 2 attempt rows.
+    expect(result.attemptsWritten).toBe(2);
+    // Of those, only one slot was answered (the trailing null counts as
+    // unanswered for the questionsAnswered increment).
     expect(result.questionsAnswered).toBe(1);
+    const rows = await db.attempts.toArray();
+    const byCorrect = rows.map((r) => r.correct);
+    // First q1 answered correctly; second q1 unanswered → false.
+    expect(byCorrect).toEqual([true, false]);
   });
 });

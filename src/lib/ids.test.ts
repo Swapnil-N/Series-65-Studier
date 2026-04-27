@@ -16,10 +16,20 @@ describe("normalizeText", () => {
     );
   });
 
-  it("is stable across capitalization and punctuation differences", () => {
-    expect(normalizeText("What's GDP?")).toBe(
-      normalizeText("what s  gdp"),
-    );
+  it("collapses internal apostrophes — 'It's' equals 'Its'", () => {
+    // Apostrophe-stripping is empty (not space) so word-internal punctuation
+    // doesn't split a word into two tokens. (Review S3.)
+    expect(normalizeText("It's")).toBe(normalizeText("Its"));
+    expect(normalizeText("What's GDP?")).toBe(normalizeText("whats gdp"));
+  });
+
+  it("NFC-normalises decomposed Unicode so 'é' (precomposed) equals 'é' (e + combining acute)", () => {
+    // Mac vs Windows clipboard can produce visually-identical but
+    // byte-different strings. Normalize before hashing. (Review S4.)
+    const composed = "café";
+    const decomposed = "café";
+    expect(composed).not.toBe(decomposed); // sanity — they really differ at byte level
+    expect(normalizeText(composed)).toBe(normalizeText(decomposed));
   });
 });
 

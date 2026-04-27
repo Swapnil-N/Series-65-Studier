@@ -273,6 +273,22 @@ export function computeReadiness(
 export function studyNextTopic(score: ReadinessResult): TopicId {
   if (score.perTopic.length === 0) return "1";
   const sufficient = score.perTopic.filter((t) => t.sufficient);
+  // Partial-rollup carve-out: if we already cleared one topic past BUFFER
+  // but other topics have ZERO attempts, recommend the untouched one
+  // instead of telling the user to keep drilling what they've mastered.
+  // (Review W9.)
+  if (sufficient.length > 0 && sufficient.length < score.perTopic.length) {
+    const anyMastered = sufficient.some((t) => (t.point ?? 0) >= BUFFER);
+    if (anyMastered) {
+      const untouched = score.perTopic.filter(
+        (t) => !t.sufficient && t.n === 0,
+      );
+      if (untouched.length > 0) {
+        return untouched.sort((a, b) => a.topicId.localeCompare(b.topicId))[0]
+          .topicId;
+      }
+    }
+  }
   if (sufficient.length > 0) {
     let best = sufficient[0];
     for (const t of sufficient) {

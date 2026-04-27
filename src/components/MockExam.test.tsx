@@ -207,4 +207,48 @@ describe("MockExam", () => {
     expect(screen.getByTestId("mock-resume")).toBeInTheDocument();
     expect(screen.getByTestId("mock-abandon")).toBeInTheDocument();
   });
+
+  it("does NOT double-credit pausedMs when the tab hides while the resume modal is up (T1)", async () => {
+    // Set up: a session that mounts already-needing-resume (15 min gap).
+    // The modal owns the pause clock via promptEnteredAtRef. If the user
+    // then hides the tab and returns 10 min later before clicking Resume,
+    // the visibility handler must NOT also credit those 10 min.
+    const session = makeSession();
+    let t = START + 15 * 60 * 1000; // resume modal up
+    render(
+      <MockExam
+        questions={[makeQ("q1", "1.1", 0)]}
+        initialSession={session}
+        database={db}
+        now={() => t}
+        lastActivityTs={START}
+      />,
+    );
+    expect(screen.getByTestId("mock-resume-prompt")).toBeInTheDocument();
+
+    // Read pausedMs before the visibility flicker.
+    const before = (await db.mockSessions.get(session.id))?.pausedMs ?? 0;
+
+    // Simulate: tab hidden for 10 min during the modal.
+    Object.defineProperty(document, "hidden", {
+      value: true,
+      configurable: true,
+    });
+    document.dispatchEvent(new Event("visibilitychange"));
+    t += 10 * 60 * 1000;
+    Object.defineProperty(document, "hidden", {
+      value: false,
+      configurable: true,
+    });
+    document.dispatchEvent(new Event("visibilitychange"));
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    // pausedMs must not have moved because the modal is still up — the
+    // modal's pause-credit will fire when the user clicks Resume, not
+    // from the visibility handler in parallel.
+    const after = (await db.mockSessions.get(session.id))?.pausedMs ?? 0;
+    expect(after).toBe(before);
+  });
 });

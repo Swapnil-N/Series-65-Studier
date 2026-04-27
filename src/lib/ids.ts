@@ -2,9 +2,16 @@
 // produce identical IDs so in-app edits survive content regeneration.
 
 export function normalizeText(s: string): string {
+  // 1. NFC: combine "é" (U+0065 + U+0301) ⇆ "é" (U+00E9) so a Mac vs
+  //    Windows clipboard produce the same hash. (Review S4.)
+  // 2. Lowercase.
+  // 3. Strip punctuation/symbols ENTIRELY (not replace-with-space) so
+  //    "It's" and "Its" produce the same ID. (Review S3.)
+  // 4. Collapse whitespace.
   return s
+    .normalize("NFC")
     .toLowerCase()
-    .replace(/[\p{P}\p{S}]/gu, " ")
+    .replace(/[\p{P}\p{S}]/gu, "")
     .replace(/\s+/g, " ")
     .trim();
 }

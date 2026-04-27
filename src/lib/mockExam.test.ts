@@ -196,10 +196,10 @@ describe("getExcludedIds", () => {
     await db.close();
   });
 
-  it("unions questionIds across the most recent K non-abandoned sessions", async () => {
-    // Four sessions, varying status and startedAt. We expect the three most
-    // recent non-abandoned to be unioned; the abandoned one is skipped even
-    // though it is the newest overall.
+  it("unions questionIds across the most recent K *completed* sessions only", async () => {
+    // Active and abandoned sessions are excluded from the "last 3" pool —
+    // active sessions are handled by the resume banner separately, and
+    // abandoned sessions never count. (Review F4.)
     await db.mockSessions.bulkPut([
       {
         id: "old",
@@ -226,11 +226,20 @@ describe("getExcludedIds", () => {
         questionIds: ["recent-a", "shared"],
         answers: [null, null],
         currentIndex: 0,
+        status: "completed",
+      },
+      {
+        id: "active-now",
+        startedAt: 4,
+        pausedMs: 0,
+        questionIds: ["active-only"],
+        answers: [null],
+        currentIndex: 0,
         status: "active",
       },
       {
         id: "abandoned",
-        startedAt: 4,
+        startedAt: 5,
         pausedMs: 0,
         questionIds: ["abandoned-a"],
         answers: [null],
@@ -244,6 +253,7 @@ describe("getExcludedIds", () => {
     expect(excluded.has("mid-a")).toBe(true);
     expect(excluded.has("old-a")).toBe(true);
     expect(excluded.has("shared")).toBe(true);
+    expect(excluded.has("active-only")).toBe(false); // active never excludes
     expect(excluded.has("abandoned-a")).toBe(false);
     expect(excluded.size).toBe(4);
   });

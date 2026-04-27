@@ -28,7 +28,14 @@ export const QuestionSchema = z.object({
   id: z.string().min(1),
   subtopicId: z.string().min(1),
   stem: z.string().min(1),
-  choices: z.tuple([z.string(), z.string(), z.string(), z.string()]),
+  // Each choice must be non-empty — empty strings render as blank radio
+  // options in QuestionCard. (Review W10.)
+  choices: z.tuple([
+    z.string().min(1),
+    z.string().min(1),
+    z.string().min(1),
+    z.string().min(1),
+  ]),
   answerIndex: z.union([
     z.literal(0),
     z.literal(1),

@@ -160,16 +160,26 @@ export function MockExam({
   // app. (Deliberate deviation from real-exam realism — this is a study app,
   // not a proctor.) Also persist on hide so a kill-during-background still
   // has the most recent state.
+  //
+  // CRITICAL: when the resume-prompt modal is up, the modal itself owns the
+  // pause clock (via `promptEnteredAtRef`). Crediting again from the
+  // visibility handler would double-pay the user — verified by review T1.
   const hiddenAtRef = useRef<number | null>(null);
+  const resumePromptRef = useRef(resumePrompt);
+  resumePromptRef.current = resumePrompt;
   useEffect(() => {
     function onVis() {
       if (document.hidden) {
         if (sessionRef.current.status !== "active") return;
+        // Only mark hidden if the modal isn't already accruing a pause.
+        if (resumePromptRef.current === "awaiting") return;
         hiddenAtRef.current = now();
         void persist(sessionRef.current);
       } else if (hiddenAtRef.current !== null) {
         const gap = Math.max(0, now() - hiddenAtRef.current);
         hiddenAtRef.current = null;
+        // Skip the gap-credit if a resume-prompt is now up (modal owns it).
+        if (resumePromptRef.current === "awaiting") return;
         if (gap > 0 && sessionRef.current.status === "active") {
           updateSession((prev) => ({ ...prev, pausedMs: prev.pausedMs + gap }));
         }
@@ -189,6 +199,22 @@ export function MockExam({
         ? computeRemainingMs(session, promptEnteredAtRef.current ?? nowMs)
         : 0;
 
+  // Single source of truth for "we have already fired onComplete." Both the
+  // auto-submit-at-zero useEffect and the manual "submit last question"
+  // path consult this — without it, a click that lands in the same frame
+  // as remainingMs hitting 0 can fire onComplete twice and (since the
+  // parent's persistMockCompletion bulkAdds attempts) duplicate every
+  // attempt row. (Review T5.)
+  const onCompleteFiredRef = useRef(false);
+  const fireOnComplete = useCallback(
+    (next: MockExamSession) => {
+      if (onCompleteFiredRef.current) return;
+      onCompleteFiredRef.current = true;
+      onComplete?.(next);
+    },
+    [onComplete],
+  );
+
   // Auto-submit at zero.
   const autoSubmitRef = useRef(false);
   useEffect(() => {
@@ -198,8 +224,8 @@ export function MockExam({
     if (autoSubmitRef.current) return;
     autoSubmitRef.current = true;
     const next = updateSession((prev) => ({ ...prev, status: "completed" }));
-    onComplete?.(next);
-  }, [remainingMs, session.status, resumePrompt, updateSession, onComplete]);
+    fireOnComplete(next);
+  }, [remainingMs, session.status, resumePrompt, updateSession, fireOnComplete]);
 
   const currentQuestion = useMemo<Question | null>(() => {
     const id = session.questionIds[session.currentIndex];
@@ -226,6 +252,7 @@ export function MockExam({
   const handleNext = useCallback(() => {
     if (session.status !== "active") return;
     if (resumePrompt === "awaiting") return;
+    if (onCompleteFiredRef.current) return;
     const isLast = session.currentIndex >= session.questionIds.length - 1;
     if (isLast) {
       const next = updateSession((prev) => ({
@@ -233,7 +260,7 @@ export function MockExam({
         status: "completed",
         lastActivityAt: now(),
       }));
-      onComplete?.(next);
+      fireOnComplete(next);
       return;
     }
     updateSession((prev) => ({
@@ -252,7 +279,7 @@ export function MockExam({
     session.questionIds.length,
     resumePrompt,
     updateSession,
-    onComplete,
+    fireOnComplete,
     now,
   ]);
 

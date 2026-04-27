@@ -75,10 +75,21 @@ const DailyActivityRowSchema = z.object({
   lessonsCompleted: FiniteNumberSchema,
 });
 
+// Range-bound number — finite AND within an inclusive [min, max] interval.
+// Used for fields whose downstream consumers can't tolerate adversarial
+// values. (Review C/MAJOR.)
+const RangedNumber = (min: number, max: number) =>
+  FiniteNumberSchema.refine(
+    (n) => n >= min && n <= max,
+    `must be between ${min} and ${max}`,
+  );
+
 const MockSessionRowSchema = z.object({
   id: z.string().min(1),
   startedAt: FiniteNumberSchema,
-  pausedMs: FiniteNumberSchema,
+  // Negative pausedMs would make computeRemainingMs > MOCK_DURATION_MS or
+  // even instantly fail-the-mock; cap at 24h to reject ridiculous values.
+  pausedMs: RangedNumber(0, 24 * 60 * 60 * 1000),
   questionIds: z.array(z.string()),
   answers: z.array(
     z.union([
@@ -94,17 +105,21 @@ const MockSessionRowSchema = z.object({
   lastActivityAt: FiniteNumberSchema.optional(),
 });
 
+// Range bounds match the UI sliders/inputs in Settings, plus a sanity cap
+// where the UI is open-ended (e.g., goals). Anything outside these bounds
+// in an import file is dropped — without this, a hostile fontScale: 9999
+// can render the page unusable. (Review C/MAJOR.)
 const SettingsRowSchema = z.object({
   key: z.string(),
   value: z.object({
     darkMode: z.enum(["auto", "light", "dark"]),
     highContrast: z.boolean(),
-    fontScale: FiniteNumberSchema,
-    newCardsPerDay: FiniteNumberSchema,
-    targetRetention: FiniteNumberSchema,
+    fontScale: RangedNumber(0.85, 1.3),
+    newCardsPerDay: RangedNumber(1, 200),
+    targetRetention: RangedNumber(0.7, 0.97),
     cramMode: z.boolean(),
-    dailyGoalCards: FiniteNumberSchema,
-    dailyGoalQuestions: FiniteNumberSchema,
+    dailyGoalCards: RangedNumber(0, 1000),
+    dailyGoalQuestions: RangedNumber(0, 1000),
     lastExportAt: FiniteNumberSchema,
   }),
 });

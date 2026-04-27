@@ -143,30 +143,40 @@ export function FlashcardSession({
     async (grade: RatingGrade) => {
       if (!current || !queue) return;
       const t = now ?? Date.now();
-      const prev = (await db.cardState.get(current.id)) ?? null;
-      const baseState: CardState = prev ?? newCardState(current.id, t);
-      const next = review(baseState, grade as Grade, {
-        cramMode: settings.cramMode,
-        targetRetention: settings.targetRetention,
-        now: t,
-      });
-      await db.cardState.put(next);
-
       const dateKey = toDateKey(t);
-      const existing = await db.dailyActivity.get(dateKey);
-      if (existing) {
-        await db.dailyActivity.put({
-          ...existing,
-          cardsReviewed: existing.cardsReviewed + 1,
-        });
-      } else {
-        await db.dailyActivity.put({
-          date: dateKey,
-          cardsReviewed: 1,
-          questionsAnswered: 0,
-          lessonsCompleted: 0,
-        });
-      }
+      // Single transaction wraps the cardState write + dailyActivity bump
+      // so a partial Dexie failure can't log a review without crediting
+      // daily activity (or vice versa). Review W1.
+      const prev = await db.transaction(
+        "rw",
+        db.cardState,
+        db.dailyActivity,
+        async () => {
+          const before = (await db.cardState.get(current.id)) ?? null;
+          const baseState: CardState = before ?? newCardState(current.id, t);
+          const next = review(baseState, grade as Grade, {
+            cramMode: settings.cramMode,
+            targetRetention: settings.targetRetention,
+            now: t,
+          });
+          await db.cardState.put(next);
+          const existing = await db.dailyActivity.get(dateKey);
+          if (existing) {
+            await db.dailyActivity.put({
+              ...existing,
+              cardsReviewed: existing.cardsReviewed + 1,
+            });
+          } else {
+            await db.dailyActivity.put({
+              date: dateKey,
+              cardsReviewed: 1,
+              questionsAnswered: 0,
+              lessonsCompleted: 0,
+            });
+          }
+          return before;
+        },
+      );
 
       undoRef.current = {
         cardId: current.id,
@@ -184,20 +194,24 @@ export function FlashcardSession({
   const onUndo = useCallback(async () => {
     const u = undoRef.current;
     if (!u) return;
-    // Restore cardState to its pre-review value (or delete if it had none).
-    if (u.prev) {
-      await db.cardState.put(u.prev);
-    } else {
-      await db.cardState.delete(u.cardId);
-    }
-    // Decrement the dailyActivity counter (clamped at 0).
-    const existing = await db.dailyActivity.get(u.dateKey);
-    if (existing) {
-      await db.dailyActivity.put({
-        ...existing,
-        cardsReviewed: Math.max(0, existing.cardsReviewed - 1),
-      });
-    }
+    // Same transaction discipline as onRate — undo must restore both
+    // tables atomically.
+    await db.transaction(
+      "rw",
+      db.cardState,
+      db.dailyActivity,
+      async () => {
+        if (u.prev) await db.cardState.put(u.prev);
+        else await db.cardState.delete(u.cardId);
+        const existing = await db.dailyActivity.get(u.dateKey);
+        if (existing) {
+          await db.dailyActivity.put({
+            ...existing,
+            cardsReviewed: Math.max(0, existing.cardsReviewed - 1),
+          });
+        }
+      },
+    );
     undoRef.current = null;
     setUndoAvailable(false);
     setIndex(u.prevIndex);
