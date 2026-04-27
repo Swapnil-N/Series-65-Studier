@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { z } from "zod";
 import { db, DEFAULT_SETTINGS, getSettings, saveSettings } from "../lib/db";
 import type { AppSettings, ContentEdit } from "../types/state";
@@ -260,13 +260,23 @@ export function validateImport(raw: unknown): ValidatedImport | null {
 }
 
 export async function restoreAll(exported: ValidatedImport): Promise<void> {
-  for (const name of EXPORT_TABLES) {
+  // Single Dexie transaction across all 9 tables. Without this, a
+  // mid-loop failure (quota exceeded on one table after clearing
+  // earlier ones) would leave the DB partially wiped with no rollback.
+  // (Review B1 / pass-5.)
+  const tableHandles = EXPORT_TABLES.map(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const table = (db as unknown as Record<string, any>)[name];
-    await table.clear();
-    const rows = exported.rows[name] ?? [];
-    if (rows.length > 0) await table.bulkPut(rows);
-  }
+    (name) => (db as unknown as Record<string, any>)[name],
+  );
+  await db.transaction("rw", tableHandles, async () => {
+    for (const name of EXPORT_TABLES) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const table = (db as unknown as Record<string, any>)[name];
+      await table.clear();
+      const rows = exported.rows[name] ?? [];
+      if (rows.length > 0) await table.bulkPut(rows);
+    }
+  });
 }
 
 function isStateExport(x: unknown): x is StateExport {
@@ -291,16 +301,27 @@ export default function Settings() {
   const [importWarnings, setImportWarnings] = useState<string[]>([]);
   const [importError, setImportError] = useState<string | null>(null);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
+  // Guards setStates after async awaits if the user navigates away
+  // mid-load. (Review B3.)
+  const mountedRef = useRef(true);
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+    };
+  }, []);
 
   // Boot: load settings, compute stale edits, probe storage persistence.
   const loadAll = useCallback(async () => {
     const s = await getSettings();
+    if (!mountedRef.current) return;
     setSettings(s);
     applyAppearanceSettings(s);
     const [edits, content] = await Promise.all([
       db.edits.toArray(),
       loadContent(),
     ]);
+    if (!mountedRef.current) return;
     const knownIds = new Set<string>([
       ...content.lessons.map((l) => l.subtopicId),
       ...content.cards.map((c) => c.id),

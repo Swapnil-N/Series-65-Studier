@@ -182,6 +182,78 @@ describe("Settings", () => {
       Settings.validateImport({ version: 1, tables: "not-an-object" }),
     ).toBeNull();
   });
+
+  it("range-bounds settings rows on import — fontScale 9999 is dropped (review M4 / pass-5)", () => {
+    // Without range bounds, a hostile import could land fontScale: 9999
+    // and break the page on next mount.
+    const baseTables = {
+      cardState: [],
+      attempts: [],
+      missedQueue: [],
+      bookmarks: [],
+      notes: [],
+      edits: [],
+      dailyActivity: [],
+      mockSessions: [],
+      settings: [
+        {
+          key: "app",
+          value: {
+            darkMode: "auto",
+            highContrast: false,
+            fontScale: 9999, // out of range
+            newCardsPerDay: 30,
+            targetRetention: 0.9,
+            cramMode: false,
+            dailyGoalCards: 20,
+            dailyGoalQuestions: 10,
+            lastExportAt: 0,
+          },
+        },
+      ],
+    };
+    const validated = Settings.validateImport({
+      version: 1,
+      exportedAt: 0,
+      tables: baseTables,
+    });
+    expect(validated).not.toBeNull();
+    expect(validated!.rows.settings).toEqual([]);
+    expect(
+      validated!.warnings.some((w) => w.startsWith("settings[")),
+    ).toBe(true);
+  });
+
+  it("range-bounds mockSessions.pausedMs — negative is dropped", () => {
+    const baseTables = {
+      cardState: [],
+      attempts: [],
+      missedQueue: [],
+      bookmarks: [],
+      notes: [],
+      edits: [],
+      dailyActivity: [],
+      mockSessions: [
+        {
+          id: "s1",
+          startedAt: 0,
+          pausedMs: -1, // out of range
+          questionIds: [],
+          answers: [],
+          currentIndex: 0,
+          status: "active",
+        },
+      ],
+      settings: [],
+    };
+    const validated = Settings.validateImport({
+      version: 1,
+      exportedAt: 0,
+      tables: baseTables,
+    });
+    expect(validated).not.toBeNull();
+    expect(validated!.rows.mockSessions).toEqual([]);
+  });
 });
 
 describe("applyAppearanceSettings", () => {

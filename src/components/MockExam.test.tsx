@@ -251,4 +251,51 @@ describe("MockExam", () => {
     const after = (await db.mockSessions.get(session.id))?.pausedMs ?? 0;
     expect(after).toBe(before);
   });
+
+  it("credits pausedMs when the tab is hidden during the active exam (positive Q1 path)", async () => {
+    // Counterpart to the T1 test: when the modal is NOT up, the visibility
+    // handler must add the hidden duration to pausedMs so the timer
+    // doesn't bleed away while the user was in another app.
+    await db.mockSessions.clear();
+    const session = makeSession();
+    await db.mockSessions.put(session);
+    let t = START + 60 * 1000; // 1 min into the exam — modal NOT triggered
+    render(
+      <MockExam
+        questions={[makeQ("q1", "1.1", 0)]}
+        initialSession={session}
+        database={db}
+        now={() => t}
+      />,
+    );
+    expect(screen.queryByTestId("mock-resume-prompt")).toBeNull();
+
+    // Hide the tab.
+    Object.defineProperty(document, "hidden", {
+      value: true,
+      configurable: true,
+    });
+    document.dispatchEvent(new Event("visibilitychange"));
+    // Three minutes of background time.
+    t += 3 * 60 * 1000;
+    Object.defineProperty(document, "hidden", {
+      value: false,
+      configurable: true,
+    });
+    document.dispatchEvent(new Event("visibilitychange"));
+    await act(async () => {
+      await Promise.resolve();
+    });
+    const stored = await db.mockSessions.get(session.id);
+    // pausedMs should reflect the 3-minute gap (within ms).
+    expect(stored?.pausedMs).toBeGreaterThanOrEqual(3 * 60 * 1000 - 5);
+    expect(stored?.pausedMs).toBeLessThanOrEqual(3 * 60 * 1000 + 5);
+  });
+
+  // T5 race guard (`onCompleteFiredRef`) is documented inline in
+  // MockExam.tsx. It defends against a 1-frame window where auto-submit
+  // and manual submit could both fire — too narrow to reproduce reliably
+  // in jsdom, but the existing "does NOT self-persist" + "auto-submits
+  // to the scorecard" tests each prove `onComplete` fires exactly once
+  // in their respective paths, which is the practical guarantee.
 });

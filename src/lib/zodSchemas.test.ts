@@ -118,4 +118,9 @@ describe("array schemas", () => {
       ]).success,
     ).toBe(false);
   });
+
+  it("rejects a question with an empty-string choice — review W10", () => {
+    const bad = { ...validQuestion, choices: ["A", "", "C", "D"] };
+    expect(QuestionSchema.safeParse(bad).success).toBe(false);
+  });
 });

@@ -232,6 +232,36 @@ describe("computeTopicScore", () => {
     expect(s.point).toBeCloseTo((5 / 15) * 100, 1);
   });
 
+  it("Wilson half-width uses RAW counts (not age-decay-weighted) — review M1", () => {
+    // Two scenarios with the same RAW counts (15 correct / 20) but different
+    // age splits. The point estimate diverges (age decay weights recent
+    // wrongs more) but the Wilson half-width must be the same because
+    // raw counts are identical.
+    const all30dWrong: Attempt[] = [];
+    for (let i = 0; i < 15; i++) {
+      all30dWrong.push(make(`a${i}`, "1", true, now - (i + 1) * DAY));
+    }
+    for (let i = 0; i < 5; i++) {
+      all30dWrong.push(make(`b${i}`, "1", false, now - (i + 1) * DAY));
+    }
+
+    const oldWrongMix: Attempt[] = [];
+    for (let i = 0; i < 15; i++) {
+      oldWrongMix.push(make(`c${i}`, "1", true, now - (i + 1) * DAY));
+    }
+    for (let i = 0; i < 5; i++) {
+      // 60d ago — age-decay weight 0.5×.
+      oldWrongMix.push(make(`d${i}`, "1", false, now - (60 + i) * DAY));
+    }
+
+    const a = computeTopicScore(all30dWrong, "1", now);
+    const b = computeTopicScore(oldWrongMix, "1", now);
+    // Same raw counts → same half-width.
+    expect(a.halfWidth).toBeCloseTo(b.halfWidth ?? 0, 6);
+    // Different age distributions → different point estimates.
+    expect(a.point).not.toBeCloseTo(b.point ?? -1, 1);
+  });
+
   it("dedupes retries within 7 days using the most-recent attempt", () => {
     // Same questionId answered twice within 3 days — newer is wrong.
     // Then 19 other distinct attempts. Distinct n should be 20.

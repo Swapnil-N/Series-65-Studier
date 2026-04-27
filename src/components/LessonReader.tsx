@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import type { Lesson } from "../types/content";
 import type { Bookmark, ContentEdit, Note } from "../types/state";
 import { db } from "../lib/db";
+import { bustContentCache } from "../lib/content";
+import { dateKeyFromMs } from "../lib/streak";
 import {
   Citation,
   MarkdownRenderer,
@@ -18,44 +20,6 @@ export interface LessonReaderProps {
    * the user navigates away and back.
    */
   onReviewed?: () => void;
-}
-
-// Returns today's YYYY-MM-DD in local time. Aligns with A2's daily-activity
-// keying so lessonsCompleted is counted on the day the user studied.
-function today(): string {
-  const d = new Date();
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, "0");
-  const dd = String(d.getDate()).padStart(2, "0");
-  return `${y}-${m}-${dd}`;
-}
-
-async function bumpLessonsCompleted(): Promise<void> {
-  const key = today();
-  const existing = await db.dailyActivity.get(key);
-  if (existing) {
-    await db.dailyActivity.put({
-      ...existing,
-      lessonsCompleted: existing.lessonsCompleted + 1,
-    });
-  } else {
-    await db.dailyActivity.put({
-      date: key,
-      cardsReviewed: 0,
-      questionsAnswered: 0,
-      lessonsCompleted: 1,
-    });
-  }
-}
-
-async function writeLessonReviewedEdit(lesson: Lesson): Promise<void> {
-  const edit: ContentEdit = {
-    itemId: lesson.subtopicId,
-    type: "lesson",
-    patch: { reviewed: true },
-    updatedAt: Date.now(),
-  };
-  await db.edits.put(edit);
 }
 
 async function toggleBookmark(lesson: Lesson): Promise<boolean> {
@@ -120,8 +84,37 @@ export default function LessonReader({ lesson, onReviewed }: LessonReaderProps) 
     setReviewing(true);
     setReviewError(null);
     try {
-      await writeLessonReviewedEdit(lesson);
-      await bumpLessonsCompleted();
+      // Single transaction over edits + dailyActivity so a partial
+      // failure can't mark a lesson reviewed without crediting the
+      // streak (or vice versa). Bust the content cache before notifying
+      // the parent so its loadContent() re-read returns the merged
+      // overlay rather than the cached pre-edit value.
+      // (Reviews B1 / pass-5.)
+      const edit: ContentEdit = {
+        itemId: lesson.subtopicId,
+        type: "lesson",
+        patch: { reviewed: true },
+        updatedAt: Date.now(),
+      };
+      const key = dateKeyFromMs(Date.now());
+      await db.transaction("rw", db.edits, db.dailyActivity, async () => {
+        await db.edits.put(edit);
+        const existing = await db.dailyActivity.get(key);
+        if (existing) {
+          await db.dailyActivity.put({
+            ...existing,
+            lessonsCompleted: existing.lessonsCompleted + 1,
+          });
+        } else {
+          await db.dailyActivity.put({
+            date: key,
+            cardsReviewed: 0,
+            questionsAnswered: 0,
+            lessonsCompleted: 1,
+          });
+        }
+      });
+      bustContentCache();
       onReviewed?.();
     } catch (err) {
       setReviewError(

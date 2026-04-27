@@ -1,7 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import {
   MOCK_DURATION_MS,
-  PASS_THRESHOLD,
   TOPIC_COUNTS,
   composeExam,
   computeRemainingMs,
@@ -185,6 +184,26 @@ describe("computeRemainingMs", () => {
     );
     expect(remaining).toBe(MOCK_DURATION_MS - 6 * 60 * 1000);
   });
+
+  it("clamps to MOCK_DURATION_MS when wall clock is before startedAt (clock skew) — review M5", () => {
+    // NTP correction or manual time-zone change can move `now` before
+    // `startedAt`. Without the upper clamp the displayed timer would
+    // exceed 03:00:00.
+    const beforeStart = baseSession.startedAt - 5 * 60 * 1000;
+    expect(computeRemainingMs(baseSession, beforeStart)).toBe(
+      MOCK_DURATION_MS,
+    );
+  });
+
+  it("clamps to MOCK_DURATION_MS when pausedMs runs ahead of wall elapsed — review M5", () => {
+    // pausedMs > (now - startedAt) would otherwise yield remaining > MAX.
+    const now = baseSession.startedAt + 60 * 1000; // 1 min elapsed
+    const remaining = computeRemainingMs(
+      { startedAt: baseSession.startedAt, pausedMs: 60 * 60 * 1000 }, // 60 min "paused"
+      now,
+    );
+    expect(remaining).toBe(MOCK_DURATION_MS);
+  });
 });
 
 describe("getExcludedIds", () => {
@@ -351,8 +370,9 @@ describe("scoreMock", () => {
       answers: [0, 0, 0, 0] as (0 | 1 | 2 | 3 | null)[],
     };
     const score = scoreMock(session, questions);
-    // 1/4 correct — well below PASS_THRESHOLD.
-    expect(score.overallPct).toBeLessThan(PASS_THRESHOLD);
+    // 1/4 = 25% — pin the exact value so a rounding regression in scoreMock
+    // can't slip past `< PASS_THRESHOLD` redundantly.
+    expect(score.overallPct).toBe(25);
     expect(score.pass).toBe(false);
   });
 });

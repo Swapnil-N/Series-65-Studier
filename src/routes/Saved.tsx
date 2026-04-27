@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { db } from "../lib/db";
 import { loadContent } from "../lib/content";
 import type { Bookmark, Note } from "../types/state";
@@ -78,6 +78,16 @@ export default function Saved() {
   const [notes, setNotes] = useState<NoteRow[] | null>(null);
   const [editingNoteId, setEditingNoteId] = useState<string | null>(null);
   const [editingDraft, setEditingDraft] = useState<string>("");
+  // Set true on unmount; guards setState calls after async awaits so
+  // a fast nav away doesn't fire the React unmounted-update warning
+  // and doesn't leave stale rows in memory. (Review B3.)
+  const mountedRef = useRef(true);
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+    };
+  }, []);
 
   const refresh = useCallback(async () => {
     const [bmRows, noteRows, content] = await Promise.all([
@@ -85,6 +95,7 @@ export default function Saved() {
       db.notes.toArray(),
       loadContent(),
     ]);
+    if (!mountedRef.current) return;
     const bmOut: BookmarkRow[] = bmRows
       .sort((a, b) => b.createdAt - a.createdAt)
       .map((b) => {
@@ -103,6 +114,7 @@ export default function Saved() {
           preview: meta.preview || "(target missing)",
         };
       });
+    if (!mountedRef.current) return;
     setBookmarks(bmOut);
     setNotes(noteOut);
   }, []);

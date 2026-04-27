@@ -88,10 +88,14 @@ describe("accessors", () => {
   });
 
   it("getCards / getQuestions filter by subtopicId", () => {
-    expect(getCards("1.1").every((c) => c.subtopicId === "1.1")).toBe(true);
-    expect(getQuestions("1.1").every((q) => q.subtopicId === "1.1")).toBe(
-      true,
-    );
+    const cards = getCards("1.1");
+    const questions = getQuestions("1.1");
+    // Guard against the empty-array tautology — if the dev stub has no
+    // 1.1 content the .every() would silently pass.
+    expect(cards.length).toBeGreaterThan(0);
+    expect(questions.length).toBeGreaterThan(0);
+    expect(cards.every((c) => c.subtopicId === "1.1")).toBe(true);
+    expect(questions.every((q) => q.subtopicId === "1.1")).toBe(true);
     expect(getCards("9.9")).toEqual([]);
   });
 
@@ -108,5 +112,17 @@ describe("accessors", () => {
 describe("mirrorToDexie", () => {
   it("resolves without throwing (no-op by design)", async () => {
     await expect(mirrorToDexie()).resolves.toBeUndefined();
+  });
+});
+
+describe("loadContent memoisation (review M2)", () => {
+  it("returns the same Promise on consecutive calls until bustContentCache", async () => {
+    const a = loadContent();
+    const b = loadContent();
+    // Same Promise reference — cache hit, no second Zod parse.
+    expect(a).toBe(b);
+    bustContentCache();
+    const c = loadContent();
+    expect(c).not.toBe(a);
   });
 });
