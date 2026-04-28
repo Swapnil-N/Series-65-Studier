@@ -1,18 +1,22 @@
-// Series 65 Studier — content generation CLI (A3).
+// Series 65 Studier — content generation CLI.
 //
 // Runs under `npx tsx`. Three modes:
 //   - --dry-run: render prompts, no network.
 //   - --validate <file>: Zod + citation-allowlist check on a JSON file.
-//   - (default) real run: call the Anthropic API for one or all subtopics,
-//     write outputs to scripts/out/<topic-slug>/<subtopic-id>-<slug>/.
+//   - (default) real run: generate content for one or all subtopics.
 //
-// Real run requires ANTHROPIC_API_KEY (env or .env). Spend-ceiling default
-// $200 — script aborts before exceeding it.
+// **Default real-run path uses the Claude Code CLI** (`claude -p`), which
+// authenticates against the user's local Claude Code session (Max plan).
+// This keeps the run on the subscription bucket, not a separate API account.
+//
+// Use `--api` to fall back to the @anthropic-ai/sdk path, which requires
+// ANTHROPIC_API_KEY and bills against your API account separately.
 
 import * as fs from "node:fs";
 import * as path from "node:path";
 import * as process from "node:process";
 import { parseArgs } from "node:util";
+import { spawn } from "node:child_process";
 import { webcrypto } from "node:crypto";
 
 // Polyfill Web Crypto on globalThis so ../src/lib/ids.ts (which uses
@@ -42,15 +46,25 @@ const USAGE = `Usage: tsx scripts/generate-content.ts [options]
 Options:
   --subtopic <id>         Subtopic id like "1.1".
   --outline <path>        Outline file (default scripts/nasaa-outline.md).
-  --dry-run               Render prompts for --subtopic without calling any API.
+  --dry-run               Render prompts for --subtopic without calling any backend.
   --validate <path>       Zod + citation-allowlist check a JSON file.
-  --force                 Regenerate even if an output already exists (real run).
-  --spend-ceiling <usd>   Dollar ceiling (default env SPEND_CEILING_USD or 200).
+  --force                 Regenerate even if an output already exists.
+  --api                   Use @anthropic-ai/sdk + ANTHROPIC_API_KEY (separate
+                          billing). Default is Claude Code CLI (Max-billed).
+  --max-subtopics <n>     Stop after generating N subtopics this run (CLI mode
+                          safety guard against the Max plan weekly cap).
+                          Default 0 = unlimited.
+  --spend-ceiling <usd>   API mode only: dollar ceiling (default env
+                          SPEND_CEILING_USD or 200).
+  --model <id>            Override model. Default: claude-opus-4-7.
   --help                  Show this message.
 
 Examples:
   tsx scripts/generate-content.ts --dry-run --subtopic 1.1
   tsx scripts/generate-content.ts --validate path/to/cards.json
+  tsx scripts/generate-content.ts --subtopic 1.1                 # Max-billed
+  tsx scripts/generate-content.ts --api --subtopic 1.1           # API-billed
+  tsx scripts/generate-content.ts --max-subtopics 5              # cap weekly
 `;
 
 const out = (s: string): void => void process.stdout.write(s + "\n");
@@ -271,37 +285,93 @@ function parseAllSubtopics(outlinePath: string): SubtopicEntry[] {
 
 interface CallResult { data: unknown; inputTokens: number; outputTokens: number; }
 
-async function callMessage(
-  client: Anthropic,
-  prompt: string,
-  retryHints: string[] = [],
-): Promise<CallResult> {
-  const userParts: Array<{ type: "text"; text: string }> = [{ type: "text", text: prompt }];
-  for (const hint of retryHints) userParts.push({ type: "text", text: hint });
-  const resp = await client.messages.create({
-    model: "claude-opus-4-7",
-    max_tokens: 16000,
-    system: [
-      { type: "text", text: SYSTEM_PROMPT, cache_control: { type: "ephemeral" } },
-    ],
-    messages: [{ role: "user", content: userParts }],
-  });
-  const textBlock = resp.content.find((b) => b.type === "text");
-  const raw = textBlock && "text" in textBlock ? (textBlock.text as string) : "";
+/**
+ * Backend abstraction: call(prompt) → JSON-parsed response. Two implementations:
+ *   - ClaudeCodeCLIBackend: spawns `claude -p` with stdin-piped prompt.
+ *     Bills against the user's local Claude Code session (Max subscription).
+ *     Reports inputTokens/outputTokens=0 since the CLI's billing is unit-based,
+ *     not token-priced from the consumer's view.
+ *   - ApiBackend: @anthropic-ai/sdk against ANTHROPIC_API_KEY. Reports real
+ *     token counts so the spend ceiling can gate the run.
+ */
+interface Backend {
+  call(prompt: string, retryHints: string[]): Promise<CallResult>;
+}
+
+class ApiBackend implements Backend {
+  constructor(private readonly client: Anthropic, private readonly model: string) {}
+  async call(prompt: string, retryHints: string[]): Promise<CallResult> {
+    const userParts: Array<{ type: "text"; text: string }> = [{ type: "text", text: prompt }];
+    for (const hint of retryHints) userParts.push({ type: "text", text: hint });
+    const resp = await this.client.messages.create({
+      model: this.model,
+      max_tokens: 16000,
+      system: [
+        { type: "text", text: SYSTEM_PROMPT, cache_control: { type: "ephemeral" } },
+      ],
+      messages: [{ role: "user", content: userParts }],
+    });
+    const textBlock = resp.content.find((b) => b.type === "text");
+    const raw = textBlock && "text" in textBlock ? (textBlock.text as string) : "";
+    return parseJsonOrThrow(raw, {
+      inputTokens: resp.usage?.input_tokens ?? 0,
+      outputTokens: resp.usage?.output_tokens ?? 0,
+    });
+  }
+}
+
+class ClaudeCodeCLIBackend implements Backend {
+  constructor(private readonly model: string) {}
+  async call(prompt: string, retryHints: string[]): Promise<CallResult> {
+    const fullPrompt = [SYSTEM_PROMPT, "", prompt, ...retryHints].join("\n\n");
+    const stdout = await spawnClaudeCli(["-p", "--output-format", "json", "--model", this.model], fullPrompt);
+    let envelope: { result?: string };
+    try { envelope = JSON.parse(stdout); }
+    catch (e) {
+      throw new Error(`Claude Code CLI returned non-JSON: ${(e as Error).message}\nstdout: ${stdout.slice(0, 200)}`);
+    }
+    const raw = envelope.result ?? "";
+    return parseJsonOrThrow(raw, { inputTokens: 0, outputTokens: 0 });
+  }
+}
+
+function parseJsonOrThrow(raw: string, usage: { inputTokens: number; outputTokens: number }): CallResult {
   // Strip code fences if the model defied instructions.
   const cleaned = raw.replace(/^```(?:json)?\s*/i, "").replace(/```\s*$/i, "").trim();
-  let data: unknown;
-  try { data = JSON.parse(cleaned); }
-  catch (e) { throw new Error(`JSON parse: ${(e as Error).message}\nRaw: ${raw.slice(0, 200)}`); }
-  return {
-    data,
-    inputTokens: resp.usage?.input_tokens ?? 0,
-    outputTokens: resp.usage?.output_tokens ?? 0,
-  };
+  // Some models prepend prose; grab the first balanced JSON object/array.
+  const firstBrace = cleaned.search(/[{\[]/);
+  const sliced = firstBrace > 0 ? cleaned.slice(firstBrace) : cleaned;
+  try {
+    return { data: JSON.parse(sliced), inputTokens: usage.inputTokens, outputTokens: usage.outputTokens };
+  } catch (e) {
+    throw new Error(`JSON parse: ${(e as Error).message}\nRaw: ${raw.slice(0, 200)}`);
+  }
+}
+
+function spawnClaudeCli(args: string[], stdinText: string): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const child = spawn("claude", args, { stdio: ["pipe", "pipe", "pipe"] });
+    let stdout = "";
+    let stderr = "";
+    child.stdout.on("data", (b: Buffer) => { stdout += b.toString("utf8"); });
+    child.stderr.on("data", (b: Buffer) => { stderr += b.toString("utf8"); });
+    child.on("error", (e) => reject(new Error(`Failed to spawn 'claude' CLI: ${e.message}. Is Claude Code installed and on PATH?`)));
+    child.on("close", (code) => {
+      if (code !== 0) {
+        const lower = stderr.toLowerCase();
+        const isRateLimit = lower.includes("rate") && lower.includes("limit");
+        const tag = isRateLimit ? "[RATE LIMIT]" : `[exit ${code}]`;
+        reject(new Error(`${tag} claude CLI failed: ${stderr.trim() || "(no stderr)"}`));
+        return;
+      }
+      resolve(stdout);
+    });
+    child.stdin.end(stdinText);
+  });
 }
 
 async function callWithRetries<T>(
-  client: Anthropic,
+  backend: Backend,
   prompt: string,
   validate: (data: unknown) => { ok: true; value: T } | { ok: false; reason: string },
   spend: SpendTracker,
@@ -309,15 +379,23 @@ async function callWithRetries<T>(
   const hints: string[] = [];
   let lastErr = "";
   for (let attempt = 0; attempt < 3; attempt++) {
-    if (spend.usd >= spend.ceiling) {
+    if (spend.ceiling > 0 && spend.usd >= spend.ceiling) {
       throw new Error(`Spend ceiling reached ($${spend.usd.toFixed(2)} / $${spend.ceiling}) — aborting before next call.`);
     }
     let result: CallResult;
-    try { result = await callMessage(client, prompt, hints); }
-    catch (e) { lastErr = (e as Error).message; hints.push(`Previous response failed JSON parse: ${lastErr}. Return ONLY valid JSON matching the requested shape.`); continue; }
+    try { result = await backend.call(prompt, hints); }
+    catch (e) {
+      const msg = (e as Error).message;
+      // Rate-limit errors are unrecoverable in this loop — bubble up so the
+      // caller can checkpoint and exit cleanly.
+      if (msg.startsWith("[RATE LIMIT]")) throw e;
+      lastErr = msg;
+      hints.push(`Previous response failed JSON parse: ${lastErr}. Return ONLY valid JSON matching the requested shape.`);
+      continue;
+    }
     spend.inputTokens += result.inputTokens;
     spend.outputTokens += result.outputTokens;
-    spend.usd += priceFor(result.inputTokens, result.outputTokens);
+    if (spend.ceiling > 0) spend.usd += priceFor(result.inputTokens, result.outputTokens);
     const v = validate(result.data);
     if (v.ok) return { value: v.value, inputTokens: result.inputTokens, outputTokens: result.outputTokens };
     lastErr = v.reason;
@@ -361,7 +439,7 @@ function tsModuleTyped(varName: string, typeName: string, value: unknown, import
 }
 
 async function generateOne(
-  client: Anthropic,
+  backend: Backend,
   entry: SubtopicEntry,
   outRoot: string,
   allow: AllowlistShape,
@@ -386,19 +464,19 @@ async function generateOne(
   const promptInput = { id: entry.subtopicId, title: entry.title, outlineText: entry.outlineText };
 
   // Lesson
-  const lessonRes = await callWithRetries(client, renderLessonPrompt(promptInput),
+  const lessonRes = await callWithRetries(backend, renderLessonPrompt(promptInput),
     (d) => {
       const r = LessonSchema.safeParse(d);
       return r.success ? { ok: true as const, value: r.data } : { ok: false as const, reason: r.error.message };
     }, spend);
   // Cards
-  const cardsRes = await callWithRetries(client, renderCardsPrompt(promptInput),
+  const cardsRes = await callWithRetries(backend, renderCardsPrompt(promptInput),
     (d) => {
       const r = CardsArraySchema.safeParse(d);
       return r.success ? { ok: true as const, value: r.data } : { ok: false as const, reason: r.error.message };
     }, spend);
   // Questions
-  const questionsRes = await callWithRetries(client, renderQuestionsPrompt(promptInput),
+  const questionsRes = await callWithRetries(backend, renderQuestionsPrompt(promptInput),
     (d) => {
       const r = QuestionsArraySchema.safeParse(d);
       return r.success ? { ok: true as const, value: r.data } : { ok: false as const, reason: r.error.message };
@@ -519,38 +597,76 @@ async function runReal(opts: {
   outline: string;
   ceiling: number;
   force: boolean;
+  useApi: boolean;
+  maxSubtopics: number;
+  model: string;
 }): Promise<number> {
   dotenvConfig();
-  const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) {
-    err("ANTHROPIC_API_KEY not set. Add it to your environment or .env then re-run.");
-    return 1;
-  }
   const allow = loadAllowlist() as AllowlistShape;
   const all = parseAllSubtopics(opts.outline);
   if (all.length === 0) { err(`No subtopics parsed from ${opts.outline}.`); return 1; }
   const target = opts.subtopic ? all.filter((e) => e.subtopicId === opts.subtopic) : all;
   if (target.length === 0) { err(`Subtopic ${opts.subtopic} not found in outline.`); return 1; }
-  const client = new Anthropic({ apiKey });
+
+  // Pick backend.
+  let backend: Backend;
+  if (opts.useApi) {
+    const apiKey = process.env.ANTHROPIC_API_KEY;
+    if (!apiKey) {
+      err("--api requires ANTHROPIC_API_KEY (env or .env). Drop --api to use the Claude Code CLI (Max-billed) instead.");
+      return 1;
+    }
+    backend = new ApiBackend(new Anthropic({ apiKey }), opts.model);
+    out(`Backend: API (@anthropic-ai/sdk) — billed per-token against your API account.`);
+  } else {
+    if (process.env.ANTHROPIC_API_KEY) {
+      err("⚠ ANTHROPIC_API_KEY is set in the environment. The Claude Code CLI may pick this up and bill against your API account instead of your Max plan.");
+      err("  To force Max billing: `unset ANTHROPIC_API_KEY` before re-running, or pass --api to use it explicitly.");
+      err("  Aborting to avoid surprise charges.");
+      return 1;
+    }
+    backend = new ClaudeCodeCLIBackend(opts.model);
+    out(`Backend: Claude Code CLI (Max-billed). Auth comes from your local 'claude' login.`);
+  }
+
   const outRoot = path.resolve("scripts/out");
   fs.mkdirSync(outRoot, { recursive: true });
-  const spend: SpendTracker = { inputTokens: 0, outputTokens: 0, usd: 0, ceiling: opts.ceiling };
+  // For CLI mode, ceiling = 0 means "no dollar gate, use --max-subtopics".
+  const spend: SpendTracker = {
+    inputTokens: 0,
+    outputTokens: 0,
+    usd: 0,
+    ceiling: opts.useApi ? opts.ceiling : 0,
+  };
   let generated = 0;
   let skipped = 0;
   for (const entry of target) {
+    if (opts.maxSubtopics > 0 && generated >= opts.maxSubtopics) {
+      out(`Reached --max-subtopics ${opts.maxSubtopics}; stopping. Re-run later to continue (existing subtopics skipped automatically).`);
+      break;
+    }
     try {
-      const result = await generateOne(client, entry, outRoot, allow, spend, opts.force);
+      const result = await generateOne(backend, entry, outRoot, allow, spend, opts.force);
       if (result.skipped) skipped += 1; else generated += 1;
     } catch (e) {
-      err(`[${entry.subtopicId}] ${(e as Error).message}`);
-      err("Aborting run. Re-run with --force <id> to retry a single subtopic.");
+      const msg = (e as Error).message;
+      err(`[${entry.subtopicId}] ${msg}`);
+      if (msg.startsWith("[RATE LIMIT]")) {
+        err("Rate limit hit. Saved progress so far. Re-run later to continue (existing subtopics auto-skipped).");
+      } else {
+        err("Aborting run. Fix the issue, then re-run; existing subtopics auto-skip.");
+      }
       writeAggregator(outRoot); // best-effort partial aggregator
       return 1;
     }
   }
   writeAggregator(outRoot);
   out("");
-  out(`Done. ${generated} generated, ${skipped} skipped (existing). Tokens: ${spend.inputTokens} in / ${spend.outputTokens} out. Spend: $${spend.usd.toFixed(2)} of $${spend.ceiling}.`);
+  if (opts.useApi) {
+    out(`Done. ${generated} generated, ${skipped} skipped (existing). Tokens: ${spend.inputTokens} in / ${spend.outputTokens} out. Spend: $${spend.usd.toFixed(2)} of $${opts.ceiling}.`);
+  } else {
+    out(`Done. ${generated} generated, ${skipped} skipped (existing). Billed against your Claude Code Max plan — check usage at claude.com/settings/billing.`);
+  }
   out(`Output: ${outRoot}`);
   out(`Next: \`npx tsx scripts/promote-content.ts\` to install into src/content/.`);
   return 0;
@@ -567,7 +683,10 @@ async function main(argv: string[]): Promise<number> {
         "dry-run": { type: "boolean", default: false },
         validate: { type: "string" },
         force: { type: "boolean", default: false },
+        api: { type: "boolean", default: false },
+        "max-subtopics": { type: "string" },
         "spend-ceiling": { type: "string" },
+        model: { type: "string", default: "claude-opus-4-7" },
         help: { type: "boolean", default: false },
       },
       allowPositionals: false,
@@ -599,12 +718,23 @@ async function main(argv: string[]): Promise<number> {
     err(`Invalid --spend-ceiling: ${ceilingRaw}`);
     return 2;
   }
-  // Subtopic is optional now — omitted means "generate every subtopic".
+  let maxSubtopics = 0;
+  if (typeof v["max-subtopics"] === "string") {
+    maxSubtopics = Number(v["max-subtopics"]);
+    if (!Number.isInteger(maxSubtopics) || maxSubtopics < 0) {
+      err(`Invalid --max-subtopics: ${v["max-subtopics"]} (expect non-negative integer)`);
+      return 2;
+    }
+  }
+  // Subtopic is optional — omitted means "generate every subtopic".
   return runReal({
     subtopic: typeof v.subtopic === "string" ? v.subtopic : null,
     outline: (v.outline as string) ?? "scripts/nasaa-outline.md",
     ceiling,
     force: Boolean(v.force),
+    useApi: Boolean(v.api),
+    maxSubtopics,
+    model: (v.model as string) ?? "claude-opus-4-7",
   });
 }
 

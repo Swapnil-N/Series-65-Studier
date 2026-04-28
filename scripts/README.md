@@ -54,31 +54,58 @@ invalid (with a Zod error message or citation mismatch list on stderr).
 Works for cards arrays, question arrays, and single lesson objects — the
 shape is auto-detected.
 
-### Real run
+### Real run — pick a backend
+
+The generator has two backends. Pick based on which Anthropic billing
+bucket you want to use:
+
+| Backend | Flag | Auth | Billing |
+|---|---|---|---|
+| Claude Code CLI (default) | (none) | Local `claude` login | **Max plan** |
+| API SDK | `--api` | `ANTHROPIC_API_KEY` | API account (per-token) |
+
+**Default — Claude Code CLI / Max-billed:**
 
 ```
-# One subtopic
-ANTHROPIC_API_KEY=sk-... npx tsx scripts/generate-content.ts --subtopic 1.1
+# One subtopic (sanity check)
+unset ANTHROPIC_API_KEY     # so it doesn't override the CLI's subscription auth
+npx tsx scripts/generate-content.ts --subtopic 1.1
 
-# All 37 subtopics (use after the one-subtopic test passes)
-ANTHROPIC_API_KEY=sk-... npx tsx scripts/generate-content.ts
+# All 37 subtopics, capped at 5 per run to spread across the weekly cap
+npx tsx scripts/generate-content.ts --max-subtopics 5
 ```
 
-The generator:
+The script aborts immediately if `ANTHROPIC_API_KEY` is in the environment
+when you're NOT passing `--api` — that env var would otherwise bleed into
+the spawned `claude` CLI's auth precedence and silently move billing to
+your API account. Either `unset` it, or pass `--api` to opt in explicitly.
 
-- Calls Opus 4.7 with prompt caching on the system prompt + outline block.
+**API mode:**
+
+```
+ANTHROPIC_API_KEY=sk-... npx tsx scripts/generate-content.ts --api --subtopic 1.1
+ANTHROPIC_API_KEY=sk-... npx tsx scripts/generate-content.ts --api
+```
+
+API mode also enables prompt caching on the system prompt + outline block
+(the CLI doesn't expose `cache_control`), and the spend ceiling is
+enforced in dollars (`--spend-ceiling` / `SPEND_CEILING_USD`).
+
+**Common to both:**
+
+- Calls Opus 4.7 (override with `--model <id>`).
 - Validates each response with Zod + allowlist, retries parse failures up
   to 2× and validation failures once.
 - Dedupes cards / questions per subtopic by stable hashed IDs
   (`src/lib/ids.ts`).
-- Tracks spend; aborts before crossing `--spend-ceiling` /
-  `SPEND_CEILING_USD`.
 - Hard-stops if any subtopic's citation mismatch rate exceeds 10% — fix
   the allowlist or refine the prompt and re-run that subtopic with
   `--force --subtopic <id>`.
 - Writes outputs under **`scripts/out/<topic-slug>/<subtopic-id>-<slug>/`**:
   `lesson.ts`, `cards.ts`, `questions.ts`, `manifest.json`.
 - Skips already-generated subtopics unless `--force`.
+- On rate-limit (CLI) or API error: writes the partial aggregator and
+  exits 1. Re-run later — already-generated subtopics auto-skip.
 
 ### Promotion: scripts/out → src/content
 

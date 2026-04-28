@@ -75,25 +75,21 @@ describe("generate-content CLI", () => {
     ).toBe(true);
   });
 
-  it("real-run path requires ANTHROPIC_API_KEY", () => {
-    // Strip both the env var AND any .env file that dotenv might find by
-    // pointing CWD at /tmp where there's no .env.
+  it("--api mode requires ANTHROPIC_API_KEY", () => {
     const r = run(
-      ["--subtopic", "1.1"],
+      ["--subtopic", "1.1", "--api"],
       { ANTHROPIC_API_KEY: "" },
     );
     expect(r.status).toBe(1);
     const combined = `${r.stdout}\n${r.stderr}`;
-    expect(/ANTHROPIC_API_KEY not set/i.test(combined)).toBe(true);
+    expect(/--api requires ANTHROPIC_API_KEY/i.test(combined)).toBe(true);
   });
 
-  it("real-run path with a fake key reaches the API and gets rejected (proves the SDK is wired)", () => {
+  it("--api mode with a fake key reaches the SDK and gets rejected (proves the SDK is wired)", () => {
     const r = run(
-      ["--subtopic", "1.1", "--spend-ceiling", "1"],
+      ["--subtopic", "1.1", "--api", "--spend-ceiling", "1"],
       { ANTHROPIC_API_KEY: "sk-fake-not-a-real-key" },
     );
-    // Either authentication_error from the API OR a network error in CI —
-    // either way exits non-zero and proves the SDK code path runs.
     expect(r.status).not.toBe(0);
     const combined = `${r.stdout}\n${r.stderr}`;
     // Pattern A: real API responded with auth error.
@@ -103,5 +99,19 @@ describe("generate-content CLI", () => {
         combined,
       ),
     ).toBe(true);
+  });
+
+  it("default (CLI) mode aborts when ANTHROPIC_API_KEY is set, to avoid surprise API charges", () => {
+    // Without --api, an exported ANTHROPIC_API_KEY would otherwise bleed into
+    // the spawned claude CLI's auth precedence. Script refuses to run in that
+    // configuration so the user explicitly opts in to API billing via --api.
+    const r = run(
+      ["--subtopic", "1.1"],
+      { ANTHROPIC_API_KEY: "sk-some-real-key" },
+    );
+    expect(r.status).toBe(1);
+    const combined = `${r.stdout}\n${r.stderr}`;
+    expect(/ANTHROPIC_API_KEY is set/i.test(combined)).toBe(true);
+    expect(/--api/i.test(combined)).toBe(true);
   });
 });

@@ -13,43 +13,57 @@ The real NASAA outline is in (`scripts/nasaa-outline.md`, 4 topics, 37 subtopics
 
 ## Phase 5 — content generation (your run)
 
-### Pre-flight
+### Pick a backend
 
-```bash
-npm install --save-dev @anthropic-ai/sdk dotenv
-export ANTHROPIC_API_KEY=sk-ant-...
-# optional override; default ceiling = $200
-export SPEND_CEILING_USD=200
-```
+The generator now supports two billing paths:
 
-The generator file currently exits with an "install SDK" message when not in `--dry-run` / `--validate` mode (intentional — keeps the script testable without the dep). Before a real run, you'll need to wire the actual `@anthropic-ai/sdk` Messages call into the bottom of `scripts/generate-content.ts` `main()`. Specifically the section flagged in `scripts/README.md` Handoff section. The prompt rendering, Zod validation, citation-allowlist check, and outline parser are all already there and tested.
+| Backend | Default? | Auth | Billed against |
+|---|---|---|---|
+| Claude Code CLI | yes | local `claude` login | Max plan |
+| @anthropic-ai/sdk | `--api` flag | `ANTHROPIC_API_KEY` | API account |
 
-### Sanity walk
+You said no separate API spend — so the **default Claude Code CLI** path is
+what you want. Make sure no `ANTHROPIC_API_KEY` is in your env (the script
+aborts if one is set without `--api` to avoid surprise charges).
 
-1. **Dry-run one subtopic** to confirm the prompts look right:
+### Sanity walk (Max-billed default)
+
+1. **Dry-run one subtopic** to confirm the prompts look right (no backend call):
    ```bash
    npx tsx scripts/generate-content.ts --dry-run --subtopic 1.1
    ```
-2. **Validate fixtures still pass** (they do — included in `npm test`):
+2. **Validate fixtures still pass** (covered by `npm test`):
    ```bash
    npx tsx scripts/generate-content.ts --validate scripts/fixtures/good-cards.json
    ```
-3. **Real run, one subtopic** to validate the API path + cost shape:
+3. **One real subtopic** via Claude Code CLI:
    ```bash
+   unset ANTHROPIC_API_KEY    # if any
    npx tsx scripts/generate-content.ts --subtopic 1.1
    ```
-   Inspect `scripts/out/1.1-basic-economic-concepts/{lesson,cards,questions}.ts` and `manifest.json`. Spot-check 5 cards and 5 questions for accuracy. If good, proceed.
-4. **Full run** (no `--subtopic` flag) — generates all 37. Watch the spend tracker. Abort if anything looks wrong; the manifest preserves IDs for re-runs.
+   The script will spawn `claude -p` 3 times (lesson + cards + questions),
+   check usage at https://claude.com/settings/billing afterwards, and inspect
+   `scripts/out/topic-1-econ/1.1-basic-economic-concepts/`. Spot-check 5
+   cards and 5 questions for accuracy.
+4. **Spread across the weekly cap.** The Max plan has a weekly compute-hour
+   ceiling that 37 × 3 Opus calls may exceed in one go. Use `--max-subtopics`:
+   ```bash
+   # First batch of 5 today; auto-skips any that already exist on next run
+   npx tsx scripts/generate-content.ts --max-subtopics 5
+   ```
+   If a rate limit hits mid-run, the script writes a partial aggregator and
+   exits 1 with the message "Saved progress so far. Re-run later". The
+   manifest preserves stable IDs across runs.
 
-### Spend estimate
+### Cost framing
 
-37 subtopics × 3 prompts each (lesson + cards + questions) = **111 API calls**. Per call:
-- Input: ~1 KB outline block + ~1.5 KB system prompt + cached outline (cache hits cheap)
-- Output: ~3-5 KB JSON
+**Default (CLI / Max):** burns through your Max plan's weekly compute-hour
+allotment. Anthropic doesn't publish exact thresholds, but Opus is heavy —
+expect 5-10 large subtopics per day before the weekly cap warns. Plan for
+4-7 days of staggered runs.
 
-At Opus 4.7 list pricing (~$15/M input, $75/M output) without caching, ~$30-60 ballpark. With prompt caching on the system prompt + the full outline block (cache_control: ephemeral as the script is set up to do), expect **$15-30 total**. The script's $200 ceiling is generous.
-
-If you want to dry-run cost first: temporarily set `SPEND_CEILING_USD=5` and watch where it bails.
+**Alternative (`--api`):** ~$15-30 total for the corpus with prompt caching
+on (cache_control plumbed in API mode only). $200 default ceiling.
 
 ## Citation allowlist — needs a real review
 
