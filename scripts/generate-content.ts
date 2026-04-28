@@ -70,6 +70,23 @@ Examples:
 const out = (s: string): void => void process.stdout.write(s + "\n");
 const err = (s: string): void => void process.stderr.write(s + "\n");
 
+// Timestamp helpers — put HH:MM:SS in front of progress lines so a long
+// run is easy to scan, and a relative HH:MM elapsed in front of nested
+// "still working" lines so silence-during-call doesn't feel like a hang.
+function ts(): string {
+  const d = new Date();
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `[${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}]`;
+}
+function fmtElapsed(ms: number): string {
+  const sec = Math.floor(ms / 1000);
+  if (sec < 60) return `${sec}s`;
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  return `${m}m${String(s).padStart(2, "0")}s`;
+}
+const log = (s: string): void => out(`${ts()} ${s}`);
+
 interface Subtopic { id: string; title: string; outlineText: string }
 
 export function parseOutline(md: string): Subtopic[] {
@@ -375,13 +392,17 @@ async function callWithRetries<T>(
   prompt: string,
   validate: (data: unknown) => { ok: true; value: T } | { ok: false; reason: string },
   spend: SpendTracker,
-): Promise<{ value: T; inputTokens: number; outputTokens: number }> {
+  phase: string,
+): Promise<{ value: T; inputTokens: number; outputTokens: number; elapsedMs: number }> {
   const hints: string[] = [];
   let lastErr = "";
+  const startedAt = Date.now();
   for (let attempt = 0; attempt < 3; attempt++) {
     if (spend.ceiling > 0 && spend.usd >= spend.ceiling) {
       throw new Error(`Spend ceiling reached ($${spend.usd.toFixed(2)} / $${spend.ceiling}) — aborting before next call.`);
     }
+    log(`  → ${phase} ${attempt === 0 ? "starting" : `retry ${attempt}/2`}…`);
+    const callStart = Date.now();
     let result: CallResult;
     try { result = await backend.call(prompt, hints); }
     catch (e) {
@@ -390,6 +411,7 @@ async function callWithRetries<T>(
       // caller can checkpoint and exit cleanly.
       if (msg.startsWith("[RATE LIMIT]")) throw e;
       lastErr = msg;
+      log(`  ✗ ${phase} call failed (${fmtElapsed(Date.now() - callStart)}): ${msg.slice(0, 100)}`);
       hints.push(`Previous response failed JSON parse: ${lastErr}. Return ONLY valid JSON matching the requested shape.`);
       continue;
     }
@@ -397,8 +419,15 @@ async function callWithRetries<T>(
     spend.outputTokens += result.outputTokens;
     if (spend.ceiling > 0) spend.usd += priceFor(result.inputTokens, result.outputTokens);
     const v = validate(result.data);
-    if (v.ok) return { value: v.value, inputTokens: result.inputTokens, outputTokens: result.outputTokens };
+    if (v.ok) {
+      const tokenInfo = result.outputTokens > 0
+        ? ` · ${result.inputTokens} in / ${result.outputTokens} out tokens`
+        : "";
+      log(`  ✓ ${phase} done in ${fmtElapsed(Date.now() - callStart)}${tokenInfo}`);
+      return { value: v.value, inputTokens: result.inputTokens, outputTokens: result.outputTokens, elapsedMs: Date.now() - startedAt };
+    }
     lastErr = v.reason;
+    log(`  ⚠ ${phase} schema mismatch (${fmtElapsed(Date.now() - callStart)}): ${v.reason.slice(0, 100)}`);
     hints.push(`Previous response failed schema validation: ${v.reason}. Return ONLY valid JSON matching the requested shape.`);
   }
   throw new Error(`Failed after 3 attempts: ${lastErr}`);
@@ -450,7 +479,7 @@ async function generateOne(
   const dir = path.join(outRoot, topicSlug(entry.topicNum), `${entry.subtopicId}-${slug}`);
   const manifestPath = path.join(dir, "manifest.json");
   if (!force && fs.existsSync(dir) && fs.existsSync(manifestPath)) {
-    out(`[${entry.subtopicId}] ${entry.title} — already generated (use --force to regenerate)`);
+    log(`↷ [${entry.subtopicId}] ${entry.title} — already generated (use --force to regenerate)`);
     return { skipped: true, mismatchRate: 0 };
   }
   const priorManifest = loadManifest(manifestPath);
@@ -468,19 +497,19 @@ async function generateOne(
     (d) => {
       const r = LessonSchema.safeParse(d);
       return r.success ? { ok: true as const, value: r.data } : { ok: false as const, reason: r.error.message };
-    }, spend);
+    }, spend, "lesson");
   // Cards
   const cardsRes = await callWithRetries(backend, renderCardsPrompt(promptInput),
     (d) => {
       const r = CardsArraySchema.safeParse(d);
       return r.success ? { ok: true as const, value: r.data } : { ok: false as const, reason: r.error.message };
-    }, spend);
+    }, spend, "cards");
   // Questions
   const questionsRes = await callWithRetries(backend, renderQuestionsPrompt(promptInput),
     (d) => {
       const r = QuestionsArraySchema.safeParse(d);
       return r.success ? { ok: true as const, value: r.data } : { ok: false as const, reason: r.error.message };
-    }, spend);
+    }, spend, "questions");
 
   // Stable IDs: rehydrate from prior manifest if normalized text matches.
   const priorCardIds = priorIds("cards");
@@ -551,12 +580,16 @@ async function generateOne(
   };
   fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2), "utf8");
 
+  const totalElapsed = lessonRes.elapsedMs + cardsRes.elapsedMs + questionsRes.elapsedMs;
   const callSpend = priceFor(
     lessonRes.inputTokens + cardsRes.inputTokens + questionsRes.inputTokens,
     lessonRes.outputTokens + cardsRes.outputTokens + questionsRes.outputTokens,
   );
-  out(`[${entry.subtopicId}] ${entry.title} ✓ (${cardsFinal.length} cards · ${questionsFinal.length} questions · $${callSpend.toFixed(2)} · running $${spend.usd.toFixed(2)} / $${spend.ceiling})`);
-  if (mismatches > 0) out(`  ⚠ dropped ${mismatches} item(s) with disallowed citations`);
+  const dollarFragment = spend.ceiling > 0
+    ? ` · $${callSpend.toFixed(2)} (running $${spend.usd.toFixed(2)} / $${spend.ceiling})`
+    : "";
+  log(`✓ [${entry.subtopicId}] complete in ${fmtElapsed(totalElapsed)} — ${cardsFinal.length} cards · ${questionsFinal.length} questions${dollarFragment}`);
+  if (mismatches > 0) log(`  ⚠ dropped ${mismatches} item(s) with disallowed citations`);
   return { skipped: false, mismatchRate };
 }
 
@@ -638,13 +671,24 @@ async function runReal(opts: {
     usd: 0,
     ceiling: opts.useApi ? opts.ceiling : 0,
   };
+  const runStart = Date.now();
+  log(`Starting generation: ${target.length} subtopic${target.length === 1 ? "" : "s"} planned, ${opts.maxSubtopics > 0 ? `cap ${opts.maxSubtopics}` : "no cap"}.`);
   let generated = 0;
   let skipped = 0;
+  let i = 0;
   for (const entry of target) {
+    i += 1;
     if (opts.maxSubtopics > 0 && generated >= opts.maxSubtopics) {
-      out(`Reached --max-subtopics ${opts.maxSubtopics}; stopping. Re-run later to continue (existing subtopics skipped automatically).`);
+      log(`Reached --max-subtopics ${opts.maxSubtopics}; stopping. Re-run later to continue (existing subtopics auto-skipped).`);
       break;
     }
+    // Per-subtopic banner: position in the run + ETA based on rolling average.
+    const elapsed = Date.now() - runStart;
+    const avgPer = generated > 0 ? elapsed / generated : 0;
+    const remaining = (opts.maxSubtopics > 0 ? opts.maxSubtopics - generated : target.length - i + 1);
+    const etaFragment = avgPer > 0 ? ` · ETA ~${fmtElapsed(avgPer * remaining)}` : "";
+    log("");
+    log(`▶ [${i}/${target.length}] ${entry.subtopicId} — ${entry.title}${etaFragment}`);
     try {
       const result = await generateOne(backend, entry, outRoot, allow, spend, opts.force);
       if (result.skipped) skipped += 1; else generated += 1;
@@ -661,11 +705,12 @@ async function runReal(opts: {
     }
   }
   writeAggregator(outRoot);
-  out("");
+  const wallElapsed = Date.now() - runStart;
+  log("");
   if (opts.useApi) {
-    out(`Done. ${generated} generated, ${skipped} skipped (existing). Tokens: ${spend.inputTokens} in / ${spend.outputTokens} out. Spend: $${spend.usd.toFixed(2)} of $${opts.ceiling}.`);
+    log(`Done in ${fmtElapsed(wallElapsed)}. ${generated} generated, ${skipped} skipped. Tokens: ${spend.inputTokens} in / ${spend.outputTokens} out. Spend: $${spend.usd.toFixed(2)} of $${opts.ceiling}.`);
   } else {
-    out(`Done. ${generated} generated, ${skipped} skipped (existing). Billed against your Claude Code Max plan — check usage at claude.com/settings/billing.`);
+    log(`Done in ${fmtElapsed(wallElapsed)}. ${generated} generated, ${skipped} skipped. Billed against your Claude Code Max plan — check usage at claude.com/settings/billing.`);
   }
   out(`Output: ${outRoot}`);
   out(`Next: \`npx tsx scripts/promote-content.ts\` to install into src/content/.`);
