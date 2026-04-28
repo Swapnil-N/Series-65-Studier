@@ -21,3 +21,8 @@ tailwind.config.d.ts
 .env
 .env.local
 .env.*.local
+
+# Generator output — generated content lives at scripts/out/ and is moved to
+# src/content/ via scripts/promote-content.ts. Don't commit either side of
+# the staging path.
+scripts/out/
