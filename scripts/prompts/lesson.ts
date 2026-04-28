@@ -10,11 +10,9 @@ export interface SubtopicPromptInput {
 }
 
 export const LESSON_JSON_SHAPE = `{
-  "subtopicId": "<same as requested id>",
   "title": "<human title>",
   "bodyMd": "<1000-1500 words of GitHub-flavored markdown; include at least one worked example and any relevant formulas in KaTeX inline ($...$) or block ($$...$$) form>",
-  "citations": [ { "source": "NASAA|SEC|IA_ACT|NASAA_MODEL_RULE", "ref": "<exact allowlist value>" } ],
-  "reviewed": false
+  "citations": [ { "source": "NASAA|SEC|IA_ACT|NASAA_MODEL_RULE", "ref": "<exact allowlist value>" } ]
 }`;
 
 export function renderLessonPrompt(input: SubtopicPromptInput): string {
@@ -35,7 +33,7 @@ export function renderLessonPrompt(input: SubtopicPromptInput): string {
     `- Every substantive claim must be traceable to a citation listed in the 'citations' array.`,
     `- Use 'citations[].source' ∈ {"NASAA", "SEC", "IA_ACT", "NASAA_MODEL_RULE"} and 'ref' = the exact allowlist entry.`,
     `- Do NOT invent citations. If uncertain, omit the claim.`,
-    `- Set reviewed=false.`,
+    `- Output ONLY the three fields shown in the JSON shape (title/bodyMd/citations). Do NOT include 'subtopicId' or 'reviewed' — the generator assigns them after parsing.`,
     ``,
     `Return a single JSON object (no surrounding prose, no code fences) matching this shape:`,
     LESSON_JSON_SHAPE,

@@ -31,6 +31,9 @@ import { config as dotenvConfig } from "dotenv";
 import {
   CardsArraySchema,
   LessonSchema,
+  LLMCardsArraySchema,
+  LLMLessonSchema,
+  LLMQuestionsArraySchema,
   QuestionsArraySchema,
 } from "../src/lib/zodSchemas.ts";
 import { cardId, normalizeText, questionId } from "../src/lib/ids.ts";
@@ -492,22 +495,24 @@ async function generateOne(
 
   const promptInput = { id: entry.subtopicId, title: entry.title, outlineText: entry.outlineText };
 
-  // Lesson
+  // Validate against the LLM (relaxed) schemas — id/subtopicId/reviewed are
+  // backfilled by the script post-validation, so the model isn't asked for
+  // them and they're optional in the LLM schemas. Strict CardSchema/
+  // QuestionSchema/LessonSchema is what the app's loadContent validates
+  // against later.
   const lessonRes = await callWithRetries(backend, renderLessonPrompt(promptInput),
     (d) => {
-      const r = LessonSchema.safeParse(d);
+      const r = LLMLessonSchema.safeParse(d);
       return r.success ? { ok: true as const, value: r.data } : { ok: false as const, reason: r.error.message };
     }, spend, "lesson");
-  // Cards
   const cardsRes = await callWithRetries(backend, renderCardsPrompt(promptInput),
     (d) => {
-      const r = CardsArraySchema.safeParse(d);
+      const r = LLMCardsArraySchema.safeParse(d);
       return r.success ? { ok: true as const, value: r.data } : { ok: false as const, reason: r.error.message };
     }, spend, "cards");
-  // Questions
   const questionsRes = await callWithRetries(backend, renderQuestionsPrompt(promptInput),
     (d) => {
-      const r = QuestionsArraySchema.safeParse(d);
+      const r = LLMQuestionsArraySchema.safeParse(d);
       return r.success ? { ok: true as const, value: r.data } : { ok: false as const, reason: r.error.message };
     }, spend, "questions");
 

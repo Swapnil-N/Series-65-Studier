@@ -12,8 +12,7 @@ export const QUESTIONS_JSON_SHAPE = `[
     "answerIndex": 0,
     "rationale": "<2–5 sentences explaining why the correct choice is right AND why the top distractor is wrong>",
     "citation": { "source": "NASAA|SEC|IA_ACT|NASAA_MODEL_RULE", "ref": "<exact allowlist value>" },
-    "difficulty": "easy|medium|hard",
-    "reviewed": false
+    "difficulty": "easy|medium|hard"
   }
 ]`;
 
@@ -45,8 +44,7 @@ export function renderQuestionsPrompt(input: SubtopicPromptInput): string {
     `- Rationale (2–5 sentences) must explain why the key is correct AND identify the top distractor and why it is wrong.`,
     `- Each question carries a 'citation' with 'source' ∈ {"NASAA", "SEC", "IA_ACT", "NASAA_MODEL_RULE"} and 'ref' equal to an exact allowlist entry. Do not invent citations.`,
     `- Avoid repetition: normalized 'stem' text must be unique within the batch.`,
-    `- Omit 'id' and 'subtopicId' — the generator assigns them from stable hashes of the normalized stem.`,
-    `- Set reviewed=false on every question.`,
+    `- Output ONLY the seven fields shown in the JSON shape (stem/choices/answerIndex/rationale/citation/difficulty). Do NOT include 'id', 'subtopicId', or 'reviewed' — the generator assigns them after parsing.`,
     ``,
     `Return a single JSON array (no surrounding prose, no code fences) matching this shape:`,
     QUESTIONS_JSON_SHAPE,

@@ -9,8 +9,7 @@ export const CARDS_JSON_SHAPE = `[
   {
     "front": "<concise prompt, question, or cue — 1 sentence or short phrase>",
     "back": "<concise, self-contained answer — 1–3 sentences>",
-    "citation": { "source": "NASAA|SEC|IA_ACT|NASAA_MODEL_RULE", "ref": "<exact allowlist value>" },
-    "reviewed": false
+    "citation": { "source": "NASAA|SEC|IA_ACT|NASAA_MODEL_RULE", "ref": "<exact allowlist value>" }
   }
 ]`;
 
@@ -35,8 +34,7 @@ export function renderCardsPrompt(input: SubtopicPromptInput): string {
     `- Cover definitions, distinctions (e.g., X vs Y), numeric/threshold facts, and one-step calculations where relevant.`,
     `- Never include the answer in the question (no "what is X, which means…" giveaways).`,
     `- Do not duplicate 'front' text within the deck (normalized comparison: lowercased, punctuation-stripped).`,
-    `- Omit 'id' and 'subtopicId' — the generator assigns them from stable hashes of the normalized front.`,
-    `- Set reviewed=false on every card.`,
+    `- Output ONLY the four fields shown in the JSON shape (front/back/citation). Do NOT include 'id', 'subtopicId', or 'reviewed' — the generator assigns them after parsing.`,
     ``,
     `Return a single JSON array (no surrounding prose, no code fences) matching this shape:`,
     CARDS_JSON_SHAPE,
