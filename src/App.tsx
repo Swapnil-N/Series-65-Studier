@@ -5,6 +5,7 @@ import Cards from "./routes/Cards";
 import Quiz from "./routes/Quiz";
 import Mock from "./routes/Mock";
 import Missed from "./routes/Missed";
+import Review from "./routes/Review";
 import Reference from "./routes/Reference";
 import Saved from "./routes/Saved";
 import Settings from "./routes/Settings";
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/mock" element={<Mock />} />
           <Route path="/missed" element={<Missed />} />
+          <Route path="/review" element={<Review />} />
           <Route path="/reference" element={<Reference />} />
           <Route path="/saved" element={<Saved />} />
           <Route path="/settings" element={<Settings />} />

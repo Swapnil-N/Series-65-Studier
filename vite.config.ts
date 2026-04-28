@@ -3,11 +3,11 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
 
-// TODO: When GitHub Pages is enabled for this repo, `base` may need to be
-// "/Series-65-Studier/" unless the site is served from a custom domain or
-// the `gh-pages` branch is configured as the root.
+// GitHub Pages serves project sites at https://<user>.github.io/<repo>/, so
+// base must include the repo path. Confirmed by repo owner: deploys to
+// swapnil-n.github.io/Series-65-Studier/.
 export default defineConfig({
-  base: "/",
+  base: "/Series-65-Studier/",
   build: {
     // Split the biggest third-party trees into named vendor chunks so the
     // app's own code can update without busting a 1.2 MB monolith. Each

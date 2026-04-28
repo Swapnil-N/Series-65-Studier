@@ -75,13 +75,33 @@ describe("generate-content CLI", () => {
     ).toBe(true);
   });
 
-  it("exercises the spend-ceiling path and prints the install-SDK message", () => {
+  it("real-run path requires ANTHROPIC_API_KEY", () => {
+    // Strip both the env var AND any .env file that dotenv might find by
+    // pointing CWD at /tmp where there's no .env.
+    const r = run(
+      ["--subtopic", "1.1"],
+      { ANTHROPIC_API_KEY: "" },
+    );
+    expect(r.status).toBe(1);
+    const combined = `${r.stdout}\n${r.stderr}`;
+    expect(/ANTHROPIC_API_KEY not set/i.test(combined)).toBe(true);
+  });
+
+  it("real-run path with a fake key reaches the API and gets rejected (proves the SDK is wired)", () => {
     const r = run(
       ["--subtopic", "1.1", "--spend-ceiling", "1"],
-      { ANTHROPIC_API_KEY: "dummy" },
+      { ANTHROPIC_API_KEY: "sk-fake-not-a-real-key" },
     );
-    expect(r.status).toBe(0);
-    expect(r.stdout).toMatch(/Install `@anthropic-ai\/sdk`/);
-    expect(r.stdout).toMatch(/spend-ceiling acknowledged: \$1/);
+    // Either authentication_error from the API OR a network error in CI —
+    // either way exits non-zero and proves the SDK code path runs.
+    expect(r.status).not.toBe(0);
+    const combined = `${r.stdout}\n${r.stderr}`;
+    // Pattern A: real API responded with auth error.
+    // Pattern B: connection refused / DNS error in restricted CI.
+    expect(
+      /authentication_error|invalid x-api-key|ENOTFOUND|ECONNREFUSED|getaddrinfo|fetch failed/i.test(
+        combined,
+      ),
+    ).toBe(true);
   });
 });

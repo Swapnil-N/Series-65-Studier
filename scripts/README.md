@@ -1,4 +1,4 @@
-# scripts/ — Content pipeline (Agent A3)
+# scripts/ — Content pipeline
 
 This directory owns the **one-shot** content generation for the Series 65
 Studier PWA. Everything that lives here is build-time tooling; nothing under
@@ -6,28 +6,28 @@ Studier PWA. Everything that lives here is build-time tooling; nothing under
 
 ## Files
 
-- `generate-content.ts` — the CLI (`--dry-run`, `--validate`, real run).
+- `generate-content.ts` — the generator CLI (dry-run, validate, real run).
+- `promote-content.ts` — moves `scripts/out/*` into `src/content/` and
+  regenerates the aggregator.
 - `prompts/{lesson,cards,questions}.ts` — renders the per-subtopic prompts.
-- `nasaa-outline.md` — authoritative outline. `##` = topic, `###` = subtopic.
-- `citation-allowlist.json` — enumerates valid `source` + `ref` strings.
+- `nasaa-outline.md` — authoritative outline (auto-derived from the
+  `Series-65-Outline.pdf` source). `##` = topic, `###` = subtopic.
+- `citation-allowlist.json` — 210 valid `source` + `ref` strings the
+  generator may emit; everything else is dropped.
+- `Series-65-Outline.pdf` — official NASAA source (eff. June 12, 2023).
 - `fixtures/` — tiny inputs used by `generate-content.test.ts`.
 
 ## Prerequisites
 
 - Node 20+.
-- `tsx` runner: already available via `npx tsx` (devDep cached in
-  `node_modules/.bin` once any command invokes it).
-- `zod` (already a dependency).
-- **Only required for a real run:** `npm install --save-dev @anthropic-ai/sdk`.
-  We intentionally do NOT list this dep yet — Phase 1.5 ships dry-run and
-  validation only.
+- `npm install` (pulls in `@anthropic-ai/sdk`, `dotenv`, `tsx`, `zod`).
 
 ## Env vars
 
 Copy `.env.example` to `.env` and fill in:
 
 ```
-ANTHROPIC_API_KEY=...   # required for real runs only
+ANTHROPIC_API_KEY=...   # required for real runs
 SPEND_CEILING_USD=200   # hard stop; configurable via --spend-ceiling too
 ```
 
@@ -54,28 +54,49 @@ invalid (with a Zod error message or citation mismatch list on stderr).
 Works for cards arrays, question arrays, and single lesson objects — the
 shape is auto-detected.
 
-### Real run (not enabled until the SDK is installed)
+### Real run
 
 ```
+# One subtopic
 ANTHROPIC_API_KEY=sk-... npx tsx scripts/generate-content.ts --subtopic 1.1
+
+# All 37 subtopics (use after the one-subtopic test passes)
+ANTHROPIC_API_KEY=sk-... npx tsx scripts/generate-content.ts
 ```
 
-Today this path prints an "install `@anthropic-ai/sdk`" message and exits 0.
-When wired up it will:
+The generator:
 
-- Stream Opus 4.7 requests per subtopic.
-- Validate each response with Zod + allowlist, retry parse failures up to 2×.
-- Dedupe cards / questions across subtopics by stable hashed IDs
+- Calls Opus 4.7 with prompt caching on the system prompt + outline block.
+- Validates each response with Zod + allowlist, retries parse failures up
+  to 2× and validation failures once.
+- Dedupes cards / questions per subtopic by stable hashed IDs
   (`src/lib/ids.ts`).
-- Track spend; abort before crossing `--spend-ceiling` /
+- Tracks spend; aborts before crossing `--spend-ceiling` /
   `SPEND_CEILING_USD`.
-- Write outputs under **`scripts/out/`** along with a `manifest.json`
-  recording the ID for every item. **Do not** write under `src/content/`
-  directly — A2 owns that path and runs the aggregator.
+- Hard-stops if any subtopic's citation mismatch rate exceeds 10% — fix
+  the allowlist or refine the prompt and re-run that subtopic with
+  `--force --subtopic <id>`.
+- Writes outputs under **`scripts/out/<topic-slug>/<subtopic-id>-<slug>/`**:
+  `lesson.ts`, `cards.ts`, `questions.ts`, `manifest.json`.
+- Skips already-generated subtopics unless `--force`.
+
+### Promotion: scripts/out → src/content
+
+```
+npx tsx scripts/promote-content.ts            # do it
+npx tsx scripts/promote-content.ts --dry-run  # preview what'd happen
+```
+
+Moves every generated subtopic dir into `src/content/`, regenerates
+`src/content/index.ts` so the app's `loadContent()` picks them up, and
+deletes the dev stub at `src/content/sample/` (use `--keep-stub` to
+override). Run `npm test && npm run build` after to confirm.
 
 ### ID stability + manifest
 
-Content IDs are stable 12-char SHA-1 hashes of `subtopicId + normalizedText`
-(see `src/lib/ids.ts`). A `manifest.json` is written alongside each run so
-that re-runs with `--force` preserve IDs wherever the normalized text still
-matches. This is what lets in-app user edits survive a regeneration.
+Content IDs are stable 12-char SHA-1 hashes prefixed with `c|` for cards
+and `q|` for questions over `subtopicId + normalizeText(text)` (see
+`src/lib/ids.ts`). A `manifest.json` is written alongside each generated
+subtopic so re-runs with `--force` preserve IDs wherever the normalized
+text still matches. This is what lets in-app user edits survive a
+regeneration.

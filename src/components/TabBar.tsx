@@ -13,6 +13,7 @@ const primary: Tab[] = [
 const moreLinks: Tab[] = [
   { to: "/mock", label: "Mock" },
   { to: "/missed", label: "Missed" },
+  { to: "/review", label: "Review queue" },
   { to: "/reference", label: "Reference" },
   { to: "/saved", label: "Saved" },
   { to: "/settings", label: "Settings" },

@@ -1,20 +1,35 @@
 // Series 65 Studier — content generation CLI (A3).
 //
-// Runs under `npx tsx`. Supports --dry-run (render prompts, no network) and
-// --validate (Zod + citation-allowlist). A real run requires the Anthropic
-// SDK, which is intentionally NOT a dependency of this repo yet; the script
-// prints install instructions and exits 0 in that path.
+// Runs under `npx tsx`. Three modes:
+//   - --dry-run: render prompts, no network.
+//   - --validate <file>: Zod + citation-allowlist check on a JSON file.
+//   - (default) real run: call the Anthropic API for one or all subtopics,
+//     write outputs to scripts/out/<topic-slug>/<subtopic-id>-<slug>/.
+//
+// Real run requires ANTHROPIC_API_KEY (env or .env). Spend-ceiling default
+// $200 — script aborts before exceeding it.
 
 import * as fs from "node:fs";
 import * as path from "node:path";
 import * as process from "node:process";
 import { parseArgs } from "node:util";
+import { webcrypto } from "node:crypto";
+
+// Polyfill Web Crypto on globalThis so ../src/lib/ids.ts (which uses
+// crypto.subtle.digest via the web standard) works in Node.
+if (!(globalThis as { crypto?: Crypto }).crypto) {
+  (globalThis as { crypto?: Crypto }).crypto = webcrypto as unknown as Crypto;
+}
+
+import Anthropic from "@anthropic-ai/sdk";
+import { config as dotenvConfig } from "dotenv";
 
 import {
   CardsArraySchema,
   LessonSchema,
   QuestionsArraySchema,
 } from "../src/lib/zodSchemas.ts";
+import { cardId, normalizeText, questionId } from "../src/lib/ids.ts";
 import { CARDS_JSON_SHAPE, renderCardsPrompt } from "./prompts/cards.ts";
 import { LESSON_JSON_SHAPE, renderLessonPrompt } from "./prompts/lesson.ts";
 import {
@@ -172,7 +187,376 @@ function runDryRun(subId: string, outlinePath: string): number {
   return 0;
 }
 
-function main(argv: string[]): number {
+// -----------------------------------------------------------------------------
+// Real run path — calls the Anthropic API.
+// -----------------------------------------------------------------------------
+
+const SYSTEM_PROMPT = `You are an expert NASAA Series 65 exam-prep author. \
+Produce factually accurate study material grounded in the supplied outline \
+and primary sources. Cite specific sections, rules, and acts (NASAA outline, \
+SEC, Investment Advisers Act of 1940, NASAA Model Rules). Return ONLY a \
+single JSON value matching the requested shape — no surrounding prose, no \
+code fences. Use plain ASCII apostrophes and quotes.`;
+
+const PRICE_INPUT_PER_M = 15; // USD/M tokens (Opus 4.7 cached input is much cheaper but we estimate worst-case)
+const PRICE_OUTPUT_PER_M = 75;
+
+interface SubtopicEntry {
+  subtopicId: string;
+  title: string;
+  outlineText: string;
+  topicNum: number; // 1..4
+}
+
+interface ManifestEntry { id: string; normalized: string; }
+interface SubtopicManifest {
+  subtopicId: string;
+  items: {
+    lessons: ManifestEntry[];
+    cards: ManifestEntry[];
+    questions: ManifestEntry[];
+  };
+}
+
+interface SpendTracker { inputTokens: number; outputTokens: number; usd: number; ceiling: number; }
+
+function slugify(s: string): string {
+  return s
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 60);
+}
+
+function topicSlug(topicNum: number): string {
+  return ["", "topic-1-econ", "topic-2-vehicles", "topic-3-recommendations", "topic-4-laws"][topicNum] ?? `topic-${topicNum}`;
+}
+
+function priceFor(input: number, output: number): number {
+  return (input / 1_000_000) * PRICE_INPUT_PER_M + (output / 1_000_000) * PRICE_OUTPUT_PER_M;
+}
+
+function parseAllSubtopics(outlinePath: string): SubtopicEntry[] {
+  const text = fs.readFileSync(outlinePath, "utf8");
+  const lines = text.split(/\r?\n/);
+  const out: SubtopicEntry[] = [];
+  let topicNum = 0;
+  let curId: string | null = null;
+  let curTitle = "";
+  let curBuf: string[] = [];
+  const flush = () => {
+    if (curId) {
+      out.push({
+        subtopicId: curId,
+        title: curTitle,
+        outlineText: curBuf.join("\n").trim(),
+        topicNum,
+      });
+    }
+    curId = null;
+    curTitle = "";
+    curBuf = [];
+  };
+  for (const raw of lines) {
+    const t = raw.replace(/\s+$/, "");
+    let m = /^##\s+(\d+)\.\s+(.+)$/.exec(t);
+    if (m) { flush(); topicNum = Number(m[1]); continue; }
+    m = /^###\s+(\d+\.\d+)\s+(.+)$/.exec(t);
+    if (m) { flush(); curId = m[1]; curTitle = m[2].trim(); continue; }
+    if (curId) curBuf.push(raw);
+  }
+  flush();
+  return out;
+}
+
+interface CallResult { data: unknown; inputTokens: number; outputTokens: number; }
+
+async function callMessage(
+  client: Anthropic,
+  prompt: string,
+  retryHints: string[] = [],
+): Promise<CallResult> {
+  const userParts: Array<{ type: "text"; text: string }> = [{ type: "text", text: prompt }];
+  for (const hint of retryHints) userParts.push({ type: "text", text: hint });
+  const resp = await client.messages.create({
+    model: "claude-opus-4-7",
+    max_tokens: 16000,
+    system: [
+      { type: "text", text: SYSTEM_PROMPT, cache_control: { type: "ephemeral" } },
+    ],
+    messages: [{ role: "user", content: userParts }],
+  });
+  const textBlock = resp.content.find((b) => b.type === "text");
+  const raw = textBlock && "text" in textBlock ? (textBlock.text as string) : "";
+  // Strip code fences if the model defied instructions.
+  const cleaned = raw.replace(/^```(?:json)?\s*/i, "").replace(/```\s*$/i, "").trim();
+  let data: unknown;
+  try { data = JSON.parse(cleaned); }
+  catch (e) { throw new Error(`JSON parse: ${(e as Error).message}\nRaw: ${raw.slice(0, 200)}`); }
+  return {
+    data,
+    inputTokens: resp.usage?.input_tokens ?? 0,
+    outputTokens: resp.usage?.output_tokens ?? 0,
+  };
+}
+
+async function callWithRetries<T>(
+  client: Anthropic,
+  prompt: string,
+  validate: (data: unknown) => { ok: true; value: T } | { ok: false; reason: string },
+  spend: SpendTracker,
+): Promise<{ value: T; inputTokens: number; outputTokens: number }> {
+  const hints: string[] = [];
+  let lastErr = "";
+  for (let attempt = 0; attempt < 3; attempt++) {
+    if (spend.usd >= spend.ceiling) {
+      throw new Error(`Spend ceiling reached ($${spend.usd.toFixed(2)} / $${spend.ceiling}) — aborting before next call.`);
+    }
+    let result: CallResult;
+    try { result = await callMessage(client, prompt, hints); }
+    catch (e) { lastErr = (e as Error).message; hints.push(`Previous response failed JSON parse: ${lastErr}. Return ONLY valid JSON matching the requested shape.`); continue; }
+    spend.inputTokens += result.inputTokens;
+    spend.outputTokens += result.outputTokens;
+    spend.usd += priceFor(result.inputTokens, result.outputTokens);
+    const v = validate(result.data);
+    if (v.ok) return { value: v.value, inputTokens: result.inputTokens, outputTokens: result.outputTokens };
+    lastErr = v.reason;
+    hints.push(`Previous response failed schema validation: ${v.reason}. Return ONLY valid JSON matching the requested shape.`);
+  }
+  throw new Error(`Failed after 3 attempts: ${lastErr}`);
+}
+
+function loadManifest(p: string): SubtopicManifest | null {
+  try {
+    if (!fs.existsSync(p)) return null;
+    return JSON.parse(fs.readFileSync(p, "utf8")) as SubtopicManifest;
+  } catch { return null; }
+}
+
+function dedupeBy<T>(items: T[], keyOf: (x: T) => string): T[] {
+  const seen = new Set<string>();
+  const out: T[] = [];
+  for (const it of items) {
+    const k = keyOf(it);
+    if (seen.has(k)) continue;
+    seen.add(k);
+    out.push(it);
+  }
+  return out;
+}
+
+interface AllowlistShape { [src: string]: string[]; }
+
+function citationOk(c: { source?: string; ref?: string }, allow: AllowlistShape): boolean {
+  if (!c.source || !c.ref) return false;
+  return Boolean(allow[c.source]?.includes(c.ref));
+}
+
+function tsModule(name: string, value: unknown, importLine: string): string {
+  return `${importLine}\n\nexport const ${name} = ${JSON.stringify(value, null, 2)} as const;\n`;
+}
+
+function tsModuleTyped(varName: string, typeName: string, value: unknown, importLine: string): string {
+  return `${importLine}\n\nexport const ${varName}: ${typeName} = ${JSON.stringify(value, null, 2)};\n`;
+}
+
+async function generateOne(
+  client: Anthropic,
+  entry: SubtopicEntry,
+  outRoot: string,
+  allow: AllowlistShape,
+  spend: SpendTracker,
+  force: boolean,
+): Promise<{ skipped: boolean; mismatchRate: number }> {
+  const slug = slugify(entry.title);
+  const dir = path.join(outRoot, topicSlug(entry.topicNum), `${entry.subtopicId}-${slug}`);
+  const manifestPath = path.join(dir, "manifest.json");
+  if (!force && fs.existsSync(dir) && fs.existsSync(manifestPath)) {
+    out(`[${entry.subtopicId}] ${entry.title} — already generated (use --force to regenerate)`);
+    return { skipped: true, mismatchRate: 0 };
+  }
+  const priorManifest = loadManifest(manifestPath);
+  const priorIds = (kind: "lessons" | "cards" | "questions") => {
+    const arr = priorManifest?.items[kind] ?? [];
+    const m = new Map<string, string>();
+    for (const e of arr) m.set(e.normalized, e.id);
+    return m;
+  };
+
+  const promptInput = { id: entry.subtopicId, title: entry.title, outlineText: entry.outlineText };
+
+  // Lesson
+  const lessonRes = await callWithRetries(client, renderLessonPrompt(promptInput),
+    (d) => {
+      const r = LessonSchema.safeParse(d);
+      return r.success ? { ok: true as const, value: r.data } : { ok: false as const, reason: r.error.message };
+    }, spend);
+  // Cards
+  const cardsRes = await callWithRetries(client, renderCardsPrompt(promptInput),
+    (d) => {
+      const r = CardsArraySchema.safeParse(d);
+      return r.success ? { ok: true as const, value: r.data } : { ok: false as const, reason: r.error.message };
+    }, spend);
+  // Questions
+  const questionsRes = await callWithRetries(client, renderQuestionsPrompt(promptInput),
+    (d) => {
+      const r = QuestionsArraySchema.safeParse(d);
+      return r.success ? { ok: true as const, value: r.data } : { ok: false as const, reason: r.error.message };
+    }, spend);
+
+  // Stable IDs: rehydrate from prior manifest if normalized text matches.
+  const priorCardIds = priorIds("cards");
+  const priorQuestionIds = priorIds("questions");
+  const cardsWithIds = await Promise.all(
+    cardsRes.value.map(async (c) => {
+      const norm = normalizeText(c.front);
+      const id = priorCardIds.get(norm) ?? (await cardId(entry.subtopicId, c.front));
+      return { ...c, id, subtopicId: entry.subtopicId, reviewed: false };
+    }),
+  );
+  const questionsWithIds = await Promise.all(
+    questionsRes.value.map(async (q) => {
+      const norm = normalizeText(q.stem);
+      const id = priorQuestionIds.get(norm) ?? (await questionId(entry.subtopicId, q.stem));
+      return { ...q, id, subtopicId: entry.subtopicId, reviewed: false };
+    }),
+  );
+  const lesson = { ...lessonRes.value, subtopicId: entry.subtopicId, reviewed: false };
+
+  // Dedupe + citation-allowlist filter.
+  const cardsDeduped = dedupeBy(cardsWithIds, (c) => c.id);
+  const questionsDeduped = dedupeBy(questionsWithIds, (q) => q.id);
+  let mismatches = 0;
+  let total = 0;
+  const filterByCitation = <T extends { citation: { source?: string; ref?: string } }>(arr: T[]): T[] => {
+    const kept: T[] = [];
+    for (const it of arr) {
+      total += 1;
+      if (citationOk(it.citation, allow)) kept.push(it);
+      else mismatches += 1;
+    }
+    return kept;
+  };
+  const cardsFinal = filterByCitation(cardsDeduped);
+  const questionsFinal = filterByCitation(questionsDeduped);
+  const lessonCitations = lesson.citations ?? [];
+  for (const c of lessonCitations) { total += 1; if (!citationOk(c, allow)) mismatches += 1; }
+  const mismatchRate = total === 0 ? 0 : mismatches / total;
+  if (mismatchRate > 0.1) {
+    throw new Error(`[${entry.subtopicId}] citation mismatch rate ${(mismatchRate * 100).toFixed(1)}% > 10% — expand scripts/citation-allowlist.json or refine the prompt. ${mismatches}/${total} mismatches.`);
+  }
+
+  // Write outputs.
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(
+    path.join(dir, "lesson.ts"),
+    tsModuleTyped("lesson", "Lesson", lesson, `import type { Lesson } from "../../../src/types/content";`),
+    "utf8",
+  );
+  fs.writeFileSync(
+    path.join(dir, "cards.ts"),
+    tsModuleTyped("cards", "Card[]", cardsFinal, `import type { Card } from "../../../src/types/content";`),
+    "utf8",
+  );
+  fs.writeFileSync(
+    path.join(dir, "questions.ts"),
+    tsModuleTyped("questions", "Question[]", questionsFinal, `import type { Question } from "../../../src/types/content";`),
+    "utf8",
+  );
+  const manifest: SubtopicManifest = {
+    subtopicId: entry.subtopicId,
+    items: {
+      lessons: [{ id: entry.subtopicId, normalized: normalizeText(lesson.title) }],
+      cards: cardsFinal.map((c) => ({ id: c.id, normalized: normalizeText(c.front) })),
+      questions: questionsFinal.map((q) => ({ id: q.id, normalized: normalizeText(q.stem) })),
+    },
+  };
+  fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2), "utf8");
+
+  const callSpend = priceFor(
+    lessonRes.inputTokens + cardsRes.inputTokens + questionsRes.inputTokens,
+    lessonRes.outputTokens + cardsRes.outputTokens + questionsRes.outputTokens,
+  );
+  out(`[${entry.subtopicId}] ${entry.title} ✓ (${cardsFinal.length} cards · ${questionsFinal.length} questions · $${callSpend.toFixed(2)} · running $${spend.usd.toFixed(2)} / $${spend.ceiling})`);
+  if (mismatches > 0) out(`  ⚠ dropped ${mismatches} item(s) with disallowed citations`);
+  return { skipped: false, mismatchRate };
+}
+
+function writeAggregator(outRoot: string): void {
+  // Scan outRoot for every <topicSlug>/<subtopicDir>/{lesson,cards,questions}.ts triple.
+  const lines: string[] = [];
+  const lessonImports: string[] = [];
+  const cardImports: string[] = [];
+  const questionImports: string[] = [];
+  if (!fs.existsSync(outRoot)) return;
+  const topicDirs = fs.readdirSync(outRoot).filter((d) => fs.statSync(path.join(outRoot, d)).isDirectory()).sort();
+  for (const td of topicDirs) {
+    const sps = fs.readdirSync(path.join(outRoot, td)).filter((d) => /^\d+\.\d+-/.test(d)).sort();
+    for (const sp of sps) {
+      const id = sp.match(/^(\d+\.\d+)/)?.[1];
+      if (!id) continue;
+      const v = id.replace(".", "_");
+      lessonImports.push(`import { lesson as lesson_${v} } from "./${td}/${sp}/lesson";`);
+      cardImports.push(`import { cards as cards_${v} } from "./${td}/${sp}/cards";`);
+      questionImports.push(`import { questions as questions_${v} } from "./${td}/${sp}/questions";`);
+    }
+  }
+  lines.push(`// Auto-generated by scripts/generate-content.ts on ${new Date().toISOString()}. Do not hand-edit.`);
+  lines.push(...lessonImports, ...cardImports, ...questionImports, "");
+  const lessonRefs = lessonImports.map((s) => s.match(/lesson_(\d+_\d+)/)?.[1] ? `lesson_${s.match(/lesson_(\d+_\d+)/)![1]}` : "").filter(Boolean);
+  const cardRefs = cardImports.map((s) => s.match(/cards_(\d+_\d+)/)?.[1] ? `...cards_${s.match(/cards_(\d+_\d+)/)![1]}` : "").filter(Boolean);
+  const questionRefs = questionImports.map((s) => s.match(/questions_(\d+_\d+)/)?.[1] ? `...questions_${s.match(/questions_(\d+_\d+)/)![1]}` : "").filter(Boolean);
+  lines.push(`export const allContent = {`);
+  lines.push(`  lessons: [${lessonRefs.join(", ")}],`);
+  lines.push(`  cards: [${cardRefs.join(", ")}],`);
+  lines.push(`  questions: [${questionRefs.join(", ")}],`);
+  lines.push(`};`);
+  fs.writeFileSync(path.join(outRoot, "index.generated.ts"), lines.join("\n") + "\n", "utf8");
+}
+
+async function runReal(opts: {
+  subtopic: string | null;
+  outline: string;
+  ceiling: number;
+  force: boolean;
+}): Promise<number> {
+  dotenvConfig();
+  const apiKey = process.env.ANTHROPIC_API_KEY;
+  if (!apiKey) {
+    err("ANTHROPIC_API_KEY not set. Add it to your environment or .env then re-run.");
+    return 1;
+  }
+  const allow = loadAllowlist() as AllowlistShape;
+  const all = parseAllSubtopics(opts.outline);
+  if (all.length === 0) { err(`No subtopics parsed from ${opts.outline}.`); return 1; }
+  const target = opts.subtopic ? all.filter((e) => e.subtopicId === opts.subtopic) : all;
+  if (target.length === 0) { err(`Subtopic ${opts.subtopic} not found in outline.`); return 1; }
+  const client = new Anthropic({ apiKey });
+  const outRoot = path.resolve("scripts/out");
+  fs.mkdirSync(outRoot, { recursive: true });
+  const spend: SpendTracker = { inputTokens: 0, outputTokens: 0, usd: 0, ceiling: opts.ceiling };
+  let generated = 0;
+  let skipped = 0;
+  for (const entry of target) {
+    try {
+      const result = await generateOne(client, entry, outRoot, allow, spend, opts.force);
+      if (result.skipped) skipped += 1; else generated += 1;
+    } catch (e) {
+      err(`[${entry.subtopicId}] ${(e as Error).message}`);
+      err("Aborting run. Re-run with --force <id> to retry a single subtopic.");
+      writeAggregator(outRoot); // best-effort partial aggregator
+      return 1;
+    }
+  }
+  writeAggregator(outRoot);
+  out("");
+  out(`Done. ${generated} generated, ${skipped} skipped (existing). Tokens: ${spend.inputTokens} in / ${spend.outputTokens} out. Spend: $${spend.usd.toFixed(2)} of $${spend.ceiling}.`);
+  out(`Output: ${outRoot}`);
+  out(`Next: \`npx tsx scripts/promote-content.ts\` to install into src/content/.`);
+  return 0;
+}
+
+async function main(argv: string[]): Promise<number> {
   let parsed;
   try {
     parsed = parseArgs({
@@ -208,24 +592,23 @@ function main(argv: string[]): number {
     return runDryRun(v.subtopic, (v.outline as string) ?? "scripts/nasaa-outline.md");
   }
 
-  // Real run path. Parse the spend ceiling so the env-var path is exercised
-  // even though we don't call the API in this phase.
+  // Real run path.
   const ceilingRaw = (v["spend-ceiling"] as string) ?? process.env.SPEND_CEILING_USD ?? "200";
   const ceiling = Number(ceilingRaw);
   if (!Number.isFinite(ceiling) || ceiling <= 0) {
     err(`Invalid --spend-ceiling: ${ceilingRaw}`);
     return 2;
   }
-  if (typeof v.subtopic !== "string" && !v.force) {
-    out(USAGE);
-    return 2;
-  }
-  out("Install `@anthropic-ai/sdk` and set `ANTHROPIC_API_KEY` before running for real. For now, only --dry-run and --validate are supported out of the box. See scripts/README.md.");
-  out(`(spend-ceiling acknowledged: $${ceiling})`);
-  return 0;
+  // Subtopic is optional now — omitted means "generate every subtopic".
+  return runReal({
+    subtopic: typeof v.subtopic === "string" ? v.subtopic : null,
+    outline: (v.outline as string) ?? "scripts/nasaa-outline.md",
+    ceiling,
+    force: Boolean(v.force),
+  });
 }
 
 const invoked = process.argv[1] ? path.resolve(process.argv[1]) : "";
 if (invoked.endsWith("generate-content.ts")) {
-  process.exit(main(process.argv.slice(2)));
+  void main(process.argv.slice(2)).then((code) => process.exit(code));
 }
