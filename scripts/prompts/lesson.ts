@@ -12,7 +12,7 @@ export interface SubtopicPromptInput {
 export const LESSON_JSON_SHAPE = `{
   "title": "<human title>",
   "bodyMd": "<1000-1500 words of GitHub-flavored markdown; include at least one worked example and any relevant formulas in KaTeX inline ($...$) or block ($$...$$) form>",
-  "citations": [ { "source": "NASAA|SEC|IA_ACT|NASAA_MODEL_RULE", "ref": "<exact allowlist value>" } ]
+  "citations": [ { "source": "NASAA|SEC|IA_ACT|NASAA_MODEL_RULE|OTHER", "ref": "<exact allowlist value>" } ]
 }`;
 
 export function renderLessonPrompt(input: SubtopicPromptInput): string {
@@ -31,7 +31,8 @@ export function renderLessonPrompt(input: SubtopicPromptInput): string {
     `- Structure: a short intro, two to four H3 section headings, a worked example, and a terse summary.`,
     `- Include formulas inline with KaTeX ($...$) or blocks ($$...$$) wherever numeric reasoning is taught.`,
     `- Every substantive claim must be traceable to a citation listed in the 'citations' array.`,
-    `- Use 'citations[].source' ∈ {"NASAA", "SEC", "IA_ACT", "NASAA_MODEL_RULE"} and 'ref' = the exact allowlist entry.`,
+    `- Use 'citations[].source' ∈ {"NASAA", "SEC", "IA_ACT", "NASAA_MODEL_RULE", "OTHER"} and 'ref' = the exact allowlist entry.`,
+    `- "OTHER" is the bucket for non-regulatory references — Federal Reserve, BLS, GAAP, PCAOB, SIPC, ratings agencies, IRS publications, etc. Use it when the natural authority isn't NASAA/SEC/IA-Act/Model-Rule.`,
     `- Do NOT invent citations. If uncertain, omit the claim.`,
     `- Output ONLY the three fields shown in the JSON shape (title/bodyMd/citations). Do NOT include 'subtopicId' or 'reviewed' — the generator assigns them after parsing.`,
     ``,

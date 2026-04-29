@@ -8,7 +8,8 @@ export type CitationSource =
   | "NASAA"
   | "SEC"
   | "IA_ACT"
-  | "NASAA_MODEL_RULE";
+  | "NASAA_MODEL_RULE"
+  | "OTHER";
 
 export type Citation = { source: CitationSource; ref: string };
 

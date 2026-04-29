@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const CitationSchema = z.object({
-  source: z.enum(["NASAA", "SEC", "IA_ACT", "NASAA_MODEL_RULE"]),
+  source: z.enum(["NASAA", "SEC", "IA_ACT", "NASAA_MODEL_RULE", "OTHER"]),
   ref: z.string().min(1),
 });
 

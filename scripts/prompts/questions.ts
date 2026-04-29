@@ -11,7 +11,7 @@ export const QUESTIONS_JSON_SHAPE = `[
     "choices": ["<A>", "<B>", "<C>", "<D>"],
     "answerIndex": 0,
     "rationale": "<2–5 sentences explaining why the correct choice is right AND why the top distractor is wrong>",
-    "citation": { "source": "NASAA|SEC|IA_ACT|NASAA_MODEL_RULE", "ref": "<exact allowlist value>" },
+    "citation": { "source": "NASAA|SEC|IA_ACT|NASAA_MODEL_RULE|OTHER", "ref": "<exact allowlist value>" },
     "difficulty": "easy|medium|hard"
   }
 ]`;
@@ -42,7 +42,8 @@ export function renderQuestionsPrompt(input: SubtopicPromptInput): string {
     `- Every question has exactly 4 choices. 'answerIndex' ∈ {0,1,2,3}.`,
     `- Distractors must be plausible and subject-relevant. Do not use "all of the above" / "none of the above".`,
     `- Rationale (2–5 sentences) must explain why the key is correct AND identify the top distractor and why it is wrong.`,
-    `- Each question carries a 'citation' with 'source' ∈ {"NASAA", "SEC", "IA_ACT", "NASAA_MODEL_RULE"} and 'ref' equal to an exact allowlist entry. Do not invent citations.`,
+    `- Each question carries a 'citation' with 'source' ∈ {"NASAA", "SEC", "IA_ACT", "NASAA_MODEL_RULE", "OTHER"} and 'ref' equal to an exact allowlist entry. Do not invent citations.`,
+    `- "OTHER" is the bucket for non-regulatory references — Federal Reserve, BLS, GAAP, PCAOB, SIPC, ratings agencies, IRS publications, etc. Use it when the natural authority isn't NASAA/SEC/IA-Act/Model-Rule.`,
     `- Avoid repetition: normalized 'stem' text must be unique within the batch.`,
     `- Output ONLY the seven fields shown in the JSON shape (stem/choices/answerIndex/rationale/citation/difficulty). Do NOT include 'id', 'subtopicId', or 'reviewed' — the generator assigns them after parsing.`,
     ``,
