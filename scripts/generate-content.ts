@@ -57,6 +57,10 @@ Options:
   --max-subtopics <n>     Stop after generating N subtopics this run (CLI mode
                           safety guard against the Max plan weekly cap).
                           Default 0 = unlimited.
+  --continue-on-mismatch  Drop items with disallowed citations and proceed,
+                          even if mismatch rate > 10%. Default = abort and
+                          print the rejected refs so you can decide whether
+                          to expand the allowlist.
   --spend-ceiling <usd>   API mode only: dollar ceiling (default env
                           SPEND_CEILING_USD or 200).
   --model <id>            Override model. Default: claude-opus-4-7.
@@ -477,6 +481,7 @@ async function generateOne(
   allow: AllowlistShape,
   spend: SpendTracker,
   force: boolean,
+  allowMismatch: boolean,
 ): Promise<{ skipped: boolean; mismatchRate: number }> {
   const slug = slugify(entry.title);
   const dir = path.join(outRoot, topicSlug(entry.topicNum), `${entry.subtopicId}-${slug}`);
@@ -540,22 +545,41 @@ async function generateOne(
   const questionsDeduped = dedupeBy(questionsWithIds, (q) => q.id);
   let mismatches = 0;
   let total = 0;
+  const rejected = new Map<string, number>(); // "source :: ref" -> count
+  const trackReject = (c: { source?: string; ref?: string }) => {
+    const k = `${c.source ?? "?"} :: ${c.ref ?? "?"}`;
+    rejected.set(k, (rejected.get(k) ?? 0) + 1);
+  };
   const filterByCitation = <T extends { citation: { source?: string; ref?: string } }>(arr: T[]): T[] => {
     const kept: T[] = [];
     for (const it of arr) {
       total += 1;
       if (citationOk(it.citation, allow)) kept.push(it);
-      else mismatches += 1;
+      else { mismatches += 1; trackReject(it.citation); }
     }
     return kept;
   };
   const cardsFinal = filterByCitation(cardsDeduped);
   const questionsFinal = filterByCitation(questionsDeduped);
   const lessonCitations = lesson.citations ?? [];
-  for (const c of lessonCitations) { total += 1; if (!citationOk(c, allow)) mismatches += 1; }
+  for (const c of lessonCitations) {
+    total += 1;
+    if (!citationOk(c, allow)) { mismatches += 1; trackReject(c); }
+  }
   const mismatchRate = total === 0 ? 0 : mismatches / total;
-  if (mismatchRate > 0.1) {
-    throw new Error(`[${entry.subtopicId}] citation mismatch rate ${(mismatchRate * 100).toFixed(1)}% > 10% — expand scripts/citation-allowlist.json or refine the prompt. ${mismatches}/${total} mismatches.`);
+  if (mismatchRate > 0.1 && !allowMismatch) {
+    const sorted = [...rejected.entries()].sort((a, b) => b[1] - a[1]);
+    const lines = [
+      `[${entry.subtopicId}] citation mismatch rate ${(mismatchRate * 100).toFixed(1)}% > 10% — ${mismatches}/${total} dropped.`,
+      ``,
+      `Rejected citations (count × source :: ref):`,
+      ...sorted.map(([k, n]) => `  ${String(n).padStart(3)} × ${k}`),
+      ``,
+      `Either:`,
+      `  1. Add the legitimate ones to scripts/citation-allowlist.json and re-run with --force --subtopic ${entry.subtopicId}, or`,
+      `  2. Re-run with --continue-on-mismatch to drop the unsupported items and keep the rest.`,
+    ];
+    throw new Error(lines.join("\n"));
   }
 
   // Write outputs.
@@ -638,6 +662,7 @@ async function runReal(opts: {
   useApi: boolean;
   maxSubtopics: number;
   model: string;
+  allowMismatch: boolean;
 }): Promise<number> {
   dotenvConfig();
   const allow = loadAllowlist() as AllowlistShape;
@@ -695,7 +720,7 @@ async function runReal(opts: {
     log("");
     log(`▶ [${i}/${target.length}] ${entry.subtopicId} — ${entry.title}${etaFragment}`);
     try {
-      const result = await generateOne(backend, entry, outRoot, allow, spend, opts.force);
+      const result = await generateOne(backend, entry, outRoot, allow, spend, opts.force, opts.allowMismatch);
       if (result.skipped) skipped += 1; else generated += 1;
     } catch (e) {
       const msg = (e as Error).message;
@@ -736,6 +761,7 @@ async function main(argv: string[]): Promise<number> {
         api: { type: "boolean", default: false },
         "max-subtopics": { type: "string" },
         "spend-ceiling": { type: "string" },
+        "continue-on-mismatch": { type: "boolean", default: false },
         model: { type: "string", default: "claude-opus-4-7" },
         help: { type: "boolean", default: false },
       },
@@ -785,6 +811,7 @@ async function main(argv: string[]): Promise<number> {
     useApi: Boolean(v.api),
     maxSubtopics,
     model: (v.model as string) ?? "claude-opus-4-7",
+    allowMismatch: Boolean(v["continue-on-mismatch"]),
   });
 }
 
