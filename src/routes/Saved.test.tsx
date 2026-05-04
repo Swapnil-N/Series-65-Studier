@@ -2,10 +2,12 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { act, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import Saved from "./Saved";
 import { db } from "../lib/db";
+import { bustContentCache, loadContent } from "../lib/content";
 
 beforeEach(async () => {
   await db.delete();
   await db.open();
+  bustContentCache();
 });
 
 afterEach(async () => {
@@ -29,9 +31,15 @@ describe("Saved", () => {
   });
 
   it("lists bookmarks with a preview, and removing one clears the row", async () => {
-    // Seed a bookmark pointing at the sample lesson.
+    // Pin to whichever lesson is actually loaded — title differs between
+    // the dev stub ("Business Cycles") and real generated content
+    // ("Basic Economic Concepts"), so look up the title at test time.
+    const { lessons } = await loadContent();
+    const target = lessons.find((l) => l.subtopicId === "1.1") ?? lessons[0];
+    if (!target) throw new Error("No lessons loaded — cannot run test");
+
     await db.bookmarks.put({
-      itemId: "1.1",
+      itemId: target.subtopicId,
       type: "lesson",
       createdAt: Date.now(),
     });
@@ -40,15 +48,21 @@ describe("Saved", () => {
       render(<Saved />);
     });
 
-    const row = await screen.findByTestId("bookmark-row-1.1");
+    const row = await screen.findByTestId(
+      `bookmark-row-${target.subtopicId}`,
+    );
     expect(row).toBeInTheDocument();
-    // Lesson title pulled from shipped content.
-    expect(row.textContent).toMatch(/Business Cycles/i);
+    // Preview pulls the live lesson title.
+    expect(row.textContent).toContain(target.title);
 
-    fireEvent.click(screen.getByTestId("bookmark-remove-1.1"));
+    fireEvent.click(
+      screen.getByTestId(`bookmark-remove-${target.subtopicId}`),
+    );
 
     await waitFor(() =>
-      expect(screen.queryByTestId("bookmark-row-1.1")).toBeNull(),
+      expect(
+        screen.queryByTestId(`bookmark-row-${target.subtopicId}`),
+      ).toBeNull(),
     );
     const rows = await db.bookmarks.toArray();
     expect(rows).toEqual([]);
