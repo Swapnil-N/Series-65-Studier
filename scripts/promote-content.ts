@@ -13,6 +13,9 @@ Options:
   --to <path>     Destination dir (default: src/content)
   --dry-run       Preview without writing anything
   --keep-stub     Don't delete src/content/sample/ after promotion
+  --fix-existing  Don't move anything; instead scan <to> for stale
+                  ../../../src/types/content imports left by an older
+                  generator and rewrite them to ../../../types/content.
   --help          Show this message and exit 2
 `;
 
@@ -21,6 +24,55 @@ const err = (s: string) => process.stderr.write(s + "\n");
 
 function isDir(p: string): boolean {
   try { return fs.statSync(p).isDirectory(); } catch { return false; }
+}
+
+/**
+ * Rewrite stale type-import paths inside a freshly-moved subtopic dir.
+ * Earlier generator runs hard-coded `../../../src/types/content` — that path
+ * was correct from `scripts/out/<topic>/<subtopic>/`'s 4-level depth but wrong
+ * once the file lives at `src/content/<topic>/<subtopic>/`'s 3-level depth.
+ * From the destination the path is `../../../types/content`. Rewrite both
+ * the bad and any legacy variants so older `scripts/out/` artifacts move
+ * cleanly.
+ */
+function rewriteImportsIn(dir: string): void {
+  for (const f of ["lesson.ts", "cards.ts", "questions.ts"]) {
+    const fp = path.join(dir, f);
+    if (!fs.existsSync(fp)) continue;
+    const before = fs.readFileSync(fp, "utf8");
+    const after = before
+      .replace(/from\s+["']\.\.\/\.\.\/\.\.\/src\/types\/content["']/g, 'from "../../../types/content"')
+      .replace(/from\s+["']\.\.\/\.\.\/\.\.\/\.\.\/src\/types\/content["']/g, 'from "../../../types/content"');
+    if (after !== before) fs.writeFileSync(fp, after, "utf8");
+  }
+}
+
+/** Walk an entire content tree (e.g., src/content/) and rewrite any stale
+ * imports left behind by a previous promotion run. */
+function fixExistingImports(root: string): number {
+  let fixed = 0;
+  if (!isDir(root)) return 0;
+  for (const topicSlug of fs.readdirSync(root)) {
+    const topicPath = path.join(root, topicSlug);
+    if (!isDir(topicPath)) continue;
+    for (const subtopicDir of fs.readdirSync(topicPath)) {
+      const subPath = path.join(topicPath, subtopicDir);
+      if (!isDir(subPath)) continue;
+      for (const f of ["lesson.ts", "cards.ts", "questions.ts"]) {
+        const fp = path.join(subPath, f);
+        if (!fs.existsSync(fp)) continue;
+        const before = fs.readFileSync(fp, "utf8");
+        const after = before
+          .replace(/from\s+["']\.\.\/\.\.\/\.\.\/src\/types\/content["']/g, 'from "../../../types/content"')
+          .replace(/from\s+["']\.\.\/\.\.\/\.\.\/\.\.\/src\/types\/content["']/g, 'from "../../../types/content"');
+        if (after !== before) {
+          fs.writeFileSync(fp, after, "utf8");
+          fixed += 1;
+        }
+      }
+    }
+  }
+  return fixed;
 }
 
 interface Sub { topicSlug: string; subtopicDir: string; subtopicId: string }
@@ -74,17 +126,21 @@ function main(argv: string[]): number {
     parsed = parseArgs({
       args: argv,
       options: {
-        "dry-run":   { type: "boolean", default: false },
-        from:        { type: "string",  default: "scripts/out" },
-        to:          { type: "string",  default: "src/content" },
-        "keep-stub": { type: "boolean", default: false },
-        help:        { type: "boolean", default: false },
+        "dry-run":      { type: "boolean", default: false },
+        from:           { type: "string",  default: "scripts/out" },
+        to:             { type: "string",  default: "src/content" },
+        "keep-stub":    { type: "boolean", default: false },
+        "fix-existing": { type: "boolean", default: false },
+        help:           { type: "boolean", default: false },
       },
       allowPositionals: false, strict: true,
     });
   } catch (e) { err((e as Error).message); err(USAGE); return 2; }
 
-  const v = parsed.values as { "dry-run": boolean; from: string; to: string; "keep-stub": boolean; help: boolean };
+  const v = parsed.values as {
+    "dry-run": boolean; from: string; to: string;
+    "keep-stub": boolean; "fix-existing": boolean; help: boolean;
+  };
   if (v.help) { out(USAGE); return 2; }
 
   const fromDir  = path.resolve(v.from);
@@ -92,6 +148,20 @@ function main(argv: string[]): number {
   const dryRun   = v["dry-run"];
   const keepStub = v["keep-stub"];
   const timestamp = new Date().toISOString();
+
+  // One-shot repair path: scan an existing src/content/ tree and rewrite
+  // stale `../../../src/types/content` imports to the correct
+  // `../../../types/content`. Useful after a generation run that pre-dates
+  // the import-path fix.
+  if (v["fix-existing"]) {
+    if (dryRun) {
+      out(`[dry-run] would scan ${toDir} for stale imports`);
+      return 0;
+    }
+    const fixed = fixExistingImports(toDir);
+    out(`Rewrote ${fixed} file(s) under ${toDir}.`);
+    return 0;
+  }
 
   // ── prerequisites ────────────────────────────────────────────────────────
   if (!isDir(fromDir)) {
@@ -117,6 +187,7 @@ function main(argv: string[]): number {
     fs.mkdirSync(path.dirname(dst), { recursive: true });
     fs.cpSync(src, dst, { recursive: true });
     fs.rmSync(src, { recursive: true });
+    rewriteImportsIn(dst);
     out(`MOVED: ${src} → ${dst}`);
     movedCount++;
   }

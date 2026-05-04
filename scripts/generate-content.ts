@@ -586,17 +586,17 @@ async function generateOne(
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(
     path.join(dir, "lesson.ts"),
-    tsModuleTyped("lesson", "Lesson", lesson, `import type { Lesson } from "../../../src/types/content";`),
+    tsModuleTyped("lesson", "Lesson", lesson, `import type { Lesson } from "../../../types/content";`),
     "utf8",
   );
   fs.writeFileSync(
     path.join(dir, "cards.ts"),
-    tsModuleTyped("cards", "Card[]", cardsFinal, `import type { Card } from "../../../src/types/content";`),
+    tsModuleTyped("cards", "Card[]", cardsFinal, `import type { Card } from "../../../types/content";`),
     "utf8",
   );
   fs.writeFileSync(
     path.join(dir, "questions.ts"),
-    tsModuleTyped("questions", "Question[]", questionsFinal, `import type { Question } from "../../../src/types/content";`),
+    tsModuleTyped("questions", "Question[]", questionsFinal, `import type { Question } from "../../../types/content";`),
     "utf8",
   );
   const manifest: SubtopicManifest = {
