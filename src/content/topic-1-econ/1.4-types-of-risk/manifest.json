@@ -1,0 +1,275 @@
+{
+  "subtopicId": "1.4",
+  "items": {
+    "lessons": [
+      {
+        "id": "1.4",
+        "normalized": "types of risk systematic unsystematic opportunity cost and capital structure"
+      }
+    ],
+    "cards": [
+      {
+        "id": "21b5acdd3ea9",
+        "normalized": "how is systematic risk defined"
+      },
+      {
+        "id": "4036f2651e79",
+        "normalized": "how is unsystematic risk defined"
+      },
+      {
+        "id": "1b6e3d47974b",
+        "normalized": "which category of risk does broad diversification primarily reduce"
+      },
+      {
+        "id": "ecbd65c68d9d",
+        "normalized": "what single statistic is most commonly used to quantify a securitys exposure to systematic risk"
+      },
+      {
+        "id": "b5c218501b50",
+        "normalized": "what is interest rate risk"
+      },
+      {
+        "id": "b31cd0987d88",
+        "normalized": "which fixedincome securities exhibit the greatest interest rate risk all else equal"
+      },
+      {
+        "id": "9f4e9c3cc235",
+        "normalized": "why is interest rate risk treated as a systematic risk"
+      },
+      {
+        "id": "fe9ba28d43f8",
+        "normalized": "what is sector risk"
+      },
+      {
+        "id": "8ecf3d53cb8e",
+        "normalized": "what is geopolitical risk"
+      },
+      {
+        "id": "6b6e9a297de8",
+        "normalized": "what is purchasingpower inflation risk"
+      },
+      {
+        "id": "2a1ea6d55366",
+        "normalized": "what is currency exchangerate risk"
+      },
+      {
+        "id": "f9bc751c6bb4",
+        "normalized": "what is credit default risk"
+      },
+      {
+        "id": "6187bf24fa72",
+        "normalized": "name the three nationally recognized creditrating agencies most often cited on the series 65"
+      },
+      {
+        "id": "c81cfe78c127",
+        "normalized": "what is the lowest investmentgrade rating on the sp and moodys scales respectively"
+      },
+      {
+        "id": "7c278a71acd0",
+        "normalized": "what is business risk"
+      },
+      {
+        "id": "06ec89eb5109",
+        "normalized": "what is financial risk"
+      },
+      {
+        "id": "50aa3dcfd89a",
+        "normalized": "what is liquidity marketability risk"
+      },
+      {
+        "id": "e0bb369f26a2",
+        "normalized": "what is legalregulatory risk"
+      },
+      {
+        "id": "a5f4d2e6e1c6",
+        "normalized": "what is issuerspecific idiosyncratic risk"
+      },
+      {
+        "id": "3dfe440f7640",
+        "normalized": "define opportunity cost in an investment context"
+      },
+      {
+        "id": "b6d441bcfcd0",
+        "normalized": "how does opportunity cost shape an investors required rate of return"
+      },
+      {
+        "id": "7e2d74753c3c",
+        "normalized": "list in order the priority of claims on a corporations assets in a liquidation"
+      },
+      {
+        "id": "e70d18fb97bb",
+        "normalized": "where do bondholders rank versus preferred and common stockholders in a liquidation"
+      },
+      {
+        "id": "460affb403bf",
+        "normalized": "why are common stockholders the last to receive distributions in a liquidation"
+      },
+      {
+        "id": "0cc519269053",
+        "normalized": "how do secured bondholders differ from debenture holders in a liquidation"
+      }
+    ],
+    "questions": [
+      {
+        "id": "ec65290bd226",
+        "normalized": "which of the following best describes systematic risk"
+      },
+      {
+        "id": "29d02bcfabfd",
+        "normalized": "which of the following risks is considered unsystematic"
+      },
+      {
+        "id": "40a7f9c88c0b",
+        "normalized": "in the event of a corporate liquidation which class of claimants is paid first"
+      },
+      {
+        "id": "e36818dc782f",
+        "normalized": "which of the following correctly orders claimants in a corporate liquidation from first to last"
+      },
+      {
+        "id": "d2cfc4e8b51a",
+        "normalized": "opportunity cost is best defined as"
+      },
+      {
+        "id": "ff3ff012e860",
+        "normalized": "which type of risk can typically be reduced by holding a diversified portfolio"
+      },
+      {
+        "id": "05cbaf3aa43d",
+        "normalized": "which of the following is an example of geopolitical risk"
+      },
+      {
+        "id": "a8770ccca96f",
+        "normalized": "in a typical capital structure which of the following has the lowest priority claim on assets"
+      },
+      {
+        "id": "d331ae0a2087",
+        "normalized": "sector risk is best classified as a form of"
+      },
+      {
+        "id": "ee81991d6399",
+        "normalized": "preferred stock generally has a liquidation preference that is"
+      },
+      {
+        "id": "ae6ec0703776",
+        "normalized": "which statement about diversification is most accurate"
+      },
+      {
+        "id": "9660707218e4",
+        "normalized": "an investor places funds in a 1 savings account when a comparably safe treasury bill is yielding 4 the 3 gap represents"
+      },
+      {
+        "id": "414a207a2c48",
+        "normalized": "interest rate risk most directly affects which of the following securities"
+      },
+      {
+        "id": "b8e1601a1364",
+        "normalized": "all else equal which bond will experience the largest percentage price decline if market interest rates rise by 1"
+      },
+      {
+        "id": "2b1bc3e5a8eb",
+        "normalized": "a regional bank announces it has discovered material accounting fraud and its stock plummets while the broader sp 500 closes higher this loss is best characterized as"
+      },
+      {
+        "id": "e21b165a4c15",
+        "normalized": "financial risk in the context of a corporation generally refers to"
+      },
+      {
+        "id": "ed5cc62530e0",
+        "normalized": "which of the following best describes legalregulatory risk"
+      },
+      {
+        "id": "d9a6c9a8a0b4",
+        "normalized": "beta is most commonly used as a measure of"
+      },
+      {
+        "id": "3ebb6c0d3929",
+        "normalized": "which of the following measures total risk both systematic and unsystematic"
+      },
+      {
+        "id": "ece5d7fcfd0f",
+        "normalized": "which of the following actions would most effectively reduce unsystematic risk in an equity portfolio"
+      },
+      {
+        "id": "a45710f27871",
+        "normalized": "which of the following is an example of credit risk"
+      },
+      {
+        "id": "8b374c06735d",
+        "normalized": "an investor holding a single highly volatile smallcap stock has approximately how much of total risk attributable to unsystematic factors"
+      },
+      {
+        "id": "dcf062213c8b",
+        "normalized": "a debenture is best described as"
+      },
+      {
+        "id": "19bfa4e09046",
+        "normalized": "which of the following best illustrates legalregulatory risk for a publicly traded utility"
+      },
+      {
+        "id": "b4bafcbd4885",
+        "normalized": "an investor argues that holding 30 carefully selected stocks across different industries virtually eliminates portfolio risk the most accurate response is"
+      },
+      {
+        "id": "a2410b62c0ad",
+        "normalized": "cumulative preferred stockholders in a liquidation are entitled to"
+      },
+      {
+        "id": "f7d5cf2cda7a",
+        "normalized": "a us company with substantial revenue from europe sees its earnings drop sharply when the euro weakens against the dollar this is best described as"
+      },
+      {
+        "id": "52aee66a1d8c",
+        "normalized": "which scenario best illustrates financial risk"
+      },
+      {
+        "id": "07fdbb4bb269",
+        "normalized": "which of the following statements about preferred stock is most accurate"
+      },
+      {
+        "id": "04303c5456e9",
+        "normalized": "inflation purchasing power risk is best classified as"
+      },
+      {
+        "id": "8308544d2e25",
+        "normalized": "a municipal waterutility revenue bonds coverage ratio falls dramatically after a drought reduces water sales the increased risk to bondholders is best described as"
+      },
+      {
+        "id": "c0c42d238e7f",
+        "normalized": "in the capital asset pricing model capm investors are compensated for bearing"
+      },
+      {
+        "id": "466dea8044b7",
+        "normalized": "a startup biotech firm with no debt is highly volatile because its value depends on the binary outcome of an fda decision this volatility is best described as"
+      },
+      {
+        "id": "bfd0187d0de9",
+        "normalized": "an investor compares two firms with identical operations firm a is 100 equityfinanced firm b is 70 debt and 30 equity compared with firm as equity firm bs equity is exposed to"
+      },
+      {
+        "id": "701ec43ade67",
+        "normalized": "in a chapter 7 liquidation of a corporation with sufficient assets to pay senior creditors but insufficient to fully pay all claims which of the following is paid last among those listed"
+      },
+      {
+        "id": "dc2bc7ed5dfb",
+        "normalized": "which of the following risks is least likely to be reduced by international diversification across developedmarket equities"
+      },
+      {
+        "id": "4dbe7f42d7b8",
+        "normalized": "an investor chooses to keep 100000 in a 0 checking account rather than invest in an index fund expected to earn 7 annually the opportunity cost over one year is approximately"
+      },
+      {
+        "id": "1b71fdd4379b",
+        "normalized": "a corporatebond investor buying a highyield junk bond instead of a treasury of the same maturity is primarily being compensated for bearing"
+      },
+      {
+        "id": "e446ded3c007",
+        "normalized": "which of the following statements about the relationship between capital structure and risk is most accurate"
+      },
+      {
+        "id": "2c32ddeb7f11",
+        "normalized": "an investment adviser is explaining why government treasury securities still carry meaningful risk despite essentially zero default risk the most accurate explanation is that treasuries remain exposed to"
+      }
+    ]
+  }
+}

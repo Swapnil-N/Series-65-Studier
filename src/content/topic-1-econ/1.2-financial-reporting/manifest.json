@@ -1,0 +1,259 @@
+{
+  "subtopicId": "1.2",
+  "items": {
+    "lessons": [
+      {
+        "id": "1.2",
+        "normalized": "reading financial reports statements filings and audits"
+      }
+    ],
+    "cards": [
+      {
+        "id": "47c77780aacc",
+        "normalized": "what does the income statement report"
+      },
+      {
+        "id": "166891afbe14",
+        "normalized": "state the fundamental accounting equation expressed by the balance sheet"
+      },
+      {
+        "id": "037106066f11",
+        "normalized": "name the three sections of the statement of cash flows"
+      },
+      {
+        "id": "f336826ddeb4",
+        "normalized": "which cashflow section captures proceeds from selling property plant and equipment"
+      },
+      {
+        "id": "522bb6e92887",
+        "normalized": "which cashflow section reports dividends paid to shareholders"
+      },
+      {
+        "id": "2234da384c0d",
+        "normalized": "what does an unqualified clean audit opinion convey"
+      },
+      {
+        "id": "ba6b3199fb44",
+        "normalized": "what does a qualified audit opinion signal to readers"
+      },
+      {
+        "id": "bea40992b1b0",
+        "normalized": "distinguish an adverse opinion from a disclaimer of opinion"
+      },
+      {
+        "id": "74b5d559ea29",
+        "normalized": "what is filed on sec form 10k"
+      },
+      {
+        "id": "e24b72058168",
+        "normalized": "what is filed on sec form 10q and how often"
+      },
+      {
+        "id": "bd14b121099d",
+        "normalized": "what is the purpose of sec form 8k"
+      },
+      {
+        "id": "a4480506320b",
+        "normalized": "how does a glossy annual report to shareholders differ from the sec form 10k"
+      },
+      {
+        "id": "ea5142fff2be",
+        "normalized": "audited vs unaudited financial statements what is the practical difference"
+      },
+      {
+        "id": "0ca4fd4ef835",
+        "normalized": "define cashbasis accounting"
+      },
+      {
+        "id": "a41cf70fbba6",
+        "normalized": "define accrualbasis accounting"
+      },
+      {
+        "id": "05891e1d8ec6",
+        "normalized": "under accrual accounting when is revenue recognized for a december sale that is paid for in january"
+      },
+      {
+        "id": "dec361f441a9",
+        "normalized": "what does gaap stand for and who sets it for us privatesector entities"
+      },
+      {
+        "id": "47cc2217d2bd",
+        "normalized": "what is the role of the pcaob"
+      },
+      {
+        "id": "e6c2b62a8b17",
+        "normalized": "what does sarbanesoxley section 302 require of senior officers"
+      },
+      {
+        "id": "a92d330c057b",
+        "normalized": "what does sarbanesoxley section 404 require"
+      },
+      {
+        "id": "a22c9dee4a29",
+        "normalized": "compute working capital from a balance sheet"
+      },
+      {
+        "id": "5ba403e7a326",
+        "normalized": "where does retained earnings appear and how does it change during a period"
+      },
+      {
+        "id": "35c51e9143fb",
+        "normalized": "where does depreciation expense appear on the indirectmethod cashflow statement and why"
+      },
+      {
+        "id": "4a6266f3f1e9",
+        "normalized": "which sec regulation prescribes the form and content of financial statements filed with the commission"
+      },
+      {
+        "id": "a47d5d85c309",
+        "normalized": "who is qualified to sign the audit report included in a public companys 10k"
+      }
+    ],
+    "questions": [
+      {
+        "id": "83636992485f",
+        "normalized": "which financial statement reports a companys revenues expenses and net income over a specified period"
+      },
+      {
+        "id": "7ddb682536a8",
+        "normalized": "the balance sheet reports a companys financial position based on which fundamental accounting equation"
+      },
+      {
+        "id": "4ae308095ed0",
+        "normalized": "the statement of cash flows is divided into which three sections"
+      },
+      {
+        "id": "d255ceedf2f4",
+        "normalized": "which auditors opinion indicates that the financial statements are presented fairly in all material respects in conformity with gaap"
+      },
+      {
+        "id": "7e9624b1aa2b",
+        "normalized": "public companies registered under the securities exchange act of 1934 must file which form as their annual report with the sec"
+      },
+      {
+        "id": "dc8837dcebd9",
+        "normalized": "how frequently must a domestic reporting issuer file form 10q with the sec"
+      },
+      {
+        "id": "6a0e4fbf04c9",
+        "normalized": "which sec form is used to disclose the occurrence of significant material events between periodic filings such as a ceo change or bankruptcy"
+      },
+      {
+        "id": "46bbb13e2d68",
+        "normalized": "under cash basis accounting revenue is recognized when"
+      },
+      {
+        "id": "f41aad2ed1cf",
+        "normalized": "which body inspects and oversees the auditors of us public companies"
+      },
+      {
+        "id": "d8d79d625b1a",
+        "normalized": "an annual report sent directly to shareholders of a public company typically includes which of the following"
+      },
+      {
+        "id": "6572fb20769c",
+        "normalized": "an auditor issues a qualified opinion when"
+      },
+      {
+        "id": "c7484c2e1e37",
+        "normalized": "an adverse audit opinion most strongly signals which conclusion"
+      },
+      {
+        "id": "90a88f9533af",
+        "normalized": "working capital is calculated as"
+      },
+      {
+        "id": "36458845474c",
+        "normalized": "on the income statement operating income differs from net income because operating income"
+      },
+      {
+        "id": "c2af18363fe0",
+        "normalized": "which item would normally be classified within cash flows from financing activities on the statement of cash flows"
+      },
+      {
+        "id": "cecf096bc951",
+        "normalized": "which item is classified within cash flows from investing activities"
+      },
+      {
+        "id": "0d2975e62501",
+        "normalized": "gaap differs from ifrs primarily in that gaap is"
+      },
+      {
+        "id": "89f15b67aa9b",
+        "normalized": "which organization is the primary privatesector body responsible for establishing financial accounting and reporting standards in the united states"
+      },
+      {
+        "id": "66ec70a0e7cb",
+        "normalized": "sarbanesoxley section 302 requires which group to personally certify the accuracy of corporate financial reports"
+      },
+      {
+        "id": "9b1c1546128e",
+        "normalized": "the public company accounting oversight board pcaob was established by which legislation"
+      },
+      {
+        "id": "cfae9d78e55c",
+        "normalized": "a reviewed financial statement differs from an audited financial statement in that a review"
+      },
+      {
+        "id": "1ea3f6698fb0",
+        "normalized": "retained earnings appears in which financial statement"
+      },
+      {
+        "id": "932cbc8cfbcc",
+        "normalized": "under accrual accounting an expense should be recognized when"
+      },
+      {
+        "id": "7c98a5cdd669",
+        "normalized": "which of the following events would most likely trigger a form 8k filing"
+      },
+      {
+        "id": "c62bc0424a63",
+        "normalized": "footnotes notes to the financial statements are most useful to an analyst because they"
+      },
+      {
+        "id": "6e0ebe12ceb6",
+        "normalized": "an auditors report that includes a going concern qualification means"
+      },
+      {
+        "id": "ef66993e8ff1",
+        "normalized": "which form provides the sec with the most comprehensive annual disclosure including audited financial statements and managements discussion and analysis"
+      },
+      {
+        "id": "2c813af22b7a",
+        "normalized": "which characteristic best describes audited financial statements"
+      },
+      {
+        "id": "bd6afcde20b1",
+        "normalized": "which sec regulation prescribes the form and content of financial statements that must be filed with the sec"
+      },
+      {
+        "id": "0d3d863eafe6",
+        "normalized": "sarbanesoxley section 404 requires public companies to"
+      },
+      {
+        "id": "bec487ae1e57",
+        "normalized": "under the indirect method the operating activities section of the statement of cash flows begins with which figure"
+      },
+      {
+        "id": "9b632f667a98",
+        "normalized": "which auditors opinion is issued when the auditor cannot obtain sufficient appropriate audit evidence to form a basis for an opinion"
+      },
+      {
+        "id": "f0b896f7eb32",
+        "normalized": "auditor independence under sarbanesoxley generally requires that"
+      },
+      {
+        "id": "5b99ba6e9f8b",
+        "normalized": "a subsequent event that provides evidence about conditions that existed at the balancesheet date is generally"
+      },
+      {
+        "id": "95625136a7fb",
+        "normalized": "depreciation expense recorded under the indirect method on the statement of cash flows is added back to net income because depreciation"
+      },
+      {
+        "id": "9d80a2ae65f1",
+        "normalized": "which of the following is a key reason a small private business might use cash basis accounting rather than accrual accounting"
+      }
+    ]
+  }
+}
