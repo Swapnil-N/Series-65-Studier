@@ -486,8 +486,23 @@ async function generateOne(
   const slug = slugify(entry.title);
   const dir = path.join(outRoot, topicSlug(entry.topicNum), `${entry.subtopicId}-${slug}`);
   const manifestPath = path.join(dir, "manifest.json");
+  // Check the promoted location too — promote-content moves scripts/out/<x>
+  // to src/content/<x>, so a re-run after promote would otherwise see an
+  // empty scripts/out/ and waste Max budget regenerating.
+  const promotedDir = path.join(
+    process.cwd(),
+    "src",
+    "content",
+    topicSlug(entry.topicNum),
+    `${entry.subtopicId}-${slug}`,
+  );
+  const promotedManifest = path.join(promotedDir, "manifest.json");
   if (!force && fs.existsSync(dir) && fs.existsSync(manifestPath)) {
-    log(`↷ [${entry.subtopicId}] ${entry.title} — already generated (use --force to regenerate)`);
+    log(`↷ [${entry.subtopicId}] ${entry.title} — already in scripts/out/ (use --force to regenerate)`);
+    return { skipped: true, mismatchRate: 0 };
+  }
+  if (!force && fs.existsSync(promotedDir) && fs.existsSync(promotedManifest)) {
+    log(`↷ [${entry.subtopicId}] ${entry.title} — already promoted to src/content/ (use --force to regenerate)`);
     return { skipped: true, mismatchRate: 0 };
   }
   const priorManifest = loadManifest(manifestPath);
