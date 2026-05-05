@@ -576,11 +576,15 @@ async function generateOne(
   };
   const cardsFinal = filterByCitation(cardsDeduped);
   const questionsFinal = filterByCitation(questionsDeduped);
-  const lessonCitations = lesson.citations ?? [];
-  for (const c of lessonCitations) {
+  // Filter the lesson's citations array the same way — previously we only
+  // counted lesson mismatches, which let bad refs ride through onto disk.
+  const lessonCitationsKept: typeof lesson.citations = [];
+  for (const c of lesson.citations ?? []) {
     total += 1;
-    if (!citationOk(c, allow)) { mismatches += 1; trackReject(c); }
+    if (citationOk(c, allow)) lessonCitationsKept.push(c);
+    else { mismatches += 1; trackReject(c); }
   }
+  const lessonFinal = { ...lesson, citations: lessonCitationsKept };
   const mismatchRate = total === 0 ? 0 : mismatches / total;
   if (mismatchRate > 0.1 && !allowMismatch) {
     const sorted = [...rejected.entries()].sort((a, b) => b[1] - a[1]);
@@ -601,7 +605,7 @@ async function generateOne(
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(
     path.join(dir, "lesson.ts"),
-    tsModuleTyped("lesson", "Lesson", lesson, `import type { Lesson } from "../../../types/content";`),
+    tsModuleTyped("lesson", "Lesson", lessonFinal, `import type { Lesson } from "../../../types/content";`),
     "utf8",
   );
   fs.writeFileSync(
@@ -617,7 +621,7 @@ async function generateOne(
   const manifest: SubtopicManifest = {
     subtopicId: entry.subtopicId,
     items: {
-      lessons: [{ id: entry.subtopicId, normalized: normalizeText(lesson.title) }],
+      lessons: [{ id: entry.subtopicId, normalized: normalizeText(lessonFinal.title) }],
       cards: cardsFinal.map((c) => ({ id: c.id, normalized: normalizeText(c.front) })),
       questions: questionsFinal.map((q) => ({ id: q.id, normalized: normalizeText(q.stem) })),
     },

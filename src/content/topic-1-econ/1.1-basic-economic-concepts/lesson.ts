@@ -7,7 +7,7 @@ export const lesson: Lesson = {
   "citations": [
     {
       "source": "NASAA",
-      "ref": "Series 65 Exam Outline - Section 1.1 Basic Economic Concepts"
+      "ref": "Section I.A"
     }
   ],
   "reviewed": false

@@ -86,8 +86,10 @@ describe("generate-content CLI", () => {
   });
 
   it("--api mode with a fake key reaches the SDK and gets rejected (proves the SDK is wired)", () => {
+    // --force bypasses the "already-generated" skip in case the test repo
+    // has real content for 1.1 — we want the API call attempt to happen.
     const r = run(
-      ["--subtopic", "1.1", "--api", "--spend-ceiling", "1"],
+      ["--subtopic", "1.1", "--api", "--force", "--spend-ceiling", "1"],
       { ANTHROPIC_API_KEY: "sk-fake-not-a-real-key" },
     );
     expect(r.status).not.toBe(0);
