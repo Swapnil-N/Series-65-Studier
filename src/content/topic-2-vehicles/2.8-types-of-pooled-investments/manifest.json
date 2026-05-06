@@ -1,0 +1,255 @@
+{
+  "subtopicId": "2.8",
+  "items": {
+    "lessons": [
+      {
+        "id": "2.8",
+        "normalized": "types of pooled investments"
+      }
+    ],
+    "cards": [
+      {
+        "id": "ae40f99eba67",
+        "normalized": "how does the investment company act of 1940 classify investment companies"
+      },
+      {
+        "id": "9eb65913e6a4",
+        "normalized": "what is the defining feature of an openend investment company"
+      },
+      {
+        "id": "cf8e2e4befe8",
+        "normalized": "what is the defining feature of a closedend fund"
+      },
+      {
+        "id": "c32a6db000a1",
+        "normalized": "how are orders to buy or redeem mutual fund shares priced"
+      },
+      {
+        "id": "deb5b7c43323",
+        "normalized": "what is the maximum time an openend fund may take to send redemption proceeds"
+      },
+      {
+        "id": "249d9c697c82",
+        "normalized": "what is a 12b1 fee on a mutual fund"
+      },
+      {
+        "id": "697783be0f3a",
+        "normalized": "how do mutual fund class a b and c shares generally differ in sales charges"
+      },
+      {
+        "id": "6ede0cef568a",
+        "normalized": "which sec form is used to register an openend management investment company"
+      },
+      {
+        "id": "9fd7e2aa5f21",
+        "normalized": "which sec form is used to register a closedend management investment company"
+      },
+      {
+        "id": "37c8b8bbae73",
+        "normalized": "what is a unit investment trust uit"
+      },
+      {
+        "id": "d8627a790fc2",
+        "normalized": "are uit units redeemable and how is liquidity provided"
+      },
+      {
+        "id": "37dbc705c24a",
+        "normalized": "how are etf shares created and redeemed in the primary market"
+      },
+      {
+        "id": "d73ecade4ecf",
+        "normalized": "how does etf pricing differ from openend mutual fund pricing"
+      },
+      {
+        "id": "f9f6aa444838",
+        "normalized": "what is a hedge fund"
+      },
+      {
+        "id": "175e1916957c",
+        "normalized": "what does the section 3c1 exclusion from investmentcompany status require"
+      },
+      {
+        "id": "7f8e10a0e910",
+        "normalized": "what does the section 3c7 exclusion from investmentcompany status require"
+      },
+      {
+        "id": "4722a709c6e2",
+        "normalized": "which investor standard typically governs eligibility for a 3c1 hedge fund"
+      },
+      {
+        "id": "f81b4ec2538d",
+        "normalized": "what is a private equity fund"
+      },
+      {
+        "id": "feecc770a047",
+        "normalized": "what is a venture capital fund"
+      },
+      {
+        "id": "3cc0bb166433",
+        "normalized": "what is a real estate investment trust reit"
+      },
+      {
+        "id": "06208bf3a480",
+        "normalized": "how do equity reits differ from mortgage reits"
+      },
+      {
+        "id": "ec6900150f2f",
+        "normalized": "how do publicly traded liquid reits differ from nontraded nonliquid reits"
+      },
+      {
+        "id": "77657bdb8f25",
+        "normalized": "how does nav per share relate to a closedend funds market price"
+      },
+      {
+        "id": "a14b248424b7",
+        "normalized": "why are most private funds not required to register under the investment company act"
+      },
+      {
+        "id": "80bac82c5d70",
+        "normalized": "what core obligations does the investment company act impose on registered funds"
+      }
+    ],
+    "questions": [
+      {
+        "id": "f4fef43a6d32",
+        "normalized": "openend mutual fund shares are bought and sold at"
+      },
+      {
+        "id": "2395529f206f",
+        "normalized": "closedend fund shares typically trade"
+      },
+      {
+        "id": "13f16c2dcbeb",
+        "normalized": "an exchangetraded fund etf differs from a typical openend mutual fund in that etf shares"
+      },
+      {
+        "id": "98861edb2cce",
+        "normalized": "a unit investment trust uit differs from an openend mutual fund primarily because"
+      },
+      {
+        "id": "5611995eb683",
+        "normalized": "to maintain favorable tax treatment a real estate investment trust reit generally must distribute at least what percentage of its taxable income to shareholders annually"
+      },
+      {
+        "id": "79f8164dda67",
+        "normalized": "hedge funds in the united states typically rely on which exemption to avoid registration as an investment company"
+      },
+      {
+        "id": "d0b4a5dde2b3",
+        "normalized": "venture capital funds primarily invest in"
+      },
+      {
+        "id": "dc11c3c5f17d",
+        "normalized": "a typical private equity buyout fund seeks to"
+      },
+      {
+        "id": "3604bf35d520",
+        "normalized": "openend mutual funds are required to redeem shares from investors"
+      },
+      {
+        "id": "4d1f2ca2d519",
+        "normalized": "the registration form used by an openend management investment company is"
+      },
+      {
+        "id": "fb8facfc2f0c",
+        "normalized": "under the forward pricing rule a mutual fund purchase or redemption order must be executed at"
+      },
+      {
+        "id": "a8b5fccdcecf",
+        "normalized": "closedend fund market prices may differ materially from net asset value because"
+      },
+      {
+        "id": "ff98db71146a",
+        "normalized": "section 3c1 of the investment company act of 1940 generally exempts a private fund from registration if its outstanding securities are owned by no more than"
+      },
+      {
+        "id": "dd3b0d0dd55f",
+        "normalized": "for purposes of section 3c7 of the investment company act a qualified purchaser natural person generally must own not less than"
+      },
+      {
+        "id": "98e7b19606f1",
+        "normalized": "a 12b1 fee charged by a mutual fund is best described as"
+      },
+      {
+        "id": "1fcc329260ea",
+        "normalized": "the role of an authorized participant ap in an exchangetraded fund is to"
+      },
+      {
+        "id": "4586e7ee3501",
+        "normalized": "compared with an openend mutual fund a unit investment trust uit is best characterized as"
+      },
+      {
+        "id": "51a04ea03632",
+        "normalized": "the key practical difference between an exchangelisted reit and a nontraded nonlisted reit is that"
+      },
+      {
+        "id": "0b1b81069305",
+        "normalized": "etfs are often more taxefficient than comparable openend mutual funds primarily because"
+      },
+      {
+        "id": "a1c8dff52ed8",
+        "normalized": "the hedge fund fee structure commonly described as 2 and 20 refers to"
+      },
+      {
+        "id": "da5ad59dd7aa",
+        "normalized": "private equity and venture capital funds commonly impose multiyear capital lockups because"
+      },
+      {
+        "id": "c74c83fdbf5a",
+        "normalized": "a venture capital fund is most likely to provide"
+      },
+      {
+        "id": "52ea51809e1a",
+        "normalized": "initial purchases of a closedend fund are made through"
+      },
+      {
+        "id": "d730aa51befe",
+        "normalized": "under section 22d of the investment company act of 1940 dealers selling redeemable mutual fund shares to the public generally must do so at"
+      },
+      {
+        "id": "715ec6827936",
+        "normalized": "net asset value nav per share of a mutual fund is calculated as"
+      },
+      {
+        "id": "e9e5463fce5d",
+        "normalized": "compared with an exchangelisted reit a nontraded reit typically"
+      },
+      {
+        "id": "6aa7c86ba1b9",
+        "normalized": "a private funds exemption under section 3c1 of the investment company act of 1940 is generally lost if the fund"
+      },
+      {
+        "id": "47d7be50696f",
+        "normalized": "under section 3c7 of the investment company act of 1940 the qualified purchaser standard for a natural person generally requires ownership of"
+      },
+      {
+        "id": "8563d787c45d",
+        "normalized": "under title iv of the doddfrank act an adviser that advises solely private funds and has us assets under management of less than 150 million is generally"
+      },
+      {
+        "id": "9fce4a45c506",
+        "normalized": "under section 22e of the investment company act of 1940 a registered openend fund is generally required to pay redemption proceeds"
+      },
+      {
+        "id": "550b8a90a0c6",
+        "normalized": "when a private fund relies on rule 506c of regulation d to permit general solicitation the issuer must"
+      },
+      {
+        "id": "b9997f428e7f",
+        "normalized": "when a unit investment trust reaches its stated termination date its portfolio is generally"
+      },
+      {
+        "id": "361927bfffc7",
+        "normalized": "etf shares enter the market through a creation process in which an authorized participant"
+      },
+      {
+        "id": "a4266997f8ad",
+        "normalized": "hedge funds frequently impose initial lockups advance redemption notice periods and gates on withdrawals because"
+      },
+      {
+        "id": "df0ebf2901e7",
+        "normalized": "in a masterfeeder private fund structure"
+      }
+    ]
+  }
+}

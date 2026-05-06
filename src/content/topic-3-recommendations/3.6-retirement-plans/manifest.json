@@ -1,0 +1,275 @@
+{
+  "subtopicId": "3.6",
+  "items": {
+    "lessons": [
+      {
+        "id": "3.6",
+        "normalized": "retirement plans iras qualified plans and nonqualified arrangements"
+      }
+    ],
+    "cards": [
+      {
+        "id": "e19bbc2e2067",
+        "normalized": "annual contribution limit for a traditional or roth ira in 2025 for an individual under age 50"
+      },
+      {
+        "id": "d8dfbea575ac",
+        "normalized": "additional catchup contribution permitted for ira owners age 50 or older"
+      },
+      {
+        "id": "f121988ec664",
+        "normalized": "tax treatment difference between traditional ira and roth ira contributions"
+      },
+      {
+        "id": "329fe9372c75",
+        "normalized": "two requirements that must both be met for a roth ira distribution to be qualified"
+      },
+      {
+        "id": "7d3fceedca08",
+        "normalized": "age at which required minimum distributions must begin from a traditional ira under secure act 20"
+      },
+      {
+        "id": "90d868b654b5",
+        "normalized": "whether the original roth ira owner must take required minimum distributions during their lifetime"
+      },
+      {
+        "id": "4ab0d9395d80",
+        "normalized": "federal tax penalty on a traditional ira withdrawal before age 59 12 when no exception applies"
+      },
+      {
+        "id": "8a9e167d539d",
+        "normalized": "common exceptions that waive the 10 earlywithdrawal penalty on ira distributions"
+      },
+      {
+        "id": "876abb792ff0",
+        "normalized": "modified agi level above which a single filer is fully phased out of roth ira contributions in 2025"
+      },
+      {
+        "id": "040e800d8dbe",
+        "normalized": "employee elective deferral limit for a 401k 403b or governmental 457b plan in 2025 for participants under age 50"
+      },
+      {
+        "id": "39d69aea6313",
+        "normalized": "distinction between a defined benefit plan and a defined contribution plan"
+      },
+      {
+        "id": "ae549d6a631a",
+        "normalized": "categories of employer eligible to sponsor a 403b plan"
+      },
+      {
+        "id": "7df595761bc2",
+        "normalized": "two categories of employer permitted to sponsor a 457 plan"
+      },
+      {
+        "id": "9e9d75f99ac0",
+        "normalized": "feature that distinguishes governmental 457b plan distributions from 401k distributions for early withdrawals"
+      },
+      {
+        "id": "51ab9bb45ee8",
+        "normalized": "maximum employee headcount that allows an employer to sponsor a simple ira"
+      },
+      {
+        "id": "8fbf4d280b84",
+        "normalized": "source of contributions to a sep ira"
+      },
+      {
+        "id": "3f63c7e9a0e7",
+        "normalized": "who is eligible to establish a solo 401k"
+      },
+      {
+        "id": "32c8aff0fab9",
+        "normalized": "three features that distinguish a qualified retirement plan from a nonqualified plan"
+      },
+      {
+        "id": "c9461870b0ff",
+        "normalized": "federal statute that sets minimum standards for participation vesting funding and fiduciary conduct in most privatesector qualified plans"
+      },
+      {
+        "id": "33076ca60878",
+        "normalized": "two permitted vesting schedules for employer matching contributions under erisa"
+      },
+      {
+        "id": "eab3776e6635",
+        "normalized": "time limit for a participant to complete an indirect ira rollover"
+      },
+      {
+        "id": "e46ec97e94fd",
+        "normalized": "mandatory federal income tax withholding rate on an indirect rollover paid from a qualified plan to a participant"
+      },
+      {
+        "id": "1825b598cd25",
+        "normalized": "maximum period a noneligible designated beneficiary has to fully distribute an inherited ira under the secure act"
+      },
+      {
+        "id": "bcb3f6a5db93",
+        "normalized": "tax consequence of converting a traditional ira to a roth ira"
+      },
+      {
+        "id": "991a31c79005",
+        "normalized": "default investment vehicle that grants erisa fiduciary protection when participants fail to make their own investment election"
+      },
+      {
+        "id": "a6adb23d02ac",
+        "normalized": "erisa provision limiting fiduciary liability when participants direct the investment of their own account balances"
+      },
+      {
+        "id": "62b4e6431b61",
+        "normalized": "status of assets in a nonqualified deferred compensation tophat plan relative to the sponsoring employers creditors"
+      }
+    ],
+    "questions": [
+      {
+        "id": "e5d07bbb7920",
+        "normalized": "to make a contribution to a traditional ira an individual must have which of the following"
+      },
+      {
+        "id": "dd0e3f65c092",
+        "normalized": "which statement about roth ira contributions is correct"
+      },
+      {
+        "id": "16661c9c8cff",
+        "normalized": "under secure 20 the required beginning date for distributions from a traditional ira is generally tied to the year the owner reaches what age"
+      },
+      {
+        "id": "0d792003021a",
+        "normalized": "compared with a traditional ira a unique feature of a roth ira during the original owners lifetime is that"
+      },
+      {
+        "id": "d49fdf81985d",
+        "normalized": "qualified retirement plans must comply with which federal law that establishes minimum standards for fiduciary conduct vesting reporting and disclosure"
+      },
+      {
+        "id": "b71cecb981d1",
+        "normalized": "a 403b plan is generally available to employees of"
+      },
+      {
+        "id": "ea21ef00b8b2",
+        "normalized": "a 457b deferred compensation plan is most commonly sponsored by"
+      },
+      {
+        "id": "6ce5619964ee",
+        "normalized": "in a simplified employee pension sep ira contributions are made by"
+      },
+      {
+        "id": "5227d6a40ebc",
+        "normalized": "in a defined contribution plan such as a 401k the investment risk is generally borne by"
+      },
+      {
+        "id": "2c698d0d3758",
+        "normalized": "in a defined benefit pension plan who generally bears the investment risk"
+      },
+      {
+        "id": "e51c77baab83",
+        "normalized": "compared with a qualified plan a nonqualified deferred compensation plan generally"
+      },
+      {
+        "id": "75a13366accd",
+        "normalized": "to take a fully taxfree qualified distribution from a roth ira the account must have been open for at least five tax years and the owner must"
+      },
+      {
+        "id": "bfc6676d63c5",
+        "normalized": "which of the following is not an exception to the 10 early withdrawal penalty for a distribution from a traditional ira before age 59 12"
+      },
+      {
+        "id": "8a3ac04fdb5c",
+        "normalized": "a married investor whose spouse is an active participant in an employersponsored retirement plan may find that the deductibility of their own traditional ira contribution is"
+      },
+      {
+        "id": "0c8d9bc6d2bf",
+        "normalized": "the ability to make direct contributions to a roth ira is best described as"
+      },
+      {
+        "id": "8d5982e3d920",
+        "normalized": "a selfemployed dentist with no employees other than her spouse establishes a solo 401k compared with a sep ira the solo 401k generally allows her to"
+      },
+      {
+        "id": "26a94024cc8b",
+        "normalized": "under a simple ira the employer must either"
+      },
+      {
+        "id": "c5382229d308",
+        "normalized": "which statement about 457b plans is correct"
+      },
+      {
+        "id": "48fae8599c90",
+        "normalized": "catchup contributions to retirement accounts are generally available beginning in the year a participant attains what age"
+      },
+      {
+        "id": "a491d2c1799a",
+        "normalized": "under erisa employer matching contributions in a defined contribution plan must vest under one of two permissible accelerated schedules one acceptable schedule is"
+      },
+      {
+        "id": "b98b592fcf6b",
+        "normalized": "a qualified retirement plan is considered topheavy when more than what percentage of plan benefits or account balances are attributable to key employees"
+      },
+      {
+        "id": "2f8426076d89",
+        "normalized": "permitted investments inside a 403b plan are generally limited to"
+      },
+      {
+        "id": "483902af3bb8",
+        "normalized": "a common reason an employer adopts a nonqualified deferred compensation plan instead of expanding its 401k is to"
+      },
+      {
+        "id": "deb392900e87",
+        "normalized": "under the secure act most nonspouse designated beneficiaries who inherit a traditional ira must generally"
+      },
+      {
+        "id": "a0e38013ed36",
+        "normalized": "under erisa section 404a a plan fiduciary must act"
+      },
+      {
+        "id": "afafb2506d78",
+        "normalized": "compliance with erisa section 404c generally requires that the plan"
+      },
+      {
+        "id": "430801024c10",
+        "normalized": "a client receives a distribution from her traditional ira paid directly to herself rather than via trusteetotrustee transfer to avoid taxation and the 10 penalty she must redeposit the funds into another eligible ira within how many days"
+      },
+      {
+        "id": "c8b196716763",
+        "normalized": "an employees traditional pretax 401k elective deferrals reduce which of the following in the year of contribution"
+      },
+      {
+        "id": "d43eeb3ceb5d",
+        "normalized": "beginning in 2024 designated roth accounts within an employer 401k plan are"
+      },
+      {
+        "id": "989b81b2b834",
+        "normalized": "a public school teacher participates in both a 403b plan and a governmental 457b plan regarding employee elective deferrals the teacher generally may"
+      },
+      {
+        "id": "11a61b9e4630",
+        "normalized": "for a defined contribution plan irc section 415 limits the total annual additions employee deferrals plus employer contributions plus forfeitures per participant to the lesser of"
+      },
+      {
+        "id": "ff2b071d560f",
+        "normalized": "for 401k nondiscrimination testing a highly compensated employee is generally one who"
+      },
+      {
+        "id": "266404434a9f",
+        "normalized": "the pension benefit guaranty corporation insures benefits in"
+      },
+      {
+        "id": "0946502ee983",
+        "normalized": "under current law posttax cuts and jobs act a roth ira conversion from a traditional ira may not be"
+      },
+      {
+        "id": "767dc23e530e",
+        "normalized": "a taxpayer holds 90000 of pretax assets in a traditional ira then makes a 7000 nondeductible traditional ira contribution and immediately converts that 7000 to a roth ira under the irs prorata aggregation rule the conversion will be"
+      },
+      {
+        "id": "d29f92c6e5de",
+        "normalized": "which 457b distribution is eligible to be rolled over directly into a traditional ira"
+      },
+      {
+        "id": "573e99fbe0bd",
+        "normalized": "under secure 20 a traditional ira owner who attains age 73 during 2026 must take her first required minimum distribution no later than"
+      },
+      {
+        "id": "2e87006b0454",
+        "normalized": "under erisa section 406 prohibited transactions generally include"
+      }
+    ]
+  }
+}

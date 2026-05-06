@@ -1,0 +1,291 @@
+{
+  "subtopicId": "4.8",
+  "items": {
+    "lessons": [
+      {
+        "id": "4.8",
+        "normalized": "ethical practices and fiduciary obligations"
+      }
+    ],
+    "cards": [
+      {
+        "id": "b0fbe8d43a4b",
+        "normalized": "what is an investment advisers overarching duty to clients"
+      },
+      {
+        "id": "2a23a1286118",
+        "normalized": "what conduct does section 206 of the investment advisers act of 1940 prohibit"
+      },
+      {
+        "id": "d92500eb0d0b",
+        "normalized": "when may an secregistered ia charge a performancebased fee"
+      },
+      {
+        "id": "6be4df6abdd0",
+        "normalized": "what thresholds make a natural person a qualified client for performance fees"
+      },
+      {
+        "id": "af7c7c111e05",
+        "normalized": "what disclosure must an adviser make about softdollar arrangements"
+      },
+      {
+        "id": "dc64c1199b67",
+        "normalized": "what must an investment adviser disclose to clients about how it is compensated"
+      },
+      {
+        "id": "f48eb517b036",
+        "normalized": "when is an investment adviser deemed to have custody of client assets"
+      },
+      {
+        "id": "9e2c454935e1",
+        "normalized": "what core safekeeping requirements apply to a federally registered ia with custody"
+      },
+      {
+        "id": "67825fbea6cc",
+        "normalized": "how quickly must an ia return client funds or securities it never intended to hold"
+      },
+      {
+        "id": "fbbcc44c0d02",
+        "normalized": "what authorization must a brokerdealer obtain before exercising discretion in a clients account"
+      },
+      {
+        "id": "fd355bfae3e4",
+        "normalized": "how does an investment advisers discretion timing differ from a brokerdealers"
+      },
+      {
+        "id": "2cee6063a911",
+        "normalized": "what standard of care governs an ias recommendations to clients"
+      },
+      {
+        "id": "91627f068079",
+        "normalized": "what dollar threshold triggers a currency transaction report ctr"
+      },
+      {
+        "id": "2491bf264f80",
+        "normalized": "what threshold and timeframe govern a brokerdealers suspicious activity reports"
+      },
+      {
+        "id": "33495f04beef",
+        "normalized": "why are loans between iars and ordinary advisory clients prohibited"
+      },
+      {
+        "id": "704d9a1d0447",
+        "normalized": "under what conditions may a brokerdealer agent share in profits and losses of a customers account"
+      },
+      {
+        "id": "d5ee4ba209ba",
+        "normalized": "what are the elements of insidertrading liability under federal law"
+      },
+      {
+        "id": "d2ea9f25988a",
+        "normalized": "what policies must an investment adviser maintain to prevent misuse of mnpi"
+      },
+      {
+        "id": "66b39f732b3e",
+        "normalized": "what is selling away and why is it prohibited"
+      },
+      {
+        "id": "33d66745b3f3",
+        "normalized": "give examples of conduct that constitutes prohibited market manipulation"
+      },
+      {
+        "id": "5a9a6cac19d6",
+        "normalized": "what does rule 204a1 require regarding personal securities transactions of access persons"
+      },
+      {
+        "id": "fbda220a83a3",
+        "normalized": "what must an iar disclose before opening an outside securities account"
+      },
+      {
+        "id": "d834f2aaed18",
+        "normalized": "what is the twoyear timeout under the paytoplay rule"
+      },
+      {
+        "id": "c85bc01d10a6",
+        "normalized": "what de minimis political contributions are allowed under rule 20645"
+      },
+      {
+        "id": "12d37ac4262d",
+        "normalized": "what is excessive trading churning and which duties does it violate"
+      },
+      {
+        "id": "a38bdbb812b8",
+        "normalized": "what protections does nasaas framework on financial exploitation of vulnerable adults provide"
+      },
+      {
+        "id": "1f4c64fa67d4",
+        "normalized": "what does regulation sp require firms to do with respect to client information"
+      },
+      {
+        "id": "3f1077b4609e",
+        "normalized": "what core elements does nasaas model cybersecurity rule require for stateregistered ias"
+      },
+      {
+        "id": "fbcf3fc02216",
+        "normalized": "what must nasaas model rule on business continuity and succession planning include"
+      }
+    ],
+    "questions": [
+      {
+        "id": "aee274d3f25d",
+        "normalized": "an investment adviser registered under the investment advisers act of 1940 owes its clients which standard of care"
+      },
+      {
+        "id": "3c4f1a667ea9",
+        "normalized": "under sec rule 20642 and parallel nasaa rules an investment adviser is generally deemed to have custody of client assets when the adviser"
+      },
+      {
+        "id": "47e4b343d74d",
+        "normalized": "performancebased compensation by an secregistered investment adviser is generally permitted only when the client is a qualified client which currently requires the client to have either"
+      },
+      {
+        "id": "57ee66ba5dac",
+        "normalized": "a brokerdealer must file a currency transaction report ctr with fincen whenever a customer conducts cash transactions in a single business day totaling more than"
+      },
+      {
+        "id": "188eaa3cec97",
+        "normalized": "insider trading liability under rule 10b5 is most commonly premised on trading on the basis of"
+      },
+      {
+        "id": "2866ddd5cecc",
+        "normalized": "an agent of a brokerdealer privately effects securities transactions for compensation outside the regular course of his bds business and without giving notice to or receiving approval from the bd this practice is best described as"
+      },
+      {
+        "id": "2ab6933f2488",
+        "normalized": "under the softdollar safe harbor an investment adviser may use client commission dollars to obtain which of the following from an executing brokerdealer without breaching its fiduciary duty"
+      },
+      {
+        "id": "95318666229e",
+        "normalized": "under most state rules before an investment adviser may exercise discretion in a clients account the adviser must"
+      },
+      {
+        "id": "ba43032e27e0",
+        "normalized": "an investment advisers fee schedule methods of compensation and material conflicts of interest are principally disclosed to clients in"
+      },
+      {
+        "id": "ba3173eef249",
+        "normalized": "sec rule 20645 the paytoplay rule addresses primarily which of the following conflicts"
+      },
+      {
+        "id": "13f52cede3c4",
+        "normalized": "the practice of effecting transactions in a customers account that are excessive in size or frequency given the customers objectives and resources principally to generate commissions is known as"
+      },
+      {
+        "id": "62f20fd6c2cc",
+        "normalized": "a registered representative reasonably believes that a 78yearold client is being financially exploited by a relative who has obtained the clients account credentials under the nasaa model approach to the protection of vulnerable adults the firm is generally permitted to"
+      },
+      {
+        "id": "a7c649bf7429",
+        "normalized": "an investment adviser deducts its quarterly advisory fee directly from the clients account at a qualified custodian under sec rule 20642 this practice"
+      },
+      {
+        "id": "4d72c703fb07",
+        "normalized": "an investment adviser that has custody of client funds or securities other than via fee deduction meeting specific conditions is generally required to"
+      },
+      {
+        "id": "fb8bf21c4069",
+        "normalized": "which of the following is least likely to fall within the section 28e softdollar safe harbor"
+      },
+      {
+        "id": "f7e2dd0b4ba0",
+        "normalized": "a brokerdealer is generally required to file a suspicious activity report sar when it identifies a transaction conducted or attempted at the firm involving aggregate funds or assets of"
+      },
+      {
+        "id": "0896ae0c1031",
+        "normalized": "a corporate insider establishes in good faith a written trading plan at a time when she does not possess material nonpublic information the plan specifies the amounts prices and dates of future trades under rule 10b51 the plan"
+      },
+      {
+        "id": "ee2f1183c049",
+        "normalized": "sec rule 204a1 requires secregistered investment advisers to adopt a code of ethics that among other items requires their access persons to"
+      },
+      {
+        "id": "c63fd8dafae3",
+        "normalized": "under sec rule 204a1 an access person must submit"
+      },
+      {
+        "id": "5b0d29cd36fa",
+        "normalized": "under rule 20645 if a covered associate of an adviser makes a political contribution above the de minimis amount to an official of a government entity who can influence the selection of advisers the adviser is generally"
+      },
+      {
+        "id": "bb309431f155",
+        "normalized": "sec rule 20645 includes a de minimis exception that permits a covered associate to contribute per official per election up to"
+      },
+      {
+        "id": "6b04aeeee486",
+        "normalized": "a registered representative is generally prohibited from borrowing money from a customer except when"
+      },
+      {
+        "id": "efd027becd4b",
+        "normalized": "a brokerdealer agent proposes to share in the profits and losses of a customers account such an arrangement is generally"
+      },
+      {
+        "id": "0165956ce30d",
+        "normalized": "regulation sp implements the privacy provisions of the grammleachbliley act and requires brokerdealers and secregistered investment advisers to"
+      },
+      {
+        "id": "438701f30bca",
+        "normalized": "regulation sid requires secregulated financial institutions and creditors that hold covered accounts to"
+      },
+      {
+        "id": "01bd1945e405",
+        "normalized": "an investment adviser to a private fund organized as a limited partnership is deemed to have custody of fund assets the adviser may avoid the surpriseexamination requirement of rule 20642 if it"
+      },
+      {
+        "id": "56969267cd2e",
+        "normalized": "regulation best interest reg bi applies to"
+      },
+      {
+        "id": "817f4f9a30c7",
+        "normalized": "under the nasaa model approach to protecting vulnerable adults a qualified individual who reasonably believes that financial exploitation has been attempted may direct the firm to delay a disbursement or transaction for an initial period of up to"
+      },
+      {
+        "id": "f884c6417e71",
+        "normalized": "nasaas model rule on business continuity and succession planning requires investment advisers to maintain and follow a written plan that at a minimum addresses"
+      },
+      {
+        "id": "e678355581e0",
+        "normalized": "an investment adviser discovers a new material conflict of interest midyear that is not disclosed in its current brochure the adviser should"
+      },
+      {
+        "id": "ce99511c408f",
+        "normalized": "under the nasaa statement of policy on unethical or dishonest practices of ias and iars an investment adviser representative who maintains a brokerage account at an outside firm must generally"
+      },
+      {
+        "id": "80e4688d7c27",
+        "normalized": "an investment adviser proposes to act as a principal ie from its own inventory in a transaction with an advisory client under section 2063 of the advisers act the adviser must"
+      },
+      {
+        "id": "2f06486dc84f",
+        "normalized": "a client mistakenly mails an investment adviser a check made payable to the adviser rather than to the qualified custodian to avoid being deemed to have custody under rule 20642 the adviser should"
+      },
+      {
+        "id": "96918ec3d6e4",
+        "normalized": "two parties prearrange the simultaneous purchase and sale of a security at a specified time and price to create a misleading appearance of trading volume this conduct is best characterized as"
+      },
+      {
+        "id": "53f9a32d06d5",
+        "normalized": "a money manager directs trades to a particular brokerdealer because the broker provides research that materially benefits client portfolios the section 28e safe harbor protects the manager only to the extent that"
+      },
+      {
+        "id": "c20fc65d469c",
+        "normalized": "an adviser hires a new covered associate under rule 20645 the adviser may be prohibited from receiving compensation from a government client because of triggering contributions made by the new hire within"
+      },
+      {
+        "id": "dc12b37f3ed6",
+        "normalized": "for an secregistered investment adviser subject to the surpriseexamination requirement of rule 20642 the independent public accountant must"
+      },
+      {
+        "id": "a027fee99c7d",
+        "normalized": "section 204a of the investment advisers act of 1940 requires every investment adviser to"
+      },
+      {
+        "id": "569e27f11553",
+        "normalized": "two clients of a multiservice firm are involved in a confidential merger to prevent the firms investmentadvisory personnel from trading on this information the firm should rely most directly on"
+      },
+      {
+        "id": "8beee2fe09ed",
+        "normalized": "nasaas model rule on information security and privacy cybersecurity requires stateregistered investment advisers to"
+      }
+    ]
+  }
+}

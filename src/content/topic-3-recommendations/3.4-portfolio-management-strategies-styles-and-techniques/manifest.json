@@ -1,0 +1,267 @@
+{
+  "subtopicId": "3.4",
+  "items": {
+    "lessons": [
+      {
+        "id": "3.4",
+        "normalized": "portfolio management strategies styles and techniques"
+      }
+    ],
+    "cards": [
+      {
+        "id": "4b1136309ea6",
+        "normalized": "strategic asset allocation"
+      },
+      {
+        "id": "db483fa6e796",
+        "normalized": "tactical asset allocation"
+      },
+      {
+        "id": "e950894d9f43",
+        "normalized": "strategic versus tactical asset allocation"
+      },
+      {
+        "id": "003730b92e2d",
+        "normalized": "purpose of rebalancing under a strategic allocation"
+      },
+      {
+        "id": "5cf12ae5b8db",
+        "normalized": "active portfolio management"
+      },
+      {
+        "id": "e98e5e309115",
+        "normalized": "passive portfolio management"
+      },
+      {
+        "id": "c98d3c9cc3ba",
+        "normalized": "typical cost difference between active and passive funds"
+      },
+      {
+        "id": "50241802bfd4",
+        "normalized": "buyandhold technique"
+      },
+      {
+        "id": "402d2df680f8",
+        "normalized": "growth investing style"
+      },
+      {
+        "id": "5986ae265b1d",
+        "normalized": "value investing style"
+      },
+      {
+        "id": "ce8a095b346e",
+        "normalized": "distinguishing characteristics of growth versus value stocks"
+      },
+      {
+        "id": "fe6b3e700033",
+        "normalized": "income investment style"
+      },
+      {
+        "id": "4cfba0dcf831",
+        "normalized": "capitalappreciation style"
+      },
+      {
+        "id": "36ee061955d3",
+        "normalized": "diversification as a portfolio technique"
+      },
+      {
+        "id": "0df9037c33b5",
+        "normalized": "type of risk that diversification reduces"
+      },
+      {
+        "id": "fc39da96b5b8",
+        "normalized": "sector rotation"
+      },
+      {
+        "id": "9b8a52900990",
+        "normalized": "dollarcost averaging"
+      },
+      {
+        "id": "0335964b69be",
+        "normalized": "relationship between average cost and average price under dollarcost averaging"
+      },
+      {
+        "id": "55aaebd83583",
+        "normalized": "protective put strategy"
+      },
+      {
+        "id": "a13fff0ad926",
+        "normalized": "covered call strategy"
+      },
+      {
+        "id": "543d983d787d",
+        "normalized": "leveraging an equity portfolio through a margin account"
+      },
+      {
+        "id": "546ce013a4aa",
+        "normalized": "volatilitymanagement technique"
+      },
+      {
+        "id": "0cfa1b683941",
+        "normalized": "inverse etfs"
+      },
+      {
+        "id": "81bb29e07845",
+        "normalized": "holdingperiod risk of leveraged and inverse etfs"
+      },
+      {
+        "id": "9b71609e3cbd",
+        "normalized": "highfrequency trading"
+      },
+      {
+        "id": "97ce02bd4213",
+        "normalized": "why systematic risk cannot be diversified away"
+      }
+    ],
+    "questions": [
+      {
+        "id": "6b2ac6d8478c",
+        "normalized": "strategic asset allocation is best described as which of the following"
+      },
+      {
+        "id": "6f764ee7af4c",
+        "normalized": "an adviser temporarily overweights equities to 70 from a 60 policy target because she believes stocks are undervalued this is an example of"
+      },
+      {
+        "id": "49dabc680a22",
+        "normalized": "which statement best distinguishes strategic from tactical asset allocation"
+      },
+      {
+        "id": "5dbb872e12f1",
+        "normalized": "an investor places funds in a lowcost sp 500 index fund and holds it for 20 years with no trading this investor is using which management style"
+      },
+      {
+        "id": "4e52e0a487a7",
+        "normalized": "a portfolio manager who believes markets are highly efficient is most likely to recommend"
+      },
+      {
+        "id": "dee9466f4f26",
+        "normalized": "which of the following is a characteristic typically associated with active management"
+      },
+      {
+        "id": "46ab0b274422",
+        "normalized": "a growthstyle investor is most likely to favor stocks with which of the following characteristics"
+      },
+      {
+        "id": "d144a7f4e332",
+        "normalized": "which set of metrics is most consistent with a value investing style"
+      },
+      {
+        "id": "ae806fcaf4ef",
+        "normalized": "a retired client whose primary objective is current cash flow with limited principal volatility is best served by which style"
+      },
+      {
+        "id": "12af9d057067",
+        "normalized": "capital appreciation as an investment objective primarily seeks"
+      },
+      {
+        "id": "2b236a45e366",
+        "normalized": "diversification primarily reduces which type of risk"
+      },
+      {
+        "id": "aef179662b71",
+        "normalized": "an adviser adds international equities and highquality bonds to a us equity portfolio the benefit of adding lowcorrelation assets is best explained by"
+      },
+      {
+        "id": "edd3c94f2e9e",
+        "normalized": "two assets have a correlation coefficient of 10 which statement is most accurate"
+      },
+      {
+        "id": "83bed45d9e04",
+        "normalized": "sector rotation is best described as"
+      },
+      {
+        "id": "f714ed0bead6",
+        "normalized": "which sectors have historically been considered defensive and therefore favored late in a recession by sectorrotation strategists"
+      },
+      {
+        "id": "caf6180334b3",
+        "normalized": "dollarcost averaging refers to"
+      },
+      {
+        "id": "0526d4193df0",
+        "normalized": "compared with the simple average of share prices dollarcost averaging will produce an average cost per share that is"
+      },
+      {
+        "id": "24b094f9a230",
+        "normalized": "which of the following is a key limitation of dollarcost averaging"
+      },
+      {
+        "id": "f3605c4624f7",
+        "normalized": "an investor expecting a stock to rise sharply over the next month is most likely to"
+      },
+      {
+        "id": "3050e5257587",
+        "normalized": "an investor owns 100 shares of xyz and writes one outofthemoney call this covered call strategy is best described as"
+      },
+      {
+        "id": "a5ecaea318ee",
+        "normalized": "an investor holds 1000 shares of a stock and buys 10 protective puts at a strike near the current market price the primary purpose is to"
+      },
+      {
+        "id": "9f99892a2e63",
+        "normalized": "leveraging in a portfolio context most accurately"
+      },
+      {
+        "id": "310fc83c1645",
+        "normalized": "under federal reserve regulation t the initial margin requirement for the purchase of marginable equity securities in a long account is"
+      },
+      {
+        "id": "4203f2d53ea8",
+        "normalized": "volatility management strategies typically aim to"
+      },
+      {
+        "id": "33be5ecca832",
+        "normalized": "an inverse etf is designed to"
+      },
+      {
+        "id": "3aa7c8dba2c9",
+        "normalized": "why are leveraged and inverse etfs generally considered unsuitable as longterm holdings"
+      },
+      {
+        "id": "428496522651",
+        "normalized": "highfrequency trading hft is most accurately characterized as"
+      },
+      {
+        "id": "efaecdcb6114",
+        "normalized": "which of the following is a frequently cited regulatory concern about highfrequency trading"
+      },
+      {
+        "id": "e9e421a11742",
+        "normalized": "an adviser maintains target weights of 60 equities and 40 bonds after a strong equity rally the portfolio is now 70 equities and 30 bonds following a strategic asset allocation discipline the adviser should"
+      },
+      {
+        "id": "f35e9f2d29a4",
+        "normalized": "which of the following is the strongest critique of tactical asset allocation as practiced by most managers"
+      },
+      {
+        "id": "3bab84a0e9a7",
+        "normalized": "an active managers performance relative to a benchmark after adjusting for the risk taken is most commonly measured by"
+      },
+      {
+        "id": "33f87ec650bc",
+        "normalized": "for a passively managed index fund which of the following best measures how closely the fund tracks its benchmark"
+      },
+      {
+        "id": "01b95ad7fd08",
+        "normalized": "an investor with a 100000 windfall is choosing between investing it as a lump sum today versus dollarcost averaging it over 12 months historically which is true on average"
+      },
+      {
+        "id": "7051ac6bd711",
+        "normalized": "an investor sells short an inverse 2x etf on the sp 500 expecting the index to rise this combination of techniques represents"
+      },
+      {
+        "id": "2b2c088c8961",
+        "normalized": "which combination of style descriptions is most internally consistent for a single equity portfolio"
+      },
+      {
+        "id": "72ef5f7404e8",
+        "normalized": "an adviser uses options to systematically reduce a portfolios downside while sacrificing some upside this is best described as"
+      },
+      {
+        "id": "a9f9947b7b71",
+        "normalized": "which of the following best summarizes the relationship between diversification and modern portfolio theory"
+      }
+    ]
+  }
+}

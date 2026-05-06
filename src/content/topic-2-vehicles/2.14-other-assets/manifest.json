@@ -1,0 +1,287 @@
+{
+  "subtopicId": "2.14",
+  "items": {
+    "lessons": [
+      {
+        "id": "2.14",
+        "normalized": "other assets commodities precious metals and digital assets"
+      }
+    ],
+    "cards": [
+      {
+        "id": "bb87e11ec314",
+        "normalized": "what is a commodity in financial markets"
+      },
+      {
+        "id": "7c51bf4176de",
+        "normalized": "distinguish hard commodities from soft commodities"
+      },
+      {
+        "id": "299264f3ae0a",
+        "normalized": "which federal agency has primary jurisdiction over us commodity futures and options markets"
+      },
+      {
+        "id": "e0dfc2dfb00f",
+        "normalized": "what role does the national futures association play"
+      },
+      {
+        "id": "9f3acbc211d5",
+        "normalized": "name the four primary precious metals traded as investment commodities"
+      },
+      {
+        "id": "3beeda0e8934",
+        "normalized": "list four common ways an investor can gain exposure to gold"
+      },
+      {
+        "id": "4050a2734e19",
+        "normalized": "why is gold often used as an inflation hedge"
+      },
+      {
+        "id": "c6fd52857838",
+        "normalized": "what is the spot price of a commodity"
+      },
+      {
+        "id": "ac3871a279e0",
+        "normalized": "define contango in the futures markets"
+      },
+      {
+        "id": "d2a4d83493e4",
+        "normalized": "define backwardation"
+      },
+      {
+        "id": "4be5bfcaf0c1",
+        "normalized": "identify two principal disadvantages of holding physical commodities"
+      },
+      {
+        "id": "ed3be10e48fc",
+        "normalized": "which us derivatives marketplace is the largest venue for commodity futures contracts"
+      },
+      {
+        "id": "93d809d52034",
+        "normalized": "how does the intercontinental exchange differ in product focus from cme group"
+      },
+      {
+        "id": "e748e49bf7df",
+        "normalized": "what is a digital asset"
+      },
+      {
+        "id": "56531f2be1ab",
+        "normalized": "what technology underlies most digital assets"
+      },
+      {
+        "id": "6ef45728d2fb",
+        "normalized": "which test does the sec apply to decide whether a digital asset is a security"
+      },
+      {
+        "id": "55604b05ebd1",
+        "normalized": "distinguish a security token from a utility token"
+      },
+      {
+        "id": "ab104a0ed683",
+        "normalized": "which regulator has classified bitcoin and ether as commodities"
+      },
+      {
+        "id": "0cea208f42b3",
+        "normalized": "define a stablecoin"
+      },
+      {
+        "id": "c557b7a91899",
+        "normalized": "what is an initial coin offering ico"
+      },
+      {
+        "id": "dc72608c9616",
+        "normalized": "differentiate a hot wallet from a cold wallet"
+      },
+      {
+        "id": "b1317bd9e975",
+        "normalized": "name three principal risks of investing in cryptocurrencies"
+      },
+      {
+        "id": "a55dceb3619e",
+        "normalized": "how do cryptocurrencies differ from traditional fiat currencies"
+      },
+      {
+        "id": "57efe81e5356",
+        "normalized": "what is a nonfungible token nft"
+      },
+      {
+        "id": "049532bb4f2f",
+        "normalized": "are customer cryptocurrency balances at us trading platforms covered by sipc or fdic insurance"
+      }
+    ],
+    "questions": [
+      {
+        "id": "c78782ab3efe",
+        "normalized": "under federal law commodities such as corn crude oil and gold are primarily regulated by which of the following agencies"
+      },
+      {
+        "id": "8a4df24c7279",
+        "normalized": "which statement best describes the federalsecuritieslaw status of physical commodities such as wheat or copper"
+      },
+      {
+        "id": "2700ad04828f",
+        "normalized": "which group consists exclusively of precious metals commonly traded as commodities on us exchanges"
+      },
+      {
+        "id": "18139eb35ff4",
+        "normalized": "compared with a forward contract an exchangetraded futures contract is principally distinguished by which feature"
+      },
+      {
+        "id": "4d2787d0384f",
+        "normalized": "an investor opens a long crude oil futures position by posting initial margin equal to roughly 510 of contract value the margin in a futures contract is best characterized as"
+      },
+      {
+        "id": "f59f13e87883",
+        "normalized": "on a long crude oil futures position the price falls 050 per barrel and the traders broker requires additional funds the next morning this process is known as"
+      },
+      {
+        "id": "1c512befa163",
+        "normalized": "an airline that buys jetfuelrelated futures to lock in input costs is acting as a"
+      },
+      {
+        "id": "6a978cc9541f",
+        "normalized": "which characteristic best distinguishes investmentgrade gold bullion from numismatic gold coins"
+      },
+      {
+        "id": "a57e7884520d",
+        "normalized": "an exchangetraded product such as spdr gold shares gld that holds physical gold bullion in a vault is best described as"
+      },
+      {
+        "id": "e7dcdc4b40a2",
+        "normalized": "an investor in a commodity futuresbased etf that rolls nearmonth contracts forward each month notices that fund returns lag spot price gains during periods of contango the most likely explanation is that"
+      },
+      {
+        "id": "c1e69a92c70a",
+        "normalized": "an adviser to a publicly offered commodity pool that trades cme futures must generally register with which selfregulatory organization"
+      },
+      {
+        "id": "e49952fc8b7e",
+        "normalized": "which statement most accurately describes the cashflow profile of an investment in physical gold bullion"
+      },
+      {
+        "id": "bb52cda6c87d",
+        "normalized": "many advisers recommend a small allocation to gold or commodities for clients concerned about inflation the principal rationale is that"
+      },
+      {
+        "id": "241eaabbddff",
+        "normalized": "which of the following is true about a speculator who sells writes crude oil futures"
+      },
+      {
+        "id": "14256875ec6c",
+        "normalized": "which characteristic is shared by both a forward contract and a futures contract"
+      },
+      {
+        "id": "2939fb0ea68b",
+        "normalized": "crude oil futures contracts traded on the cme are primarily subject to oversight by"
+      },
+      {
+        "id": "58c6a5c98a24",
+        "normalized": "a commodity pool operator that limits its pools investors to qualified eligible persons may rely on which cftc rule for relief from certain disclosure and reporting requirements"
+      },
+      {
+        "id": "8ec4a68ab0d3",
+        "normalized": "a privately offered fund that trades futures on cme and ice for the benefit of its limited partners is best described as a"
+      },
+      {
+        "id": "ea3b97a8ffe4",
+        "normalized": "an investor seeking exposure to gold price changes without arranging physical storage and insurance would most appropriately consider"
+      },
+      {
+        "id": "28293171e766",
+        "normalized": "a digital asset is most accurately defined as"
+      },
+      {
+        "id": "2c834ee840f5",
+        "normalized": "bitcoin btc is best described as"
+      },
+      {
+        "id": "a94b6f335271",
+        "normalized": "an issuer raises capital by selling tokens that promise buyers a share of the companys future profits if the management team builds a successful platform under sec v wj howey co these tokens are most likely"
+      },
+      {
+        "id": "1a11200bfa1e",
+        "normalized": "under the howey test which of the following is not an element required for an arrangement to be an investment contract and therefore a security"
+      },
+      {
+        "id": "20ae35ca3599",
+        "normalized": "when applying the howey test to digital assets the sec has indicated that the networks degree of decentralization is relevant because"
+      },
+      {
+        "id": "38873dc541f2",
+        "normalized": "a stablecoin is best described as"
+      },
+      {
+        "id": "e706d5658cd3",
+        "normalized": "a nonfungible token nft differs from a typical cryptocurrency primarily because"
+      },
+      {
+        "id": "814eec6e56a5",
+        "normalized": "which statement most accurately distinguishes a cold wallet from a hot wallet for digitalasset custody"
+      },
+      {
+        "id": "0db031a50af6",
+        "normalized": "when recommending direct ownership of digital assets an investment adviser should advise the client that"
+      },
+      {
+        "id": "348b76efc56e",
+        "normalized": "an iar with discretion over a clients wallet that holds tokens the sec has alleged are securities would most likely be subject to which custodyrelated obligation"
+      },
+      {
+        "id": "4348916cba08",
+        "normalized": "a central bank digital currency cbdc differs from bitcoin primarily because a cbdc"
+      },
+      {
+        "id": "7b3fa1410379",
+        "normalized": "the cftcs authority over bitcoin is best described as"
+      },
+      {
+        "id": "560334cf9a90",
+        "normalized": "which of the following is a primary risk an adviser should disclose to a client considering an investment in a public cryptocurrency such as bitcoin or ether"
+      },
+      {
+        "id": "3989ac815d25",
+        "normalized": "a spot bitcoin etf approved by the sec most likely"
+      },
+      {
+        "id": "73383a27f460",
+        "normalized": "which of the following is a key difference between a typical cryptocurrency such as bitcoin and a fiat currency such as the us dollar"
+      },
+      {
+        "id": "cea0ce609176",
+        "normalized": "an adviser is reviewing risks of a clients holdings on a centralized cryptocurrency exchange which risk is most distinctive to such platforms"
+      },
+      {
+        "id": "b57671cfcb6a",
+        "normalized": "an online influencer accumulates a thinly traded altcoin then promotes it heavily on social media sells into the resulting buying pressure and disappears the conduct is best described as"
+      },
+      {
+        "id": "1a806653107d",
+        "normalized": "under the investment advisers act of 1940 before recommending a specific digital asset to a retail client an investment adviser must"
+      },
+      {
+        "id": "e96bfb97dd5a",
+        "normalized": "which of the following best describes the meaning of decentralized in the context of a public blockchain such as bitcoin"
+      },
+      {
+        "id": "04a73a88b7c3",
+        "normalized": "which statement best distinguishes a proofofwork blockchain from a proofofstake blockchain"
+      },
+      {
+        "id": "9628bb418346",
+        "normalized": "an issuer markets a crypto savings program under which investors deposit cryptocurrency in exchange for a promise of variable interest funded by the issuers lending activities which analytic framework is generally most relevant to determining whether these arrangements are securities"
+      },
+      {
+        "id": "106036e481d4",
+        "normalized": "an issuer offers tokens that grant holders the right to use a notyetbuilt decentralized cloudstorage platform promotional materials emphasize that early buyers will profit if the team builds the network and adoption grows the sec is most likely to view these tokens as"
+      },
+      {
+        "id": "c1e0eb93e73b",
+        "normalized": "a us cryptocurrency exchange that handles fiattocrypto conversions for retail customers is generally treated as a money services business subject to which body of law"
+      },
+      {
+        "id": "74f5a9812d26",
+        "normalized": "which of the following is the most accurate statement about leverage in commodity futures investing"
+      }
+    ]
+  }
+}

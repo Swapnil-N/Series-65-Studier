@@ -1,0 +1,259 @@
+{
+  "subtopicId": "4.5",
+  "items": {
+    "lessons": [
+      {
+        "id": "4.5",
+        "normalized": "regulation of securities and issuers"
+      }
+    ],
+    "cards": [
+      {
+        "id": "5aeee5e32033",
+        "normalized": "under the uniform securities act what categories of instruments are explicitly treated as securities"
+      },
+      {
+        "id": "2783a2ef47ee",
+        "normalized": "what four elements must be present to qualify an arrangement as an investment contract under the howey test"
+      },
+      {
+        "id": "54f87da8b1aa",
+        "normalized": "name three common financial products that are not considered securities under the uniform securities act"
+      },
+      {
+        "id": "e51d8e69090c",
+        "normalized": "how does the uniform securities act define an issuer"
+      },
+      {
+        "id": "f423a7abace3",
+        "normalized": "define a nonissuer transaction under the uniform securities act"
+      },
+      {
+        "id": "7c32979340f9",
+        "normalized": "what are the three methods by which a nonexempt security may be registered at the state level"
+      },
+      {
+        "id": "a53e45bbb17a",
+        "normalized": "which state registration method is reserved for seasoned issuers and becomes effective automatically after a short waiting period"
+      },
+      {
+        "id": "388f7aaf4d6e",
+        "normalized": "when is registration by coordination used and when does it become effective in the state"
+      },
+      {
+        "id": "49ff0b1905bf",
+        "normalized": "which state registration method is the most stringent and used when no federal registration applies"
+      },
+      {
+        "id": "ecaa5be1ffd6",
+        "normalized": "what is a federal covered security and how does its statelevel treatment differ from a noncovered security"
+      },
+      {
+        "id": "979cc1326275",
+        "normalized": "what statelevel filing is typically required for a rule 506 private placement"
+      },
+      {
+        "id": "3a5f4b66d2fd",
+        "normalized": "which governmentrelated securities are exempt from state registration under the uniform securities act"
+      },
+      {
+        "id": "392ec85ca9c7",
+        "normalized": "are securities issued by banks and insurance companies exempt from state registration"
+      },
+      {
+        "id": "2950b78d3ee6",
+        "normalized": "beyond government bank and insurance issues list three other categories of exempt securities under the usa"
+      },
+      {
+        "id": "63cd91a4903e",
+        "normalized": "list four categories of exempt transactions under the uniform securities act"
+      },
+      {
+        "id": "252f2eae2bc8",
+        "normalized": "under the usa privateplacement transaction exemption how many noninstitutional offerees may be solicited in a 12month period"
+      },
+      {
+        "id": "83cec4fbaa8d",
+        "normalized": "does the administrators antifraud authority extend to securities that are exempt from state registration"
+      },
+      {
+        "id": "cc527c3c1481",
+        "normalized": "must an individual representing an issuer in selling securities to the public register as an agent"
+      },
+      {
+        "id": "87be6d108167",
+        "normalized": "when effecting transactions in which categories of securities is an individual representing an issuer not deemed an agent and therefore not required to register"
+      },
+      {
+        "id": "72bc8990e45e",
+        "normalized": "under the uniform securities act when must a finder who introduces investors to a securities issuer register"
+      },
+      {
+        "id": "b8d7ca113b80",
+        "normalized": "who bears the burden of proving that an exemption from state securities registration applies"
+      },
+      {
+        "id": "6835834152f3",
+        "normalized": "what civil remedies does the buyer of an unlawfully sold security have under the uniform securities act"
+      },
+      {
+        "id": "fc81ed794e1b",
+        "normalized": "what is the statute of limitations for a civil action under the uniform securities act"
+      },
+      {
+        "id": "b55c1911fb70",
+        "normalized": "what are the maximum criminal penalties for a willful violation of the uniform securities act"
+      },
+      {
+        "id": "3eb3d7cd16f1",
+        "normalized": "what summary enforcement order may a state administrator issue to halt a suspected securitieslaw violation"
+      },
+      {
+        "id": "9a97d9257818",
+        "normalized": "what investigative powers does a state administrator have under the uniform securities act"
+      }
+    ],
+    "questions": [
+      {
+        "id": "ad65351160c9",
+        "normalized": "under the uniform securities act which of the following is the broadest test used by courts to determine whether a particular instrument is a security"
+      },
+      {
+        "id": "196e6087aab9",
+        "normalized": "which of the following is not one of the four elements of the howey test for an investment contract"
+      },
+      {
+        "id": "4df4356317e0",
+        "normalized": "which of the following is generally considered a security under the uniform securities act"
+      },
+      {
+        "id": "ee3a8fa6712d",
+        "normalized": "a client purchases a fixed annuity from a statelicensed insurance producer which of the following statements about that contract under the uniform securities act is true"
+      },
+      {
+        "id": "a49cb50751c5",
+        "normalized": "which of the following statements about commodity futures contracts is true under the uniform securities act"
+      },
+      {
+        "id": "b0f29f77e762",
+        "normalized": "abc distillery sells investors fractional ownership interests in barrels of aging whiskey with all aging storage and resale handled by abc are these interests securities under the uniform securities act"
+      },
+      {
+        "id": "85fd362f3c4a",
+        "normalized": "under the uniform securities act no security may be offered or sold in a state unless which of the following is true"
+      },
+      {
+        "id": "4b0cc56abb2e",
+        "normalized": "which of the following is a recognized method of registering a security at the state level under the uniform securities act"
+      },
+      {
+        "id": "98f6f161df31",
+        "normalized": "registration by coordination under the usa is most appropriately used by which type of issuer"
+      },
+      {
+        "id": "30578300d4c9",
+        "normalized": "an issuer that intends to offer securities only to residents of a single state and is not registering with the sec would most appropriately register under which method"
+      },
+      {
+        "id": "7f3739bb4bec",
+        "normalized": "a federal covered security is offered into state x by an issuer which of the following best describes state xs registration treatment of that security"
+      },
+      {
+        "id": "6bf7a2ef1658",
+        "normalized": "under the uniform securities act the registration statement of a security generally remains effective for"
+      },
+      {
+        "id": "bd8384f0cd9b",
+        "normalized": "which of the following is true about postregistration requirements for securities registered under the uniform securities act"
+      },
+      {
+        "id": "3445247fde22",
+        "normalized": "which of the following is an exempt security under usa section 402a"
+      },
+      {
+        "id": "db5bc75ce1e8",
+        "normalized": "which of the following is an exempt security not merely an exempt transaction under the uniform securities act"
+      },
+      {
+        "id": "d5e47fcdb251",
+        "normalized": "which of the following statements regarding bank securities under the uniform securities act is most accurate"
+      },
+      {
+        "id": "b788a261fbd5",
+        "normalized": "insurance company securities are treated as exempt securities under the usa when the issuing insurance company"
+      },
+      {
+        "id": "722f7f66e4f6",
+        "normalized": "which of the following is an exempt transaction under usa section 402b"
+      },
+      {
+        "id": "86ed7a713aee",
+        "normalized": "which of the following best describes the usas privateplacement limitedoffering exempt transaction"
+      },
+      {
+        "id": "bda4c013e34a",
+        "normalized": "sales of securities to which of the following counterparties are typically exempt as transactions under the uniform securities act"
+      },
+      {
+        "id": "0d2652aeb72b",
+        "normalized": "an unsolicited buy order for a nonexempt security is received from a customer at a registered brokerdealer under the uniform securities act this transaction is best characterized as"
+      },
+      {
+        "id": "db9727cf94a7",
+        "normalized": "under the uniform securities act an issuer is best defined as"
+      },
+      {
+        "id": "50c2734d5443",
+        "normalized": "which of the following is true about the definition of issuer under the uniform securities act"
+      },
+      {
+        "id": "75b561e044f4",
+        "normalized": "sally is the founder and sole officer of xyz corp a small startup she personally telephones 50 prospective investors in her state to solicit purchases of xyz common stock under the uniform securities act sally is"
+      },
+      {
+        "id": "6706fa24a72d",
+        "normalized": "an individual representing an issuer in effecting transactions in which of the following types of securities is generally not required to register as an agent under the uniform securities act"
+      },
+      {
+        "id": "6d57bed77319",
+        "normalized": "an individual is hired to represent an issuer solely in selling to institutional investors in the state pursuant to usa section 402b8 under the usa the individual"
+      },
+      {
+        "id": "1827b5dd84dc",
+        "normalized": "a finder introduces a potential investor to an issuer and is paid a 5000 fee each time an introduction results in a closed securities transaction under the uniform securities act this finder"
+      },
+      {
+        "id": "acae368c5632",
+        "normalized": "under the usa antifraud authority the prohibition on fraud in connection with the offer sale or purchase of securities applies to"
+      },
+      {
+        "id": "75f9c078af21",
+        "normalized": "under usa section 501 which of the following is most clearly prohibited"
+      },
+      {
+        "id": "5448e0eeed9d",
+        "normalized": "under the uniform securities act the state administrators enforcement authority generally includes the power to"
+      },
+      {
+        "id": "851d762ffc8c",
+        "normalized": "under the uniform securities act which of the following best describes the administrators authority to investigate"
+      },
+      {
+        "id": "35294ae15494",
+        "normalized": "under usa section 506 it is unlawful to"
+      },
+      {
+        "id": "c8d84add8186",
+        "normalized": "which of the following is typically required for a brokerdealer to rely on the unsolicited brokerage transaction exemption when a customer asks to buy an unregistered nonexempt security"
+      },
+      {
+        "id": "b5bdcae4d40a",
+        "normalized": "which of the following best describes the relationship between federal covered securities and state securities regulation"
+      },
+      {
+        "id": "d81370396e5c",
+        "normalized": "an issuer agent solicits orders for the issuers common stock from prospective investors in three different states under the uniform securities act the agent generally must"
+      }
+    ]
+  }
+}

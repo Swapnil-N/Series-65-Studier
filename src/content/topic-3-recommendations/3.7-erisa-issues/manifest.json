@@ -1,0 +1,295 @@
+{
+  "subtopicId": "3.7",
+  "items": {
+    "lessons": [
+      {
+        "id": "3.7",
+        "normalized": "erisa issues fiduciary duty ips qdias and prohibited transactions"
+      }
+    ],
+    "cards": [
+      {
+        "id": "f466b8e2757a",
+        "normalized": "what does the acronym erisa stand for"
+      },
+      {
+        "id": "d3c3723e11a3",
+        "normalized": "which federal agency administers and enforces the fiduciary provisions of erisa"
+      },
+      {
+        "id": "a978f73ee4dc",
+        "normalized": "under erisa who is considered a fiduciary to a covered plan"
+      },
+      {
+        "id": "a923b1dc8033",
+        "normalized": "list the four core fiduciary duties imposed by erisa section 404a"
+      },
+      {
+        "id": "7f5a7e2dad25",
+        "normalized": "which erisa section codifies the exclusive benefit rule requiring fiduciaries to act solely in participants interest"
+      },
+      {
+        "id": "73fafb06bd9e",
+        "normalized": "how does the erisa prudentexpert standard differ from the commonlaw prudentman standard"
+      },
+      {
+        "id": "9e517c8758b4",
+        "normalized": "what relief does erisa section 404c provide to plan sponsors"
+      },
+      {
+        "id": "498ef35db7f0",
+        "normalized": "what does qdia stand for in an erisacovered defined contribution plan"
+      },
+      {
+        "id": "62e5d172ead0",
+        "normalized": "name the four types of investments that can qualify as a qdia under dol regulations"
+      },
+      {
+        "id": "b1dcd491d3dc",
+        "normalized": "how long may a capitalpreservation product eg stable value or money market serve as a qdia"
+      },
+      {
+        "id": "7ed674011723",
+        "normalized": "what notice timing is required for the qdia safe harbor"
+      },
+      {
+        "id": "5e2f50c33ced",
+        "normalized": "why is the qdia regulation paired with erisa section 404c"
+      },
+      {
+        "id": "d25622223130",
+        "normalized": "define an investment manager under erisa section 338"
+      },
+      {
+        "id": "59a9946397ec",
+        "normalized": "distinguish a 321 fiduciary from a 338 fiduciary"
+      },
+      {
+        "id": "d569cdac6f26",
+        "normalized": "what does erisa section 405 address"
+      },
+      {
+        "id": "78d46aff18c4",
+        "normalized": "what categories of transactions does erisa section 406 prohibit"
+      },
+      {
+        "id": "b3ceb11f543b",
+        "normalized": "who qualifies as a party in interest under erisa"
+      },
+      {
+        "id": "acd21039a102",
+        "normalized": "what relief does erisa section 408b2 provide from the prohibitedtransaction rules"
+      },
+      {
+        "id": "d7f65c480177",
+        "normalized": "what disclosure obligation does section 408b2 impose on covered service providers"
+      },
+      {
+        "id": "9d965e009a00",
+        "normalized": "what remedies are available under erisa section 502"
+      },
+      {
+        "id": "2bede28bf6e4",
+        "normalized": "what is an investment policy statement ips for an erisa plan"
+      },
+      {
+        "id": "97092912eca5",
+        "normalized": "is an investment policy statement explicitly required by erisa"
+      },
+      {
+        "id": "7afbb95e5620",
+        "normalized": "list four key elements typically included in an erisa investment policy statement"
+      },
+      {
+        "id": "2375e727c4ef",
+        "normalized": "why is diversification of plan assets a standalone fiduciary duty under erisa"
+      },
+      {
+        "id": "f3c31b948827",
+        "normalized": "which types of retirement arrangements are generally not covered by erisa"
+      },
+      {
+        "id": "78422a2d00ba",
+        "normalized": "what is the eatwhatyoukill or selfdealing prohibition for erisa fiduciaries"
+      },
+      {
+        "id": "c538fd237d50",
+        "normalized": "how does the dol fiduciary rule expand who is treated as an erisa fiduciary"
+      }
+    ],
+    "questions": [
+      {
+        "id": "84e95e43d17b",
+        "normalized": "under erisa section 404a a plan fiduciary must discharge duties solely in the interest of plan participants and beneficiaries this standard is most often described as which of the following"
+      },
+      {
+        "id": "b1457878cf1f",
+        "normalized": "which federal agency has primary enforcement authority over erisas fiduciary provisions for privatesector retirement plans"
+      },
+      {
+        "id": "9f6ad0fafbdd",
+        "normalized": "an investment adviser to a 401k plan recommends that 100 of plan assets be invested in employer stock which erisa fiduciary duty has most clearly been violated"
+      },
+      {
+        "id": "762729759421",
+        "normalized": "under erisa which type of investment vehicle is not one of the permitted longterm qualified default investment alternatives qdias"
+      },
+      {
+        "id": "160c555741ff",
+        "normalized": "an employer who properly defaults nonelecting participants into a qdia receives which key erisa protection"
+      },
+      {
+        "id": "a3ca61a546e9",
+        "normalized": "erisa section 404c provides a safe harbor from fiduciary liability for investment losses when which of the following is true"
+      },
+      {
+        "id": "ecc4a8d10665",
+        "normalized": "an erisa section 338 investment manager is best described as a fiduciary that"
+      },
+      {
+        "id": "2468b4f24fb8",
+        "normalized": "which of the following is generally considered a prohibited transaction under erisa section 406"
+      },
+      {
+        "id": "61f7b8d352ee",
+        "normalized": "an investment policy statement ips for an erisa plan is best described as"
+      },
+      {
+        "id": "1fc10f5b40c4",
+        "normalized": "under erisa who is a party in interest for purposes of the prohibited transaction rules"
+      },
+      {
+        "id": "5498c3b25ee8",
+        "normalized": "under erisa section 405 a plan fiduciary may be held liable for the breaches of a cofiduciary in all of the following circumstances except"
+      },
+      {
+        "id": "18ccde312c24",
+        "normalized": "an investment adviser charges a covered erisa plan a 1 annual fee to provide ongoing advisory services which provision generally allows this arrangement despite the prohibited transaction rules"
+      },
+      {
+        "id": "a329b3832363",
+        "normalized": "which of the following is a stated requirement for the longterm qdia categories under dol regulations"
+      },
+      {
+        "id": "91fc7ede649e",
+        "normalized": "an iar is helping an employer document its 401k plan investment policy statement which of the following is least appropriate to include"
+      },
+      {
+        "id": "88938338e808",
+        "normalized": "a plan trustee uses plan assets to purchase office equipment from a company owned by the trustees spouse this is most likely a violation of"
+      },
+      {
+        "id": "5ae5008fa12f",
+        "normalized": "a participant in a 401k plan with proper section 404c protection makes a selfdirected allocation that loses 30 of value who bears the loss"
+      },
+      {
+        "id": "f8b8ae1ffd54",
+        "normalized": "which document or framework is generally recognized as the most important written evidence that erisa fiduciaries followed a prudent process when selecting plan investments"
+      },
+      {
+        "id": "0a006023b59b",
+        "normalized": "under erisa the duty to monitor plan investments after they are selected is best characterized as"
+      },
+      {
+        "id": "df6d31703492",
+        "normalized": "a 401k plan sponsor wishes to delegate all investment selection authority to a third party so that the sponsor will not be liable for investment decisions the most appropriate fiduciary to engage is"
+      },
+      {
+        "id": "3a0553e1295e",
+        "normalized": "under erisa plan assets must be held for the"
+      },
+      {
+        "id": "1382db10b260",
+        "normalized": "an erisa fiduciary who breaches section 404 duties is personally liable to"
+      },
+      {
+        "id": "e41845733a5f",
+        "normalized": "capital preservation investments such as money market or stable value funds may serve as a qdia under dol rules"
+      },
+      {
+        "id": "f8e68474e825",
+        "normalized": "which of the following is not required for a section 404c safe harbor"
+      },
+      {
+        "id": "efa310f75dc8",
+        "normalized": "when evaluating fees paid by an erisa plan fiduciaries must determine that the fees are"
+      },
+      {
+        "id": "9c27285e9f4f",
+        "normalized": "an investment adviser who provides advice to a plan participant about distributions and rollovers from a 401k is generally treated under erisa and dol guidance as"
+      },
+      {
+        "id": "1aec286b022e",
+        "normalized": "which of the following best describes the difference between an erisa 321 and 338 fiduciary"
+      },
+      {
+        "id": "13dab7656911",
+        "normalized": "erisa fiduciaries must act in accordance with the documents and instruments governing the plan insofar as"
+      },
+      {
+        "id": "fce2384b968c",
+        "normalized": "which of the following is most accurate regarding erisa fiduciary status"
+      },
+      {
+        "id": "7b7dc8d7696a",
+        "normalized": "a typical investment policy statement for an erisacovered defined contribution plan would generally include all of the following except"
+      },
+      {
+        "id": "a26cc9075037",
+        "normalized": "which of the following is generally considered a perse prohibited transaction under erisa section 406 absent an applicable exemption"
+      },
+      {
+        "id": "b359664d9221",
+        "normalized": "under the qdia regulations in order to qualify for fiduciary relief the plan must provide participants with"
+      },
+      {
+        "id": "8d4be8391432",
+        "normalized": "an erisa plan trustee invests plan assets in a fund managed by a wholly owned subsidiary of the plan sponsor which is the most accurate analysis"
+      },
+      {
+        "id": "95791b55f643",
+        "normalized": "which of the following is a key practical reason fiduciaries adopt and follow a written investment policy statement"
+      },
+      {
+        "id": "0f3806be249e",
+        "normalized": "erisas diversification requirement under section 404a1c requires fiduciaries to"
+      },
+      {
+        "id": "8ae83d39a186",
+        "normalized": "which of the following parties may bring a civil action under erisa section 502 to enforce fiduciary duties"
+      },
+      {
+        "id": "8c276332a474",
+        "normalized": "an iar is reviewing the investment options on a 401k menu and discovers that a highcost share class is being used when a lowercost share class of the same fund is available under erisa the fiduciarys most appropriate response is to"
+      },
+      {
+        "id": "f5553e08ef3e",
+        "normalized": "which statement about erisas coverage is most accurate"
+      },
+      {
+        "id": "0e6c7fed90d5",
+        "normalized": "an erisa fiduciarys duty of loyalty under section 404a1a requires that the fiduciary act"
+      },
+      {
+        "id": "4e43474920df",
+        "normalized": "which is the most accurate statement regarding written investment policy statements ipss under erisa"
+      },
+      {
+        "id": "e6a318cfbb3c",
+        "normalized": "an adviser to an erisa plan receives revenue sharing payments from a mutual fund company whose funds are on the plans menu under erisa this arrangement"
+      },
+      {
+        "id": "ac127bf394ab",
+        "normalized": "which of the following is a stated duty of an erisa fiduciary under section 404a"
+      },
+      {
+        "id": "4e4b0924be8b",
+        "normalized": "which of the following is the most accurate statement about targetdate funds tdfs used as qdias"
+      },
+      {
+        "id": "96fdeea3b294",
+        "normalized": "under erisa the prudent expert standard is best applied by a fiduciary who"
+      }
+    ]
+  }
+}

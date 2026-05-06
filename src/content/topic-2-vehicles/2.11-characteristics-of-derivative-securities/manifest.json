@@ -1,0 +1,271 @@
+{
+  "subtopicId": "2.11",
+  "items": {
+    "lessons": [
+      {
+        "id": "2.11",
+        "normalized": "derivative securities costs benefits and risks"
+      }
+    ],
+    "cards": [
+      {
+        "id": "0af7fc52c652",
+        "normalized": "what is a derivative security"
+      },
+      {
+        "id": "a5fd9a60f797",
+        "normalized": "what right does the holder of a call option have"
+      },
+      {
+        "id": "933710f84286",
+        "normalized": "what right does the holder of a put option have"
+      },
+      {
+        "id": "ecd5a2c308e0",
+        "normalized": "what is the obligation of an option writer seller"
+      },
+      {
+        "id": "1b5c3ae14a90",
+        "normalized": "define an option premium"
+      },
+      {
+        "id": "1ecb5f7ea12b",
+        "normalized": "how many shares does one standard listed equity option contract represent"
+      },
+      {
+        "id": "6b3ea0b9f8b9",
+        "normalized": "distinguish americanstyle from europeanstyle options"
+      },
+      {
+        "id": "597becce8b6f",
+        "normalized": "define the intrinsic value of an option"
+      },
+      {
+        "id": "4d8fb0a325df",
+        "normalized": "define the time value extrinsic value of an option"
+      },
+      {
+        "id": "b7d33447d18f",
+        "normalized": "maximum loss for the buyer of a call or put"
+      },
+      {
+        "id": "8f88c6513e9c",
+        "normalized": "maximum loss for an uncovered naked call writer"
+      },
+      {
+        "id": "463037b202b3",
+        "normalized": "maximum loss for an uncovered put writer"
+      },
+      {
+        "id": "57597a25f024",
+        "normalized": "role of the options clearing corporation in listed options markets"
+      },
+      {
+        "id": "5e7a6e5f9763",
+        "normalized": "what disclosure document must be delivered before a customer is approved for options trading"
+      },
+      {
+        "id": "11f3dfa3eb21",
+        "normalized": "distinguish a forward contract from a futures contract"
+      },
+      {
+        "id": "405d79ae2a3b",
+        "normalized": "what is a swap"
+      },
+      {
+        "id": "e844f23104b4",
+        "normalized": "distinguish a warrant from a stock right"
+      },
+      {
+        "id": "570fcd5f7896",
+        "normalized": "distinguish a warrant from a listed call option"
+      },
+      {
+        "id": "d1414bd97090",
+        "normalized": "primary benefits of using derivatives in a portfolio"
+      },
+      {
+        "id": "c90105c1350f",
+        "normalized": "primary risks of investing in derivatives"
+      },
+      {
+        "id": "a1cc895438c5",
+        "normalized": "costs an investor incurs when trading exchangelisted options"
+      },
+      {
+        "id": "a32c4e4448dd",
+        "normalized": "when is a call option inthemoney versus a put"
+      },
+      {
+        "id": "580c4c8efdcf",
+        "normalized": "define a covered call"
+      },
+      {
+        "id": "0aeefde8f3bc",
+        "normalized": "breakeven at expiration for a long call with strike 50 and premium 3"
+      },
+      {
+        "id": "0a312c1e1746",
+        "normalized": "breakeven at expiration for a long put with strike 50 and premium 3"
+      },
+      {
+        "id": "02f45c6761b8",
+        "normalized": "which pricing model is most commonly cited for valuing europeanstyle options"
+      }
+    ],
+    "questions": [
+      {
+        "id": "1e99bddf7fe7",
+        "normalized": "a derivative security is best described as"
+      },
+      {
+        "id": "8176b5f5cb74",
+        "normalized": "the buyer of a call option acquires which of the following"
+      },
+      {
+        "id": "d182b74446ab",
+        "normalized": "the buyer of a put option acquires which of the following"
+      },
+      {
+        "id": "9d9b620f8cf7",
+        "normalized": "a standard listed equity option contract in the united states typically covers how many shares of the underlying stock"
+      },
+      {
+        "id": "2731bb00323c",
+        "normalized": "the premium paid by a long option holder represents"
+      },
+      {
+        "id": "a2f81cd6682e",
+        "normalized": "a call option on xyz stock with a strike of 50 is inthemoney when the stock is trading at"
+      },
+      {
+        "id": "0dd8ad79fa28",
+        "normalized": "which entity issues guarantees and clears all standardized listed equity options in the us"
+      },
+      {
+        "id": "022b2973982f",
+        "normalized": "before opening an options account at a brokerdealer the firm must deliver to the customer a copy of"
+      },
+      {
+        "id": "0f980b41bb74",
+        "normalized": "a primary benefit of using derivatives is that they typically allow an investor to"
+      },
+      {
+        "id": "6d84416c2358",
+        "normalized": "when an investor buys a put on stock she already owns in order to limit downside the strategy is called"
+      },
+      {
+        "id": "2485d0492d28",
+        "normalized": "a speculator who uses options instead of buying the underlying stock primarily seeks to"
+      },
+      {
+        "id": "8c90b546edc2",
+        "normalized": "what is the maximum loss for an investor who is long one call option"
+      },
+      {
+        "id": "b65262e0b6a9",
+        "normalized": "what is the maximum potential loss for an investor who writes sells an uncovered naked call"
+      },
+      {
+        "id": "4379f5113987",
+        "normalized": "what is the maximum loss for the buyer of a put option"
+      },
+      {
+        "id": "3bb6972079a7",
+        "normalized": "an investor who writes a covered call on stock she owns gives up which of the following"
+      },
+      {
+        "id": "7fdf25c72735",
+        "normalized": "an xyz 50 call is trading for a premium of 4 when xyz stock is at 52 the intrinsic value of the call is"
+      },
+      {
+        "id": "b9082c000495",
+        "normalized": "an xyz 30 put is trading for a premium of 5 when xyz stock is at 26 the intrinsic value of the put is"
+      },
+      {
+        "id": "8af281635a92",
+        "normalized": "an options time value is best described as"
+      },
+      {
+        "id": "6274e8505dc4",
+        "normalized": "americanstyle and europeanstyle options differ primarily in that"
+      },
+      {
+        "id": "9e7c75cb949e",
+        "normalized": "leaps are best described as"
+      },
+      {
+        "id": "efb626fa53e4",
+        "normalized": "listed broadbased stock index options such as those on the sp 500 most commonly settle"
+      },
+      {
+        "id": "bf0219a59db1",
+        "normalized": "a us importer that will owe euros in 90 days can hedge currency risk by"
+      },
+      {
+        "id": "16997b36f269",
+        "normalized": "in a plainvanilla interest rate swap the two counterparties typically exchange"
+      },
+      {
+        "id": "572f1654f187",
+        "normalized": "counterparty credit risk is generally a significantly greater concern in"
+      },
+      {
+        "id": "e0a116083b73",
+        "normalized": "initial margin posted on a futures contract is best described as"
+      },
+      {
+        "id": "1857724213e8",
+        "normalized": "the notional value of a derivative contract refers to"
+      },
+      {
+        "id": "be00cab34d6e",
+        "normalized": "an investor holding a diversified equity portfolio worried about a nearterm market decline can most directly hedge by"
+      },
+      {
+        "id": "28542a0634cd",
+        "normalized": "the principal economic role played by speculators in derivative markets is to"
+      },
+      {
+        "id": "4edc1e91d56c",
+        "normalized": "forwards differ from exchangetraded futures primarily in that forwards are"
+      },
+      {
+        "id": "bb043b9be1d6",
+        "normalized": "abc stock is at 40 an investor buys an abc 45 call for 1 and writes an abc 45 call expiring on the same date the position is best described as"
+      },
+      {
+        "id": "d3bb53f57db1",
+        "normalized": "under us federal securities law listed options are generally treated as"
+      },
+      {
+        "id": "95b112997167",
+        "normalized": "the blackscholes option pricing model takes into account all of the following inputs except"
+      },
+      {
+        "id": "beeb8e8f34ba",
+        "normalized": "an options delta is most accurately described as"
+      },
+      {
+        "id": "183780da32f8",
+        "normalized": "theta in option pricing primarily reflects"
+      },
+      {
+        "id": "6ff7f64603ee",
+        "normalized": "an investor is simultaneously long one abc call and short one abc put with the same strike and expiration this synthetic position behaves most similarly to"
+      },
+      {
+        "id": "85eb31af4453",
+        "normalized": "basis risk in a futures hedge refers to the risk that"
+      },
+      {
+        "id": "1bdd71afeea0",
+        "normalized": "an investor sells a put on xyz with a 50 strike and sets aside 5000 in cash to buy 100 shares if assigned this strategy is best described as"
+      },
+      {
+        "id": "f50cd4d7b4b5",
+        "normalized": "a defining operational feature of exchangetraded futures that helps mitigate counterparty risk is"
+      }
+    ]
+  }
+}

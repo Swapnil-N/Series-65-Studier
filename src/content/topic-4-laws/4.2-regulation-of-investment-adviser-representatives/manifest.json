@@ -1,0 +1,267 @@
+{
+  "subtopicId": "4.2",
+  "items": {
+    "lessons": [
+      {
+        "id": "4.2",
+        "normalized": "regulation of investment adviser representatives definition registration and maintenance"
+      }
+    ],
+    "cards": [
+      {
+        "id": "bffdc2b7ab04",
+        "normalized": "define an investment adviser representative iar under the uniform securities act"
+      },
+      {
+        "id": "b4acb77d9714",
+        "normalized": "under the investment advisers act of 1940 what federal term corresponds to a state iar"
+      },
+      {
+        "id": "f7312f1a8fb2",
+        "normalized": "which regulator has registration authority over investment adviser representatives"
+      },
+      {
+        "id": "4caf15c3212a",
+        "normalized": "must an iar of a federal covered ia register with a state where the iar has no place of business"
+      },
+      {
+        "id": "3bb4e9e45cda",
+        "normalized": "form used by an iar to apply for initial state registration"
+      },
+      {
+        "id": "e6dc5c1216c2",
+        "normalized": "form filed when an iar terminates association with an investment adviser"
+      },
+      {
+        "id": "5abdda6f851c",
+        "normalized": "within how many days must form u4 be amended after a new reportable event"
+      },
+      {
+        "id": "bd11748b5851",
+        "normalized": "under the nasaa iar ce model rule how many ce credits must an iar complete each year"
+      },
+      {
+        "id": "201fffb04b6d",
+        "normalized": "when does an iars state registration ordinarily become effective"
+      },
+      {
+        "id": "7086711bec11",
+        "normalized": "is a thirdparty solicitor who refers clients to an ia required to register as an iar"
+      },
+      {
+        "id": "eeb059f09f2e",
+        "normalized": "de minimis exclusion from iar registration in a state where the iar has no place of business"
+      },
+      {
+        "id": "ed1ee4f7e48d",
+        "normalized": "are clerical and ministerial employees of an investment adviser considered iars"
+      },
+      {
+        "id": "dbf8e133aa40",
+        "normalized": "what constitutes a place of business for purposes of iar registration"
+      },
+      {
+        "id": "611e7145c010",
+        "normalized": "who pays the iar registration and renewal fees"
+      },
+      {
+        "id": "cff16e4339f7",
+        "normalized": "may an individual be registered as an iar with two unaffiliated investment advisers at the same time"
+      },
+      {
+        "id": "f1752e43271f",
+        "normalized": "examples of disclosure events that must be reported on form u4"
+      },
+      {
+        "id": "ecafbdd94d39",
+        "normalized": "when a stateregistered ia terminates an iar who must notify the administrator"
+      },
+      {
+        "id": "1e3da7270c66",
+        "normalized": "how long after an iars departure does the former firm remain responsible for amending form u5"
+      },
+      {
+        "id": "6de9c4a00562",
+        "normalized": "must an iar retake the qualifying examination when changing employing firms"
+      },
+      {
+        "id": "8be1becedf9e",
+        "normalized": "examinations that typically satisfy state iar competency requirements"
+      },
+      {
+        "id": "6b69c798a713",
+        "normalized": "consequence if an iar fails to complete required annual ce credits by yearend"
+      },
+      {
+        "id": "92fc71bb7ccb",
+        "normalized": "distinguish an investment adviser from an investment adviser representative"
+      },
+      {
+        "id": "7c3fb6d2273c",
+        "normalized": "is registration required for an employee who only writes impersonal market commentary in the firms newsletter"
+      },
+      {
+        "id": "2f34c26d103f",
+        "normalized": "how frequently must iar registration be renewed once it is effective"
+      },
+      {
+        "id": "7d9fb87f0c3f",
+        "normalized": "does the sec directly register iars of federal covered investment advisers"
+      }
+    ],
+    "questions": [
+      {
+        "id": "ba0893cf17a0",
+        "normalized": "under the investment advisers act of 1940 an investment adviser representative iar is best described as which of the following"
+      },
+      {
+        "id": "81172033cce6",
+        "normalized": "under the uniform securities act which activity by a natural person associated with an investment adviser would not by itself cause that person to be classified as an investment adviser representative"
+      },
+      {
+        "id": "91553cb7fc2d",
+        "normalized": "an individual who is employed by an secregistered federal covered investment adviser and gives advice to retail clients out of an office located in state x must"
+      },
+      {
+        "id": "a8d366c01126",
+        "normalized": "an iar works for a federal covered investment adviser her only office is in state a but she has six retail advisory clients who reside in state b under section 203a and applicable nasaa guidance in which states is she required to register as an iar"
+      },
+      {
+        "id": "1de6f894abef",
+        "normalized": "which of the following best describes the registration authority for iars"
+      },
+      {
+        "id": "4c52c5ef8982",
+        "normalized": "form u4 is best described as"
+      },
+      {
+        "id": "fe5b92f6b60f",
+        "normalized": "when an iars employment with a stateregistered investment adviser is terminated the firm is generally required to file form u5 within how many days of the termination"
+      },
+      {
+        "id": "c61aa04e7626",
+        "normalized": "an iar is convicted of a felony involving the theft of advisory client funds within how many days must the firm and the iar amend form u4 to disclose this reportable event"
+      },
+      {
+        "id": "a4ab3fbfb4e4",
+        "normalized": "which of the following events is a reportable event that must be disclosed by amending form u4"
+      },
+      {
+        "id": "521b3c899531",
+        "normalized": "under the nasaa iar continuing education model rule an iar registered in an adopting state must complete how many ce credits each reporting period year"
+      },
+      {
+        "id": "671886d0ca4d",
+        "normalized": "an iar fails to complete the required iar continuing education credits by the end of the reporting period in an adopting state what is the most likely consequence under the nasaa iar ce model rule"
+      },
+      {
+        "id": "d797edc317c6",
+        "normalized": "which of the following is most likely to require iar registration"
+      },
+      {
+        "id": "6593d8223c31",
+        "normalized": "a senior portfolio manager at a stateregistered ia also supervises three junior advisers who give advice to clients under the uniform securities act the supervisor"
+      },
+      {
+        "id": "602ae57cc978",
+        "normalized": "which uniform securities act provision generally prescribes the registration requirements filings fees effective date for iars at the state level"
+      },
+      {
+        "id": "50046cf6d809",
+        "normalized": "an iars state registration generally becomes effective"
+      },
+      {
+        "id": "b25239f8a82a",
+        "normalized": "an iar moves from firm a a stateregistered ia to firm b also stateregistered on the same day which combination of filings is required to effect the transfer"
+      },
+      {
+        "id": "9448f9a46fc5",
+        "normalized": "which of the following individuals is not an iar under the uniform securities act"
+      },
+      {
+        "id": "b7297c7573d6",
+        "normalized": "under section 203a of the investment advisers act states retain which authority over an iar of a federal covered investment adviser"
+      },
+      {
+        "id": "e9996a6922f3",
+        "normalized": "which of the following form u4 disclosures generally must be reported regardless of how long ago they occurred ie there is no timelimited lookback"
+      },
+      {
+        "id": "8c4fe2d04b05",
+        "normalized": "personal bankruptcies are generally reportable on form u4 when they occurred within how many years of the filing"
+      },
+      {
+        "id": "10667f9d863c",
+        "normalized": "an iar is dually registered as a registered representative of a brokerdealer and is currently completing finras regulatory and firm element ce programs does that satisfy the nasaa iar ce requirement"
+      },
+      {
+        "id": "bb87658467a6",
+        "normalized": "which of the following is most accurate regarding state registration of an iar"
+      },
+      {
+        "id": "d608d57ea532",
+        "normalized": "an iar who has been terminated for cause for failing to follow firm policies regarding suitability"
+      },
+      {
+        "id": "68bcd1911580",
+        "normalized": "an individual exclusively engaged in selling fixed annuities through an insurance license who never recommends or transacts in securities and is not associated with an investment adviser must register as an iar if"
+      },
+      {
+        "id": "f6efe1198b23",
+        "normalized": "an investment adviser representative gives a speech open to the general public in state x the iar is associated with a federal covered ia and has no office in state x but mentions she is happy to take questions from prospective clients under section 203a and nasaa guidance does she trigger iar registration in state x"
+      },
+      {
+        "id": "1bbc4e6da6eb",
+        "normalized": "the uniform securities act allows the administrator to deny suspend or revoke an iar registration when the applicant has"
+      },
+      {
+        "id": "dd468b295b30",
+        "normalized": "which form advrelated event is most directly relevant to an iars individual disclosure obligations"
+      },
+      {
+        "id": "2f5a36865cd9",
+        "normalized": "under most state interpretations of the usa an officer or director of a stateregistered investment adviser must register as an iar when"
+      },
+      {
+        "id": "555e365fe597",
+        "normalized": "an iar who has been the subject of an investors written complaint alleging unsuitable recommendations and seeking 25000 in damages must"
+      },
+      {
+        "id": "c48e3e22f3b3",
+        "normalized": "which entity operates the central electronic system through which iars file form u4 and form u5 disclosures"
+      },
+      {
+        "id": "7574726924c5",
+        "normalized": "under the nasaa iar ce model rule an iar who is also a registered representative subject to finra ce may receive credit toward the iar products and practice component when"
+      },
+      {
+        "id": "ec231a4b2805",
+        "normalized": "which of the following best describes place of business for purposes of triggering iar state registration"
+      },
+      {
+        "id": "f8d8f662e640",
+        "normalized": "an iars registration in a state generally"
+      },
+      {
+        "id": "c9958893b085",
+        "normalized": "an individual is paid a flat fee solely to refer prospective clients to a stateregistered investment adviser under the uniform securities act this person"
+      },
+      {
+        "id": "43d2e076001f",
+        "normalized": "a stateregistered investment adviser hires a new iar the earliest the iar may lawfully begin acting in that capacity is"
+      },
+      {
+        "id": "627dbd9a9ddc",
+        "normalized": "which body adopted the model rule that when implemented by a state imposes annual continuing education requirements on iars registered in that state"
+      },
+      {
+        "id": "33e41054b465",
+        "normalized": "an iar who lets her registration lapse for more than two years and then seeks to reregister will generally be required to"
+      },
+      {
+        "id": "1eb6ae437b43",
+        "normalized": "an iar provides her current home address on form u4 six months later she moves what action is required"
+      }
+    ]
+  }
+}

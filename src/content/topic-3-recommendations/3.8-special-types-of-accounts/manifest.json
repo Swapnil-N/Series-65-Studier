@@ -1,0 +1,271 @@
+{
+  "subtopicId": "3.8",
+  "items": {
+    "lessons": [
+      {
+        "id": "3.8",
+        "normalized": "special types of accounts 529s coverdell esas utmaugma and hsas"
+      }
+    ],
+    "cards": [
+      {
+        "id": "52a14816a24d",
+        "normalized": "federal income tax treatment of qualified withdrawals from a 529 college savings plan"
+      },
+      {
+        "id": "2a9703a62adb",
+        "normalized": "two principal varieties of section 529 plans"
+      },
+      {
+        "id": "1d87f94fa96f",
+        "normalized": "tax consequence of a nonqualified 529 distribution"
+      },
+      {
+        "id": "c9c023fd9263",
+        "normalized": "fiveyear accelerated gifting election available to 529 contributors in 2025"
+      },
+      {
+        "id": "c9242da19456",
+        "normalized": "who controls a 529 account and who is the beneficiary"
+      },
+      {
+        "id": "c4a4e08d6fa4",
+        "normalized": "how a parentowned 529 is treated on the fafsa"
+      },
+      {
+        "id": "702aee4f913a",
+        "normalized": "categories of qualified expenses that may be paid from a 529 plan"
+      },
+      {
+        "id": "8987b333ff0b",
+        "normalized": "annual coverdell education savings account contribution limit per beneficiary"
+      },
+      {
+        "id": "86f24f11fe68",
+        "normalized": "magi phaseout range for contributing to a coverdell esa"
+      },
+      {
+        "id": "7eca5cfaeda6",
+        "normalized": "age restrictions on coverdell esa contributions and distributions"
+      },
+      {
+        "id": "62794e63a80b",
+        "normalized": "qualified expenses that may be paid tax free from a coverdell esa"
+      },
+      {
+        "id": "28eebd906911",
+        "normalized": "distinguishing feature of coverdell investment selection versus a 529 plan"
+      },
+      {
+        "id": "77e535bc9b72",
+        "normalized": "legal nature of a gift made to a utma or ugma account"
+      },
+      {
+        "id": "a816733df5ec",
+        "normalized": "role and fiduciary standard of the custodian on a utmaugma account"
+      },
+      {
+        "id": "162e94cccd0d",
+        "normalized": "key practical difference between ugma and utma accounts"
+      },
+      {
+        "id": "e4a7764f04cb",
+        "normalized": "standard account registration used to title a utma account"
+      },
+      {
+        "id": "077c8f4dd5d2",
+        "normalized": "event that terminates a utma custodianship"
+      },
+      {
+        "id": "b69f085f023d",
+        "normalized": "how the kiddie tax treats unearned income in a utmaugma account in 2025"
+      },
+      {
+        "id": "5da92e4b8aa8",
+        "normalized": "insurancerelated precondition for opening and contributing to a health savings account"
+      },
+      {
+        "id": "97c814783a25",
+        "normalized": "three federal tax advantages that make an hsa a triple taxadvantaged account"
+      },
+      {
+        "id": "2b67f9628c88",
+        "normalized": "2025 hsa contribution limits for selfonly and family hdhp coverage"
+      },
+      {
+        "id": "68d4d7c84415",
+        "normalized": "federal tax cost of an hsa distribution used for nonmedical expenses before age 65"
+      },
+      {
+        "id": "d0db8afa8a12",
+        "normalized": "treatment of hsa distributions for any purpose after the owner reaches age 65"
+      },
+      {
+        "id": "920414d6d556",
+        "normalized": "examples of expenses that qualify as taxfree hsa distributions"
+      }
+    ],
+    "questions": [
+      {
+        "id": "b3d5eb018576",
+        "normalized": "under section 529 of the internal revenue code who is the legal owner of a 529 college savings plan account"
+      },
+      {
+        "id": "aa502ab92bdd",
+        "normalized": "which of the following best describes a prepaid tuition 529 plan as distinguished from a 529 education savings plan"
+      },
+      {
+        "id": "d56c445eeaa5",
+        "normalized": "earnings inside a 529 plan are best described as"
+      },
+      {
+        "id": "3ebbda34fb0f",
+        "normalized": "a grandparent contributes 90000 to a 529 plan for a grandchild in a single year and elects to treat the gift under the special 5year averaging rule what is the federal gifttax consequence"
+      },
+      {
+        "id": "f95481c9f259",
+        "normalized": "if a 529 plan owner takes a nonqualified distribution the federal tax treatment generally is"
+      },
+      {
+        "id": "35e90335a966",
+        "normalized": "under current federal law 529 plan distributions for k12 tuition expenses are"
+      },
+      {
+        "id": "9b82c4b21bf3",
+        "normalized": "under the secure act qualified 529 expenses now include repayment of student loan principal or interest subject to what cap"
+      },
+      {
+        "id": "cf67bb9d797c",
+        "normalized": "under secure act 20 a 529 plan that has been open for at least 15 years may be rolled over to"
+      },
+      {
+        "id": "a40236460ea3",
+        "normalized": "which of the following changes to the beneficiary of a 529 plan would generally not be a taxfree transfer"
+      },
+      {
+        "id": "f70f606aeaee",
+        "normalized": "for federal financialaid fafsa purposes a 529 plan owned by a dependent students parent is generally"
+      },
+      {
+        "id": "5cdb47083d0d",
+        "normalized": "for federal incometax purposes contributions to a 529 plan are"
+      },
+      {
+        "id": "4c4e3c3b4334",
+        "normalized": "which of the following is generally true about contributions to a coverdell education savings account esa"
+      },
+      {
+        "id": "8da14fd5ade5",
+        "normalized": "coverdell esa contributions are subject to phaseout based on"
+      },
+      {
+        "id": "a4400d568479",
+        "normalized": "generally all amounts remaining in a coverdell esa must be distributed by the time the beneficiary reaches what age absent specialneeds status"
+      },
+      {
+        "id": "b05dc47716b1",
+        "normalized": "which of the following expenses can be paid taxfree from a coverdell esa but generally not from a traditional 529 prepaid tuition plan"
+      },
+      {
+        "id": "6b13dcd9bfc7",
+        "normalized": "compared with a 529 plan a coverdell esa generally offers which of the following advantages to an account owner"
+      },
+      {
+        "id": "168171996df8",
+        "normalized": "which of the following is the most accurate statement about the relationship between ugma and utma accounts"
+      },
+      {
+        "id": "2d3602dce166",
+        "normalized": "once a gift has been made into an utma account for a minor the donor"
+      },
+      {
+        "id": "f622c37507c4",
+        "normalized": "how many minors and how many custodians may an utma account have"
+      },
+      {
+        "id": "570f49ca1446",
+        "normalized": "income interest dividends capital gains generated in an utma account is generally taxable to"
+      },
+      {
+        "id": "ac5e65d8ab9e",
+        "normalized": "an utma custodian who is also the donor of the gifted property creates which planning issue"
+      },
+      {
+        "id": "58b59a1c5790",
+        "normalized": "which of the following describes a key disadvantage of using an utma account versus a 529 plan for college funding"
+      },
+      {
+        "id": "5dbe374ab16d",
+        "normalized": "which of the following types of property may generally be transferred into an utma account but not into an ugma account"
+      },
+      {
+        "id": "cee649d9f14e",
+        "normalized": "which of the following is a requirement for an individual to be eligible to contribute to a health savings account hsa"
+      },
+      {
+        "id": "32b007231181",
+        "normalized": "which of the following is the most accurate description of the federal tax treatment of an hsa"
+      },
+      {
+        "id": "33d820d8d067",
+        "normalized": "funds in a health savings account that are not used by the end of the year are"
+      },
+      {
+        "id": "1a8cdc97d460",
+        "normalized": "an hsa holder under age 65 takes a distribution that is not used for qualified medical expenses the nonqualified distribution is generally subject to"
+      },
+      {
+        "id": "a1a0287073f0",
+        "normalized": "after an hsa owner reaches age 65 a withdrawal not used for qualified medical expenses is treated for federal tax purposes"
+      },
+      {
+        "id": "e34d5e0980bb",
+        "normalized": "an hsa owner age 55 or older may make an additional catchup contribution each year of"
+      },
+      {
+        "id": "746003ecb2d6",
+        "normalized": "which of the following is most accurately characterized as portable"
+      },
+      {
+        "id": "a2bafe561bf4",
+        "normalized": "an investment adviser representative is comparing accounts for a highincome family that wants to fund a 7yearold childs future college education with maximum funding flexibility which account type permits the largest aggregate contributions on behalf of one beneficiary"
+      },
+      {
+        "id": "29c8a3b7809d",
+        "normalized": "an investor with a 50000 inheritance asks an iar to recommend an account for k12 privateschool tuition for a young child which feature of a coverdell esa most likely makes it less useful than a 529 for this purpose"
+      },
+      {
+        "id": "f7814abe6da9",
+        "normalized": "which of the following statements about 529 plans is false"
+      },
+      {
+        "id": "f3293d4b7815",
+        "normalized": "an iar is reviewing options to fund a tradeschool program for a clients child under secure act expansions which of the following expenses can now be paid from a 529 plan taxfree"
+      },
+      {
+        "id": "9cebfbd2055b",
+        "normalized": "which of the following accounts would generally have the least favorable impact on a dependent students federal financialaid eligibility"
+      },
+      {
+        "id": "112ce0ce667b",
+        "normalized": "an utma account terminates and the assets must be turned over to the beneficiary when"
+      },
+      {
+        "id": "83a93e2b3d16",
+        "normalized": "an iar opens an utma account funded by a client for the clients grandchild which of the following is the most appropriate action by the iar with respect to investment recommendations"
+      },
+      {
+        "id": "6ddbaaf2ec3a",
+        "normalized": "which of the following best explains why an hsa is sometimes called a stealth ira"
+      },
+      {
+        "id": "03e99b8b0b94",
+        "normalized": "which of the following accounts must be funded with cash only not securities transferred inkind"
+      },
+      {
+        "id": "32a99b736f6e",
+        "normalized": "an owner of a 529 plan wishes to roll the account over to an able account for the benefit of the same beneficiary who has a qualifying disability which of the following best describes federal treatment of such a rollover"
+      }
+    ]
+  }
+}

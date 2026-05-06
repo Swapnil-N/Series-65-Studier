@@ -1,0 +1,283 @@
+{
+  "subtopicId": "3.9",
+  "items": {
+    "lessons": [
+      {
+        "id": "3.9",
+        "normalized": "ownership and estate planning techniques titling transfers at death and charitable vehicles"
+      }
+    ],
+    "cards": [
+      {
+        "id": "727c07dfd0eb",
+        "normalized": "define joint tenants with rights of survivorship jtwros"
+      },
+      {
+        "id": "b90757c56f30",
+        "normalized": "what happens to a joint tenants interest when that owner dies"
+      },
+      {
+        "id": "7df0a75eebc6",
+        "normalized": "define tenants in common tic"
+      },
+      {
+        "id": "e70db88fe880",
+        "normalized": "how is a deceased tenant in commons share distributed"
+      },
+      {
+        "id": "fd9c14523117",
+        "normalized": "contrast ownership percentages permitted under jtwros versus tic"
+      },
+      {
+        "id": "9e79f433a02e",
+        "normalized": "define tenancy by the entirety tbe"
+      },
+      {
+        "id": "20465f294f69",
+        "normalized": "who is eligible to hold property as tenants by the entirety"
+      },
+      {
+        "id": "d2e505855a5e",
+        "normalized": "what creditorprotection feature is associated with tenancy by the entirety"
+      },
+      {
+        "id": "7a130e3464f2",
+        "normalized": "in which jurisdictions is community property with rights of survivorship recognized"
+      },
+      {
+        "id": "de204b586c57",
+        "normalized": "what assets are generally classified as community property"
+      },
+      {
+        "id": "159f69fea0d4",
+        "normalized": "define a transferondeath tod registration on a brokerage account"
+      },
+      {
+        "id": "7dd0cc29e74c",
+        "normalized": "what does a payondeath pod designation accomplish"
+      },
+      {
+        "id": "bd1f773eb230",
+        "normalized": "if a will and a tod beneficiary designation conflict which controls"
+      },
+      {
+        "id": "0a1deea4b590",
+        "normalized": "explain the meaning of a per stirpes beneficiary designation"
+      },
+      {
+        "id": "886f471461f0",
+        "normalized": "contrast per stirpes with per capita distribution"
+      },
+      {
+        "id": "557abbb807d6",
+        "normalized": "what is the basic legal function of a will"
+      },
+      {
+        "id": "d1b98cc5c0cc",
+        "normalized": "define probate"
+      },
+      {
+        "id": "0117cb9d6db3",
+        "normalized": "identify the three principal parties to a trust and their roles"
+      },
+      {
+        "id": "20cc717ed075",
+        "normalized": "distinguish a revocable trust from an irrevocable trust"
+      },
+      {
+        "id": "91d0882c9e8d",
+        "normalized": "what is the primary estateplanning purpose of a revocable living trust"
+      },
+      {
+        "id": "3a07d48ab1e2",
+        "normalized": "define a testamentary trust"
+      },
+      {
+        "id": "e84b75a18da9",
+        "normalized": "what is a qualified domestic relations order qdro"
+      },
+      {
+        "id": "04a4929cca4f",
+        "normalized": "to which retirement accounts does a qdro apply"
+      },
+      {
+        "id": "58a0f8b21d23",
+        "normalized": "what is the tax treatment of a distribution made under a qdro"
+      },
+      {
+        "id": "abd3b8a27616",
+        "normalized": "define a donor advised fund daf"
+      },
+      {
+        "id": "c59252c32644",
+        "normalized": "how are contributions to a donor advised fund treated for income tax"
+      },
+      {
+        "id": "e8837aec5edf",
+        "normalized": "who has legal authority over donor advised fund assets after a contribution is made"
+      }
+    ],
+    "questions": [
+      {
+        "id": "30c40fac3f45",
+        "normalized": "two unrelated business partners purchase a brokerage account titled jtwros when one partner dies what happens to the deceased partners interest in the account"
+      },
+      {
+        "id": "82f532b9bc3e",
+        "normalized": "the defining feature that distinguishes jtwros from tenants in common tic is"
+      },
+      {
+        "id": "163fbc6b7db9",
+        "normalized": "three siblings open a brokerage account in which one contributed 50 another 30 and the third 20 of the funding which form of ownership best matches that contribution structure"
+      },
+      {
+        "id": "f6e166fbfeec",
+        "normalized": "tenancy by the entirety tbe is generally available only to"
+      },
+      {
+        "id": "d22b6b7089c6",
+        "normalized": "an iar is reviewing how to title an investment account for a married couple in a state that recognizes tenancy by the entirety which of the following is a key practical advantage of tbe compared to jtwros"
+      },
+      {
+        "id": "be0fab54652f",
+        "normalized": "community property with rights of survivorship cpwros is a titling option available primarily in"
+      },
+      {
+        "id": "51ace38c05e2",
+        "normalized": "a widowed client adds a transferondeath tod designation to her individual brokerage account naming her two adult children equally what is the primary planning result of this designation"
+      },
+      {
+        "id": "05d6ce096ff7",
+        "normalized": "a payondeath pod designation is most commonly associated with"
+      },
+      {
+        "id": "26e9a2d54e6f",
+        "normalized": "a beneficiary designation reads to my children in equal shares per stirpes one of the clients three children predeceases the client leaving two grandchildren of that deceased child how is the deceased childs share distributed"
+      },
+      {
+        "id": "4cfd3063a142",
+        "normalized": "which statement best contrasts per stirpes with per capita beneficiary designations"
+      },
+      {
+        "id": "def1c7a335bc",
+        "normalized": "which of the following best describes a revocable living trust"
+      },
+      {
+        "id": "78f4187632f9",
+        "normalized": "a primary nontax benefit of funding a revocable living trust during ones lifetime is"
+      },
+      {
+        "id": "fe020d461bb0",
+        "normalized": "which of the following is generally true of an irrevocable trust funded by the grantor with appreciated securities"
+      },
+      {
+        "id": "139079634098",
+        "normalized": "a testamentary trust is best described as"
+      },
+      {
+        "id": "99165bb208a1",
+        "normalized": "a will is best described as a legal document that"
+      },
+      {
+        "id": "6492be55a149",
+        "normalized": "a formally executed amendment to an existing will is called a"
+      },
+      {
+        "id": "2ee95adc2690",
+        "normalized": "a client dies without a valid will the distribution of the clients probate estate is determined by"
+      },
+      {
+        "id": "a6b5752bf939",
+        "normalized": "a qualified domestic relations order qdro is issued by a"
+      },
+      {
+        "id": "3b35b2d37e68",
+        "normalized": "under a qdro when a portion of a 401k is awarded to an alternate payee such as a former spouse and is paid directly in cash to that payee the distribution is generally"
+      },
+      {
+        "id": "314cd1742191",
+        "normalized": "which of the following retirement arrangements is not divisible by a qdro"
+      },
+      {
+        "id": "02027be1be41",
+        "normalized": "contributions to a donor advised fund daf sponsored by a public charity are generally"
+      },
+      {
+        "id": "99861a859c04",
+        "normalized": "a client wants the immediate income tax deduction of a charitable gift today but has not decided which specific charities to support which vehicle is most directly designed for that need"
+      },
+      {
+        "id": "2074b8f499fa",
+        "normalized": "after a contribution has been made to a donor advised fund the donor retains"
+      },
+      {
+        "id": "787b74130ea8",
+        "normalized": "jtwros at common law traditionally requires the four unities of time title interest and possession the unity of interest specifically requires that"
+      },
+      {
+        "id": "843c40befbad",
+        "normalized": "a brokerage account is held by three siblings as tenants in common with shares of 602515 the 60 owner dies leaving a will that gives all my property to her spouse what happens to her tic interest"
+      },
+      {
+        "id": "c1302cc01da8",
+        "normalized": "which of the following actions by a jtwros coowner generally severs the joint tenancy and converts the relevant interest to a tenancy in common"
+      },
+      {
+        "id": "c3355f964c55",
+        "normalized": "a married couple lives in a community property state and titles their brokerage account simply as community property not as cpwros on the death of one spouse the deceased spouses onehalf interest"
+      },
+      {
+        "id": "9ed5439a32b1",
+        "normalized": "a client establishes tod designations on all of her individual brokerage accounts assuming her gross estate exceeds the federal estate tax exemption the todtitled assets are"
+      },
+      {
+        "id": "630703da0b48",
+        "normalized": "a clients ira names her three children as primary beneficiaries per stirpes in equal shares one child predeceases her leaving two surviving grandchildren of that child the ira is divided into"
+      },
+      {
+        "id": "f5a24203bd60",
+        "normalized": "an attorney suggests that a highnetworth client place appreciated stock into an irrevocable trust to remove the assets from the estate for estatetax exclusion to be achieved which of the following must typically be true"
+      },
+      {
+        "id": "4e7677b43670",
+        "normalized": "a pourover will is most commonly used to"
+      },
+      {
+        "id": "027b64c79305",
+        "normalized": "which of the following statements about a qdro is most accurate"
+      },
+      {
+        "id": "9f0f7bb7810d",
+        "normalized": "compared to a private foundation a donor advised fund typically offers"
+      },
+      {
+        "id": "5347f357734d",
+        "normalized": "an iars client wants complete control over how donated dollars are invested and granted with binding authority which vehicle most closely meets that need"
+      },
+      {
+        "id": "55b165de0d13",
+        "normalized": "a married couple owns appreciated stock in a jtwros account in a noncommunityproperty state when one spouse dies the cost basis of the stock for federal income tax purposes"
+      },
+      {
+        "id": "eabe776aeccd",
+        "normalized": "two unmarried coowners hold a brokerage account as jtwros and each has contributed equally to funding the account on the first owners death what portion of the account is included in the deceased owners gross estate for federal estate tax purposes"
+      },
+      {
+        "id": "1f1eb71bf55b",
+        "normalized": "an iar is opening a jtwros account for a parent and an adult child from an estateplanning standpoint the iar should specifically caution that"
+      },
+      {
+        "id": "144a7efba854",
+        "normalized": "which type of trust is created and takes effect during the grantors lifetime"
+      },
+      {
+        "id": "02e0ccf4ba59",
+        "normalized": "naming a beneficiary directly on a retirement account or life insurance policy generally"
+      },
+      {
+        "id": "96369605ae4b",
+        "normalized": "a client establishes a revocable living trust and serves as both grantor and trustee for federal income tax purposes the trusts earnings while the grantor is alive are generally"
+      }
+    ]
+  }
+}

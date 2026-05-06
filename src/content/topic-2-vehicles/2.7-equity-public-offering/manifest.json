@@ -1,0 +1,271 @@
+{
+  "subtopicId": "2.7",
+  "items": {
+    "lessons": [
+      {
+        "id": "2.7",
+        "normalized": "equity public offerings ipos secondary offerings and spacs"
+      }
+    ],
+    "cards": [
+      {
+        "id": "22542b303f7d",
+        "normalized": "define an initial public offering ipo"
+      },
+      {
+        "id": "7effc815cedd",
+        "normalized": "which sec registration form is most commonly used by a us issuer conducting an ipo"
+      },
+      {
+        "id": "514f82f9c6d3",
+        "normalized": "what is the coolingoff period in a registered public offering"
+      },
+      {
+        "id": "ebe98c5aabf7",
+        "normalized": "what is a red herring in an ipo"
+      },
+      {
+        "id": "9795a018b331",
+        "normalized": "which activities are permitted during the coolingoff period"
+      },
+      {
+        "id": "852e71789a2d",
+        "normalized": "what is a tombstone advertisement"
+      },
+      {
+        "id": "6aa38743f4be",
+        "normalized": "what is the purpose of the final statutory prospectus delivered after effectiveness"
+      },
+      {
+        "id": "06089475790e",
+        "normalized": "what is the ipo quiet period for the issuer"
+      },
+      {
+        "id": "04bf8ec29b7b",
+        "normalized": "what is an ipo lockup period"
+      },
+      {
+        "id": "6c0bcd4198a5",
+        "normalized": "what is a greenshoe overallotment option in an ipo"
+      },
+      {
+        "id": "2733455da8a8",
+        "normalized": "distinguish a firmcommitment underwriting from a bestefforts underwriting"
+      },
+      {
+        "id": "903bc81258a6",
+        "normalized": "what is an allornone aon underwriting"
+      },
+      {
+        "id": "e704358b69ac",
+        "normalized": "under section 11 of the securities act who can be liable for material misstatements in a registration statement"
+      },
+      {
+        "id": "1082490124d8",
+        "normalized": "under section 12a2 of the securities act what conduct creates liability in a public offering"
+      },
+      {
+        "id": "f2cd5e8413d7",
+        "normalized": "distinguish a primary offering from a secondary offering"
+      },
+      {
+        "id": "e49f9cb3a8b7",
+        "normalized": "what is a followon or addon offering"
+      },
+      {
+        "id": "91e2bfc4031c",
+        "normalized": "why is a pure secondary offering described as nondilutive"
+      },
+      {
+        "id": "dad2ad97e538",
+        "normalized": "what is shelf registration and why do issuers use it"
+      },
+      {
+        "id": "23d9542c341a",
+        "normalized": "which sec form is generally used for shelf registrations by seasoned issuers"
+      },
+      {
+        "id": "057364a4f2d3",
+        "normalized": "what is the purpose of regulation m during a public offering"
+      },
+      {
+        "id": "10d46537dba3",
+        "normalized": "how does rule 144 affect resales of restricted stock acquired preipo"
+      },
+      {
+        "id": "b37de9fd3f6f",
+        "normalized": "what is a special purpose acquisition company spac"
+      },
+      {
+        "id": "2393b1e1a5eb",
+        "normalized": "what happens to spac ipo proceeds before a business combination is completed"
+      },
+      {
+        "id": "022fbe19e728",
+        "normalized": "how long does a spac typically have to complete an acquisition"
+      },
+      {
+        "id": "660b0c904a19",
+        "normalized": "what is the spac sponsors promote"
+      },
+      {
+        "id": "5a83fadcd31a",
+        "normalized": "what redemption right do spac public shareholders have at the merger vote"
+      },
+      {
+        "id": "e36eb6393cfd",
+        "normalized": "distinguish a blankcheck company from a blindpool offering"
+      },
+      {
+        "id": "397de5b63d3d",
+        "normalized": "what investorprotection concern is most often cited for blankcheck and blindpool offerings"
+      },
+      {
+        "id": "cfd66463ae01",
+        "normalized": "what relief does the jobs act provide to an emerging growth company egc going public"
+      }
+    ],
+    "questions": [
+      {
+        "id": "393ed85d6a9c",
+        "normalized": "which of the following best describes an initial public offering ipo"
+      },
+      {
+        "id": "572006f45a14",
+        "normalized": "which federal statute is the primary law governing the registration of securities being sold to the public including ipos"
+      },
+      {
+        "id": "3ee62d284aaf",
+        "normalized": "a red herring is best described as"
+      },
+      {
+        "id": "2024f58a5391",
+        "normalized": "which form is most commonly used by an issuer registering an ipo with the sec"
+      },
+      {
+        "id": "327ec5a54a81",
+        "normalized": "in a registered public offering what disclosure document must be delivered to investors purchasing the new securities"
+      },
+      {
+        "id": "5344af19bbc8",
+        "normalized": "the quiet period associated with a registered public offering is best described as"
+      },
+      {
+        "id": "adb1ae5e7e5e",
+        "normalized": "what is the underwriters primary role in an ipo"
+      },
+      {
+        "id": "0f946b3a53bc",
+        "normalized": "a secondary offering is best described as"
+      },
+      {
+        "id": "25bc7befb465",
+        "normalized": "spac stands for"
+      },
+      {
+        "id": "aec833fde3c2",
+        "normalized": "spacs are commonly described as companies because they have no commercial operations at the time of their ipo"
+      },
+      {
+        "id": "005a80f8790e",
+        "normalized": "the minimum statutory coolingoff period between filing a registration statement and the sec declaring it effective is generally"
+      },
+      {
+        "id": "eac7d5bf8d3f",
+        "normalized": "which of the following communications is generally permitted during the coolingoff period"
+      },
+      {
+        "id": "c6d1aafadaec",
+        "normalized": "in a firm commitment underwriting the underwriter"
+      },
+      {
+        "id": "511698f1e344",
+        "normalized": "a greenshoe overallotment option in an ipo typically allows underwriters to"
+      },
+      {
+        "id": "d81038f20308",
+        "normalized": "the effective date of a registration statement is"
+      },
+      {
+        "id": "acddad12ce8d",
+        "normalized": "if a registered secondary offering consists solely of existing shares sold by current shareholders no new issuance then"
+      },
+      {
+        "id": "2c7c2aa86039",
+        "normalized": "shelf registration permits an issuer to"
+      },
+      {
+        "id": "9397a9239ec3",
+        "normalized": "an established sec reporting company that meets eligibility requirements may register a followon equity offering on which simpler shortform registration"
+      },
+      {
+        "id": "dd24f83f1b62",
+        "normalized": "rule 144 primarily governs"
+      },
+      {
+        "id": "7b4f22b82fb1",
+        "normalized": "an ipo lockup period is best described as"
+      },
+      {
+        "id": "33ac142fa8f1",
+        "normalized": "a spac unit sold at ipo most commonly consists of"
+      },
+      {
+        "id": "ecf57ec17673",
+        "normalized": "funds raised in a spac ipo are generally placed in a trust account and invested in"
+      },
+      {
+        "id": "e8b684b4491a",
+        "normalized": "spac public shareholders generally have which of the following rights with respect to the proposed business combination"
+      },
+      {
+        "id": "3fe024767ebe",
+        "normalized": "the despac transaction refers to"
+      },
+      {
+        "id": "057cb144f96f",
+        "normalized": "under the jobs act an emerging growth company egc is generally an issuer with annual gross revenues less than approximately"
+      },
+      {
+        "id": "16daa9631df3",
+        "normalized": "an ipo of securities that are not covered securities under federal preemption must additionally comply with"
+      },
+      {
+        "id": "dfde3444de9d",
+        "normalized": "section 11 of the securities act imposes civil liability principally for"
+      },
+      {
+        "id": "c7a9471a450d",
+        "normalized": "an underwriters due diligence defense to section 11 liability generally requires the underwriter to"
+      },
+      {
+        "id": "9264496f9009",
+        "normalized": "in a registered secondary offering involving selling shareholders who can potentially be held liable under section 11 for material misstatements in the registration statement"
+      },
+      {
+        "id": "bd76e3120ca3",
+        "normalized": "regulation m is principally aimed at"
+      },
+      {
+        "id": "d0174c491b3a",
+        "normalized": "following an ipo finraimposed research analyst quietperiod rules generally restrict an underwriters affiliated analyst from"
+      },
+      {
+        "id": "eae2a190060a",
+        "normalized": "traditional blank check companies that fall within the secs blank check rules and are not structured to fall outside them as typical spacs are generally must"
+      },
+      {
+        "id": "222391bbea41",
+        "normalized": "if a spac fails to complete its initial business combination within the deadline disclosed in its prospectus commonly around 24 months what is the typical outcome for public shareholders"
+      },
+      {
+        "id": "f582ae1f151b",
+        "normalized": "section 12a2 of the securities act provides liability principally for"
+      },
+      {
+        "id": "f64a72b3615b",
+        "normalized": "which statement best distinguishes a primary distribution from a secondary distribution"
+      }
+    ]
+  }
+}

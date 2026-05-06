@@ -1,0 +1,275 @@
+{
+  "subtopicId": "2.12",
+  "items": {
+    "lessons": [
+      {
+        "id": "2.12",
+        "normalized": "alternative investments"
+      }
+    ],
+    "cards": [
+      {
+        "id": "951cf8c606f7",
+        "normalized": "what is the basic structure of a limited partnership used as a direct participation program"
+      },
+      {
+        "id": "a5bf22534d88",
+        "normalized": "what liability does the general partner of a limited partnership assume"
+      },
+      {
+        "id": "35240aedcf90",
+        "normalized": "what is the maximum financial liability of a limited partner"
+      },
+      {
+        "id": "382d1180774c",
+        "normalized": "how is income earned by a limited partnership taxed at the entity level"
+      },
+      {
+        "id": "d316a9a5fc97",
+        "normalized": "what tax form does a limited partner receive annually reporting the partnerships passthrough items"
+      },
+      {
+        "id": "114ca2561243",
+        "normalized": "how are most nonpublic limited partnership interests offered and sold"
+      },
+      {
+        "id": "bcd0b96f3eaa",
+        "normalized": "what is the typical liquidity profile of a private limited partnership interest"
+      },
+      {
+        "id": "5e1c1a4021e9",
+        "normalized": "define a real estate limited partnership relp"
+      },
+      {
+        "id": "48ad47eeca9c",
+        "normalized": "which deductions are commonly available to investors in an oil and gas limited partnership"
+      },
+      {
+        "id": "4dff0cffb3ea",
+        "normalized": "define an exchange traded note etn"
+      },
+      {
+        "id": "118a822f02ab",
+        "normalized": "what is the principal structural difference between an etn and an etf"
+      },
+      {
+        "id": "3b1347420309",
+        "normalized": "what is the dominant nonmarket risk borne by an etn holder"
+      },
+      {
+        "id": "3c8054102923",
+        "normalized": "why do etns typically exhibit minimal tracking error relative to their reference index"
+      },
+      {
+        "id": "ddbf8e785384",
+        "normalized": "how are gains on the sale or redemption of an etn generally taxed"
+      },
+      {
+        "id": "373bc2a024e9",
+        "normalized": "what is a leveraged fund leveraged etf designed to deliver"
+      },
+      {
+        "id": "ed9d01b68fe4",
+        "normalized": "why does a 2x leveraged funds multiday return often differ materially from 2x the indexs multiday return"
+      },
+      {
+        "id": "04fab0e302a7",
+        "normalized": "define an inverse fund"
+      },
+      {
+        "id": "1c57171e5124",
+        "normalized": "why are inverse funds generally unsuitable for buyandhold investors"
+      },
+      {
+        "id": "671b0b11f790",
+        "normalized": "explain volatility decay in the context of leveraged and inverse etfs"
+      },
+      {
+        "id": "0a8b7cb66e61",
+        "normalized": "what suitability obligation applies when recommending leveraged or inverse etfs to retail clients"
+      },
+      {
+        "id": "9fd2c6b7b81e",
+        "normalized": "what standard governs brokerdealer communications about leveraged inverse and structured products"
+      },
+      {
+        "id": "094a5901d465",
+        "normalized": "define a structured product"
+      },
+      {
+        "id": "fb5b5c2ac035",
+        "normalized": "what does principal protection actually guarantee in a principalprotected note"
+      },
+      {
+        "id": "07b145104ffd",
+        "normalized": "what is an equitylinked note eln"
+      },
+      {
+        "id": "231d0d2cab15",
+        "normalized": "from the investors perspective what is the principal risk of a callable structured note"
+      },
+      {
+        "id": "5982f7db51ae",
+        "normalized": "what is a blind pool limited partnership"
+      },
+      {
+        "id": "ce3b50226b64",
+        "normalized": "describe the payoff of a typical etn at maturity"
+      },
+      {
+        "id": "560e12d840b2",
+        "normalized": "what leverage multiples are most commonly available in retail leveraged and inverse etfs"
+      }
+    ],
+    "questions": [
+      {
+        "id": "3a43ee9c055c",
+        "normalized": "a limited partnership lp is best characterized as which of the following"
+      },
+      {
+        "id": "8b5a7c081d72",
+        "normalized": "in a limited partnership the general partner has which of the following responsibilities and exposures"
+      },
+      {
+        "id": "4abe9079f8c3",
+        "normalized": "a limited partners exposure to the obligations of a limited partnership is generally limited to which of the following"
+      },
+      {
+        "id": "780c354cf233",
+        "normalized": "limited partnerships pass income gains losses deductions and credits through to investors each year on which irs form"
+      },
+      {
+        "id": "fcea547095f2",
+        "normalized": "which of the following best describes an exchange traded note etn"
+      },
+      {
+        "id": "826cea676392",
+        "normalized": "which risk is borne by an investor in an exchange traded note etn but not by an investor in an exchange traded fund etf tracking the same index"
+      },
+      {
+        "id": "5942fe0bdd27",
+        "normalized": "a leveraged fund is most accurately described as a fund that"
+      },
+      {
+        "id": "9be3f79c96d0",
+        "normalized": "an inverse fund is designed to"
+      },
+      {
+        "id": "fcd5b3f0c6bb",
+        "normalized": "most leveraged and inverse exchange traded products are designed to deliver their stated multiple over which time period"
+      },
+      {
+        "id": "b75b2de3ab3c",
+        "normalized": "a structured product is generally described as which of the following"
+      },
+      {
+        "id": "287013d66a2c",
+        "normalized": "the principal benefit to an investor of holding a limited partner interest rather than a general partner interest in an lp is"
+      },
+      {
+        "id": "3ffb04973b68",
+        "normalized": "an exchange traded note etn typically trades"
+      },
+      {
+        "id": "17bdae5156d1",
+        "normalized": "compared to an exchange traded fund tracking the same index an exchange traded note generally has"
+      },
+      {
+        "id": "bc174b4d784b",
+        "normalized": "an advantage that etns may offer over comparable etfs from a federal income tax perspective is that"
+      },
+      {
+        "id": "8e8c77403c58",
+        "normalized": "holding a 2x daily leveraged etf for several months in a volatile sideways market is most likely to produce which result"
+      },
+      {
+        "id": "aa86e08d9feb",
+        "normalized": "which of the following is the most significant concern when an investor holds a daily inverse etf for longer than one trading day"
+      },
+      {
+        "id": "a28ec03b4b80",
+        "normalized": "an investment adviser representative is considering recommending a 3x leveraged etf to a longterm conservative retiree as a buyandhold core position under finras suitability rule this recommendation is best described as"
+      },
+      {
+        "id": "ace9c87f9702",
+        "normalized": "a typical structured product issued by a bank or brokerdealer is constructed by combining which two general components"
+      },
+      {
+        "id": "0a361474fc1d",
+        "normalized": "an equitylinked note pays the investor"
+      },
+      {
+        "id": "20561739de00",
+        "normalized": "a principalprotected note marketed to retail investors generally provides"
+      },
+      {
+        "id": "42f5aff08546",
+        "normalized": "a reverse convertible note typically exposes the investor to which of the following risks"
+      },
+      {
+        "id": "873d63590894",
+        "normalized": "limited partnership interests sold to investors in private offerings most commonly rely on which exemption from federal registration"
+      },
+      {
+        "id": "01c328213aa1",
+        "normalized": "which of the following is a common taxreporting drawback of investing in a limited partnership"
+      },
+      {
+        "id": "8e6851357000",
+        "normalized": "compared with an exchangelisted common stock a limited partnership interest is typically"
+      },
+      {
+        "id": "6a74ae07940f",
+        "normalized": "an index closes at 100 rises 10 on day 1 to 110 then falls about 909 on day 2 back to 100 a 2x daily leveraged etf tracking this index will end day 2 closest to which of the following values starting at 100"
+      },
+      {
+        "id": "78425e82768c",
+        "normalized": "a client wants shortterm exposure that profits when the sp 500 falls compared with selling short an index etf holding an inverse etf offers which of the following features"
+      },
+      {
+        "id": "c84294455259",
+        "normalized": "many etns include an issuer call or early redemption feature that allows the issuer to"
+      },
+      {
+        "id": "33f366531edd",
+        "normalized": "a structured note offers 100 participation in an equity indexs gains up to a cap of 30 over a 5year term with full principal repayment at maturity if held to term if the index returns 50 over the 5 years the investor receives"
+      },
+      {
+        "id": "1ddbf1b76a8a",
+        "normalized": "a private equity fund organized as a limited partnership commonly relies on which investment company act exclusions to avoid registration as an investment company"
+      },
+      {
+        "id": "b3a9a99ab506",
+        "normalized": "leveraged and inverse etfs typically rebalance their derivative exposure"
+      },
+      {
+        "id": "817086e3d233",
+        "normalized": "a limited partner who signs a subscription agreement for a realestate limited partnership and provides a recourse promissory note for additional capital"
+      },
+      {
+        "id": "8e3e246f9536",
+        "normalized": "from a federal income tax standpoint an investor who buys an etn at issuance and sells it before maturity at a higher price typically"
+      },
+      {
+        "id": "7889b0a998d0",
+        "normalized": "a principalprotected note is most commonly engineered by combining which two components both issued or guaranteed by the same issuer"
+      },
+      {
+        "id": "832cb6e9d310",
+        "normalized": "the secondary market for a typical structured note issued by a single brokerdealer is best described as"
+      },
+      {
+        "id": "6097c4f9b506",
+        "normalized": "under the internal revenue codes passive activity loss rules a nonactive limited partner generally may"
+      },
+      {
+        "id": "294abf8f6342",
+        "normalized": "a reverse convertible note pays an abovemarket coupon the abovemarket yield primarily compensates the investor for"
+      },
+      {
+        "id": "7371ede03676",
+        "normalized": "which statement best captures the creditrisk relationship between an etn and its issuer"
+      }
+    ]
+  }
+}
