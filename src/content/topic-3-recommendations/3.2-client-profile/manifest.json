@@ -1,0 +1,311 @@
+{
+  "subtopicId": "3.2",
+  "items": {
+    "lessons": [
+      {
+        "id": "3.2",
+        "normalized": "client profile"
+      }
+    ],
+    "cards": [
+      {
+        "id": "6aec9e873b91",
+        "normalized": "what is the difference between a financial goal and a financial objective"
+      },
+      {
+        "id": "771141c026c4",
+        "normalized": "what categories of items appear as inflows and outflows on a clients personal cash flow statement"
+      },
+      {
+        "id": "c1bf0036ea5a",
+        "normalized": "define cash flow in the context of a personal financial profile"
+      },
+      {
+        "id": "4f632eb2b739",
+        "normalized": "what does a personal balance sheet show"
+      },
+      {
+        "id": "47ccf6bebfb6",
+        "normalized": "calculate net worth for a client with 850000 in assets and 325000 in liabilities"
+      },
+      {
+        "id": "c03c5f6ef96d",
+        "normalized": "why must an adviser inventory a clients existing investments before recommending new ones"
+      },
+      {
+        "id": "2f3094d9bc33",
+        "normalized": "distinguish a clients marginal tax rate from the effective tax rate"
+      },
+      {
+        "id": "5e3a6e8b2b9f",
+        "normalized": "a client in the 32 federal bracket is comparing a 4 taxable corporate bond to a 3 instate municipal bond which has the higher taxequivalent yield"
+      },
+      {
+        "id": "c723c7d37617",
+        "normalized": "why are social security benefits an essential input to retirement planning"
+      },
+      {
+        "id": "e21f613c288f",
+        "normalized": "distinguish a defined benefit pension from a defined contribution plan when profiling a client"
+      },
+      {
+        "id": "6d0ccc26ea6e",
+        "normalized": "define risk tolerance"
+      },
+      {
+        "id": "9d3c4e08802c",
+        "normalized": "distinguish risk tolerance from risk capacity"
+      },
+      {
+        "id": "9fe1ee60b640",
+        "normalized": "what is esg investing"
+      },
+      {
+        "id": "696ab739d77a",
+        "normalized": "give an example of a religious investment screen and how it constrains a portfolio"
+      },
+      {
+        "id": "574eac229795",
+        "normalized": "how does a clients investment experience affect a recommendation"
+      },
+      {
+        "id": "9fbc2f209f9a",
+        "normalized": "name life events that should prompt an adviser to update a clients profile"
+      },
+      {
+        "id": "a65184b36c97",
+        "normalized": "identify the four classic lifecycle investment stages"
+      },
+      {
+        "id": "d8f02a9dfdc8",
+        "normalized": "what is behavioral finance"
+      },
+      {
+        "id": "433c315f1070",
+        "normalized": "define loss aversion"
+      },
+      {
+        "id": "6b5e3464de4b",
+        "normalized": "what is confirmation bias and how does it affect investment decisions"
+      },
+      {
+        "id": "29ab7f390f1c",
+        "normalized": "what is herd behavior in the context of investor psychology"
+      },
+      {
+        "id": "37a8eadb5d6c",
+        "normalized": "under the usa patriot act what minimum information must a customer identification program collect from a new individual account holder"
+      },
+      {
+        "id": "ae7f6ef85008",
+        "normalized": "what core data fields must be recorded for each customer account under finra rule 4512"
+      },
+      {
+        "id": "12ee59631752",
+        "normalized": "what is the purpose of a written newaccount questionnaire"
+      },
+      {
+        "id": "fc4fc1190dba",
+        "normalized": "why do regulators consider the inperson interview an important part of client data gathering"
+      },
+      {
+        "id": "109e8a8c536e",
+        "normalized": "define investment time horizon"
+      },
+      {
+        "id": "9db61008a4c7",
+        "normalized": "why does a longer time horizon generally permit a higher equity allocation"
+      },
+      {
+        "id": "db684c8295a3",
+        "normalized": "what is the iars ongoing duty to update the client profile after the initial intake"
+      }
+    ],
+    "questions": [
+      {
+        "id": "60119425425d",
+        "normalized": "when constructing a client profile an investment adviser representative is gathering information primarily to determine which of the following"
+      },
+      {
+        "id": "71e2dcdae326",
+        "normalized": "under the customerspecific suitability obligation an adviser must have a reasonable basis to believe a recommendation is suitable based on information obtained through reasonable diligence which of the following is not typically part of that customer profile"
+      },
+      {
+        "id": "ca53feb20546",
+        "normalized": "which document is typically used to systematically collect a new clients financial and nonfinancial information at account opening"
+      },
+      {
+        "id": "dcfb369e3c84",
+        "normalized": "a 28yearold client with stable employment ample emergency reserves and no dependents states that her primary objective is longterm growth which of the following best describes an appropriate time horizon assumption for her retirement portfolio"
+      },
+      {
+        "id": "5cce871e8ed3",
+        "normalized": "risk tolerance is best understood as a function of which two components"
+      },
+      {
+        "id": "885bc507962a",
+        "normalized": "a clients personal balance sheet provides a snapshot of which of the following at a specific point in time"
+      },
+      {
+        "id": "5f62e93a8435",
+        "normalized": "a personal cashflow statement is most useful for evaluating which of the following"
+      },
+      {
+        "id": "7f144ae13508",
+        "normalized": "when reviewing a clients existing investments an iar notices that 80 of the clients net worth is concentrated in employer stock the most important consideration this raises is"
+      },
+      {
+        "id": "d587cdf47023",
+        "normalized": "a client tells her iar that she would lose sleep if her portfolio fell 10 in a year even though her financial plan can absorb a 30 drawdown the iar should conclude that"
+      },
+      {
+        "id": "324c5b7770cb",
+        "normalized": "which of the following best describes the difference between a clients investment objective and an investment constraint"
+      },
+      {
+        "id": "b64b79677b25",
+        "normalized": "an iar is recommending a taxaware allocation to a highincome client which of the following is most directly relevant when assessing the clients tax situation"
+      },
+      {
+        "id": "cb9641d9269a",
+        "normalized": "qualified dividends received by an individual investor in 2026 are generally taxed at"
+      },
+      {
+        "id": "ddf1a3ea4b90",
+        "normalized": "when projecting a clients retirement income social security benefits should generally be modeled as"
+      },
+      {
+        "id": "2208b5b80d92",
+        "normalized": "a defined benefit pension that pays a singlelife annuity of 4000 per month at retirement is best described to a client as which of the following"
+      },
+      {
+        "id": "3d81969f67c2",
+        "normalized": "which behavioral finance bias is most consistent with a client who refuses to sell a losing stock because she doesnt want to make the loss real"
+      },
+      {
+        "id": "07db56c4e483",
+        "normalized": "an investor who repeatedly extrapolates recent strong returns into the future and increases his equity allocation after a bull market is most clearly exhibiting"
+      },
+      {
+        "id": "e5079ea1c3fa",
+        "normalized": "a client tells the iar she wants to avoid investments in firearms manufacturers and fossil fuel companies for personalvalues reasons this is best characterized as"
+      },
+      {
+        "id": "bc94f4998734",
+        "normalized": "which of the following best describes shariacompliant islamic investing as a nonfinancial constraint"
+      },
+      {
+        "id": "d49899e7c728",
+        "normalized": "mental accounting most directly causes which of the following client behaviors"
+      },
+      {
+        "id": "a8309bc56287",
+        "normalized": "a new client recently received a large inheritance and lost a spouse in the same year from a clientprofile perspective these are best characterized as"
+      },
+      {
+        "id": "2b99e036d264",
+        "normalized": "an iar is required to verify the identity of a new client by collecting name date of birth address and a government identification number this requirement most directly arises from"
+      },
+      {
+        "id": "47c33f4bb332",
+        "normalized": "reasonable diligence under finras customerprofile suitability obligation requires that a representative attempt to obtain information about all of the following except"
+      },
+      {
+        "id": "d455dc062722",
+        "normalized": "which of the following changes in a clients situation should generally trigger an update to the client profile and investment policy"
+      },
+      {
+        "id": "f56abb36193a",
+        "normalized": "an adviser is profiling a 70yearold retiree whose primary objective is current income with capital preservation the most appropriate description of her time horizon and risk profile is generally"
+      },
+      {
+        "id": "0b5da968c3d4",
+        "normalized": "when an iar conducts an inperson interview as part of client data gathering the principal advantage over a written questionnaire alone is"
+      },
+      {
+        "id": "580993302efc",
+        "normalized": "the know your customer obligation as articulated by finra generally requires firms to use reasonable diligence to know which of the following"
+      },
+      {
+        "id": "c8b8c06fd56f",
+        "normalized": "which of the following pairs of objectives is most likely to be in tension within a single portfolio"
+      },
+      {
+        "id": "0619972e5fff",
+        "normalized": "liquidity needs are best described in the context of a client profile as"
+      },
+      {
+        "id": "257e1ba4c7b6",
+        "normalized": "a client age 55 plans to retire at 65 then expects to live until age 90 from a planning standpoint the time horizon for her retirement assets is best characterized as"
+      },
+      {
+        "id": "a164e1bfd7f4",
+        "normalized": "an iar who recommends a private placement to a client without first confirming the clients accredited investor status and risk tolerance has most likely failed to satisfy"
+      },
+      {
+        "id": "8ca9c40d8391",
+        "normalized": "familiarity bias most often appears in client portfolios as"
+      },
+      {
+        "id": "52ec6ee068b0",
+        "normalized": "when evaluating a clients existing investments an iar should consider all of the following except"
+      },
+      {
+        "id": "62323922ff20",
+        "normalized": "overconfidence bias most often manifests as"
+      },
+      {
+        "id": "07a6d036409b",
+        "normalized": "which of the following best describes risk capacity as distinguished from risk tolerance"
+      },
+      {
+        "id": "c92614a4b654",
+        "normalized": "an iar working with a client whose primary goal is funding a childs college education in 4 years should generally treat the time horizon as"
+      },
+      {
+        "id": "31b98f0ade4c",
+        "normalized": "anchoring bias is best illustrated by which of the following client behaviors"
+      },
+      {
+        "id": "24f2d2ffbf64",
+        "normalized": "a client receives 401k contributions from her employer and will begin required minimum distributions at age 73 when building her profile the iar should treat the future rmd stream as"
+      },
+      {
+        "id": "0e341fc9024f",
+        "normalized": "which of the following clients has the greatest need to emphasize liquidity in the investment policy"
+      },
+      {
+        "id": "2aefc6a6e05b",
+        "normalized": "an iar notes that a clients financial situation is characterized by high income high savings rate and low fixed obligations relative to assets from a profile perspective this most directly suggests"
+      },
+      {
+        "id": "7ff1984bd0e0",
+        "normalized": "confirmation bias most directly affects a client by causing him to"
+      },
+      {
+        "id": "93429678b544",
+        "normalized": "an esg environmental social governance integration approach within a clients ips most accurately describes"
+      },
+      {
+        "id": "9dce4a1b740a",
+        "normalized": "status quo bias in a 401k participant is most clearly demonstrated when the participant"
+      },
+      {
+        "id": "5b452a203aea",
+        "normalized": "investment experience is part of a complete client profile chiefly because it"
+      },
+      {
+        "id": "7aeefd42563d",
+        "normalized": "under regulation best interests care obligation a brokerdealer recommending a securities transaction to a retail customer must exercise reasonable diligence care and skill to understand all of the following except"
+      },
+      {
+        "id": "cdfe100d3cef",
+        "normalized": "a 45yearold client has a 200000 emergency fund a 15 million 401k a paidoff home and stable employment the clients life stage is best described as"
+      },
+      {
+        "id": "b2828d8c0ef1",
+        "normalized": "which irs publication is the most appropriate primary reference for explaining the basic federal taxation of investment income such as interest dividends and capital gains to a retail client"
+      }
+    ]
+  }
+}

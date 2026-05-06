@@ -1,0 +1,42 @@
+import type { Lesson } from "../../../types/content";
+
+export const lesson: Lesson = {
+  "title": "Characteristics and Valuation Factors of Fixed Income Securities",
+  "bodyMd": "Fixed income securities — bonds and preferred stock — promise scheduled cash flows. To analyze them, the Series 65 expects you to fluently move between a bond's *characteristics* (its contractual terms) and its *valuation* (the math that translates those terms into a price, a yield, and a measure of risk). This lesson walks through both, using only as much algebra as the exam demands.\n\n### Bond characteristics the exam tests\n\n**Pricing — par, premium, discount.** Bonds are quoted as a percentage of par (face) value. A bond at 100 trades at par, 102 is a premium, 97 is a discount. Coupon payments are always a fixed dollar amount based on par, so a $1{,}000$ par bond with a 5% coupon pays $\\$50$ per year regardless of the market price.\n\n**Coupon vs. zero coupon.** A coupon bond pays periodic interest (typically semiannually). A zero-coupon bond is sold at a deep discount and pays only par at maturity; the investor's return comes entirely from accretion of the price toward par. The IRS still taxes that imputed interest annually as 'original issue discount' (OID), even though no cash is received.\n\n**Tax implications.** Interest from corporate bonds is fully taxable. U.S. Treasury interest is taxable at the federal level but exempt from state and local tax. Municipal bond interest is generally exempt from federal tax, and exempt from state tax in the issuer's state — the basis for comparing munis to taxables via the *taxable-equivalent yield*:\n\n$$\\text{TEY} = \\frac{\\text{Muni yield}}{1 - \\text{marginal tax rate}}$$\n\n**Call features.** A callable bond lets the issuer redeem early, usually after a call-protection period and at a specified call price. Issuers call when rates have fallen — bad for the investor, who must reinvest at lower yields (reinvestment risk). Callable bonds therefore carry higher coupons than otherwise identical non-callable bonds.\n\n**Liquidation preference.** In bankruptcy, secured creditors are paid first, then unsecured bondholders (debentures), then subordinated debt, then preferred stock, and finally common stock. Preferred stock is treated as fixed-income-like because it pays a fixed dividend, but in liquidation it sits *below* every form of debt.\n\n**Bond ratings.** S&P, Moody's, and Fitch grade credit risk. Investment grade is BBB- / Baa3 and above; below that is 'high yield' or 'junk.' Lower ratings mean higher yields to compensate for default risk.\n\n**Market liquidity.** Treasuries are the most liquid fixed-income instrument. Thinly-traded municipals and small corporate issues can have wide bid-ask spreads, so investors demand a *liquidity premium* on top of the yield they would otherwise accept.\n\n### Valuation — turning characteristics into a number\n\nA bond's price is the present value of its cash flows discounted at the market's required yield. With $C$ as the periodic coupon, $F$ as face value, $n$ periods, and $y$ as the per-period yield:\n\n$$P = \\sum_{t=1}^{n} \\frac{C}{(1+y)^t} + \\frac{F}{(1+y)^n}$$\n\nThis is the *discounted cash flow* (DCF) approach. Solving for $y$ given $P$ produces **yield to maturity (YTM)** — the single discount rate that equates today's price to all future cash flows, assuming the bond is held to maturity and coupons are reinvested at the YTM.\n\n**Yield to call (YTC)** uses the same equation but truncates the cash flows at the call date and substitutes the call price for face value. For a premium callable bond, YTC is *lower* than YTM and is therefore the more conservative figure to quote — the basis for the 'yield to worst' rule of thumb.\n\n**Current yield** is the shortcut measure the exam loves:\n\n$$\\text{Current yield} = \\frac{\\text{Annual coupon}}{\\text{Current price}}$$\n\nMemorize the inverse relationships. When price falls, current yield and YTM rise. When a bond trades at par, coupon rate = current yield = YTM. At a premium, $\\text{Coupon} > \\text{Current yield} > \\text{YTM} > \\text{YTC}$. At a discount, the order flips.\n\n**Credit spread.** A corporate bond's yield can be decomposed into a risk-free Treasury yield plus a credit spread:\n\n$$y_{\\text{corp}} = y_{\\text{Treasury}} + \\text{spread}$$\n\nSpreads widen in recessions (investors demand more compensation for default risk) and tighten in expansions.\n\n**Conversion valuation.** A convertible bond can be exchanged for a fixed number of shares (the *conversion ratio*). The *conversion value* equals:\n\n$$\\text{Conversion value} = \\text{Conversion ratio} \\times \\text{Stock price}$$\n\nExpressed as a percent of par, this is the bond's *parity price*. If the bond trades above parity, it carries a conversion premium; if it trades below parity, an arbitrage may exist — buy the bond, convert, sell the shares.\n\n### Risk lenses — duration and beyond\n\n**Maturity** is the calendar life of the bond. **Duration** is the weighted-average time to receive the bond's cash flows, expressed in years. Macaulay duration is the formal calculation; *modified duration* converts that into a price-sensitivity measure:\n\n$$\\text{Modified duration} = \\frac{\\text{Macaulay duration}}{1 + y}$$\n\nFor a small change in yield, the percentage change in price is approximately:\n\n$$\\frac{\\Delta P}{P} \\approx -\\text{Modified duration} \\times \\Delta y$$\n\nThree facts to memorize:\n\n1. Higher coupon implies lower duration (cash arrives sooner).\n2. Longer maturity implies higher duration.\n3. Zero-coupon bonds have duration equal to maturity — no intermediate cash flows pull the weighted average forward.\n\nDuration is the exam's preferred measure of **interest-rate risk**. **Reinvestment risk** runs the opposite direction: when rates fall, coupons must be reinvested at lower yields. Zero-coupon bonds eliminate reinvestment risk because there are no coupons to reinvest.\n\n### Worked example\n\nA $\\$1{,}000$ par, 6% annual-coupon corporate bond has 10 years to maturity and trades at $\\$950$. Compute (a) the current yield, (b) the approximate YTM, and (c) the approximate price change if yields rise by 50 basis points and modified duration is 7.4.\n\n**(a) Current yield.**\n\n$$\\text{CY} = \\frac{60}{950} \\approx 6.32\\%$$\n\n**(b) Approximate YTM** using the standard exam shortcut:\n\n$$\\text{YTM} \\approx \\frac{C + (F - P)/n}{(F + P)/2} = \\frac{60 + (1000 - 950)/10}{(1000 + 950)/2} = \\frac{65}{975} \\approx 6.67\\%$$\n\nNotice that YTM (6.67%) > CY (6.32%) > Coupon (6.00%) — exactly what we expect for a discount bond.\n\n**(c) Price impact of a yield rise.**\n\n$$\\frac{\\Delta P}{P} \\approx -7.4 \\times 0.005 = -3.7\\%$$\n\nThe bond's price falls about $0.037 \\times 950 \\approx \\$35.15$, to roughly $\\$914.85$. This is the practical purpose of duration: it converts a rate move into a dollar move without re-running the full DCF.\n\n### Summary\n\n- A bond's *characteristics* (coupon, maturity, call features, ratings, tax status, liquidation rank) drive its *valuation* (price, YTM, YTC, duration, credit spread).\n- Price and yield move inversely; coupon, current yield, and YTM line up in a fixed order depending on whether the bond is at par, premium, or discount.\n- Duration measures interest-rate sensitivity; longer maturity and lower coupon mean higher duration and larger price swings.\n- Credit risk is priced as a spread over Treasuries and reflected in agency ratings; tax treatment depends on the issuer (corporate, Treasury, municipal).\n- DCF is the master valuation tool — every yield measure on the exam is just DCF rearranged for a different unknown or a different cash-flow horizon.",
+  "citations": [
+    {
+      "source": "NASAA",
+      "ref": "NASAA Series 65 Content Outline"
+    },
+    {
+      "source": "OTHER",
+      "ref": "IRS Publication 550"
+    },
+    {
+      "source": "OTHER",
+      "ref": "S&P Global Ratings"
+    },
+    {
+      "source": "OTHER",
+      "ref": "Moody's Investors Service"
+    },
+    {
+      "source": "OTHER",
+      "ref": "Fitch Ratings"
+    },
+    {
+      "source": "OTHER",
+      "ref": "U.S. Treasury"
+    },
+    {
+      "source": "OTHER",
+      "ref": "Federal Reserve"
+    },
+    {
+      "source": "OTHER",
+      "ref": "Standard finance textbook"
+    }
+  ],
+  "subtopicId": "2.3",
+  "reviewed": false
+};

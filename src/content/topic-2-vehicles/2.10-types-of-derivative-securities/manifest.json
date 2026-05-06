@@ -1,0 +1,267 @@
+{
+  "subtopicId": "2.10",
+  "items": {
+    "lessons": [
+      {
+        "id": "2.10",
+        "normalized": "derivative securities options warrants and futures"
+      }
+    ],
+    "cards": [
+      {
+        "id": "334ba62b50a6",
+        "normalized": "define a derivative security"
+      },
+      {
+        "id": "0b5fd3d972de",
+        "normalized": "what is a call option"
+      },
+      {
+        "id": "a0f2845289a4",
+        "normalized": "what is a put option"
+      },
+      {
+        "id": "5d1e83723eb5",
+        "normalized": "what is the option premium"
+      },
+      {
+        "id": "24107282d961",
+        "normalized": "what does the strike exercise price of an option represent"
+      },
+      {
+        "id": "a76976e9aac0",
+        "normalized": "americanstyle vs europeanstyle options"
+      },
+      {
+        "id": "c9f54b2a500d",
+        "normalized": "how many shares does one standard listed equity option contract cover"
+      },
+      {
+        "id": "a48e8ed9eb5d",
+        "normalized": "obligations of a call writer short call"
+      },
+      {
+        "id": "f2db5f2fe147",
+        "normalized": "obligations of a put writer short put"
+      },
+      {
+        "id": "4be0ea69d3a6",
+        "normalized": "intrinsic value of a call option"
+      },
+      {
+        "id": "8a9e067cb7d2",
+        "normalized": "intrinsic value of a put option"
+      },
+      {
+        "id": "cc538b304f3a",
+        "normalized": "breakeven for a long call at expiration"
+      },
+      {
+        "id": "14584447ef8b",
+        "normalized": "breakeven for a long put at expiration"
+      },
+      {
+        "id": "f1bac26e392e",
+        "normalized": "define a warrant"
+      },
+      {
+        "id": "4e340644fd81",
+        "normalized": "how are warrants commonly issued to investors"
+      },
+      {
+        "id": "028227c5cbd0",
+        "normalized": "warrant vs call option key distinctions"
+      },
+      {
+        "id": "9cdee6afc02a",
+        "normalized": "what happens to share count when a warrant is exercised"
+      },
+      {
+        "id": "928ecf6fc8bc",
+        "normalized": "what is a right subscription right and how does it differ from a warrant"
+      },
+      {
+        "id": "009d20628cba",
+        "normalized": "define a futures contract"
+      },
+      {
+        "id": "8f2fb396e6fd",
+        "normalized": "futures contract vs option fundamental obligation difference"
+      },
+      {
+        "id": "f2f76487b352",
+        "normalized": "futures contract vs forward contract"
+      },
+      {
+        "id": "e3b7f2fdf58b",
+        "normalized": "margin in futures trading"
+      },
+      {
+        "id": "454a50ed5610",
+        "normalized": "what does daily marktomarket mean for futures"
+      },
+      {
+        "id": "fe35b9a6a914",
+        "normalized": "which federal agency regulates us futures markets"
+      },
+      {
+        "id": "19c8f9a46c1c",
+        "normalized": "role of the national futures association nfa"
+      },
+      {
+        "id": "76f47f1ec828",
+        "normalized": "role of the options clearing corporation occ"
+      },
+      {
+        "id": "2dbf71adbd68",
+        "normalized": "what is the options disclosure document odd"
+      },
+      {
+        "id": "8e74f5ebcf98",
+        "normalized": "typical underlyings for futures contracts"
+      }
+    ],
+    "questions": [
+      {
+        "id": "d4db534d6dab",
+        "normalized": "which of the following best describes a call option"
+      },
+      {
+        "id": "d4f9936dede4",
+        "normalized": "which of the following best describes a put option"
+      },
+      {
+        "id": "e02cb5724c69",
+        "normalized": "each standard equity option contract in the united states generally represents how many shares of the underlying stock"
+      },
+      {
+        "id": "42ee5e2c57aa",
+        "normalized": "the price paid by the buyer of an option to the seller writer is called the"
+      },
+      {
+        "id": "1652b243270b",
+        "normalized": "an investor is long 1 xyz september 50 call xyz is currently trading at 58 the calls intrinsic value is"
+      },
+      {
+        "id": "cd3b8ee0ca10",
+        "normalized": "an xyz september 60 put has a premium of 5 xyz is trading at 57 what is the puts time value"
+      },
+      {
+        "id": "125b48f8267c",
+        "normalized": "an option whose strike price equals the current price of the underlying is described as"
+      },
+      {
+        "id": "5055c1bd57e6",
+        "normalized": "which type of option may be exercised by the holder only on the expiration date and not before"
+      },
+      {
+        "id": "da76afa1528e",
+        "normalized": "which of the following correctly describes the maximum loss for the buyer of a long call option"
+      },
+      {
+        "id": "31a55b94b2fb",
+        "normalized": "an investor who writes sells an uncovered call option faces what maximum potential loss"
+      },
+      {
+        "id": "39e0d14e3064",
+        "normalized": "an investor writes a put on stock currently at 40 with a strike of 35 and receives 2 premium what is the maximum loss"
+      },
+      {
+        "id": "7ededcdcbbde",
+        "normalized": "which entity is the issuer and guarantor of all listed standardized equity options in the united states"
+      },
+      {
+        "id": "3e61b39b91ed",
+        "normalized": "before a customers first options trade a brokerdealer must deliver which of the following disclosure documents"
+      },
+      {
+        "id": "3e6e8b4b59bb",
+        "normalized": "a warrant is best described as"
+      },
+      {
+        "id": "9cd20860a4b0",
+        "normalized": "which of the following is a key difference between warrants and listed call options"
+      },
+      {
+        "id": "6b56003cba82",
+        "normalized": "when a warrant is exercised the issuing corporation typically"
+      },
+      {
+        "id": "56e382e4d629",
+        "normalized": "warrants are most commonly attached to which of the following at original issuance"
+      },
+      {
+        "id": "8b152086bd9c",
+        "normalized": "compared to a typical listed call option a warrant generally has"
+      },
+      {
+        "id": "83bcc7abf82d",
+        "normalized": "which of the following statements about warrants is true"
+      },
+      {
+        "id": "22a8e6499ae1",
+        "normalized": "under federal law warrants and options are considered"
+      },
+      {
+        "id": "593f3c3f26af",
+        "normalized": "a futures contract is best defined as"
+      },
+      {
+        "id": "6def6da96c6d",
+        "normalized": "which of the following is the primary regulator of us futures markets"
+      },
+      {
+        "id": "91323b623760",
+        "normalized": "which selfregulatory organization performs registration and oversight of futures commission merchants and other futures industry professionals"
+      },
+      {
+        "id": "74bcc1660799",
+        "normalized": "which of the following best distinguishes a forward contract from a futures contract"
+      },
+      {
+        "id": "e4f228d202fd",
+        "normalized": "an investor who is long a futures contract has agreed to"
+      },
+      {
+        "id": "b5000a6d7e5a",
+        "normalized": "unlike an option a futures contract"
+      },
+      {
+        "id": "574370600b37",
+        "normalized": "which of the following is generally true about margin in a futures contract"
+      },
+      {
+        "id": "2fc7169a0bb4",
+        "normalized": "daily marktomarket in futures means that"
+      },
+      {
+        "id": "532257ece91f",
+        "normalized": "which of the following exchanges is most associated with the trading of standardized listed equity options in the united states"
+      },
+      {
+        "id": "504b4694706c",
+        "normalized": "which exchange group is the largest us marketplace for futures contracts on financial and agricultural products"
+      },
+      {
+        "id": "39aa1639fc10",
+        "normalized": "a wheat farmer who sells wheat futures to lock in a price for his upcoming harvest is engaging in"
+      },
+      {
+        "id": "bff867adfaf7",
+        "normalized": "which of the following is not typical of a listed options contract relative to a futures contract"
+      },
+      {
+        "id": "68ea343bdca3",
+        "normalized": "an index option such as one based on the sp 500 is typically settled in"
+      },
+      {
+        "id": "7b8dc646a03b",
+        "normalized": "an investor who buys a put option on a stock she already owns is most likely seeking to"
+      },
+      {
+        "id": "f57e2e671f00",
+        "normalized": "which of the following best describes the leverage feature of derivatives such as options and futures"
+      }
+    ]
+  }
+}

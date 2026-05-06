@@ -1,0 +1,251 @@
+{
+  "subtopicId": "4.3",
+  "items": {
+    "lessons": [
+      {
+        "id": "4.3",
+        "normalized": "definitions of brokerdealers"
+      }
+    ],
+    "cards": [
+      {
+        "id": "5647e1ab9d79",
+        "normalized": "federal securities exchange act of 1934 definition of broker"
+      },
+      {
+        "id": "78d73f81f870",
+        "normalized": "federal securities exchange act of 1934 definition of dealer"
+      },
+      {
+        "id": "48086a756224",
+        "normalized": "capacity in which a broker acts versus the capacity in which a dealer acts"
+      },
+      {
+        "id": "50cbeb48d9ce",
+        "normalized": "why is an individual who actively trades only a personal portfolio not a dealer"
+      },
+      {
+        "id": "4087d1b03a83",
+        "normalized": "circumstances in which banks are excluded from the federal definition of broker"
+      },
+      {
+        "id": "3d15f6ced995",
+        "normalized": "bank exclusions from the federal definition of dealer"
+      },
+      {
+        "id": "696ec1889972",
+        "normalized": "uniform securities act definition of brokerdealer"
+      },
+      {
+        "id": "71fe647494ce",
+        "normalized": "persons expressly excluded from the uniform securities act definition of brokerdealer"
+      },
+      {
+        "id": "2ca56bc14668",
+        "normalized": "why is an issuer that sells its own securities not a brokerdealer under state law"
+      },
+      {
+        "id": "5e5e7da23b35",
+        "normalized": "when may an outofstate brokerdealer with no place of business in a state avoid that states bd registration"
+      },
+      {
+        "id": "47b8a84ffa73",
+        "normalized": "significance of having a place of business in a state for brokerdealer registration"
+      },
+      {
+        "id": "00c0af4cef85",
+        "normalized": "federal statute that requires a brokerdealer to register with the sec"
+      },
+      {
+        "id": "62895c950e76",
+        "normalized": "what does the engaged in the business element mean in the federal broker definition"
+      },
+      {
+        "id": "1fe9f07b01cf",
+        "normalized": "uniform securities act definition of agent in the brokerdealer context"
+      },
+      {
+        "id": "41e9abc4fcd3",
+        "normalized": "primary distinction between a brokerdealer and an investment adviser"
+      },
+      {
+        "id": "49a04148f670",
+        "normalized": "when does a brokerdealer that gives investment advice escape being treated as an investment adviser"
+      },
+      {
+        "id": "143ee40fbc44",
+        "normalized": "how is a dealer typically compensated in contrast to a broker"
+      },
+      {
+        "id": "5adaad82af53",
+        "normalized": "selfregulatory organization that virtually every secregistered brokerdealer must join"
+      },
+      {
+        "id": "e8845352416a",
+        "normalized": "customerprotection insurance scheme that registered brokerdealers must join"
+      },
+      {
+        "id": "c35dc764b3f7",
+        "normalized": "when is a foreign eg canadian brokerdealer not required to register in a us state under the usa"
+      },
+      {
+        "id": "86e929602063",
+        "normalized": "what does it mean to effect transactions in securities"
+      },
+      {
+        "id": "e6828a1d730d",
+        "normalized": "are employees of an issuer who sell the issuers own securities considered brokerdealers"
+      },
+      {
+        "id": "ef4d8158f844",
+        "normalized": "why does the uniform securities act collapse broker and dealer into a single brokerdealer term"
+      },
+      {
+        "id": "67d22b1acc35",
+        "normalized": "three core elements of being a broker under federal law"
+      }
+    ],
+    "questions": [
+      {
+        "id": "9757097cc9a0",
+        "normalized": "under the securities exchange act of 1934 the term broker is defined as any person engaged in the business of effecting transactions in securities for which of the following"
+      },
+      {
+        "id": "6b0b04b20ff3",
+        "normalized": "under the securities exchange act of 1934 a dealer is best described as a person who"
+      },
+      {
+        "id": "b0d3ba1cd26e",
+        "normalized": "which of the following best characterizes the capacity in which a broker acts versus the capacity in which a dealer acts"
+      },
+      {
+        "id": "231bb55ae6a6",
+        "normalized": "under the uniform securities act the term brokerdealer includes any person engaged in the business of effecting transactions in securities for the account of others or"
+      },
+      {
+        "id": "4554dc295a86",
+        "normalized": "under the uniform securities act which of the following is specifically excluded from the definition of brokerdealer"
+      },
+      {
+        "id": "82374c5db670",
+        "normalized": "when a registered representative employed by a member firm effects securities transactions for retail customers that individual is technically classified under the uniform securities act as an"
+      },
+      {
+        "id": "6f3b516fddd7",
+        "normalized": "federal registration of brokerdealers operating in interstate commerce is generally required under which provision"
+      },
+      {
+        "id": "58fc268a3eed",
+        "normalized": "an issuer that sells its own newly issued common stock directly to the public"
+      },
+      {
+        "id": "0b11ad0ff7b5",
+        "normalized": "under the uniform securities act a person for definitional purposes includes"
+      },
+      {
+        "id": "fe8140cbcda6",
+        "normalized": "a firm that buys 1000 shares from one customer at one price and immediately sells the same 1000 shares to another customer at a higher price is acting in what capacity on the second leg"
+      },
+      {
+        "id": "7bafacb82ec4",
+        "normalized": "under the securities exchange act of 1934 the phrase engaged in the business in defining a broker is generally interpreted to require"
+      },
+      {
+        "id": "23d96f3861d3",
+        "normalized": "an outofstate brokerdealer with no place of business in state x effects transactions in state x exclusively with existing customers who are residents of state y temporarily vacationing in state x under the uniform securities act the brokerdealer is"
+      },
+      {
+        "id": "d639acf81a81",
+        "normalized": "under the uniform securities act an outofstate brokerdealer with no place of business in the state may be excluded from the brokerdealer definition if its only instate customers are"
+      },
+      {
+        "id": "10086874dd6f",
+        "normalized": "under the uniform securities act a place of business for brokerdealer registration purposes is generally"
+      },
+      {
+        "id": "b7ad467ea5c3",
+        "normalized": "under the uniform securities act which of the following customers is generally not considered an institutional investor for purposes of the brokerdealer noplaceofbusiness exclusion"
+      },
+      {
+        "id": "2edd4bf97946",
+        "normalized": "under the uniform securities act banks and savings institutions are generally"
+      },
+      {
+        "id": "c7220a3c0cf6",
+        "normalized": "after the grammleachbliley act banks engaged in securities activities under federal law"
+      },
+      {
+        "id": "b0ce3d6a6dd7",
+        "normalized": "under the uniform securities act an outofstate brokerdealer with no instate office whose only instate activity is effecting transactions with other brokerdealers located in that state"
+      },
+      {
+        "id": "c5947f3ec712",
+        "normalized": "under the uniform securities act an agent is best defined as"
+      },
+      {
+        "id": "3b13fa2f5e4b",
+        "normalized": "if an outofstate brokerdealer opens a permanent branch office in a new state and begins soliciting retail clients there the firm"
+      },
+      {
+        "id": "e385e8b01f70",
+        "normalized": "federal law distinguishes a dealer from a trader primarily on the basis of"
+      },
+      {
+        "id": "d7db21896e88",
+        "normalized": "which of the following best explains why an issuer selling its own newly registered securities is generally not considered a brokerdealer"
+      },
+      {
+        "id": "654cecff7589",
+        "normalized": "under the securities exchange act of 1934 a brokerdealer that sells securities in interstate commerce without being secregistered"
+      },
+      {
+        "id": "81934e4e8b98",
+        "normalized": "under federal law the principal difference between a broker and a dealer is best summarized as"
+      },
+      {
+        "id": "3128a015c943",
+        "normalized": "a firm executes a customer trade by selling shares from its own inventory at a markedup price the firm is acting as"
+      },
+      {
+        "id": "936739680a18",
+        "normalized": "under the uniform securities act an outofstate brokerdealer with no place of business in the state effects transactions in the state only with insurance companies and registered investment companies under usa section 401c the firm is most likely"
+      },
+      {
+        "id": "c9cb44a1ced0",
+        "normalized": "which of the following persons would most clearly not meet the federal definition of broker under section 3a4 of the exchange act"
+      },
+      {
+        "id": "19b465b73cd1",
+        "normalized": "which of the following is true about the structure of the federal brokerdealer definition compared to the uniform securities act"
+      },
+      {
+        "id": "0119901b5099",
+        "normalized": "which of the following is the best description of a riskless principal transaction"
+      },
+      {
+        "id": "c2644107ad1a",
+        "normalized": "under the uniform securities act which of the following is not excluded from the definition of brokerdealer"
+      },
+      {
+        "id": "773ccf960c84",
+        "normalized": "an outofstate brokerdealer maintains a permanent office in state a from that office it phones a state b resident who is a brandnew prospect to solicit a securities transaction under the uniform securities act the brokerdealer most likely"
+      },
+      {
+        "id": "827cd3e528e5",
+        "normalized": "under section 3a5 of the exchange act which of the following is most likely to fall within the trader exclusion from the definition of dealer"
+      },
+      {
+        "id": "a0eb2a4933ea",
+        "normalized": "under the uniform securities act a brokerdealers existing customer for snowbirdexclusion purposes is best understood as"
+      },
+      {
+        "id": "aece058dddbc",
+        "normalized": "which of the following selfregulatory organizations is the principal sro for federally registered brokerdealers in the united states"
+      },
+      {
+        "id": "493aa7706ace",
+        "normalized": "under the uniform securities act which of the following situations would most likely require an entity to register as a brokerdealer in the state"
+      }
+    ]
+  }
+}

@@ -1,0 +1,295 @@
+{
+  "subtopicId": "3.10",
+  "items": {
+    "lessons": [
+      {
+        "id": "3.10",
+        "normalized": "trading securities orders accounts and execution"
+      }
+    ],
+    "cards": [
+      {
+        "id": "46f6b355ca89",
+        "normalized": "define a bid in a quoted market for a security"
+      },
+      {
+        "id": "c62321b28616",
+        "normalized": "define an offer ask in a quoted market for a security"
+      },
+      {
+        "id": "c0a6dfafa293",
+        "normalized": "what is the bidask spread and what does a wide spread typically signal"
+      },
+      {
+        "id": "22abfe8e68da",
+        "normalized": "what is the national best bid and offer nbbo"
+      },
+      {
+        "id": "2e4465ae0b7b",
+        "normalized": "how does a market order execute and what does it guarantee"
+      },
+      {
+        "id": "d0d45052154b",
+        "normalized": "how is a buy limit order priced relative to the current market and what does it guarantee"
+      },
+      {
+        "id": "c54af6c3e691",
+        "normalized": "how is a sell limit order priced relative to the current market and what does it guarantee"
+      },
+      {
+        "id": "94ab8f1d3c26",
+        "normalized": "when is a buy stop order triggered and how is it commonly used"
+      },
+      {
+        "id": "ddd2260c24f9",
+        "normalized": "when is a sell stop order triggered and what is its typical defensive use"
+      },
+      {
+        "id": "bb227966b385",
+        "normalized": "distinguish a stop order from a stoplimit order"
+      },
+      {
+        "id": "8e1d52b7e4a0",
+        "normalized": "what is a short sale"
+      },
+      {
+        "id": "942db5132827",
+        "normalized": "what does regulation sho require before a brokerdealer accepts a shortsale order"
+      },
+      {
+        "id": "4ea6cc4b4d23",
+        "normalized": "what kinds of activity are permitted and prohibited in a cash account"
+      },
+      {
+        "id": "c0d5cb8e923b",
+        "normalized": "what is a margin account and what document evidences the customers pledge of securities"
+      },
+      {
+        "id": "87f40f54b528",
+        "normalized": "what is the regulation t initial margin requirement on a marginable equity purchase"
+      },
+      {
+        "id": "11f9195e324b",
+        "normalized": "how does finras maintenance margin on a long equity position differ from regulation t initial margin"
+      },
+      {
+        "id": "de482ed22d2b",
+        "normalized": "distinguish a principal trade from an agency trade"
+      },
+      {
+        "id": "e916269ea317",
+        "normalized": "what is the difference between a markup and a commission"
+      },
+      {
+        "id": "835be5e16075",
+        "normalized": "what capacityrelated disclosures must appear on a customer trade confirmation under rule 10b10"
+      },
+      {
+        "id": "300954d16c90",
+        "normalized": "define payment for order flow"
+      },
+      {
+        "id": "457031861b92",
+        "normalized": "what is an introducing brokerdealer and what does it not do"
+      },
+      {
+        "id": "ae210b772806",
+        "normalized": "what functions does a clearing brokerdealer or custodian perform and what rule governs the segregation of customer assets"
+      },
+      {
+        "id": "af6984fcd123",
+        "normalized": "what is a market maker and how does it earn the spread"
+      },
+      {
+        "id": "59c4e5e0a0eb",
+        "normalized": "what is a securities exchange and how is it regulated"
+      },
+      {
+        "id": "7e337107b16d",
+        "normalized": "what does the duty of best execution require of a brokerdealer handling a customer order"
+      },
+      {
+        "id": "1dfe2ec93853",
+        "normalized": "how does regulation best interest relate to a brokerdealers handling of retail customer orders"
+      }
+    ],
+    "questions": [
+      {
+        "id": "489dbfc62c28",
+        "normalized": "on a level i quote of 5000 5010 the 5000 figure represents what"
+      },
+      {
+        "id": "a80f893068f6",
+        "normalized": "when a customer wants to buy a security at the prevailing market quote which side of the quote does the customer pay"
+      },
+      {
+        "id": "c78a179e8d1d",
+        "normalized": "a market maker quotes xyz at 2485 2500 the spread on this quote is"
+      },
+      {
+        "id": "00a2cd904e2b",
+        "normalized": "a customer instructs her agent to buy 500 shares of abc at the market this order will"
+      },
+      {
+        "id": "669d0d0295d3",
+        "normalized": "which feature distinguishes a limit order from a market order"
+      },
+      {
+        "id": "510b2293ba85",
+        "normalized": "an investor is short 200 shares of mno at 40 and wants protection against a sharp rally which order is appropriate"
+      },
+      {
+        "id": "7eda6be1b01c",
+        "normalized": "a customer holds a long stock position purchased at 60 and now trading at 58 to limit further downside the customer enters a sell stop at 55 what happens at 55"
+      },
+      {
+        "id": "50e4b49548f7",
+        "normalized": "a customer enters a sell stop 30 limit 2950 order on a stock currently trading at 32 which statement is accurate"
+      },
+      {
+        "id": "c8cde7b2f5b6",
+        "normalized": "a short sale under sec rules is best described as"
+      },
+      {
+        "id": "085e2e39171f",
+        "normalized": "which of the following is the principal economic risk unique to a short seller"
+      },
+      {
+        "id": "10efb9ed5075",
+        "normalized": "before accepting a short sale order a brokerdealer must comply with the locate requirement which means the firm must"
+      },
+      {
+        "id": "5ea260666953",
+        "normalized": "under regulation shos alternative uptick restriction short selling in a covered security is restricted for the remainder of the day and the following day after the securitys price declines by what percentage from the prior days closing price"
+      },
+      {
+        "id": "8866054b5257",
+        "normalized": "which of the following is a defining feature of a cash account"
+      },
+      {
+        "id": "9d9a9387044f",
+        "normalized": "under regulation t what is the current initial margin requirement on a long purchase of a marginable equity security"
+      },
+      {
+        "id": "c437b2f24fa1",
+        "normalized": "a customers long margin account shows long market value of 40000 and a debit balance of 18000 the customers equity is"
+      },
+      {
+        "id": "c3f351f96adb",
+        "normalized": "when a customer signs a margin agreement the hypothecation agreement authorizes the brokerdealer to"
+      },
+      {
+        "id": "7f101b218eda",
+        "normalized": "a trade in which the brokerdealer fills a customers order from its own inventory taking the other side of the trade is known as a"
+      },
+      {
+        "id": "98ddd8978526",
+        "normalized": "when a brokerdealer executes a customer order by routing it to an exchange or another dealer and earning a commission the firm is acting in what capacity"
+      },
+      {
+        "id": "c3fa4275210c",
+        "normalized": "under sec rule 10b10 a customer trade confirmation must disclose at or before completion of the transaction"
+      },
+      {
+        "id": "f241b8f6d1ac",
+        "normalized": "which of the following correctly pairs the form of brokerdealer compensation with the trading capacity"
+      },
+      {
+        "id": "59f7c77bf37c",
+        "normalized": "in a principal transaction a markup is defined as"
+      },
+      {
+        "id": "2f0a87e8dafe",
+        "normalized": "from the perspective of a market maker quoting both a bid and an offer the bidask spread primarily represents"
+      },
+      {
+        "id": "0e7c92b52630",
+        "normalized": "payment for order flow pfof describes which arrangement"
+      },
+      {
+        "id": "7ffb2a548365",
+        "normalized": "which statement about payment for order flow is most accurate"
+      },
+      {
+        "id": "d0ebbe20dfe2",
+        "normalized": "an introducing brokerdealer is one that"
+      },
+      {
+        "id": "b7a79cd04dc6",
+        "normalized": "a clearing brokerdealer also called the carrying firm is generally responsible for which of the following on behalf of an introducing brokerdealers customers"
+      },
+      {
+        "id": "a730319f00ff",
+        "normalized": "the primary regulatory function of a qualified custodian for an investment advisers client is to"
+      },
+      {
+        "id": "06d9db9a2754",
+        "normalized": "a market maker is best described as a firm that"
+      },
+      {
+        "id": "071611ec34f6",
+        "normalized": "compared with an organized exchange eg nyse nasdaq the otc market is best characterized by"
+      },
+      {
+        "id": "91a0fe49cb3d",
+        "normalized": "under regulation nms the nbbo is the"
+      },
+      {
+        "id": "ff1417020034",
+        "normalized": "an investment advisers duty to seek best execution for client trades arises principally from which legal source"
+      },
+      {
+        "id": "24013194580a",
+        "normalized": "best execution analysis for a customer order considers all of the following factors except"
+      },
+      {
+        "id": "84af1a3e9e39",
+        "normalized": "which of the following typically signals that a security is highly liquid"
+      },
+      {
+        "id": "328c70eb90f2",
+        "normalized": "when a brokerdealer buys a security from a customer for its own inventory at a price below the prevailing market the difference is known as a"
+      },
+      {
+        "id": "cc5b5f12b4c8",
+        "normalized": "a customer enters a buy limit at 20 marked gtc good till cancelled which statement is true"
+      },
+      {
+        "id": "1e196a19f95f",
+        "normalized": "customer cash balances and fully paidfor securities held by a clearing brokerdealer must be segregated from the firms proprietary assets pursuant to"
+      },
+      {
+        "id": "9d16cfae80ee",
+        "normalized": "if a customer holding stock in street name through a sipcmember brokerdealer suffers losses because the failed firm cannot return the customers securities sipc coverage protects the customer up to"
+      },
+      {
+        "id": "c80a7bafe76f",
+        "normalized": "an investment adviser must aggregate trades across client accounts and seek best execution because"
+      },
+      {
+        "id": "d1ea5763ad16",
+        "normalized": "which statement about commissions versus markups is most accurate from a customers perspective"
+      },
+      {
+        "id": "e94289b16c1e",
+        "normalized": "a customer in a long margin account has lmv 30000 and a debit balance of 24000 equity is 6000 or 20 of lmv under finras 25 maintenance margin minimum the firm will most likely"
+      },
+      {
+        "id": "c95008890bf1",
+        "normalized": "which combination of orders would most commonly be used as an oco one cancels other bracket on an existing long stock position"
+      },
+      {
+        "id": "1ea184abaea6",
+        "normalized": "settlement of regularway trades in most listed equities currently occurs on which day relative to the trade date"
+      },
+      {
+        "id": "cd271acb16c1",
+        "normalized": "a market order to buy 1000 shares routed to a market maker is filled at 001 better than the displayed offer this is best described as"
+      },
+      {
+        "id": "ca7a865acdcd",
+        "normalized": "all of the following are considered costs of trading securities that may erode a customers return except"
+      }
+    ]
+  }
+}

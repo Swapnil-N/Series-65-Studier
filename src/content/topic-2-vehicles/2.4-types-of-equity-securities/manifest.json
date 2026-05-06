@@ -1,0 +1,267 @@
+{
+  "subtopicId": "2.4",
+  "items": {
+    "lessons": [
+      {
+        "id": "2.4",
+        "normalized": "types of equity securities"
+      }
+    ],
+    "cards": [
+      {
+        "id": "ebdeef4a9c6e",
+        "normalized": "define common stock"
+      },
+      {
+        "id": "2ff4e6f994c4",
+        "normalized": "which voting rights typically attach to common stock"
+      },
+      {
+        "id": "e6f56b92d3b6",
+        "normalized": "how are common stock dividends declared and paid"
+      },
+      {
+        "id": "d06a14c22620",
+        "normalized": "distinguish domestic common stock from foreign common stock"
+      },
+      {
+        "id": "1887f8ebb104",
+        "normalized": "what primary additional risk does direct ownership of foreign common stock carry that domestic stock does not"
+      },
+      {
+        "id": "5ed21cecda0f",
+        "normalized": "what is an american depositary receipt adr"
+      },
+      {
+        "id": "fb811a8db8be",
+        "normalized": "why were adrs created"
+      },
+      {
+        "id": "440d35253162",
+        "normalized": "what role does the depositary bank play in an adr program"
+      },
+      {
+        "id": "6ce3b6015425",
+        "normalized": "distinguish a sponsored adr from an unsponsored adr"
+      },
+      {
+        "id": "d186244dbd0d",
+        "normalized": "do adr holders generally have voting rights in the underlying foreign company"
+      },
+      {
+        "id": "1e537f3a6b88",
+        "normalized": "in what currency do adrs trade and pay dividends"
+      },
+      {
+        "id": "7cb8674c6df0",
+        "normalized": "are adr holders insulated from currency risk"
+      },
+      {
+        "id": "2e34b2f5df69",
+        "normalized": "how are dividends received on adrs taxed for a us investor"
+      },
+      {
+        "id": "5d3c4a6c2a3c",
+        "normalized": "define preferred stock"
+      },
+      {
+        "id": "274e6f6aefd8",
+        "normalized": "what is the typical par value of preferred stock and how is its dividend usually expressed"
+      },
+      {
+        "id": "5599faf2968e",
+        "normalized": "why is the price of straight fixedrate preferred stock sensitive to interest rates"
+      },
+      {
+        "id": "5a5dca7b4f9f",
+        "normalized": "what is cumulative preferred stock"
+      },
+      {
+        "id": "3fafd31cf14c",
+        "normalized": "how does noncumulative preferred stock differ from cumulative preferred"
+      },
+      {
+        "id": "14f0b155b677",
+        "normalized": "what is participating preferred stock"
+      },
+      {
+        "id": "982f8a311ac0",
+        "normalized": "what is callable preferred stock"
+      },
+      {
+        "id": "5904b6955717",
+        "normalized": "define convertible preferred stock"
+      },
+      {
+        "id": "808742becc6b",
+        "normalized": "compute the parity price of common stock for a 100par convertible preferred with a conversion ratio of 41"
+      },
+      {
+        "id": "98bec3b65714",
+        "normalized": "what is floatingrate adjustablerate preferred stock"
+      },
+      {
+        "id": "00c5c2add771",
+        "normalized": "why does floatingrate preferred typically trade closer to par than fixedrate preferred"
+      },
+      {
+        "id": "60f5b1a55f14",
+        "normalized": "rank common stock preferred stock and bondholders in a corporate liquidation"
+      },
+      {
+        "id": "b183f310f8c0",
+        "normalized": "compare the typical voting and dividend characteristics of common versus preferred stock"
+      }
+    ],
+    "questions": [
+      {
+        "id": "2e8826aa4419",
+        "normalized": "which of the following best describes the rights of a common stockholder upon a corporations liquidation"
+      },
+      {
+        "id": "83aad25c093b",
+        "normalized": "an american depositary receipt adr is best described as a"
+      },
+      {
+        "id": "e9d8fbed5176",
+        "normalized": "dividends on adrs are typically paid to us holders in"
+      },
+      {
+        "id": "1737437edc08",
+        "normalized": "which feature is generally not associated with straight noncumulative nonparticipating preferred stock"
+      },
+      {
+        "id": "4ad6c746f6ca",
+        "normalized": "an issuer skips two annual dividend payments on its 6 cumulative preferred stock before the issuer can pay any dividend on its common stock it must"
+      },
+      {
+        "id": "73b76731ae53",
+        "normalized": "convertible preferred stock gives the holder the right to"
+      },
+      {
+        "id": "4602fd144577",
+        "normalized": "which of the following best characterizes floating rate preferred stock"
+      },
+      {
+        "id": "756e919c2ae7",
+        "normalized": "a us investor purchases shares of a japanese auto manufacturer through adrs trading on the nyse which risk is the investor most directly exposed to that a domesticstock investor would not face"
+      },
+      {
+        "id": "9b081cc913b2",
+        "normalized": "the maximum economic loss for a holder of common stock in a publicly traded us corporation is"
+      },
+      {
+        "id": "43d38b8749ee",
+        "normalized": "treasury stock is best described as shares that are"
+      },
+      {
+        "id": "503820cedcd5",
+        "normalized": "an investor holds a 7 cumulative preferred stock with 100 par the issuer paid no dividend last year and intends to declare a common dividend this year before paying the common dividend the issuer must pay each preferred share"
+      },
+      {
+        "id": "72cae3e48db0",
+        "normalized": "compared with straight fixedrate preferred stock the market price of floating rate preferred stock is generally"
+      },
+      {
+        "id": "17287d52821a",
+        "normalized": "a convertible preferred stock has a par value of 100 and a conversion ratio of 4 if the issuers common stock trades at 30 the parity conversion value of the preferred is"
+      },
+      {
+        "id": "866a21a28d37",
+        "normalized": "which statement best describes a sponsored adr program"
+      },
+      {
+        "id": "98209ce66b53",
+        "normalized": "which of the following is generally true regarding voting rights of an adr holder"
+      },
+      {
+        "id": "0d3693f23b79",
+        "normalized": "statutory voting differs from cumulative voting for common stock in that statutory voting"
+      },
+      {
+        "id": "d5b999d9d7b1",
+        "normalized": "all of the following are typical features of preferred stock except"
+      },
+      {
+        "id": "4962ae2878c0",
+        "normalized": "an investor wants exposure to a german pharmaceutical company but does not want to open a foreign brokerage account or trade in euros which security is best suited"
+      },
+      {
+        "id": "d09e3b2a52af",
+        "normalized": "participating preferred stock allows holders to"
+      },
+      {
+        "id": "c7584868e873",
+        "normalized": "callable preferred stock is most attractive to issuers when"
+      },
+      {
+        "id": "72e9b4990e17",
+        "normalized": "a convertible preferred stock has a conversion price of 25 and a par value of 100 the conversion ratio is"
+      },
+      {
+        "id": "4840da37196e",
+        "normalized": "if the preferred stock in the previous question par 100 conversion price 25 is trading at 110 and the common stock is at 26 the preferred is trading"
+      },
+      {
+        "id": "d0fbb7fabd17",
+        "normalized": "which equity security typically offers investors the least income volatility but the highest sensitivity to changes in longterm interest rates"
+      },
+      {
+        "id": "df50df7d6b6f",
+        "normalized": "preemptive rights when granted to common shareholders allow them to"
+      },
+      {
+        "id": "8cfb060d7478",
+        "normalized": "a noncumulative preferred stock pays a stated 5 annual dividend the board passes skips the dividend in year 1 in year 2 the board declares the regular preferred dividend and a common dividend preferred holders are entitled to receive"
+      },
+      {
+        "id": "106d0716510e",
+        "normalized": "which document is filed with the sec by the depositary bank to register adrs in connection with a sponsored program"
+      },
+      {
+        "id": "14ebdab4eb72",
+        "normalized": "an investor compares the dividend yield on a 6 straight preferred stock and the aftertax cash flow on a corporate bond paying the same coupon both held by an individual taxpayer the preferred is generally"
+      },
+      {
+        "id": "008a85ddbb44",
+        "normalized": "which of the following best explains why convertible preferred stock typically has a lower stated dividend rate than otherwise comparable straight preferred from the same issuer"
+      },
+      {
+        "id": "3c926d4f9caf",
+        "normalized": "an auction rate preferred stock has its dividend reset every 7 28 or 35 days through a dutch auction if an auction fails insufficient bidders the holder typically"
+      },
+      {
+        "id": "351de7466e88",
+        "normalized": "which statement about level i ii and iii adrs is true"
+      },
+      {
+        "id": "8764faf5961b",
+        "normalized": "an issuers capital structure shows 10000000 shares authorized 6000000 issued and 500000 held in treasury the number of shares outstanding is"
+      },
+      {
+        "id": "41291527f7f9",
+        "normalized": "compared to common stock preferred stock generally exhibits"
+      },
+      {
+        "id": "346b337faed2",
+        "normalized": "which of the following is the most likely reason an investor would prefer adrs over directly purchasing the underlying foreign shares"
+      },
+      {
+        "id": "dba17d2d8068",
+        "normalized": "an investor holds 1000 shares of a 5 noncumulative preferred stock with 50 par the board pays only half the stated dividend in year 1 and a full common dividend in year 2 in year 2 before paying common the issuer must pay the preferred holder"
+      },
+      {
+        "id": "9f6a86a5f3d6",
+        "normalized": "which order best reflects the typical ranking of corporate securities in a bankruptcy liquidation from highest to lowest priority"
+      },
+      {
+        "id": "90084bb62b10",
+        "normalized": "a floating rate preferred stock pays the 3month treasury bill rate plus 200 basis points reset quarterly which of the following statements is most accurate"
+      },
+      {
+        "id": "6064af517b4e",
+        "normalized": "which of the following is the best description of the depositary banks role in a sponsored adr program"
+      }
+    ]
+  }
+}

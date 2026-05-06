@@ -1,0 +1,279 @@
+{
+  "subtopicId": "2.13",
+  "items": {
+    "lessons": [
+      {
+        "id": "2.13",
+        "normalized": "insurancebased products annuities and life insurance"
+      }
+    ],
+    "cards": [
+      {
+        "id": "eacd8aaae9c5",
+        "normalized": "define an annuity in the context of insurancebased products"
+      },
+      {
+        "id": "7838c009fde3",
+        "normalized": "who bears the investment risk in a fixed annuity"
+      },
+      {
+        "id": "a1c4a30d9ec3",
+        "normalized": "who bears the investment risk in a variable annuity"
+      },
+      {
+        "id": "be92c6bec906",
+        "normalized": "why is a variable annuity classified as a federal security"
+      },
+      {
+        "id": "91011967aea2",
+        "normalized": "under which federal statute does a variable annuity separate account register as an investment company"
+      },
+      {
+        "id": "a99d26ca0afc",
+        "normalized": "what licensing is required to sell variable annuities to a customer"
+      },
+      {
+        "id": "eaaa7390c237",
+        "normalized": "define an indexed equityindexed annuity"
+      },
+      {
+        "id": "4db438521bdc",
+        "normalized": "are equityindexed annuities generally regulated as federal securities"
+      },
+      {
+        "id": "c1730d581f6d",
+        "normalized": "what does the participation rate on an indexed annuity represent"
+      },
+      {
+        "id": "c3d867871b79",
+        "normalized": "what does a cap rate do in an indexed annuity"
+      },
+      {
+        "id": "01986d7e85e1",
+        "normalized": "distinguish the accumulation phase from the annuitization payout phase of an annuity"
+      },
+      {
+        "id": "af46653c97cb",
+        "normalized": "describe the life only straight life annuity settlement option"
+      },
+      {
+        "id": "87ef16d41f51",
+        "normalized": "describe the joint and survivor annuity settlement option"
+      },
+      {
+        "id": "a5c6a7348213",
+        "normalized": "how are withdrawals from a nonqualified annuity taxed"
+      },
+      {
+        "id": "2c5a75750a8e",
+        "normalized": "what is an irc section 1035 exchange"
+      },
+      {
+        "id": "e943866ce171",
+        "normalized": "what is the assumed interest rate air on a variable annuity"
+      },
+      {
+        "id": "90bac63ab866",
+        "normalized": "what are surrender charges on an annuity"
+      },
+      {
+        "id": "eb9ffc90062c",
+        "normalized": "define whole life insurance"
+      },
+      {
+        "id": "f62a946a91cc",
+        "normalized": "define term life insurance"
+      },
+      {
+        "id": "23f901f3149c",
+        "normalized": "define universal life insurance"
+      },
+      {
+        "id": "b1e1b3949041",
+        "normalized": "define variable life insurance"
+      },
+      {
+        "id": "a73563d41353",
+        "normalized": "why is variable life insurance treated as a security"
+      },
+      {
+        "id": "f8a1c57e9521",
+        "normalized": "compare term life and whole life on cash value"
+      },
+      {
+        "id": "78c74e165f84",
+        "normalized": "how are life insurance death benefits generally taxed for federal income tax"
+      },
+      {
+        "id": "272edf0b1c9f",
+        "normalized": "what is variable universal life vul insurance"
+      },
+      {
+        "id": "70820977179c",
+        "normalized": "what disclosure document must precede or accompany the sale of a variable annuity or variable life policy"
+      },
+      {
+        "id": "f02a2d8eb195",
+        "normalized": "are fixed annuities covered by sipc"
+      },
+      {
+        "id": "e41d1e350bec",
+        "normalized": "what does the mortality and expense me risk charge on a variable annuity compensate the insurer for"
+      }
+    ],
+    "questions": [
+      {
+        "id": "615206ac2408",
+        "normalized": "a variable annuity is best described as which of the following"
+      },
+      {
+        "id": "ec66bdb08fe0",
+        "normalized": "which statement most accurately characterizes a fixed annuity"
+      },
+      {
+        "id": "95fcfd7537de",
+        "normalized": "term life insurance is best defined as a policy that"
+      },
+      {
+        "id": "839f3d8e06be",
+        "normalized": "which of the following is the defining feature of a traditional whole life policy"
+      },
+      {
+        "id": "5e328a4c138c",
+        "normalized": "in a variable annuity contract the separate account refers to"
+      },
+      {
+        "id": "04de5c786440",
+        "normalized": "an agent who wishes to recommend and sell variable annuities must at minimum hold"
+      },
+      {
+        "id": "ea902f5a9cae",
+        "normalized": "an indexed equityindexed annuity credits interest based on"
+      },
+      {
+        "id": "3a67e3d71e0a",
+        "normalized": "of the standard annuity payout settlement options which produces the largest periodic payment for a given premium"
+      },
+      {
+        "id": "caf49b870764",
+        "normalized": "which feature most distinguishes universal life insurance from traditional whole life"
+      },
+      {
+        "id": "8b31bf61dbe5",
+        "normalized": "which of the following is true about the cash value of a traditional whole life policy"
+      },
+      {
+        "id": "db867f47ada4",
+        "normalized": "the mortality and expense me risk charge in a variable annuity primarily compensates the insurer for"
+      },
+      {
+        "id": "975571d69d36",
+        "normalized": "earnings inside a nonqualified annuity contract are generally"
+      },
+      {
+        "id": "4a1ebe2fc8e2",
+        "normalized": "an indexed annuity has a participation rate of 80 if the linked index rises 10 during the crediting period and there is no cap or floor in effect the credited interest before any other adjustments is approximately"
+      },
+      {
+        "id": "b56af8826ab0",
+        "normalized": "which statement best contrasts variable life insurance with traditional whole life insurance"
+      },
+      {
+        "id": "c0d4fd4331d0",
+        "normalized": "under a joint and 100 survivor annuity payout what happens upon the death of the first annuitant"
+      },
+      {
+        "id": "3368ef62ecb7",
+        "normalized": "the surrender period in a deferred annuity is best described as"
+      },
+      {
+        "id": "c7ade4a732a8",
+        "normalized": "which best describes the difference between the accumulation and annuitization phases of a deferred annuity"
+      },
+      {
+        "id": "8a98f7d9fbf5",
+        "normalized": "the assumed interest rate air used in a variable annuity is best described as"
+      },
+      {
+        "id": "0fe574c8af42",
+        "normalized": "a section 1035 exchange of insurance contracts allows taxfree exchange in which of the following directions"
+      },
+      {
+        "id": "78860ddeddbb",
+        "normalized": "an indexed annuity has a 6 cap rate for the crediting period if the linked index rises 10 and the participation rate is 100 with a 0 floor the credited interest is"
+      },
+      {
+        "id": "b2c2464dc11e",
+        "normalized": "before or at the time of solicitation a variable annuity must be accompanied by which document under federal securities law"
+      },
+      {
+        "id": "09bb86a88745",
+        "normalized": "a universal life policy with death benefit option a option 1 provides which of the following"
+      },
+      {
+        "id": "4f256868dc4d",
+        "normalized": "a conversion privilege on a term life policy generally allows the policyowner to"
+      },
+      {
+        "id": "5ab5869703ea",
+        "normalized": "how are premiums structured in a traditional whole life policy issued today"
+      },
+      {
+        "id": "d9e6becc8508",
+        "normalized": "which of the following best describes the death benefit in a typical variable life policy"
+      },
+      {
+        "id": "d49ced9df4ac",
+        "normalized": "a 35yearold surrenders a nonqualified deferred annuity and receives a lump sum that includes 20000 of accumulated earnings above cost basis which federal tax consequence applies to that gain"
+      },
+      {
+        "id": "6216989b7cf4",
+        "normalized": "in a fixed annuity the investment risk on contract values is borne primarily by"
+      },
+      {
+        "id": "fe132807f542",
+        "normalized": "within a variable annuity the subaccounts available to the contract owner are best described as"
+      },
+      {
+        "id": "1c3dceb2d551",
+        "normalized": "daytoday regulation of a fixed annuity a nonvariable insurance contract falls primarily under which authority"
+      },
+      {
+        "id": "8c98a0bca7c4",
+        "normalized": "an indexed annuity with a 0 floor provides what protection in a year when the linked index declines 15"
+      },
+      {
+        "id": "7563a5ee9199",
+        "normalized": "when a partial withdrawal is taken from a nonqualified deferred annuity issued after august 13 1982 what is the federal taxordering rule for the amount withdrawn"
+      },
+      {
+        "id": "03322f6a12b7",
+        "normalized": "which statement most accurately distinguishes variable life vl from variable universal life vul"
+      },
+      {
+        "id": "fd97679066ce",
+        "normalized": "when evaluating a variable annuity that offers a 5 bonus credit on each premium the most important consideration for an investor is"
+      },
+      {
+        "id": "cb464d9eacd1",
+        "normalized": "which of the following best describes the regulatory status of fixed indexed annuities under federal securities law following the secs adoption and the dc circuits 2009 vacatur of rule 151a"
+      },
+      {
+        "id": "02548da15484",
+        "normalized": "under section 1035 of the internal revenue code which of the following exchanges is not permitted on a taxfree basis"
+      },
+      {
+        "id": "227df6489353",
+        "normalized": "within a variable annuity contract which party bears which risk"
+      },
+      {
+        "id": "8fa83c639958",
+        "normalized": "a single premium immediate annuity spia is best described as which of the following"
+      },
+      {
+        "id": "68fe3ba0957e",
+        "normalized": "death benefit option b option 2 under a universal life policy provides"
+      }
+    ]
+  }
+}

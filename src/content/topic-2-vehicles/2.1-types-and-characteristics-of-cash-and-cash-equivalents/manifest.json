@@ -1,0 +1,279 @@
+{
+  "subtopicId": "2.1",
+  "items": {
+    "lessons": [
+      {
+        "id": "2.1",
+        "normalized": "cash and cash equivalents insured deposits and money market instruments"
+      }
+    ],
+    "cards": [
+      {
+        "id": "7a5b0e8c7dc0",
+        "normalized": "define cash equivalents in the context of a securities portfolio"
+      },
+      {
+        "id": "116bf7e4cff2",
+        "normalized": "what is a demand deposit"
+      },
+      {
+        "id": "ff366658e193",
+        "normalized": "how does a demand deposit differ from a time deposit"
+      },
+      {
+        "id": "e2f8e5db9d96",
+        "normalized": "what is the standard fdic insurance coverage limit"
+      },
+      {
+        "id": "2b2e6397a6ec",
+        "normalized": "if an investor holds a 500000 jumbo cd at a single bank in one ownership category how much is fdicinsured"
+      },
+      {
+        "id": "5f8fd68fb494",
+        "normalized": "what minimum face amount typically distinguishes a jumbo negotiable cd from a regular retail cd"
+      },
+      {
+        "id": "3d94a55df87f",
+        "normalized": "what feature makes a negotiable cd negotiable"
+      },
+      {
+        "id": "10b4baea159d",
+        "normalized": "what happens when an investor redeems a nonnegotiable cd before its stated maturity"
+      },
+      {
+        "id": "18348bb5f0e0",
+        "normalized": "how is interest typically paid on a shortterm certificate of deposit"
+      },
+      {
+        "id": "6ee9da77f8ed",
+        "normalized": "define commercial paper"
+      },
+      {
+        "id": "d5c9340c5503",
+        "normalized": "why is commercial paper typically not registered with the sec"
+      },
+      {
+        "id": "10477fdc3668",
+        "normalized": "at what price relative to face value is commercial paper sold"
+      },
+      {
+        "id": "7911414f5498",
+        "normalized": "what is the typical minimum denomination of commercial paper"
+      },
+      {
+        "id": "bfe4e0d8d52f",
+        "normalized": "who are the primary issuers of commercial paper"
+      },
+      {
+        "id": "fb993d68768c",
+        "normalized": "which agencies issue shortterm credit ratings on commercial paper"
+      },
+      {
+        "id": "2ccdccf29fce",
+        "normalized": "what is a treasury bill tbill"
+      },
+      {
+        "id": "8a01119a6f11",
+        "normalized": "list the standard original maturities at which treasury bills are auctioned"
+      },
+      {
+        "id": "9cb8d6acde04",
+        "normalized": "how does a treasury bill pay interest to its holder"
+      },
+      {
+        "id": "366f034e6cef",
+        "normalized": "what is the minimum denomination at which tbills are sold to the public"
+      },
+      {
+        "id": "feace608c889",
+        "normalized": "how is interest income from treasury bills taxed"
+      },
+      {
+        "id": "0ffb9605e83c",
+        "normalized": "why are tbills considered the benchmark for the riskfree rate of return"
+      },
+      {
+        "id": "fcdda4c3aa55",
+        "normalized": "what are the defining characteristics of money market instruments"
+      },
+      {
+        "id": "9ff3c22c62de",
+        "normalized": "compare the credit risk of commercial paper versus a treasury bill"
+      },
+      {
+        "id": "60d48689fd13",
+        "normalized": "an investor buys a 26week tbill with a 10000 face value at a price of 9800 what dollar return does the investor receive at maturity"
+      },
+      {
+        "id": "7ed2fde9a839",
+        "normalized": "what role do cash and cash equivalents play in a clients investment portfolio"
+      },
+      {
+        "id": "db442b0eae40",
+        "normalized": "what is a now account and how does it relate to demand deposits"
+      }
+    ],
+    "questions": [
+      {
+        "id": "dabaae205536",
+        "normalized": "us treasury bills are typically sold to investors"
+      },
+      {
+        "id": "e8d33f871ed8",
+        "normalized": "what is the standard maximum fdic deposit insurance coverage per depositor per insured bank per ownership category"
+      },
+      {
+        "id": "5a6ac9153e5f",
+        "normalized": "commercial paper is best described as"
+      },
+      {
+        "id": "c0f1c86e2fac",
+        "normalized": "us treasury bills are ultimately backed by"
+      },
+      {
+        "id": "6f61734d52f5",
+        "normalized": "which of the following is an example of a demand deposit"
+      },
+      {
+        "id": "ed22277d53ec",
+        "normalized": "a bank certificate of deposit cd is best classified as"
+      },
+      {
+        "id": "c90faa633160",
+        "normalized": "money market instruments are generally characterized by"
+      },
+      {
+        "id": "831d0119dddf",
+        "normalized": "which entity issues us treasury bills"
+      },
+      {
+        "id": "9829e39ef602",
+        "normalized": "are us treasury bills covered by fdic deposit insurance"
+      },
+      {
+        "id": "6482f1e5d556",
+        "normalized": "fdic insurance is designed to cover which of the following"
+      },
+      {
+        "id": "76d29bf80900",
+        "normalized": "issuers of commercial paper are most often"
+      },
+      {
+        "id": "5980545ec28d",
+        "normalized": "which of the following is identified by the nasaa series 65 outline as a money market instrument under cash and cash equivalents"
+      },
+      {
+        "id": "3f3b0e3efade",
+        "normalized": "for commercial paper to qualify for the federal registration exemption available under section 3a of the securities act of 1933 the socalled shortterm commercial paper exemption its maximum original maturity is generally"
+      },
+      {
+        "id": "7f1d7812fb1f",
+        "normalized": "which set of maturities best reflects standard us treasury bill auction terms"
+      },
+      {
+        "id": "dff4865611f3",
+        "normalized": "negotiable jumbo certificates of deposit are typically issued in minimum denominations of"
+      },
+      {
+        "id": "b20006264573",
+        "normalized": "interest income on us treasury bills is"
+      },
+      {
+        "id": "fa6ff31ca3a1",
+        "normalized": "a yankee cd is best described as"
+      },
+      {
+        "id": "358b2ed78d14",
+        "normalized": "a eurodollar cd is best described as"
+      },
+      {
+        "id": "1aa44870ae39",
+        "normalized": "what typically happens when a depositor withdraws funds from a nonnegotiable bank cd before its stated maturity"
+      },
+      {
+        "id": "59f3ff6f19c6",
+        "normalized": "which of the following best distinguishes a brokered cd from a traditional retail bank cd"
+      },
+      {
+        "id": "94e44b11752d",
+        "normalized": "in a us treasury bill auction a bidder submitting a noncompetitive tender"
+      },
+      {
+        "id": "afa8908273fd",
+        "normalized": "commercial paper is most commonly"
+      },
+      {
+        "id": "ff41679f79fb",
+        "normalized": "how does a money market deposit account mmda at an fdicinsured bank principally differ from a money market mutual fund"
+      },
+      {
+        "id": "704c0846fe2c",
+        "normalized": "now negotiable order of withdrawal accounts are best described as"
+      },
+      {
+        "id": "64cef2ab241e",
+        "normalized": "an investor holds 300000 in a single individuallytitled checking account at one fdicinsured bank with no other accounts at that bank under the standard fdic coverage limit how much of the 300000 is insured"
+      },
+      {
+        "id": "f9d6c6bab5c7",
+        "normalized": "an individual investor wishing to purchase newlyissued us treasury bills directly without paying a brokerdealer markup can do so through"
+      },
+      {
+        "id": "ea5eab2027c5",
+        "normalized": "a callable certificate of deposit gives which party the right to terminate the cd before the stated maturity"
+      },
+      {
+        "id": "0370dbb78f0e",
+        "normalized": "commercial paper is most often issued in minimum denominations of approximately"
+      },
+      {
+        "id": "aa6ad3431a61",
+        "normalized": "large corporations most commonly issue commercial paper to"
+      },
+      {
+        "id": "dfe77bd6c965",
+        "normalized": "an investor is concerned about default risk on shortterm us government obligations which of the following is the most accurate statement about tbills"
+      },
+      {
+        "id": "abc969d0c9b4",
+        "normalized": "even though tbills are essentially defaultrisk free an investor still faces which of the following risks"
+      },
+      {
+        "id": "e1f5e8120f05",
+        "normalized": "negotiable jumbo cds differ from traditional consumer cds primarily because they"
+      },
+      {
+        "id": "da82ed3f0bb1",
+        "normalized": "under us gaap an investment is generally classified as a cash equivalent on the balance sheet only if it is highly liquid readily convertible to a known amount of cash and has an original maturity from the date of acquisition by the holder of"
+      },
+      {
+        "id": "b3ef9d0327d7",
+        "normalized": "which federal agency is the primary regulator that charters and supervises national banks whose deposits are fdicinsured"
+      },
+      {
+        "id": "4be901449d9d",
+        "normalized": "an investor purchases a 26week us treasury bill with a 10000 face value at an auction price of 9800 ignoring compounding and taxes what is the investors dollar return at maturity"
+      },
+      {
+        "id": "1de1d0535927",
+        "normalized": "the highest shortterm credit ratings used by standard poors and moodys respectively for toptier prime commercial paper are"
+      },
+      {
+        "id": "fd3d6414b932",
+        "normalized": "fdic deposit insurance applies separately to a depositors funds held in different"
+      },
+      {
+        "id": "900d079d62f0",
+        "normalized": "treasury cash management bills cmbs are best described as"
+      },
+      {
+        "id": "13d705accf70",
+        "normalized": "even when commercial paper qualifies for the federal registration exemption applicable to shortterm notes the issuer must still ensure that"
+      },
+      {
+        "id": "be79a21410fb",
+        "normalized": "us treasury bills are exempt securities under the securities act of 1933 because of"
+      }
+    ]
+  }
+}

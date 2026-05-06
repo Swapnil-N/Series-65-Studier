@@ -1,0 +1,291 @@
+{
+  "subtopicId": "3.11",
+  "items": {
+    "lessons": [
+      {
+        "id": "3.11",
+        "normalized": "portfolio performance measures returns yield and benchmarks"
+      }
+    ],
+    "cards": [
+      {
+        "id": "d29a55c96184",
+        "normalized": "what does total return on an investment include"
+      },
+      {
+        "id": "190da392f533",
+        "normalized": "holding period return formula"
+      },
+      {
+        "id": "5996b40d5953",
+        "normalized": "define annualized return"
+      },
+      {
+        "id": "e51f41826036",
+        "normalized": "how does timeweighted return differ from dollarweighted return"
+      },
+      {
+        "id": "423ceca3e1f7",
+        "normalized": "which return measure is most appropriate for judging an investment managers skill"
+      },
+      {
+        "id": "485c24ff9758",
+        "normalized": "which return measure best reflects an individual investors actual experience with deposits and withdrawals"
+      },
+      {
+        "id": "a1abf0a4a7f2",
+        "normalized": "define internal rate of return irr"
+      },
+      {
+        "id": "478d6cba9584",
+        "normalized": "what is a riskadjusted return"
+      },
+      {
+        "id": "7df676958587",
+        "normalized": "sharpe ratio formula"
+      },
+      {
+        "id": "2dbf2d055866",
+        "normalized": "treynor ratio formula and the risk measure it uses"
+      },
+      {
+        "id": "18c6b220c43f",
+        "normalized": "what does jensens alpha measure"
+      },
+      {
+        "id": "5927cfdbb2e2",
+        "normalized": "when is the sharpe ratio preferred over the treynor ratio"
+      },
+      {
+        "id": "637e9603ac78",
+        "normalized": "define expected return on a portfolio"
+      },
+      {
+        "id": "66d84d8ba061",
+        "normalized": "inflationadjusted real return formula"
+      },
+      {
+        "id": "ce64752abdb0",
+        "normalized": "where does the inflation rate used in realreturn calculations typically come from"
+      },
+      {
+        "id": "9002095f4f2b",
+        "normalized": "aftertax return calculation"
+      },
+      {
+        "id": "c954dcafd793",
+        "normalized": "taxequivalent yield formula for a municipal bond"
+      },
+      {
+        "id": "779a6ad92b6f",
+        "normalized": "current yield on a bond"
+      },
+      {
+        "id": "205a47f4b9ec",
+        "normalized": "current yield on a common stock"
+      },
+      {
+        "id": "badb9e5f92bf",
+        "normalized": "purpose of a benchmark in portfolio performance evaluation"
+      },
+      {
+        "id": "128e3b2a6aa1",
+        "normalized": "standard benchmark for us largecapitalization equity portfolios"
+      },
+      {
+        "id": "80d59de8cb9f",
+        "normalized": "common benchmark for us smallcapitalization equity portfolios"
+      },
+      {
+        "id": "ca529fa6463c",
+        "normalized": "benchmark typically used for us investmentgrade bond portfolios"
+      },
+      {
+        "id": "0ef38492ed88",
+        "normalized": "benchmark for international developedmarket equity portfolios"
+      },
+      {
+        "id": "b59cc430d5da",
+        "normalized": "why does a portfolio outperforming its benchmark not by itself prove manager skill"
+      },
+      {
+        "id": "e71269b06e70",
+        "normalized": "geometric vs arithmetic mean return which is used to annualize historical performance"
+      }
+    ],
+    "questions": [
+      {
+        "id": "023c256555b8",
+        "normalized": "total return on a security includes which of the following components"
+      },
+      {
+        "id": "e8fc8afca6e8",
+        "normalized": "an investor buys a stock for 40 holds it one year receives a 2 dividend and sells it for 45 the holding period return is"
+      },
+      {
+        "id": "20ef1f3abbf7",
+        "normalized": "current yield on a bond is best defined as"
+      },
+      {
+        "id": "c516f4e08be1",
+        "normalized": "a bond pays a 60 annual coupon and is currently priced at 1200 its current yield is approximately"
+      },
+      {
+        "id": "c8cb3e1bb8bc",
+        "normalized": "which performance measure is most appropriate for evaluating an investment advisers stockpicking skill because it neutralizes the timing and size of client cash deposits and withdrawals"
+      },
+      {
+        "id": "d496489ad973",
+        "normalized": "dollarweighted return is mathematically equivalent to which of the following"
+      },
+      {
+        "id": "40db2e99542a",
+        "normalized": "an investor earns a 4 return over a sixmonth period assuming compounding the annualized return is closest to"
+      },
+      {
+        "id": "a378c79c431a",
+        "normalized": "an investors nominal return for the year is 8 and the inflation rate cpi is 3 using the exact fisher relationship the inflationadjusted real return is closest to"
+      },
+      {
+        "id": "435124e06c54",
+        "normalized": "an inflationadjusted return is also commonly referred to as a"
+      },
+      {
+        "id": "011829970c2c",
+        "normalized": "expected return on a portfolio is best calculated as"
+      },
+      {
+        "id": "86f9cc40aefb",
+        "normalized": "an analyst projects three possible oneyear returns for a stock 20 probability 030 5 probability 050 and 10 probability 020 the stocks expected return is"
+      },
+      {
+        "id": "918e0a6e17ee",
+        "normalized": "the sharpe ratio measures excess return per unit of"
+      },
+      {
+        "id": "2c060d308ba4",
+        "normalized": "a portfolio earned 12 with a standard deviation of 10 the riskfree rate is 2 the sharpe ratio is"
+      },
+      {
+        "id": "76eac3aac1a1",
+        "normalized": "which riskadjusted performance measure is most appropriate for evaluating a welldiversified portfolio that represents only one slice of an investors overall holdings"
+      },
+      {
+        "id": "847f7fc3adc6",
+        "normalized": "jensens alpha measures"
+      },
+      {
+        "id": "86f408b16156",
+        "normalized": "a portfolio returned 14 the riskfree rate is 4 the market returned 10 and the portfolios beta is 12 jensens alpha is"
+      },
+      {
+        "id": "4192b639cc03",
+        "normalized": "an investor receives a 9 pretax return on a bond fund held in a taxable account if her marginal federal tax rate is 30 and the income is fully taxable as ordinary income her aftertax return is approximately"
+      },
+      {
+        "id": "0a38948f3029",
+        "normalized": "when comparing a taxable corporate bond to a municipal bond which calculation lets an investor decide which produces a higher aftertax return"
+      },
+      {
+        "id": "4b7e9ad10e5a",
+        "normalized": "which benchmark is generally most appropriate for evaluating a us largecap blend equity portfolio"
+      },
+      {
+        "id": "770214250549",
+        "normalized": "which benchmark is generally most appropriate for evaluating a smallcap us equity manager"
+      },
+      {
+        "id": "d658ff01b57f",
+        "normalized": "which benchmark is most appropriate for evaluating a core us investmentgrade taxable bond portfolio"
+      },
+      {
+        "id": "454af3d809d8",
+        "normalized": "an appropriate benchmark for a portfolio should have all of the following characteristics except"
+      },
+      {
+        "id": "4c38b33e0bf9",
+        "normalized": "an investor deposits 10000 at the start of year 1 the portfolio returns 20 in year 1 then she deposits an additional 90000 at the start of year 2 and the portfolio loses 10 in year 2 which return measure will be lower and why"
+      },
+      {
+        "id": "37b35fe51b4b",
+        "normalized": "internal rate of return irr is best described as"
+      },
+      {
+        "id": "fbcaf691eb66",
+        "normalized": "which return calculation is generally required under gipsstyle adviser performance reporting because it neutralizes the timing of client contributions and withdrawals"
+      },
+      {
+        "id": "23facced8f15",
+        "normalized": "an investors portfolio earned 5 in year 1 10 in year 2 and 3 in year 3 the geometric timeweighted average annual return is closest to"
+      },
+      {
+        "id": "ca9c6c8e5a79",
+        "normalized": "annualized return differs from holding period return in that the annualized return"
+      },
+      {
+        "id": "499d6f002355",
+        "normalized": "all else equal which of the following will increase a portfolios sharpe ratio"
+      },
+      {
+        "id": "5128a353fef8",
+        "normalized": "two managers both produce a 12 return manager a has a sharpe ratio of 080 manager b has a sharpe ratio of 120 which statement is most accurate"
+      },
+      {
+        "id": "1a7b1910ae72",
+        "normalized": "which return measure does not require knowledge of the timing or amount of intermediate cash flows"
+      },
+      {
+        "id": "cb9020bf9e11",
+        "normalized": "when evaluating a highnetworth clients actual lifetime return on a managed account that received irregular contributions and distributions the most informative measure is"
+      },
+      {
+        "id": "d21223a06405",
+        "normalized": "an investor in the 32 federal bracket holds a corporate bond yielding 6 a comparable instate municipal bond yields 425 ignoring state tax which bond produces the higher aftertax return"
+      },
+      {
+        "id": "d6a9cb8f4bee",
+        "normalized": "which of the following is the best description of riskadjusted return"
+      },
+      {
+        "id": "29df68625ec6",
+        "normalized": "two equity managers each generate a 10 return over the same period manager a had a beta of 08 manager b had a beta of 14 the riskfree rate was 2 which manager produced the better treynor ratio"
+      },
+      {
+        "id": "3929bd28a2c2",
+        "normalized": "if a stocks nominal return is 6 during a year of 6 inflation the investors real return is closest to"
+      },
+      {
+        "id": "be3a5163a6de",
+        "normalized": "an investor compares pretax returns across two portfolios held in different account types the most important refinement before drawing a conclusion about which portfolio performed better for the investor is to"
+      },
+      {
+        "id": "26c9cbbe187e",
+        "normalized": "an adviser tells a client her portfolio beat the sp 500 by 4 which performance concept is the adviser most closely describing"
+      },
+      {
+        "id": "7ee47121b1ac",
+        "normalized": "a money manager reports a 9 timeweighted return while the clients irr dollarweighted return was only 4 the most likely explanation is"
+      },
+      {
+        "id": "0beb54ef4b22",
+        "normalized": "which of the following statements about current yield on a bond is true"
+      },
+      {
+        "id": "b6e317f9cbc6",
+        "normalized": "an investor wants to compare the income produced by a stock and a bond in a single comparable measure which metric is most appropriate"
+      },
+      {
+        "id": "b6c9a9022493",
+        "normalized": "which factor is most likely to cause a portfolios expected return to differ from its realized return over a given year"
+      },
+      {
+        "id": "7468a8c62c85",
+        "normalized": "an investor in a 24 federal bracket holds two funds fund x a taxmanaged equity fund yielding a 7 pretax return mostly longterm qualified gains taxed at 15 and fund y a highyield bond fund yielding a 7 pretax return all ordinary income which statement is most accurate"
+      },
+      {
+        "id": "c4fa8210bc30",
+        "normalized": "which of the following is generally a poor proxy for a us largecap equity benchmark because it covers only 30 priceweighted bluechip stocks rather than a broad capitalizationweighted basket"
+      }
+    ]
+  }
+}

@@ -1,0 +1,255 @@
+{
+  "subtopicId": "3.1",
+  "items": {
+    "lessons": [
+      {
+        "id": "3.1",
+        "normalized": "type of client individuals business entities trusts estates and charities"
+      }
+    ],
+    "cards": [
+      {
+        "id": "15044097fc60",
+        "normalized": "define a natural person client in the context of an investment advisory account"
+      },
+      {
+        "id": "edfec06bc210",
+        "normalized": "how is a sole proprietorship treated for legal and tax purposes relative to its owner"
+      },
+      {
+        "id": "5065d949374c",
+        "normalized": "distinguish jtwros from tenants in common"
+      },
+      {
+        "id": "07c000656146",
+        "normalized": "what is tenancy by the entireties"
+      },
+      {
+        "id": "743aa20c603b",
+        "normalized": "what defines a general partnership"
+      },
+      {
+        "id": "b839e4fd7b84",
+        "normalized": "describe the personalliability exposure of a general partner"
+      },
+      {
+        "id": "46a76c9bafcd",
+        "normalized": "what defines a limited partnership"
+      },
+      {
+        "id": "3cdda03938da",
+        "normalized": "what happens to a limited partners liability shield if that partner takes part in managing the partnership"
+      },
+      {
+        "id": "67ace56d3c36",
+        "normalized": "what is a limited liability company llc"
+      },
+      {
+        "id": "b5a3a96ff283",
+        "normalized": "by default how is a multimember llc taxed for federal income tax purposes"
+      },
+      {
+        "id": "429b9cf6943e",
+        "normalized": "what is a ccorporation"
+      },
+      {
+        "id": "5a0b83cfed1b",
+        "normalized": "explain double taxation as it applies to a ccorporation"
+      },
+      {
+        "id": "876e9d35da5d",
+        "normalized": "what is an scorporation"
+      },
+      {
+        "id": "bc26716c7283",
+        "normalized": "list the principal eligibility restrictions on scorporation status"
+      },
+      {
+        "id": "31a297c63432",
+        "normalized": "contrast the federal incometax treatment of a ccorporation with that of an scorporation"
+      },
+      {
+        "id": "286a61a7a990",
+        "normalized": "identify the three principal parties in a trust"
+      },
+      {
+        "id": "e54494ad33e7",
+        "normalized": "distinguish a revocable trust from an irrevocable trust"
+      },
+      {
+        "id": "d9414ba822c8",
+        "normalized": "distinguish an inter vivos living trust from a testamentary trust"
+      },
+      {
+        "id": "2010932cecf6",
+        "normalized": "what standard governs a trustees investment decisions in most us jurisdictions"
+      },
+      {
+        "id": "1c8d610d38e0",
+        "normalized": "what is an estate as a client of an investment adviser"
+      },
+      {
+        "id": "7dd2083b56e4",
+        "normalized": "what authority and constraints govern an executors investment of estate assets"
+      },
+      {
+        "id": "899eb8284938",
+        "normalized": "what is a private foundation"
+      },
+      {
+        "id": "7109eaefa55e",
+        "normalized": "what is a 501c3 public charity"
+      },
+      {
+        "id": "e98d782d53bf",
+        "normalized": "how does a private foundation differ from a public charity"
+      },
+      {
+        "id": "723342079bfb",
+        "normalized": "why does a clients entity type matter for an investment advisers suitability analysis"
+      }
+    ],
+    "questions": [
+      {
+        "id": "a3c5cc509c4a",
+        "normalized": "a natural person client refers to"
+      },
+      {
+        "id": "bb4155564630",
+        "normalized": "for tax and liability purposes a sole proprietorship is best characterized as"
+      },
+      {
+        "id": "f910b27f91e8",
+        "normalized": "in a general partnership the partners liability for partnership debts is"
+      },
+      {
+        "id": "02c29c83e12c",
+        "normalized": "which statement most accurately describes a limited partners exposure in a limited partnership lp"
+      },
+      {
+        "id": "bfdac361fe51",
+        "normalized": "the owners of a limited liability company llc are referred to as"
+      },
+      {
+        "id": "8dd17f690a1b",
+        "normalized": "a ccorporations income is taxed"
+      },
+      {
+        "id": "b85614d4dd5b",
+        "normalized": "compared to a ccorporation an scorporation"
+      },
+      {
+        "id": "4a686028d686",
+        "normalized": "the three principal parties to an express trust are"
+      },
+      {
+        "id": "216cf8f76f67",
+        "normalized": "an estate as a client is best described as"
+      },
+      {
+        "id": "53bed5339199",
+        "normalized": "a private foundation is generally"
+      },
+      {
+        "id": "7cdc7c8314b2",
+        "normalized": "the uniform securities acts definition of person includes which of the following"
+      },
+      {
+        "id": "bae8791c3140",
+        "normalized": "which of the following is not a requirement for an entity to maintain its scorporation status"
+      },
+      {
+        "id": "621088f14a21",
+        "normalized": "a limited partner who actively participates in the management of partnership business risks"
+      },
+      {
+        "id": "fc4424250efc",
+        "normalized": "which of the following best describes the difference between a revocable and an irrevocable trust"
+      },
+      {
+        "id": "ab92b31462cb",
+        "normalized": "when opening an account for a trust the iar should look to whom for investment authority"
+      },
+      {
+        "id": "0b1e5b949d80",
+        "normalized": "a trustees investment decisions are evaluated under the uniform prudent investor act based on"
+      },
+      {
+        "id": "7011e83ce909",
+        "normalized": "a ccorporation distributes a 100000 cash dividend out of its aftertax earnings the federal tax consequence is generally"
+      },
+      {
+        "id": "0e180eaa52ca",
+        "normalized": "for federal tax purposes an llc with two or more members"
+      },
+      {
+        "id": "587639cccd22",
+        "normalized": "an iar is opening a brokerage account for the estate of a deceased client the person with authority to direct investments and sign account documents is"
+      },
+      {
+        "id": "77bdc610411d",
+        "normalized": "which of the following may not generally be a shareholder of an scorporation"
+      },
+      {
+        "id": "07b53c70561a",
+        "normalized": "a general partnership generally begins business when"
+      },
+      {
+        "id": "41d559692a1f",
+        "normalized": "a limited partnership must have at least"
+      },
+      {
+        "id": "80ec8bf94593",
+        "normalized": "a married couple opens a joint brokerage account as tenants by the entirety for clientclassification purposes this account holds the assets of"
+      },
+      {
+        "id": "f8c4ea5ef11a",
+        "normalized": "which characteristic distinguishes a private foundation from a public charity"
+      },
+      {
+        "id": "113397ecdaae",
+        "normalized": "a sole proprietor seeks investment advice for the business for suitability purposes the iar should"
+      },
+      {
+        "id": "c1785d73d6d0",
+        "normalized": "which statement about scorp shareholder rules is most accurate"
+      },
+      {
+        "id": "e3c064f5f641",
+        "normalized": "a private foundation must generally distribute approximately what minimum percentage of its net investment assets annually to qualified charitable purposes"
+      },
+      {
+        "id": "e8a05bd5a595",
+        "normalized": "an inter vivos living trust differs from a testamentary trust principally because"
+      },
+      {
+        "id": "0528d48d9f16",
+        "normalized": "a grantor establishes a charitable remainder trust crt which statement most accurately describes how it operates"
+      },
+      {
+        "id": "d3c0b3fd670f",
+        "normalized": "under modern partnership and llc law the principal advantage of an llc over a limited partnership for closely held businesses is"
+      },
+      {
+        "id": "c3730f551d0d",
+        "normalized": "a corporation chartered in delaware that pays federal income tax at the entity level on its net earnings is a"
+      },
+      {
+        "id": "a2a52201ef80",
+        "normalized": "an iar is reviewing the suitability of a recommendation for a charitable foundation the boards primary fiduciary duty when investing the foundations portfolio is to"
+      },
+      {
+        "id": "9da38649e1e3",
+        "normalized": "a general partnership generally files which of the following federal incometax forms"
+      },
+      {
+        "id": "23c63ab4004f",
+        "normalized": "an ia is opening an account for a trust which document is most important for confirming the trustees investment authority"
+      },
+      {
+        "id": "115f572a1dac",
+        "normalized": "when advising an llc client the iar should look to which document to determine member voting and management rights"
+      }
+    ]
+  }
+}

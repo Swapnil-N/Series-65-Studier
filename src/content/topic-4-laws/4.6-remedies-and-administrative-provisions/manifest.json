@@ -1,0 +1,263 @@
+{
+  "subtopicId": "4.6",
+  "items": {
+    "lessons": [
+      {
+        "id": "4.6",
+        "normalized": "remedies and administrative provisions"
+      }
+    ],
+    "cards": [
+      {
+        "id": "d7db3fdb9421",
+        "normalized": "who is the administrator under the uniform securities act"
+      },
+      {
+        "id": "422a24aba5db",
+        "normalized": "two findings the administrator must make before denying suspending or revoking a registration"
+      },
+      {
+        "id": "07226dd1f7cb",
+        "normalized": "lookback period for a securitiesrelated conviction that supports denial or revocation of registration"
+      },
+      {
+        "id": "6fcd99719879",
+        "normalized": "ceaseanddesist order who issues it and on what authority"
+      },
+      {
+        "id": "97ad92ff2b02",
+        "normalized": "ceaseanddesist order vs injunction"
+      },
+      {
+        "id": "c5429b7927e6",
+        "normalized": "maximum criminal penalty for a willful violation under the usa"
+      },
+      {
+        "id": "922948ba5658",
+        "normalized": "statute of limitations for criminal prosecution under the usa"
+      },
+      {
+        "id": "e3d1f97b6b50",
+        "normalized": "civil statute of limitations under the usa"
+      },
+      {
+        "id": "20fe91e5452b",
+        "normalized": "damages recoverable by a buyer in a civil suit under the usa"
+      },
+      {
+        "id": "6ab7754f0b26",
+        "normalized": "effect of an offer of rescission on a buyers right to sue"
+      },
+      {
+        "id": "bed5fa4be450",
+        "normalized": "subpoena power of the state administrator"
+      },
+      {
+        "id": "deee370847e2",
+        "normalized": "may the administrator investigate conduct occurring outside the state"
+      },
+      {
+        "id": "d4298fb4bedc",
+        "normalized": "summary action by the administrator"
+      },
+      {
+        "id": "2e05ec6a206b",
+        "normalized": "window in which an aggrieved party must petition for judicial review of a final administrator order"
+      },
+      {
+        "id": "834d3a4bb877",
+        "normalized": "does filing a petition for judicial review stay the administrators order"
+      },
+      {
+        "id": "ab23b417111d",
+        "normalized": "what is a consent to service of process"
+      },
+      {
+        "id": "8f5f9157085c",
+        "normalized": "may the administrator deny registration solely because an applicant lacks experience"
+      },
+      {
+        "id": "99dfb7b047ec",
+        "normalized": "what is a stop order under the usa"
+      },
+      {
+        "id": "b7ba226d3d05",
+        "normalized": "does the administrator have power to bring a criminal prosecution directly"
+      },
+      {
+        "id": "19cd95351864",
+        "normalized": "distinguish cancellation from revocation of a registration"
+      },
+      {
+        "id": "d2db9236d8f7",
+        "normalized": "withdrawal of registration how long until effective and how long does the administrator retain jurisdiction afterward"
+      },
+      {
+        "id": "8f8165324563",
+        "normalized": "three contacts that give a state administrator jurisdiction over an offer or sale"
+      },
+      {
+        "id": "7408f4063da7",
+        "normalized": "burden of proof when a person claims a registration or transaction exemption"
+      },
+      {
+        "id": "90991504e8c1",
+        "normalized": "are punitive or consequential damages recoverable in a usa civil action"
+      },
+      {
+        "id": "3cc81ba6c388",
+        "normalized": "what does willful mean for purposes of criminal liability under the usa"
+      }
+    ],
+    "questions": [
+      {
+        "id": "e20b6bf72793",
+        "normalized": "under the uniform securities act who is the administrator empowered to enforce state securities law"
+      },
+      {
+        "id": "ca8e9f962369",
+        "normalized": "what is the maximum criminal penalty per violation that may be imposed for a willful violation of the uniform securities act"
+      },
+      {
+        "id": "4a49833e0133",
+        "normalized": "within how many days after the administrator enters a final order does an aggrieved party have to seek judicial review of that order"
+      },
+      {
+        "id": "b4071427fd2d",
+        "normalized": "what is the statute of limitations for a civil action brought by a buyer under the 1956 uniform securities act"
+      },
+      {
+        "id": "04d09874b043",
+        "normalized": "how long does an investor have to accept a tender of rescission once a properly drafted rescission offer has been received from the seller"
+      },
+      {
+        "id": "b59e0727240a",
+        "normalized": "which of the following is not one of the components of damages a buyer may recover in a civil suit under the uniform securities act"
+      },
+      {
+        "id": "923ceda0309b",
+        "normalized": "which of the following actions can the state administrator take without first holding a hearing"
+      },
+      {
+        "id": "71d0be2d8dbf",
+        "normalized": "which type of penalty is imposed by the state administrator directly through the agency rather than by a court"
+      },
+      {
+        "id": "47bdadb3aee2",
+        "normalized": "may the state administrator conduct an investigation of an alleged violation that occurred wholly outside the administrators own state"
+      },
+      {
+        "id": "964145add65e",
+        "normalized": "civil rescission criminal prosecution and administrative suspension are best characterized as what"
+      },
+      {
+        "id": "dd1954a8326c",
+        "normalized": "an applicant for registration as an investment adviser representative was convicted of a securitiesrelated misdemeanor 8 years ago may the administrator deny the registration on that ground alone"
+      },
+      {
+        "id": "db02d41610d7",
+        "normalized": "which of the following is a ground on which the administrator may not base an order denying suspending or revoking a registration"
+      },
+      {
+        "id": "316b04c4918a",
+        "normalized": "how does cancellation of a registration differ from revocation"
+      },
+      {
+        "id": "b3bb5d625483",
+        "normalized": "when does a registrants voluntary withdrawal of a registration as an agent or investment adviser representative typically become effective"
+      },
+      {
+        "id": "efd6b010d45b",
+        "normalized": "after voluntary withdrawal of a registration becomes effective for how long does the administrator retain jurisdiction to institute a revocation or suspension proceeding based on conduct during the registration"
+      },
+      {
+        "id": "5d4ccd3eed4c",
+        "normalized": "an investment adviser sold a security to a client and a violation occurred which parties in addition to the investment adviser firm itself may be jointly and severally liable to the buyer in a civil suit under the usa"
+      },
+      {
+        "id": "c204a0dcbdb8",
+        "normalized": "under the usa what defense is available to a person materially aiding a sale who is sued under the civilliability provisions"
+      },
+      {
+        "id": "92da933b7ec6",
+        "normalized": "a buyer purchased a security from an unregistered agent four years ago and only just learned of the violation under the 1956 usa may the buyer bring a civil action for rescission today"
+      },
+      {
+        "id": "764fb6654162",
+        "normalized": "which of the following remedies is available in a court of law to the administrator but is not something the administrator can grant on the agencys own authority"
+      },
+      {
+        "id": "c1788832d9a6",
+        "normalized": "which statement about a stop order under the usa is correct"
+      },
+      {
+        "id": "c6daaf7e0a78",
+        "normalized": "two registered investment adviser representatives are charged with the same scheme which body can order each rep imprisoned"
+      },
+      {
+        "id": "d555eddfc415",
+        "normalized": "what is the statute of limitations for a criminal prosecution under the uniform securities act"
+      },
+      {
+        "id": "bf712191b024",
+        "normalized": "must a willful violation of the usa also be fraudulent or with intent to defraud for criminal liability to attach"
+      },
+      {
+        "id": "2d97d496c6a1",
+        "normalized": "without obtaining a court order the administrator may do which of the following in connection with an investigation"
+      },
+      {
+        "id": "36002033f95d",
+        "normalized": "an agent licensed only in state a telephones a prospect in state b and offers a nonexempt unregistered security which administrators have jurisdiction over the offer"
+      },
+      {
+        "id": "21c0fd3ed3d9",
+        "normalized": "under the usa an administrators investigation is presumed to be public or nonpublic"
+      },
+      {
+        "id": "5058084a3558",
+        "normalized": "which of the following best describes summary action by the administrator"
+      },
+      {
+        "id": "1e37b397101b",
+        "normalized": "an agent received a properly drafted offer of rescission 45 days ago and never responded today the agents client wants to bring a civil action under the usa what is the result"
+      },
+      {
+        "id": "d9b265e2bd29",
+        "normalized": "under the usa may the administrator deny the registration of a securities issue solely on the ground that the investment is risky or speculative"
+      },
+      {
+        "id": "147a6acc60d6",
+        "normalized": "if the administrator issues an order denying or suspending a registration without prior notice what procedural protections must the order provide"
+      },
+      {
+        "id": "67b2de20cf1f",
+        "normalized": "section 209 of the investment advisers act of 1940 authorizes the sec to do which of the following with respect to suspected violations"
+      },
+      {
+        "id": "f2912623944c",
+        "normalized": "which of the following correctly distinguishes the administrators civil enforcement remedies from criminal referrals"
+      },
+      {
+        "id": "1a1fe949d8b2",
+        "normalized": "when the administrator brings a civil enforcement action in court who has the burden of proving the elements of the violation"
+      },
+      {
+        "id": "7bb8b7d88cd3",
+        "normalized": "which statement about an administrators authority over a federalcovered investment adviser is correct"
+      },
+      {
+        "id": "175f03191b0d",
+        "normalized": "an ia representative is sued civilly under the usa for a fraudulent recommendation which party generally bears the burden of proving an exemption or other affirmative defense such as the materiallyaiding no knowledge defense"
+      },
+      {
+        "id": "8ad6744e951e",
+        "normalized": "an administrator suspects an outofstate adviser of soliciting state residents in violation of the usa the adviser refuses to comply with the administrators subpoena which of the following is the administrators most direct enforcement tool"
+      },
+      {
+        "id": "d39c2e162133",
+        "normalized": "if the same conduct violates the investment advisers act of 1940 and a states usa which of the following is generally true"
+      }
+    ]
+  }
+}

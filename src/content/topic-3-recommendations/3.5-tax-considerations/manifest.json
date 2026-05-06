@@ -1,0 +1,291 @@
+{
+  "subtopicId": "3.5",
+  "items": {
+    "lessons": [
+      {
+        "id": "3.5",
+        "normalized": "tax considerations individual entity and wealth transfer"
+      }
+    ],
+    "cards": [
+      {
+        "id": "8f57a37ec25c",
+        "normalized": "shortterm capital gain holding period and tax treatment"
+      },
+      {
+        "id": "2dfb2958ff72",
+        "normalized": "holdingperiod threshold for longterm capital gain treatment and the rates that apply"
+      },
+      {
+        "id": "4c31b8e3c0f6",
+        "normalized": "holdingperiod requirement for a dividend to be qualified"
+      },
+      {
+        "id": "bee5a4721508",
+        "normalized": "federal tax rate applied to qualified dividends versus ordinary nonqualified dividends"
+      },
+      {
+        "id": "8a5d866a808b",
+        "normalized": "function of cost basis when a security is sold"
+      },
+      {
+        "id": "0a3c64ef832d",
+        "normalized": "basis a beneficiary takes in property inherited from a decedent"
+      },
+      {
+        "id": "4cd327e2d0e9",
+        "normalized": "donees basis in property received as a lifetime gift"
+      },
+      {
+        "id": "2b943e3a2706",
+        "normalized": "distinction between a marginal tax rate and an effective tax rate"
+      },
+      {
+        "id": "f865200a8467",
+        "normalized": "purpose of the federal alternative minimum tax"
+      },
+      {
+        "id": "8ce9ccb9dc70",
+        "normalized": "common preference and adjustment items that can trigger amt"
+      },
+      {
+        "id": "e2c37ec1420b",
+        "normalized": "age at which required minimum distributions must begin under current secure 20 rules"
+      },
+      {
+        "id": "12dff558b7b8",
+        "normalized": "deadline rules for taking a participants first rmd versus subsequent rmds"
+      },
+      {
+        "id": "d8703625c7a7",
+        "normalized": "excisetax penalty for failing to withdraw a required rmd"
+      },
+      {
+        "id": "59a94fd91402",
+        "normalized": "rmd treatment of a roth ira during the original owners lifetime"
+      },
+      {
+        "id": "fc3a3961b8c4",
+        "normalized": "definition of irmaa and which medicare costs it raises"
+      },
+      {
+        "id": "51e1369952a9",
+        "normalized": "income year medicare uses to compute the current years irmaa surcharge"
+      },
+      {
+        "id": "b0fdf14b3347",
+        "normalized": "defining tax characteristic of a c corporation"
+      },
+      {
+        "id": "a1e60aadb9a1",
+        "normalized": "how an s corporation is taxed and the principal eligibility limits"
+      },
+      {
+        "id": "6a917f58cbc9",
+        "normalized": "distribution requirement a reit must meet to remain a passthrough for tax"
+      },
+      {
+        "id": "5725c84fc4b9",
+        "normalized": "how reit dividends are taxed in the investors hands"
+      },
+      {
+        "id": "d3bf8f7c6acb",
+        "normalized": "how a master limited partnership mlp is taxed at the entity and investor levels"
+      },
+      {
+        "id": "7a44ade1ba77",
+        "normalized": "default federal tax classification of a limited liability company llc"
+      },
+      {
+        "id": "64d06b8ed2bd",
+        "normalized": "how income earned inside a nongrantor trust is taxed"
+      },
+      {
+        "id": "13883316ca08",
+        "normalized": "function of the federal unified credit for estate and gift taxes"
+      },
+      {
+        "id": "6a06199937ad",
+        "normalized": "annual gift tax exclusion mechanics"
+      },
+      {
+        "id": "a6c7e12225dc",
+        "normalized": "portability of the federal estate tax exemption between spouses"
+      },
+      {
+        "id": "d8f1f06e8fe9",
+        "normalized": "wash sale rule and the disallowedloss window"
+      }
+    ],
+    "questions": [
+      {
+        "id": "5df1f42175a7",
+        "normalized": "an investor sells stock held for 14 months at a 10000 gain how is this gain taxed for federal income tax purposes"
+      },
+      {
+        "id": "2d626b7fc178",
+        "normalized": "which of the following is required for a dividend to be classified as a qualified dividend"
+      },
+      {
+        "id": "8fbeee224bf1",
+        "normalized": "a client inherits 1000 shares of stock from her father he purchased the shares for 20 per share on the date of death the shares were worth 80 what is the clients tax basis per share"
+      },
+      {
+        "id": "b22a292c95de",
+        "normalized": "a donor gifts stock to her nephew the donors basis was 10000 and the fair market value at the time of the gift was 25000 what is the nephews basis for determining gain on a later sale"
+      },
+      {
+        "id": "06dd45792443",
+        "normalized": "which statement best describes a taxpayers marginal tax bracket"
+      },
+      {
+        "id": "1fef9dc95f98",
+        "normalized": "which of the following is most likely to trigger alternative minimum tax amt liability"
+      },
+      {
+        "id": "c2302028af81",
+        "normalized": "under current law postsecure 20 at what age must an individual generally begin taking required minimum distributions rmds from a traditional ira"
+      },
+      {
+        "id": "1d2d69b55e34",
+        "normalized": "a retiree fails to take her full required minimum distribution from her traditional ira under secure 20 what is the standard excise tax penalty on the shortfall"
+      },
+      {
+        "id": "49a4b7fa6588",
+        "normalized": "which of the following accounts is not subject to required minimum distributions during the original owners lifetime"
+      },
+      {
+        "id": "feaa45209030",
+        "normalized": "what does irmaa refer to in the context of a retirees tax and benefit planning"
+      },
+      {
+        "id": "58c85c7dc6ed",
+        "normalized": "a large roth conversion in a single year is most likely to cause which collateral effect for a retiree on medicare"
+      },
+      {
+        "id": "d022446a9204",
+        "normalized": "which of the following correctly distinguishes a c corporation from an s corporation for federal income tax purposes"
+      },
+      {
+        "id": "177a6693675e",
+        "normalized": "a reit distributes ordinary dividends to a unit holder how are those distributions generally taxed at the federal level"
+      },
+      {
+        "id": "9d28af6b194f",
+        "normalized": "a master limited partnership mlp sends investors a schedule k1 each year which characteristic is true of mlp investments"
+      },
+      {
+        "id": "90003b93581d",
+        "normalized": "which entity type is generally treated as a passthrough by default for federal tax purposes when it has more than one member absent a different election"
+      },
+      {
+        "id": "106818c0ba48",
+        "normalized": "an irrevocable trust accumulates investment income rather than distributing it how is the trust generally taxed"
+      },
+      {
+        "id": "9d4a4f4dba20",
+        "normalized": "for 2026 the federal annual gift tax exclusion permits a donor to give up to a specified amount per donee per year without filing a gift tax return which statement about the annual exclusion is correct"
+      },
+      {
+        "id": "e55b7ea67278",
+        "normalized": "which statement best describes the unified credit in federal estate and gift tax"
+      },
+      {
+        "id": "aa8bdc6777ab",
+        "normalized": "what does portability refer to in federal estate tax planning"
+      },
+      {
+        "id": "b6c43038a234",
+        "normalized": "under federal estate tax rules transfers between uscitizen spouses during life or at death are generally"
+      },
+      {
+        "id": "7dd48e72aaf5",
+        "normalized": "an investors adjusted cost basis in a mutual fund position has increased over time the most likely reason is"
+      },
+      {
+        "id": "a6ed40697723",
+        "normalized": "an investor sells a stock at a loss on december 1 and repurchases the identical stock on december 15 of the same year which rule applies"
+      },
+      {
+        "id": "2414a8d4e337",
+        "normalized": "a taxpayer has 20000 in net longterm capital losses and no capital gains in the current year how much may she generally deduct against ordinary income on her currentyear form 1040"
+      },
+      {
+        "id": "51c8f7f3d1b9",
+        "normalized": "how is the sale of a security held for exactly one year and one day generally taxed"
+      },
+      {
+        "id": "61c4f05c3866",
+        "normalized": "a c corporation pays a 1000000 dividend to its individual shareholders from a taxsystem perspective this illustrates"
+      },
+      {
+        "id": "72efa010172c",
+        "normalized": "which of the following accurately compares ordinary dividends and qualified dividends for an individual us investor"
+      },
+      {
+        "id": "6fb6488fcc07",
+        "normalized": "an investor in the 32 federal marginal bracket holds a corporate bond yielding 5 and is considering a municipal bond what approximate municipal taxequivalent yield would make the investor indifferent ignoring state tax"
+      },
+      {
+        "id": "39a5f0dbffd7",
+        "normalized": "which best describes a generationskipping transfer gst tax"
+      },
+      {
+        "id": "799f1fd58972",
+        "normalized": "a traditional 401k participant takes a distribution at age 55 after separating from service in the year she turns 55 which statement is most accurate"
+      },
+      {
+        "id": "aeb58764e35d",
+        "normalized": "a married couple uses giftsplitting on form 709 what is the practical effect"
+      },
+      {
+        "id": "cae496b3dfe9",
+        "normalized": "which of the following is correct about roth ira distributions"
+      },
+      {
+        "id": "6be92f13c1eb",
+        "normalized": "a c corporation has 500000 of taxable income approximately how much federal corporate income tax is owed at the entity level posttcja"
+      },
+      {
+        "id": "9c3b89b067f8",
+        "normalized": "to maintain its tax status a real estate investment trust reit must annually distribute what minimum percentage of its taxable income to shareholders"
+      },
+      {
+        "id": "2f92c27fc077",
+        "normalized": "an investor buys 100 shares at 50 in january and another 100 shares at 70 in march of the same security in november she sells 100 shares at 80 without specifying which lot under default irs rules for stocks which method generally applies"
+      },
+      {
+        "id": "b793f5814dc6",
+        "normalized": "an advisors client wants to make a charitable gift of appreciated stock held for over a year which statement most accurately summarizes the tax benefit relative to selling the stock and donating cash"
+      },
+      {
+        "id": "421bb599d7f5",
+        "normalized": "which of the following is a key feature of the federal alternative minimum tax amt"
+      },
+      {
+        "id": "5650bd126dc2",
+        "normalized": "a taxpayer in a 24 marginal federal bracket also pays social security and medicare on wages which statement about marginal vs effective tax rates is correct"
+      },
+      {
+        "id": "3acc25bf0651",
+        "normalized": "for tax purposes an mlp unitholder generally receives which form to report income gains and deductions"
+      },
+      {
+        "id": "37eb0efa70ae",
+        "normalized": "which statement about qualified charitable distributions qcds from a traditional ira is correct"
+      },
+      {
+        "id": "107a0bb839c6",
+        "normalized": "a grantor establishes a revocable living trust and funds it with marketable securities while the grantor is alive and the trust is revocable how is the trusts investment income taxed"
+      },
+      {
+        "id": "7536a56f5409",
+        "normalized": "which of the following best describes the net investment income tax niit"
+      },
+      {
+        "id": "962769039fe4",
+        "normalized": "an adviser is reviewing a clients brokerage statement showing return of capital distributions on a nonreit stock position how should these distributions generally be treated"
+      }
+    ]
+  }
+}

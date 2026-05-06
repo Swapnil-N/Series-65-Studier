@@ -1,0 +1,263 @@
+{
+  "subtopicId": "2.6",
+  "items": {
+    "lessons": [
+      {
+        "id": "2.6",
+        "normalized": "methods used to determine the value of equity securities"
+      }
+    ],
+    "cards": [
+      {
+        "id": "e348f3612805",
+        "normalized": "what does technical analysis primarily study to forecast equity prices"
+      },
+      {
+        "id": "e32eb2eae74b",
+        "normalized": "what does fundamental analysis use to estimate a stocks intrinsic value"
+      },
+      {
+        "id": "1740134edb92",
+        "normalized": "technical vs fundamental analysis which one ignores a companys financial statements"
+      },
+      {
+        "id": "82e614635ecc",
+        "normalized": "describe the topdown approach to fundamental analysis"
+      },
+      {
+        "id": "77246ffb7ad2",
+        "normalized": "describe the bottomup approach to fundamental analysis"
+      },
+      {
+        "id": "c45673ab31c2",
+        "normalized": "formula and meaning of the pricetoearnings pe ratio"
+      },
+      {
+        "id": "03da2e3a203d",
+        "normalized": "how is earnings per share eps calculated"
+      },
+      {
+        "id": "eca74d11b4de",
+        "normalized": "what does the pricetobook pb ratio compare"
+      },
+      {
+        "id": "e5f138530aef",
+        "normalized": "define the dividend discount model ddm"
+      },
+      {
+        "id": "fb66a2a6bf34",
+        "normalized": "state the gordon growth constantgrowth ddm formula"
+      },
+      {
+        "id": "31cec7a29f53",
+        "normalized": "why cant the standard ddm value many growth stocks"
+      },
+      {
+        "id": "d77fa9bbb550",
+        "normalized": "compute the value a stock pays a 2 dividend next year expected to grow 4 forever required return is 10"
+      },
+      {
+        "id": "ede244f4e7e9",
+        "normalized": "what is the core idea behind discounted cash flow dcf valuation"
+      },
+      {
+        "id": "120c7645cdac",
+        "normalized": "what discount rate is typically used in a dcf for the whole firm"
+      },
+      {
+        "id": "499ec92c2d72",
+        "normalized": "what is terminal value in a dcf analysis"
+      },
+      {
+        "id": "a89eda1eed11",
+        "normalized": "define support and resistance in technical analysis"
+      },
+      {
+        "id": "1deefeed5c0e",
+        "normalized": "what does a moving average tell a technical analyst"
+      },
+      {
+        "id": "88c3c5c219e5",
+        "normalized": "significance of a headandshoulders chart pattern"
+      },
+      {
+        "id": "3bb127aeb98b",
+        "normalized": "what is the central tenet of dow theory"
+      },
+      {
+        "id": "7dc987e92fbd",
+        "normalized": "why does the efficient market hypothesis emh challenge technical analysis"
+      },
+      {
+        "id": "713aec24ef0a",
+        "normalized": "define intrinsic value as used by fundamental analysts"
+      },
+      {
+        "id": "2cb639fd2b26",
+        "normalized": "what does the dividend yield measure"
+      },
+      {
+        "id": "34e9d7b9aacd",
+        "normalized": "what does the peg ratio adjust the pe for"
+      },
+      {
+        "id": "8cd619df57a2",
+        "normalized": "how is free cash flow fcf typically defined for valuation"
+      },
+      {
+        "id": "d231d84e2382",
+        "normalized": "why is the discount rate critical to ddm and dcf outputs"
+      },
+      {
+        "id": "d7e3327148dd",
+        "normalized": "calculate book value per share equity is 500 million with 25 million common shares outstanding"
+      }
+    ],
+    "questions": [
+      {
+        "id": "b65d00d6b96e",
+        "normalized": "an analyst who studies a companys income statement balance sheet management quality and competitive position to estimate a stocks intrinsic value is engaged primarily in"
+      },
+      {
+        "id": "f6df6679c3e9",
+        "normalized": "a market participant who relies on price charts trendlines and trading volume and largely disregards earnings or book value is using which valuation approach"
+      },
+      {
+        "id": "b5f41e1b7d71",
+        "normalized": "the dividend discount model ddm values a share of common stock as"
+      },
+      {
+        "id": "afc188fe16fc",
+        "normalized": "discounted cash flow dcf valuation uses which of the following as the discount rate when valuing the entire firm"
+      },
+      {
+        "id": "a4c36c9c30b5",
+        "normalized": "the pricetoearnings pe ratio is calculated as"
+      },
+      {
+        "id": "78d907f19ebe",
+        "normalized": "earnings per share eps is most accurately defined as"
+      },
+      {
+        "id": "494c6b5b96f7",
+        "normalized": "book value per share for a common stock is most accurately calculated as"
+      },
+      {
+        "id": "828ba56b3c96",
+        "normalized": "dividend yield on a common stock is calculated as"
+      },
+      {
+        "id": "05b5cb10a23f",
+        "normalized": "on a price chart a support level is best described as"
+      },
+      {
+        "id": "84dc1309f8ae",
+        "normalized": "on a price chart a resistance level is best described as"
+      },
+      {
+        "id": "e3c597d75d0a",
+        "normalized": "under the constantgrowth dividend discount model gordon growth model the intrinsic value of a share equals"
+      },
+      {
+        "id": "c40287df8744",
+        "normalized": "a stock is expected to pay a 200 dividend next year investors require a 10 return and dividends are expected to grow at 4 per year forever using the gordon growth model the intrinsic value of the stock is closest to"
+      },
+      {
+        "id": "50dbb16a65cf",
+        "normalized": "the gordon growth model breaks down produces a negative or undefined value when"
+      },
+      {
+        "id": "784adf99ffff",
+        "normalized": "which of the following companies is least suitable for valuation using a traditional dividend discount model"
+      },
+      {
+        "id": "18dc964f8dfc",
+        "normalized": "the twostage dividend discount model is most appropriate when"
+      },
+      {
+        "id": "c8dfbddf63fe",
+        "normalized": "an investor expects abc corp to pay a 300 dividend in one year and to be sold at 5200 immediately after that dividend if the required return is 10 the intrinsic value of one share today using a singleperiod ddm is closest to"
+      },
+      {
+        "id": "917e01d4ddbe",
+        "normalized": "the peg ratio adjusts the pe ratio for"
+      },
+      {
+        "id": "3a47cc69f8ea",
+        "normalized": "which of the following best describes free cash flow to the firm fcff"
+      },
+      {
+        "id": "ffbd22541a94",
+        "normalized": "when valuing a firm using fcff the appropriate discount rate is the wacc when valuing the equity directly using fcfe the appropriate discount rate is"
+      },
+      {
+        "id": "b8c9d3ed7c75",
+        "normalized": "in computing wacc the cost of debt is multiplied by 1 tax rate because"
+      },
+      {
+        "id": "98032ae40f85",
+        "normalized": "all else equal a dcf valuation will produce a lower intrinsic value when"
+      },
+      {
+        "id": "bf1b97d39a35",
+        "normalized": "in a dcf model the terminal value represents"
+      },
+      {
+        "id": "cedc9ef21875",
+        "normalized": "a technical analyst observes a 50day moving average crossing above a 200day moving average golden cross this pattern is most commonly interpreted as"
+      },
+      {
+        "id": "998762d3a828",
+        "normalized": "a head and shoulders pattern formed after an extended uptrend is generally interpreted by technical analysts as"
+      },
+      {
+        "id": "85364a5bb67f",
+        "normalized": "the weak form of the efficient market hypothesis emh most directly challenges the value of"
+      },
+      {
+        "id": "621329c52e86",
+        "normalized": "if markets are semistrongform efficient which of the following statements is most accurate"
+      },
+      {
+        "id": "c5fe229ecaa0",
+        "normalized": "a stock has a market price of 40 and an analysts dcf intrinsic value estimate of 50 based solely on this information the stock would generally be considered"
+      },
+      {
+        "id": "42ec33b385e6",
+        "normalized": "return on equity roe is most accurately calculated as"
+      },
+      {
+        "id": "9b870fdc87ae",
+        "normalized": "under the sustainable growth rate framework a firms longrun dividend growth rate can be approximated as"
+      },
+      {
+        "id": "1acf32c567b9",
+        "normalized": "under the dupont decomposition roe can be expressed as the product of"
+      },
+      {
+        "id": "8b33d1c7fee4",
+        "normalized": "which valuation method most directly relies on the assumption that all relevant information is reflected in past price and volume data"
+      },
+      {
+        "id": "230ad78e9992",
+        "normalized": "an analyst values a stock by projecting next years free cash flow to equity at 4 expecting a constant growth rate of 5 and assuming a cost of equity of 9 using a constantgrowth fcfe model the intrinsic value per share is closest to"
+      },
+      {
+        "id": "3c60fffc6587",
+        "normalized": "using a justified pe framework based on the constantgrowth model the leading pe ratio p0e1 for a firm equals"
+      },
+      {
+        "id": "99c0b910f6c7",
+        "normalized": "which of the following inputs is required for a discounted cash flow valuation but not for a constantgrowth dividend discount model"
+      },
+      {
+        "id": "ed94e983ce50",
+        "normalized": "compared with technical analysis fundamental analysis is generally less concerned with"
+      },
+      {
+        "id": "8dae433a7e58",
+        "normalized": "which of the following best describes the relationship between intrinsic value and market price in fundamental analysis"
+      }
+    ]
+  }
+}

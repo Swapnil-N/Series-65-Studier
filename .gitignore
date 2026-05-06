@@ -1,0 +1,28 @@
+node_modules/
+dist/
+dist-ssr/
+.DS_Store
+*.log
+.vite/
+coverage/
+
+# TS build artifacts (tsc -b emits these next to config files)
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
+tailwind.config.js
+tailwind.config.d.ts
+
+# Editor
+.vscode/
+.idea/
+
+# Local env
+.env
+.env.local
+.env.*.local
+
+# Generator output — generated content lives at scripts/out/ and is moved to
+# src/content/ via scripts/promote-content.ts. Don't commit either side of
+# the staging path.
+scripts/out/

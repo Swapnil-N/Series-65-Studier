@@ -1,0 +1,303 @@
+{
+  "subtopicId": "4.1",
+  "items": {
+    "lessons": [
+      {
+        "id": "4.1",
+        "normalized": "regulation of investment advisers federalcovered vs stateregistered"
+      }
+    ],
+    "cards": [
+      {
+        "id": "94458d07ca11",
+        "normalized": "under federal law what three elements together make a person an investment adviser"
+      },
+      {
+        "id": "a14482fb30b1",
+        "normalized": "which professionals fall under the late exclusion from the federal definition of investment adviser"
+      },
+      {
+        "id": "8f1ca5042c96",
+        "normalized": "when is a brokerdealer excluded from the definition of investment adviser"
+      },
+      {
+        "id": "75e7b7007150",
+        "normalized": "which type of publisher is excluded from the federal investment adviser definition"
+      },
+      {
+        "id": "02d5eecf7aaf",
+        "normalized": "at what level of regulatory assets under management must an adviser register with the sec rather than the states"
+      },
+      {
+        "id": "e63b0dc8841c",
+        "normalized": "define midsized adviser for purposes of federalstate registration allocation"
+      },
+      {
+        "id": "3d80b21e7f6b",
+        "normalized": "aside from aum name two situations that require an adviser to register with the sec regardless of size"
+      },
+      {
+        "id": "6913a524ed15",
+        "normalized": "what is an exempt reporting adviser era"
+      },
+      {
+        "id": "c1ea59662173",
+        "normalized": "describe the federal intrastate adviser exemption"
+      },
+      {
+        "id": "55b054e20a15",
+        "normalized": "what is the statelevel de minimis exemption for advisers"
+      },
+      {
+        "id": "c063b5742338",
+        "normalized": "what is the purpose of a notice filing by a federal covered adviser"
+      },
+      {
+        "id": "04ec001e5123",
+        "normalized": "which form serves as the application for both sec and state investmentadviser registration"
+      },
+      {
+        "id": "49366dea47ea",
+        "normalized": "what information does form adv part 1 contain"
+      },
+      {
+        "id": "23897d013648",
+        "normalized": "what is the purpose of form adv part 2a"
+      },
+      {
+        "id": "0dcacaa7a00a",
+        "normalized": "what does form adv part 2b disclose"
+      },
+      {
+        "id": "62ebba55cb0a",
+        "normalized": "what is form adv part 3 form crs"
+      },
+      {
+        "id": "b070c5864843",
+        "normalized": "when must a federal covered adviser file the annual updating amendment to form adv"
+      },
+      {
+        "id": "28192b7e0d1b",
+        "normalized": "how long must secregistered advisers preserve required books and records and where"
+      },
+      {
+        "id": "9febb1fe4dd7",
+        "normalized": "what is the recordkeeping retention period for corporate organizational documents and partnership records of an investment adviser"
+      },
+      {
+        "id": "7606bddc3108",
+        "normalized": "how does an investment adviser terminate its registration"
+      },
+      {
+        "id": "8c4e3e832aa5",
+        "normalized": "define investment adviser representative under the uniform securities act"
+      },
+      {
+        "id": "7b85e058d7a7",
+        "normalized": "where must an iar of a federal covered adviser register at the state level"
+      },
+      {
+        "id": "00d0de585a79",
+        "normalized": "what annual continuing education must an iar complete under the nasaa model rule"
+      },
+      {
+        "id": "a51e9974563b",
+        "normalized": "which uniform forms are used to register and terminate individual iars and agents"
+      },
+      {
+        "id": "fcf0cca18154",
+        "normalized": "what does the ia act require of advisers regarding supervision and compliance programs"
+      },
+      {
+        "id": "95c7410a1cbc",
+        "normalized": "what recordkeeping requirement applies to access persons personal securities transactions"
+      },
+      {
+        "id": "3031a628af65",
+        "normalized": "when is an adviser deemed to have custody of client assets triggering additional safeguards"
+      }
+    ],
+    "questions": [
+      {
+        "id": "1b6e2fe48cdd",
+        "normalized": "under the investment advisers act of 1940 the statutory definition of an investment adviser rests on a threepart test commonly summarized as abc which of the following best states that test"
+      },
+      {
+        "id": "9d2003613eef",
+        "normalized": "a practicing attorney occasionally discusses securities with estateplanning clients as part of drafting wills which exclusion from the definition of investment adviser is she most likely relying on"
+      },
+      {
+        "id": "c48bce7ae291",
+        "normalized": "a firm publishes a weekly subscription newsletter giving general securities commentary that does not respond to individual subscriber circumstances under federal law the firm is most likely"
+      },
+      {
+        "id": "153cc0ce5cfe",
+        "normalized": "under section 203a of the investment advisers act and the doddfrank amendments an adviser that has between 100 million and 110 million in regulatory assets under management is generally"
+      },
+      {
+        "id": "9de30d2a7369",
+        "normalized": "which of the following advisers is not eligible to register with the sec as a federal covered adviser"
+      },
+      {
+        "id": "e04ad836200a",
+        "normalized": "an adviser with offices only in state a would be required by state b to make a notice filing if"
+      },
+      {
+        "id": "241df7d2824f",
+        "normalized": "under the uniform securities act an investment adviser with no place of business in a state is generally exempt from registration in that state if during the preceding 12 months it had no more than how many noninstitutional clients there"
+      },
+      {
+        "id": "26a19142bc57",
+        "normalized": "form adv part 2a is best described as"
+      },
+      {
+        "id": "a99a7b24242c",
+        "normalized": "under sec rule 2043 the brochure rule an investment adviser must deliver its form adv part 2a brochure to a new advisory client"
+      },
+      {
+        "id": "55603e3c574e",
+        "normalized": "an secregistered adviser must update its form adv by filing an annual updating amendment"
+      },
+      {
+        "id": "a4d25a3fc31c",
+        "normalized": "beyond the annual updating amendment an adviser must also file an otherthanannual amendment to form adv"
+      },
+      {
+        "id": "f2a9ff7aaceb",
+        "normalized": "under rule 2042 of the investment advisers act an secregistered adviser must generally preserve required books and records for"
+      },
+      {
+        "id": "bac0995d0877",
+        "normalized": "under rule 2042 certain records relating to the formation of the adviser such as articles of incorporation partnership agreements and minute books must be preserved"
+      },
+      {
+        "id": "e11e070af160",
+        "normalized": "an adviser wishing to terminate its registration files which form"
+      },
+      {
+        "id": "49f4aa89d3a7",
+        "normalized": "an exempt reporting adviser era under the investment advisers act is generally"
+      },
+      {
+        "id": "776890a7e41d",
+        "normalized": "which of the following advisers may register with the sec under the multistate exemptive rule"
+      },
+      {
+        "id": "459c85f7f4e4",
+        "normalized": "under the national securities markets improvement act and section 203a a state may not require which of the following from a federal covered adviser that has a place of business in the state"
+      },
+      {
+        "id": "54fdc3045764",
+        "normalized": "under the uniform securities act an investment adviser representative iar is generally a partner officer director or employee of an adviser who"
+      },
+      {
+        "id": "ac80f4084953",
+        "normalized": "under the nasaa iar continuing education model rule an iar must complete how many hours of ce each reporting period"
+      },
+      {
+        "id": "f583b6819fa5",
+        "normalized": "an iar who fails to complete the required nasaa continuing education for two consecutive reporting periods will most likely face which consequence"
+      },
+      {
+        "id": "7a497dfa356b",
+        "normalized": "under sec rule 20647 an secregistered adviser must at a minimum"
+      },
+      {
+        "id": "d897dcd0e22c",
+        "normalized": "an iar is supervised principally by"
+      },
+      {
+        "id": "4d545ecf5da0",
+        "normalized": "when does the registration of a stateregistered investment adviser typically become effective if no order denying registration has been entered"
+      },
+      {
+        "id": "e2b6f2e1c2fb",
+        "normalized": "form adv part 3 form crs must be delivered by an secregistered adviser to"
+      },
+      {
+        "id": "c2c2a6d3ff22",
+        "normalized": "an adviser maintains custody of client funds and securities which rule sets out the principal federal protections including the surprise annual examination by an independent public accountant"
+      },
+      {
+        "id": "1565d730185f",
+        "normalized": "an iar moves from one investment adviser firm to another which uniform forms are typically used to terminate the prior association and reestablish registration"
+      },
+      {
+        "id": "46bd930a1418",
+        "normalized": "under rule 2053 an adviser may charge a performancebased fee only to a qualified client a qualified client is generally defined to include a natural person or company that"
+      },
+      {
+        "id": "8427f7821941",
+        "normalized": "section 205 of the investment advisers act generally prohibits investment advisory contracts from"
+      },
+      {
+        "id": "f70b8b1e0d37",
+        "normalized": "under section 205 an investment advisory contract must also"
+      },
+      {
+        "id": "414b5a969ee5",
+        "normalized": "under the uniform securities act the administrator of a state may by rule require an investment adviser registered in that state to"
+      },
+      {
+        "id": "1f3cc568af1b",
+        "normalized": "under nasaa model rules an adviser that takes custody of client assets but is not federal covered is typically required to"
+      },
+      {
+        "id": "fcdaae312295",
+        "normalized": "section 204a of the investment advisers act requires advisers to establish maintain and enforce written policies and procedures reasonably designed to prevent"
+      },
+      {
+        "id": "2d7da35ce24c",
+        "normalized": "under section 222 when an investment adviser has a place of business in a state the state may impose its own booksandrecords or financial requirements only if those requirements"
+      },
+      {
+        "id": "e2100b201263",
+        "normalized": "an adviser delivers its annual updated form adv part 2a brochure to existing clients under rule 2043 the adviser must do so each year"
+      },
+      {
+        "id": "66956f0e8e6e",
+        "normalized": "form adv is filed electronically through which system used by both secregistered and stateregistered advisers"
+      },
+      {
+        "id": "e8996f53e5f8",
+        "normalized": "under the nasaa model rule on recordkeeping a stateregistered investment adviser must generally retain advertising and marketing communications for"
+      },
+      {
+        "id": "3d77203a663a",
+        "normalized": "the marketing rule for secregistered investment advisers governing the use of testimonials endorsements and performance presentations is"
+      },
+      {
+        "id": "38a3d1a9eb14",
+        "normalized": "an investment adviser that is registered only with the sec discovers that one of its iars has a place of business in state x with respect to that iar state x may"
+      },
+      {
+        "id": "4e173af3bd6b",
+        "normalized": "an adviser must make and keep a memorandum of each order placed for the purchase or sale of any security including the terms and conditions of the order this requirement is found in"
+      },
+      {
+        "id": "1cd7dcd011f0",
+        "normalized": "an iars individual registration is initially established by filing which uniform form"
+      },
+      {
+        "id": "fc0477b67301",
+        "normalized": "form adv part 2b the brochure supplement must contain information about"
+      },
+      {
+        "id": "a0cde21e3ba9",
+        "normalized": "under sec rule 203a3 a pension consultant may register as a federal covered adviser if it provides investment advice to employee benefit plans with aggregate assets of at least"
+      },
+      {
+        "id": "e618ae5a23df",
+        "normalized": "which of the following is not a category of federal covered adviser under section 203a"
+      },
+      {
+        "id": "465d7794c324",
+        "normalized": "under finra rule 3110 brokerdealers must establish and maintain a supervisory system for associated persons while this rule applies to brokerdealers on the investment adviser side the analogous source of supervisory obligations is principally"
+      },
+      {
+        "id": "5a45fc18d579",
+        "normalized": "an adviser to private funds with 80 million in us aum none of which is a venture capital fund is most likely"
+      }
+    ]
+  }
+}

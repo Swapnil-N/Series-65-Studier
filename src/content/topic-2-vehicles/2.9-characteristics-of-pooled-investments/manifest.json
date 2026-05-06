@@ -1,0 +1,291 @@
+{
+  "subtopicId": "2.9",
+  "items": {
+    "lessons": [
+      {
+        "id": "2.9",
+        "normalized": "pooled investments share classes fees pricing and comparisons"
+      }
+    ],
+    "cards": [
+      {
+        "id": "43aa4e297c64",
+        "normalized": "how is a mutual funds net asset value nav per share computed"
+      },
+      {
+        "id": "7d9b6a6559f9",
+        "normalized": "how is the price determined for a mutual fund purchase or redemption order placed during market hours"
+      },
+      {
+        "id": "31b19606acfb",
+        "normalized": "why can a closedend funds market price diverge from its nav"
+      },
+      {
+        "id": "1bcd2c9b7f47",
+        "normalized": "how is an etfs market price kept aligned with its nav throughout the trading day"
+      },
+      {
+        "id": "e2037278c96d",
+        "normalized": "what distinguishes class a mutual fund shares from class b and class c"
+      },
+      {
+        "id": "25367d341e50",
+        "normalized": "what are the defining cost features of class b mutual fund shares"
+      },
+      {
+        "id": "ca627f6a88f3",
+        "normalized": "what is the principal cost characteristic of class c mutual fund shares"
+      },
+      {
+        "id": "90dc37fd76f1",
+        "normalized": "what is the maximum 12b1 fee a fund may charge and still be marketed as noload"
+      },
+      {
+        "id": "4248f9ad85ce",
+        "normalized": "what is a mutual fund breakpoint"
+      },
+      {
+        "id": "4731d5633eee",
+        "normalized": "how does a letter of intent loi help a mutual fund investor reduce sales charges"
+      },
+      {
+        "id": "090ea2d7facc",
+        "normalized": "what is rights of accumulation roa within a mutual fund family"
+      },
+      {
+        "id": "ab1040a45039",
+        "normalized": "compare the liquidity profiles of openend mutual fund closedend fund and etf shares"
+      },
+      {
+        "id": "cee9432f3224",
+        "normalized": "within what period must an openend fund pay redemption proceeds to a shareholder"
+      },
+      {
+        "id": "43c4d52a710b",
+        "normalized": "what tax treatment does a regulated investment company ric receive under subchapter m"
+      },
+      {
+        "id": "e349e9f9665b",
+        "normalized": "how are mutual fund capitalgain distributions taxed to a shareholder"
+      },
+      {
+        "id": "c1b1eccdc7cb",
+        "normalized": "how do reinvested mutual fund distributions affect a shareholders cost basis"
+      },
+      {
+        "id": "8b4acce16015",
+        "normalized": "why are etfs generally more taxefficient than comparable mutual funds"
+      },
+      {
+        "id": "fb2297c1f908",
+        "normalized": "what does a funds expense ratio represent"
+      },
+      {
+        "id": "c63de2aa60b5",
+        "normalized": "differentiate a funds management fee from its 12b1 fee"
+      },
+      {
+        "id": "6c144c7e4f93",
+        "normalized": "what is the maximum aggregate sales charge finra permits a mutual fund to impose"
+      },
+      {
+        "id": "6c6d3bdab813",
+        "normalized": "what action requires a shareholder vote when a fund changes investment policy"
+      },
+      {
+        "id": "5a5b7ece4c64",
+        "normalized": "why does portfolio manager tenure matter when evaluating an actively managed fund"
+      },
+      {
+        "id": "4c951dc50d91",
+        "normalized": "what is the role of a benchmark in fund performance evaluation"
+      },
+      {
+        "id": "05a36039e738",
+        "normalized": "distinguish growth value and blend equity investment styles"
+      },
+      {
+        "id": "265c0941e394",
+        "normalized": "identify two principal benefits a pooled investment offers a small retail investor"
+      },
+      {
+        "id": "4ee632aa29ea",
+        "normalized": "identify two principal risks unique to investing through a pooled vehicle rather than directly in securities"
+      }
+    ],
+    "questions": [
+      {
+        "id": "c4a584df2be4",
+        "normalized": "an investor purchases mutual fund shares at 1030 am at what price will the order be executed under sec rule 22c1"
+      },
+      {
+        "id": "b8e28bbbc82a",
+        "normalized": "which mutual fund share class is most commonly associated with a frontend sales load and breakpoint discounts on large purchases"
+      },
+      {
+        "id": "0c1fd656b119",
+        "normalized": "an investor in a class b mutual fund share holds the position for several years the most distinctive feature of class b shares is"
+      },
+      {
+        "id": "2ffaaa4cb041",
+        "normalized": "class c mutual fund shares are best characterized by"
+      },
+      {
+        "id": "354ca8ba1c1c",
+        "normalized": "under sec rule 12b1 the fees that may be charged against fund assets to pay for distribution and shareholder servicing must be"
+      },
+      {
+        "id": "2b98274c380f",
+        "normalized": "an openend mutual funds nav per share is computed as"
+      },
+      {
+        "id": "4246fa5021e1",
+        "normalized": "closedend fund shares typically trade in the secondary market at"
+      },
+      {
+        "id": "592abcd8b8cf",
+        "normalized": "an etfs market price diverges meaningfully from its intraday nav which mechanism is primarily designed to keep the two prices closely aligned"
+      },
+      {
+        "id": "06cdd0d52911",
+        "normalized": "which of the following pooled vehicles offers the greatest intraday liquidity for a retail investor"
+      },
+      {
+        "id": "22d52272afcc",
+        "normalized": "section 22e of the investment company act generally requires an openend fund to pay redemption proceeds within how many days of the tender"
+      },
+      {
+        "id": "6e018b024c96",
+        "normalized": "which of the following is a fundamental policy of an openend fund that may be changed only with shareholder approval under section 13 of the investment company act"
+      },
+      {
+        "id": "15209401df0f",
+        "normalized": "an investment adviser is comparing two largecap growth funds which applestoapples benchmark is most appropriate for relative performance comparison"
+      },
+      {
+        "id": "48502eed4f67",
+        "normalized": "a funds prospectus shows a 500 maximum sales charge with breakpoints starting at 25000 an investor signs a 13month letter of intent loi to invest 30000 the loi primarily allows the investor to"
+      },
+      {
+        "id": "1ba71724d11a",
+        "normalized": "failing to inform a customer of available breakpoint discounts and recommending purchases just below a breakpoint is known as"
+      },
+      {
+        "id": "4749fe13cef7",
+        "normalized": "when a mutual fund makes a longterm capital gains distribution the tax treatment to a noncorporate us shareholder is generally"
+      },
+      {
+        "id": "0b4ac3558d78",
+        "normalized": "an investor sells fund shares at a loss on march 1 and buys substantially identical shares of the same fund on march 20 the loss is"
+      },
+      {
+        "id": "43c4869b2f11",
+        "normalized": "why are mutual funds sometimes described as creating embedded or phantom capital gains for new shareholders"
+      },
+      {
+        "id": "e03f0565f2fe",
+        "normalized": "which of the following best describes a funds expense ratio"
+      },
+      {
+        "id": "c363e904a586",
+        "normalized": "section 36b of the investment company act of 1940 imposes a fiduciary duty on investment advisers to mutual funds with respect to"
+      },
+      {
+        "id": "333b11c89d7c",
+        "normalized": "which of the following is the most significant risk of investing in a nondiversified sectorconcentrated mutual fund relative to a broadmarket index fund"
+      },
+      {
+        "id": "42198e0d0ead",
+        "normalized": "an investment adviser comparing two mutual funds notices fund a has had three different portfolio managers in the past five years while fund b has had the same manager for 15 years from a duediligence standpoint the high turnover at fund a is most concerning because"
+      },
+      {
+        "id": "5dc7e2c2bdfd",
+        "normalized": "a fund changes its style classification from largecap value to midcap growth without amending its prospectus this phenomenon is commonly described as"
+      },
+      {
+        "id": "1124dbc4f842",
+        "normalized": "which document is the principal disclosure document used by an openend mutual fund to register its shares with the sec and disclose fees objectives and risks"
+      },
+      {
+        "id": "9456e15b628e",
+        "normalized": "which fund vehicle has a fixed portfolio of securities that does not actively trade and typically selfliquidates on a stated termination date"
+      },
+      {
+        "id": "e62759656f07",
+        "normalized": "compared with a comparable mutual fund an etf generally provides which tax efficiency advantage"
+      },
+      {
+        "id": "e625af56e38c",
+        "normalized": "an openend mutual fund must compute its nav at least how often"
+      },
+      {
+        "id": "28ae4841e0ff",
+        "normalized": "an adviser tells a client that the public offering price pop of a class a mutual fund equals nav plus the sales charge this statement is"
+      },
+      {
+        "id": "242023f453db",
+        "normalized": "section 22d of the investment company act prohibits dealers from selling openend fund shares to the public at a price other than"
+      },
+      {
+        "id": "6d37ff1ffd23",
+        "normalized": "which feature is unique to closedend funds compared with traditional openend mutual funds"
+      },
+      {
+        "id": "6ccd619d0f72",
+        "normalized": "an iar explains tracking error to a client in the context of an index etf tracking error most accurately means"
+      },
+      {
+        "id": "552ecc011a15",
+        "normalized": "hedge funds and private equity funds typically rely on which exemption from investment company act registration"
+      },
+      {
+        "id": "9928176af3bd",
+        "normalized": "which statement about the liquidity of pooled investments is most accurate"
+      },
+      {
+        "id": "58080d9aa001",
+        "normalized": "which of the following changes would not typically require shareholder approval under the investment company act"
+      },
+      {
+        "id": "0a8f578b7ff4",
+        "normalized": "an investor purchases a closedend fund trading at a 12 discount to nav which statement best describes the implication of buying at a discount"
+      },
+      {
+        "id": "7a468e839f7f",
+        "normalized": "class i institutional mutual fund shares typically differ from class a shares in that class i shares"
+      },
+      {
+        "id": "3febae14e7ed",
+        "normalized": "a mutual funds prospectus reports a turnover rate of 150 the most important investor implication is"
+      },
+      {
+        "id": "335e421d1386",
+        "normalized": "compared with directly owning a diversified portfolio of stocks a primary benefit a small investor obtains from a pooled investment is"
+      },
+      {
+        "id": "2d87068821e5",
+        "normalized": "which of the following is a recognized risk of investing in pooled vehicles such as mutual funds"
+      },
+      {
+        "id": "5ee6b6beb725",
+        "normalized": "under rule 22c2 an openend funds board may approve a redemption fee up to 2 primarily intended to"
+      },
+      {
+        "id": "5de74ae512c7",
+        "normalized": "an iar is comparing two largecap value funds with similar 5year returns fund x has an expense ratio of 040 and fund y has 140 holding all else equal the higherexpense fund must"
+      },
+      {
+        "id": "6033bdf1d7bf",
+        "normalized": "two equity funds are categorized in the same morningstar largeblend style box which comparison is generally most informative when assessing relative performance"
+      },
+      {
+        "id": "f8ba7beaf6a4",
+        "normalized": "a client owning a closedend fund hopes to redeem shares directly with the fund at nav the iar should explain that"
+      },
+      {
+        "id": "610414b994d6",
+        "normalized": "an investor receives a form 1099div showing 1000 of ordinary dividends and 500 of longterm capital gain distributions from a mutual fund the most accurate tax statement is"
+      }
+    ]
+  }
+}

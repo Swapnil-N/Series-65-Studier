@@ -1,0 +1,271 @@
+{
+  "subtopicId": "4.4",
+  "items": {
+    "lessons": [
+      {
+        "id": "4.4",
+        "normalized": "definition of an agent of a brokerdealer"
+      }
+    ],
+    "cards": [
+      {
+        "id": "8b488d0fedd3",
+        "normalized": "define agent under the uniform securities act"
+      },
+      {
+        "id": "e46f5f63b75d",
+        "normalized": "can a corporation or partnership itself be an agent under the usa"
+      },
+      {
+        "id": "2c826f13617f",
+        "normalized": "are brokerdealer employees who perform only clerical or ministerial duties considered agents"
+      },
+      {
+        "id": "5dae6cbefa74",
+        "normalized": "when is a partner officer or director of a brokerdealer also an agent requiring registration"
+      },
+      {
+        "id": "aa25eec2510e",
+        "normalized": "distinguish brokerdealer from agent under the uniform securities act"
+      },
+      {
+        "id": "8d059362a096",
+        "normalized": "is an individual who is paid commissions to sell securities to retail clients on behalf of a brokerdealer required to register"
+      },
+      {
+        "id": "d26ae3ba930c",
+        "normalized": "is an individual who effects transactions only with institutional clients on behalf of a brokerdealer excluded from agent registration"
+      },
+      {
+        "id": "0b3d098c16ad",
+        "normalized": "is an individual representing an issuer always an agent under the usa"
+      },
+      {
+        "id": "f2e8d4174b55",
+        "normalized": "list categories of issuer securities whose sale by an individual representing the issuer does not make that person an agent"
+      },
+      {
+        "id": "425dedbc49a3",
+        "normalized": "must an individual representing an issuer in an exempt transaction register as an agent"
+      },
+      {
+        "id": "0f93dab5a925",
+        "normalized": "in which states must an agent of a brokerdealer be registered"
+      },
+      {
+        "id": "242013c8ab2f",
+        "normalized": "if an agent represents two unaffiliated brokerdealers how many registrations are required"
+      },
+      {
+        "id": "d67ab26503f9",
+        "normalized": "when does an agents state registration become effective absent any pending proceeding"
+      },
+      {
+        "id": "0e696a31a0ff",
+        "normalized": "what form is filed to register an individual as an agent of a brokerdealer"
+      },
+      {
+        "id": "8cd94a5be4c7",
+        "normalized": "who files notice of an agents termination from a brokerdealer and on what form"
+      },
+      {
+        "id": "79e0af0b1b45",
+        "normalized": "may an applicant transact business as an agent while their initial registration is still pending"
+      },
+      {
+        "id": "af7e7cfd9ada",
+        "normalized": "if a brokerdealer is a federal covered firm are its agents also exempt from state registration"
+      },
+      {
+        "id": "10cb88da331c",
+        "normalized": "can the same person be both an agent of a brokerdealer and an investment adviser representative"
+      },
+      {
+        "id": "a503fce51be8",
+        "normalized": "what is the snowbird exemption from agent registration"
+      },
+      {
+        "id": "cf9b9e9bb149",
+        "normalized": "may the administrator require an agent to post a surety bond"
+      },
+      {
+        "id": "72769c9aeba4",
+        "normalized": "may an administrator require an agent applicant to pass an examination"
+      },
+      {
+        "id": "d23818794f48",
+        "normalized": "under what limited circumstances may an agent of a canadian brokerdealer effect transactions in a us state without full state registration"
+      },
+      {
+        "id": "f2f59bbf9c82",
+        "normalized": "does an unsolicited order from a customer who happens to be visiting another state require the agent to be registered in that state"
+      },
+      {
+        "id": "cdd2de7f8dde",
+        "normalized": "if a sales assistant only takes unsolicited orders from existing clients in addition to clerical duties what is their status"
+      }
+    ],
+    "questions": [
+      {
+        "id": "b802e6994425",
+        "normalized": "under the uniform securities act of 1956 the term agent refers to which of the following"
+      },
+      {
+        "id": "83793071a010",
+        "normalized": "which of the following is true regarding the definition of agent under the uniform securities act"
+      },
+      {
+        "id": "1d95fa871cbe",
+        "normalized": "which of the following individuals is most clearly an agent required to register under the uniform securities act"
+      },
+      {
+        "id": "3fc58b2cd596",
+        "normalized": "which person at a brokerdealer would not be considered an agent under the uniform securities act"
+      },
+      {
+        "id": "94d21d158445",
+        "normalized": "an individual representing an issuer in selling us treasury securities directly to investors is under usa 1956"
+      },
+      {
+        "id": "4eee988a2548",
+        "normalized": "under usa 1956 an individual representing an issuer in selling qualifying commercial paper is generally"
+      },
+      {
+        "id": "ba8639cd59ff",
+        "normalized": "section 3a4 of the securities exchange act of 1934 defines a broker which best contrasts that federal definition with the statelaw concept of an agent"
+      },
+      {
+        "id": "f2141a8f16f3",
+        "normalized": "form u4 is used primarily to"
+      },
+      {
+        "id": "822349a5a0e7",
+        "normalized": "when an agents employment with a brokerdealer is terminated which uniform form is required to be filed"
+      },
+      {
+        "id": "eaa2666a9f2a",
+        "normalized": "if a brokerdealers state registration is suspended or revoked what generally happens to its agents registrations in that state"
+      },
+      {
+        "id": "f4c6542fa011",
+        "normalized": "an agent leaves brokerdealer a to join brokerdealer b under the uniform securities act who is required to notify the state administrator of the change"
+      },
+      {
+        "id": "c0e21a3216f6",
+        "normalized": "an agent is registered only in state x a longtime customer temporarily vacations in state y and calls to place a securities order under the usa the agent typically may handle this order if"
+      },
+      {
+        "id": "7ed9144de3f3",
+        "normalized": "a securities corporation registered as a brokerdealer is under the usa"
+      },
+      {
+        "id": "4e9f28a2bf2c",
+        "normalized": "an individual represents an issuer in selling securities issued by a us bank chartered by a federal regulator under usa 1956 the individual is"
+      },
+      {
+        "id": "f081462c374e",
+        "normalized": "commercial paper that qualifies for the issueragent exclusion under usa 1956 generally must satisfy which conditions"
+      },
+      {
+        "id": "91777ff75e67",
+        "normalized": "an employee of an issuer sells investment contracts representing interests in the issuers employee profitsharing plan receiving no commissions under usa 1956 the employee is"
+      },
+      {
+        "id": "4dc121b260ba",
+        "normalized": "an individual representing an issuer solely in connection with an exempt transaction under usa section 402 is generally"
+      },
+      {
+        "id": "c2bef50feff0",
+        "normalized": "under the uniform securities act of 2002 the definition of agent"
+      },
+      {
+        "id": "99c31db8983d",
+        "normalized": "an agent of a brokerdealer must be registered in"
+      },
+      {
+        "id": "b7d4af641a66",
+        "normalized": "under usa 1956 an individual is acting as an agent if she effects or attempts to effect securities transactions which of the following best illustrates attempting to effect"
+      },
+      {
+        "id": "db20177da991",
+        "normalized": "a senior partner at a brokerdealer who never solicits customers and only handles internal operations is"
+      },
+      {
+        "id": "7c2750e101bb",
+        "normalized": "form u4 generally requires an applicant to disclose all of the following except"
+      },
+      {
+        "id": "6eb466679267",
+        "normalized": "an individual receives no compensation for soliciting securities transactions on behalf of a registered brokerdealer under usa 1956 is the individual an agent"
+      },
+      {
+        "id": "10cd5513a456",
+        "normalized": "an agent registered in state a travels to state b and while there solicits new prospects with whom she has no preexisting relationship for securities sales under the usa this generally"
+      },
+      {
+        "id": "7408a327d883",
+        "normalized": "an agents existing client temporarily relocates to another state for less than 30 days under typical state de minimis snowbird provisions"
+      },
+      {
+        "id": "8665ccc059b5",
+        "normalized": "a bds sales assistant accepts unsolicited customer orders for securities while the registered representative is unavailable under usa 1956"
+      },
+      {
+        "id": "4e469297a7a2",
+        "normalized": "a summer intern is hired by a brokerdealer to make cold calls and solicit prospective new securities accounts the intern"
+      },
+      {
+        "id": "2c14ef6e67de",
+        "normalized": "which of the following best distinguishes a brokerdealer agent from an investment adviser representative iar"
+      },
+      {
+        "id": "90e75cbd8c56",
+        "normalized": "the general statelaw requirement that a person may not transact business as an agent unless registered is found in"
+      },
+      {
+        "id": "49571d87c9ba",
+        "normalized": "under the usa an agents application for registration generally becomes effective"
+      },
+      {
+        "id": "9eba866b0003",
+        "normalized": "under usa 1956 may an individual be registered as an agent of more than one brokerdealer at the same time"
+      },
+      {
+        "id": "d4672802c604",
+        "normalized": "which of the following cannot be an agent under the uniform securities act"
+      },
+      {
+        "id": "a8fff2b5f316",
+        "normalized": "an individual sells generalobligation municipal bonds on behalf of the issuing municipality under usa 1956 the individual is"
+      },
+      {
+        "id": "31808accd79a",
+        "normalized": "a brokerdealer pays an unregistered finder a transactionbased finders fee for referrals that produce securities sales under usa 1956 this practice is"
+      },
+      {
+        "id": "0d8ebf0471cd",
+        "normalized": "form u5 the uniform termination notice generally must be filed by the brokerdealer within how many days of an agents termination"
+      },
+      {
+        "id": "1265a7c33c3a",
+        "normalized": "an agent associated with a registered brokerdealer effects transactions for customers exclusively in us treasury securities under usa 1956 the agent"
+      },
+      {
+        "id": "32c17c1cbb02",
+        "normalized": "an issuers employee sells the issuers stock to existing employees under a stockpurchase plan and receives no commission tied to sales under usa 1956 this employee"
+      },
+      {
+        "id": "bb69af56de50",
+        "normalized": "under usa 1956 the administrator may by rule or order exclude additional persons from the definition of agent if doing so is consistent with"
+      },
+      {
+        "id": "aecdbeff411e",
+        "normalized": "a brokerdealer is registered with the sec under section 15 of the securities exchange act of 1934 its individual agents"
+      },
+      {
+        "id": "f9119d6e4807",
+        "normalized": "under usa 1956 whether a person is an agent is determined principally by"
+      }
+    ]
+  }
+}

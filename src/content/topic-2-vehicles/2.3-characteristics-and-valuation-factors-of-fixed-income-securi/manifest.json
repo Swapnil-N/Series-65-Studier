@@ -1,0 +1,263 @@
+{
+  "subtopicId": "2.3",
+  "items": {
+    "lessons": [
+      {
+        "id": "2.3",
+        "normalized": "characteristics and valuation factors of fixed income securities"
+      }
+    ],
+    "cards": [
+      {
+        "id": "f3a34d4e88ec",
+        "normalized": "why are interest payments on most municipal bonds attractive to highbracket investors"
+      },
+      {
+        "id": "8821c15d026e",
+        "normalized": "how are interest payments on us treasury securities taxed"
+      },
+      {
+        "id": "4dfa60325d21",
+        "normalized": "identify the lowest investmentgrade rating from standard poors"
+      },
+      {
+        "id": "49a1b25ad06a",
+        "normalized": "identify the lowest investmentgrade rating from moodys"
+      },
+      {
+        "id": "e5e719bb6f1a",
+        "normalized": "in a corporate liquidation rank secured bondholders debenture holders preferred stockholders and common stockholders"
+      },
+      {
+        "id": "c05e90e89746",
+        "normalized": "describe a callable bond"
+      },
+      {
+        "id": "cabc9b28c260",
+        "normalized": "how does an embedded call feature affect the yield demanded by investors"
+      },
+      {
+        "id": "7690e9a34f3d",
+        "normalized": "contrast a zerocoupon bond with a coupon bond"
+      },
+      {
+        "id": "89a40216a809",
+        "normalized": "how is the annual accretion on a taxable zerocoupon bond taxed"
+      },
+      {
+        "id": "1c2da4b7afaa",
+        "normalized": "define duration as a fixed income risk measure"
+      },
+      {
+        "id": "d9b802a298a9",
+        "normalized": "all else equal how do a higher coupon and a longer maturity affect duration"
+      },
+      {
+        "id": "fe40108bbce1",
+        "normalized": "when does a bond trade at a premium versus a discount"
+      },
+      {
+        "id": "ecd0d8290c18",
+        "normalized": "for a premium bond rank coupon current yield and yield to maturity from highest to lowest"
+      },
+      {
+        "id": "c0321dc3cc21",
+        "normalized": "compute the current yield on a 5 coupon bond trading at 95"
+      },
+      {
+        "id": "8b90d6839d73",
+        "normalized": "what does yield to maturity ytm represent"
+      },
+      {
+        "id": "e4768dcae329",
+        "normalized": "why is ytc lower than ytm for a callable bond purchased at a premium"
+      },
+      {
+        "id": "eeb908b97b19",
+        "normalized": "define interestrate risk for fixed income and identify its standard firstorder measure"
+      },
+      {
+        "id": "23780bfcab3e",
+        "normalized": "distinguish reinvestment risk from interestrate risk"
+      },
+      {
+        "id": "4b3041f0a16f",
+        "normalized": "define credit default risk and how rating agencies communicate it"
+      },
+      {
+        "id": "1c01ad81a02b",
+        "normalized": "define a credit spread"
+      },
+      {
+        "id": "79f87b52bc55",
+        "normalized": "what does market liquidity mean for a bond and which bonds are typically most and least liquid"
+      },
+      {
+        "id": "1e76939e2931",
+        "normalized": "compute the parity conversion value of a convertible bond with a conversion ratio of 40 when the underlying stock trades at 30"
+      },
+      {
+        "id": "cdf1064f6353",
+        "normalized": "why does a convertible bond often trade at a conversion premium"
+      },
+      {
+        "id": "c7cb47e51f77",
+        "normalized": "explain how discounted cash flow dcf values a bond"
+      },
+      {
+        "id": "996b0eeb4074",
+        "normalized": "in liquidation how does preferred stocks claim compare with common stock and with bonds"
+      },
+      {
+        "id": "534ed917276d",
+        "normalized": "explain why a bonds price moves inversely with prevailing market interest rates"
+      }
+    ],
+    "questions": [
+      {
+        "id": "e79948b5fc64",
+        "normalized": "when prevailing market interest rates rise the price of an existing fixedrate bond will most likely do which of the following"
+      },
+      {
+        "id": "65124a43206a",
+        "normalized": "a corporate bond is currently quoted at 105 the bond is trading at"
+      },
+      {
+        "id": "dc3ae9c3912d",
+        "normalized": "a corporate bond quoted at 95 is trading at"
+      },
+      {
+        "id": "e4893aefb9d8",
+        "normalized": "the par value of a typical us corporate bond is generally"
+      },
+      {
+        "id": "9dc4bd41a63e",
+        "normalized": "under standard poors rating scale the lowest rating that is still considered investment grade is"
+      },
+      {
+        "id": "778eba1d7b33",
+        "normalized": "in a corporate liquidation which of the following claimants is generally paid first"
+      },
+      {
+        "id": "100b451839a1",
+        "normalized": "a zerocoupon bond is most commonly issued at"
+      },
+      {
+        "id": "fb11bd7a8411",
+        "normalized": "interest paid on a general obligation municipal bond is generally"
+      },
+      {
+        "id": "70959583bb99",
+        "normalized": "interest paid on us treasury notes and bonds is exempt from"
+      },
+      {
+        "id": "198cc8767429",
+        "normalized": "a bonds coupon rate is best described as"
+      },
+      {
+        "id": "cb1135bbd04e",
+        "normalized": "which yield measure uses only the annual coupon income and the bonds current market price"
+      },
+      {
+        "id": "06d061e2f860",
+        "normalized": "macaulay duration is best described as"
+      },
+      {
+        "id": "188e0482109e",
+        "normalized": "all else equal which bond has the highest duration and therefore the greatest interestrate sensitivity"
+      },
+      {
+        "id": "581b9f37f145",
+        "normalized": "a callable bond is purchased at a premium the lowest yield the investor is likely to realize is the"
+      },
+      {
+        "id": "fdbbd13c9464",
+        "normalized": "holders of zerocoupon bonds other than taxexempt municipal zeros are subject to us federal income tax on"
+      },
+      {
+        "id": "f90c5576bfc5",
+        "normalized": "an investor in the 32 federal marginal tax bracket is comparing a 4 taxexempt municipal bond with a taxable corporate bond the taxableequivalent yield of the muni is closest to"
+      },
+      {
+        "id": "a3bc91b6b28e",
+        "normalized": "a widening credit spread between corporate bonds and treasuries of similar maturity generally indicates that"
+      },
+      {
+        "id": "c766034c5a3e",
+        "normalized": "a bond has a modified duration of about 7 a 100 basispoint rise in interest rates will cause its price to change by approximately"
+      },
+      {
+        "id": "1465bf6b3a7a",
+        "normalized": "yield to maturity ytm is best described as"
+      },
+      {
+        "id": "3bcc101be19a",
+        "normalized": "for a bond trading at a discount to par the relationship among coupon rate current yield and yield to maturity is"
+      },
+      {
+        "id": "b170531a36e3",
+        "normalized": "a convertible corporate bond with 1000 par has a conversion ratio of 25 shares if the underlying common stock trades at 42 the bonds parity conversion value is"
+      },
+      {
+        "id": "940c0e591885",
+        "normalized": "reinvestment risk on a coupon bond is most pronounced when"
+      },
+      {
+        "id": "183ab44600d7",
+        "normalized": "discounted cash flow dcf valuation of a bond determines value as"
+      },
+      {
+        "id": "95179682fcb4",
+        "normalized": "among moodys longterm ratings the lowest rating still classified as investment grade is"
+      },
+      {
+        "id": "dae3b9ef31d2",
+        "normalized": "an investor holds a 6 callable corporate bond call risk is greatest when"
+      },
+      {
+        "id": "0dba05fb388f",
+        "normalized": "in a corporate liquidation preferred stockholders rank"
+      },
+      {
+        "id": "2c29ce71a779",
+        "normalized": "compared with a 10year coupon bond a 10year zerocoupon bond will have"
+      },
+      {
+        "id": "59bfc0f382bb",
+        "normalized": "liquidity risk in fixed income is best described as the risk that"
+      },
+      {
+        "id": "01a0ea07bec5",
+        "normalized": "a credit rating downgrade from bbb to bb would generally cause the affected bonds price to"
+      },
+      {
+        "id": "052774525596",
+        "normalized": "an investor buys a 5 coupon 1000 par bond at a price of 90 the current yield is closest to"
+      },
+      {
+        "id": "e0579d4f66dd",
+        "normalized": "if a bonds yield to call is meaningfully below its yield to maturity the bond is most likely"
+      },
+      {
+        "id": "df351d0b5e96",
+        "normalized": "an investor in the 24 federal marginal tax bracket holds a 5 taxable corporate bond the investors aftertax yield is approximately"
+      },
+      {
+        "id": "4353b33505c8",
+        "normalized": "an investor compares an instate municipal bond paying 35 federal and statetaxexempt with a taxable corporate bond if the investors combined federalandstate marginal rate is 35 the munis taxableequivalent yield is closest to"
+      },
+      {
+        "id": "92a933d05b30",
+        "normalized": "an investor holding a callable bond is most directly exposed to which risk when interest rates fall sharply"
+      },
+      {
+        "id": "320049310e60",
+        "normalized": "why does duration generally understate the true price impact of a large change in interest rates"
+      },
+      {
+        "id": "4c1473fb3df8",
+        "normalized": "a convertible bond has a conversion ratio of 40 shares per bond and the underlying stock trades at 30 the bond is currently quoted at 130 the conversion premium in dollars is"
+      }
+    ]
+  }
+}

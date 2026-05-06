@@ -1,0 +1,267 @@
+{
+  "subtopicId": "3.3",
+  "items": {
+    "lessons": [
+      {
+        "id": "3.3",
+        "normalized": "capital market theory modern portfolio theory capm and the efficient market hypothesis"
+      }
+    ],
+    "cards": [
+      {
+        "id": "f478117057b1",
+        "normalized": "what does the capital asset pricing model capm calculate"
+      },
+      {
+        "id": "2bf0fdeead68",
+        "normalized": "state the capm formula"
+      },
+      {
+        "id": "0b978969ffcd",
+        "normalized": "in capm what does beta measure"
+      },
+      {
+        "id": "609faf1d5b92",
+        "normalized": "compute the capm required return for a stock with beta 14 when rf 3 and rm 9"
+      },
+      {
+        "id": "8e2623fb25e1",
+        "normalized": "what proxy is most commonly used for the riskfree rate in capm"
+      },
+      {
+        "id": "1baa4278c260",
+        "normalized": "define the market risk premium"
+      },
+      {
+        "id": "e9ade46631be",
+        "normalized": "what is the security market line sml"
+      },
+      {
+        "id": "ecd7dc465f8c",
+        "normalized": "if a stock plots above the security market line how is it characterized"
+      },
+      {
+        "id": "1064bf97acc4",
+        "normalized": "list the key assumptions of capm"
+      },
+      {
+        "id": "a397e9e8e0c8",
+        "normalized": "who developed modern portfolio theory and when"
+      },
+      {
+        "id": "eea2a1e71890",
+        "normalized": "what is the central insight of modern portfolio theory"
+      },
+      {
+        "id": "38fe4660d82d",
+        "normalized": "define the efficient frontier"
+      },
+      {
+        "id": "6a9b642203a3",
+        "normalized": "distinguish systematic from unsystematic risk"
+      },
+      {
+        "id": "ae4b300af888",
+        "normalized": "under mpt which type of risk is rewarded with higher expected return"
+      },
+      {
+        "id": "816668b9d225",
+        "normalized": "what role does correlation play in mpt diversification benefits"
+      },
+      {
+        "id": "dc63b4eb7cb4",
+        "normalized": "what is the capital market line cml"
+      },
+      {
+        "id": "50356fa7435a",
+        "normalized": "how does the capital market line differ from the security market line"
+      },
+      {
+        "id": "871bef191d17",
+        "normalized": "define the sharpe ratio"
+      },
+      {
+        "id": "76df16431861",
+        "normalized": "who formalized the efficient market hypothesis and when"
+      },
+      {
+        "id": "6a8e954d8a09",
+        "normalized": "state the core claim of the efficient market hypothesis"
+      },
+      {
+        "id": "29a869238a82",
+        "normalized": "what information set does the weak form of emh assume is reflected in prices"
+      },
+      {
+        "id": "91e92206e6e8",
+        "normalized": "what information set does the semistrong form of emh assume is reflected in prices"
+      },
+      {
+        "id": "220b33cc51e2",
+        "normalized": "what information set does the strong form of emh assume is reflected in prices"
+      },
+      {
+        "id": "63412c6c65e4",
+        "normalized": "which form of emh is contradicted by the existence of profitable insider trading"
+      },
+      {
+        "id": "b92c918f69c8",
+        "normalized": "what investment management style is most directly supported by the efficient market hypothesis"
+      },
+      {
+        "id": "d7e54c47b91c",
+        "normalized": "identify a market anomaly that challenges the efficient market hypothesis"
+      },
+      {
+        "id": "d7f896cc8592",
+        "normalized": "how does capm relate to mpt and emh conceptually"
+      }
+    ],
+    "questions": [
+      {
+        "id": "b92cffeb9659",
+        "normalized": "which economist is most closely associated with modern portfolio theory and the introduction of the efficient frontier"
+      },
+      {
+        "id": "200fb54d7ef1",
+        "normalized": "in the capital asset pricing model what does the beta coefficient measure"
+      },
+      {
+        "id": "215517a85aa5",
+        "normalized": "under the capital asset pricing model the required return on an asset equals which of the following"
+      },
+      {
+        "id": "f3a663a40150",
+        "normalized": "which of the following best describes the efficient frontier in modern portfolio theory"
+      },
+      {
+        "id": "df36e94d177a",
+        "normalized": "an economist publishes the seminal 1970 review article that codifies the three forms of the efficient market hypothesis that economist is"
+      },
+      {
+        "id": "b28b577697cb",
+        "normalized": "according to the efficient market hypothesis which type of analysis would be useless under the weak form"
+      },
+      {
+        "id": "b304caf202a8",
+        "normalized": "a diversified portfolio reduces which type of risk"
+      },
+      {
+        "id": "ce132a707528",
+        "normalized": "what is the beta of the overall market portfolio in capm"
+      },
+      {
+        "id": "2048dfc50623",
+        "normalized": "in capm what proxy is most commonly used for the riskfree rate of return"
+      },
+      {
+        "id": "34702dd66df2",
+        "normalized": "the sharpe ratio is best described as"
+      },
+      {
+        "id": "1d6ec5aed0fc",
+        "normalized": "an investor calculates the capital asset pricing model expected return for a stock with a beta of 12 when the riskfree rate is 3 and the expected market return is 9 what is the expected return"
+      },
+      {
+        "id": "baa7e9dcb64d",
+        "normalized": "a stock has a beta of 07 which of the following statements about the stock is most accurate"
+      },
+      {
+        "id": "6c11606f9159",
+        "normalized": "under capm if the riskfree rate increases while the market risk premium stays the same the required return on a stock with beta of 15 will"
+      },
+      {
+        "id": "4a8a4dffd07f",
+        "normalized": "which of the following is true of the security market line sml used in capm"
+      },
+      {
+        "id": "d46a5e9956ba",
+        "normalized": "which statement best distinguishes the capital market line cml from the security market line sml"
+      },
+      {
+        "id": "fdb35b3e3870",
+        "normalized": "under the semistrong form of the efficient market hypothesis which form of analysis is presumed to be unable to generate consistent excess riskadjusted returns"
+      },
+      {
+        "id": "f9bf43181e7a",
+        "normalized": "under the strong form of the efficient market hypothesis"
+      },
+      {
+        "id": "ccdd5a69548e",
+        "normalized": "if markets are semistrongform efficient which of the following investment approaches is most logically supported"
+      },
+      {
+        "id": "55f7bf970952",
+        "normalized": "two stocks have a correlation coefficient of 10 combining them in a portfolio"
+      },
+      {
+        "id": "4373d4283119",
+        "normalized": "standard deviation of returns is best described as a measure of"
+      },
+      {
+        "id": "da673af5d73e",
+        "normalized": "alpha in the context of the capm is most accurately defined as"
+      },
+      {
+        "id": "6715b8d96dc8",
+        "normalized": "on the efficient frontier portfolio x offers an expected return of 8 with a standard deviation of 12 while portfolio y offers an expected return of 8 with a standard deviation of 15 under mpt which is true"
+      },
+      {
+        "id": "f0f6c42d2c0a",
+        "normalized": "which of the following is an example of systematic risk"
+      },
+      {
+        "id": "9a6bdb090068",
+        "normalized": "the random walk idea in capital market theory most directly supports which form of the efficient market hypothesis"
+      },
+      {
+        "id": "aecab5a4305f",
+        "normalized": "an adviser observes that smallcap stocks have historically outperformed in january which statement best characterizes this january effect in the context of the efficient market hypothesis"
+      },
+      {
+        "id": "6ff2188817fe",
+        "normalized": "if the expected return on the market is 10 and the riskfree rate is 4 the equity risk premium used in capm is"
+      },
+      {
+        "id": "5f5e57053ba7",
+        "normalized": "beta is calculated using which of the following statistical relationships"
+      },
+      {
+        "id": "14ae3f9d8d07",
+        "normalized": "which of the following best summarizes the contribution of capm beyond modern portfolio theory"
+      },
+      {
+        "id": "181dddf0454d",
+        "normalized": "an investor combines a risky portfolio with the riskfree asset under mptcapm the resulting set of combinations forms which line"
+      },
+      {
+        "id": "99be612c9e4a",
+        "normalized": "stock a has an expected return of 12 a beta of 15 when the riskfree rate is 3 and the expected market return is 9 using capm the stocks alpha is"
+      },
+      {
+        "id": "b684bec522c2",
+        "normalized": "stock z has an expected return of 14 a beta of 12 when the riskfree rate is 2 and the expected market return is 8 using capm the stocks alpha and pricing implication are"
+      },
+      {
+        "id": "6c20ccb8b1dd",
+        "normalized": "a security has a negative beta according to capm what would its required return be when the market risk premium is positive"
+      },
+      {
+        "id": "b176afbe575c",
+        "normalized": "which of the following statements about the relationship among the three forms of the efficient market hypothesis is correct"
+      },
+      {
+        "id": "19ec7c6c7d97",
+        "normalized": "an investor concludes that the market is semistrongform efficient which empirical finding would most directly contradict that view"
+      },
+      {
+        "id": "74186538adf0",
+        "normalized": "an iar builds a twoasset portfolio with 60 in asset a σ20 and 40 in asset b σ10 if the correlation between a and b is 10 the portfolios standard deviation is"
+      },
+      {
+        "id": "eccd463fa039",
+        "normalized": "two efficient portfolios on the efficient frontier have the same expected return but different standard deviations according to mpt what should a rational riskaverse investor conclude"
+      }
+    ]
+  }
+}

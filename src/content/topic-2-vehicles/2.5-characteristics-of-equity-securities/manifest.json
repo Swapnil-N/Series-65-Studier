@@ -1,0 +1,287 @@
+{
+  "subtopicId": "2.5",
+  "items": {
+    "lessons": [
+      {
+        "id": "2.5",
+        "normalized": "characteristics of equity securities"
+      }
+    ],
+    "cards": [
+      {
+        "id": "64867f4d3e30",
+        "normalized": "what is a preemptive right"
+      },
+      {
+        "id": "9dd2320d72c1",
+        "normalized": "in a corporate liquidation where do common shareholders stand in the payout priority"
+      },
+      {
+        "id": "c75da7389f3a",
+        "normalized": "distinguish statutory voting from cumulative voting"
+      },
+      {
+        "id": "21b7c7298aeb",
+        "normalized": "calculate an investor owning 1000 shares votes for 4 director seats under cumulative voting how many votes can be cast for a single candidate"
+      },
+      {
+        "id": "ca49fa2f84a3",
+        "normalized": "are common stock dividends guaranteed"
+      },
+      {
+        "id": "55254a09e76b",
+        "normalized": "define restricted stock as the term is used under rule 144"
+      },
+      {
+        "id": "e1175b833d63",
+        "normalized": "what is the rule 144 holding period for restricted stock of an sec reporting issuer"
+      },
+      {
+        "id": "82da9fdea130",
+        "normalized": "what is the rule 144 holding period for restricted stock of a nonreporting issuer"
+      },
+      {
+        "id": "10e62c834e3d",
+        "normalized": "under rule 144 what volume limitation applies to an affiliates resale of restricted or control stock in any 90day period"
+      },
+      {
+        "id": "1bfad50dc9e6",
+        "normalized": "when must form 144 be filed"
+      },
+      {
+        "id": "94a1ac69f182",
+        "normalized": "what does rule 144a permit"
+      },
+      {
+        "id": "92b8b55e2959",
+        "normalized": "who is a qualified institutional buyer qib under rule 144a"
+      },
+      {
+        "id": "106357d58584",
+        "normalized": "why must restricted stock be held before resale"
+      },
+      {
+        "id": "9ef4b16d6709",
+        "normalized": "what are the four key dates in the cashdividend cycle"
+      },
+      {
+        "id": "9ec3d1a6c272",
+        "normalized": "how is the exdividend date set under current t1 settlement"
+      },
+      {
+        "id": "bc781e06a678",
+        "normalized": "compare a cash dividend with a stock dividend in terms of taxation"
+      },
+      {
+        "id": "ebf1d1ec4312",
+        "normalized": "what is the principal advantage of an incentive stock option iso over a nonqualified stock option nso"
+      },
+      {
+        "id": "7f3dd51a29a9",
+        "normalized": "what holdingperiod tests must be satisfied for an iso disposition to qualify for full longterm capitalgain treatment"
+      },
+      {
+        "id": "0bb87d16b268",
+        "normalized": "how is the bargain element of a nonqualified stock option taxed at exercise"
+      },
+      {
+        "id": "e05ab220986d",
+        "normalized": "what special tax issue arises when an iso is exercised and the shares are held"
+      },
+      {
+        "id": "b9c635054b72",
+        "normalized": "what annual dollar cap limits the value of isos that can first become exercisable for an employee in a calendar year"
+      },
+      {
+        "id": "b277eccd313a",
+        "normalized": "can isos be granted to nonemployees such as outside directors or consultants"
+      },
+      {
+        "id": "d4d3c8748e9c",
+        "normalized": "why are most publiccompany shareholder votes conducted by proxy"
+      },
+      {
+        "id": "fbc8a16f6ff7",
+        "normalized": "what is the residual claim of common stockholders"
+      },
+      {
+        "id": "b82ea8e60890",
+        "normalized": "distinguish a rights offering from a preemptive right"
+      }
+    ],
+    "questions": [
+      {
+        "id": "fbd689f75a6d",
+        "normalized": "each share of a companys common stock generally entitles the holder to how many votes per share at the annual shareholder meeting"
+      },
+      {
+        "id": "7f9bd80b9d0f",
+        "normalized": "which class of equity security typically does not carry voting rights in routine matters such as director elections"
+      },
+      {
+        "id": "09a66c8a8482",
+        "normalized": "treasury stock shares the issuer has repurchased and is holding in its own treasury has which of the following characteristics"
+      },
+      {
+        "id": "6a13b8a2ef10",
+        "normalized": "under statutory voting a shareholder who owns 200 shares and is voting on the election of five directors may cast a maximum of how many votes for any single candidate"
+      },
+      {
+        "id": "4876c523da26",
+        "normalized": "a company is electing four directors and a shareholder owns 300 shares under cumulative voting what is the maximum number of votes the shareholder may cast for a single nominee"
+      },
+      {
+        "id": "621653be6f1c",
+        "normalized": "which voting method is generally considered more favorable to minority shareholders seeking board representation"
+      },
+      {
+        "id": "2fc1f495dd24",
+        "normalized": "solicitations of shareholder proxies by a company subject to the federal proxy rules are governed primarily by which provision"
+      },
+      {
+        "id": "d92ace0a48c6",
+        "normalized": "which sec rule prohibits the use of false or misleading statements in connection with the solicitation of proxies"
+      },
+      {
+        "id": "99f4d1c092ae",
+        "normalized": "the preemptive right of a common shareholder is best described as the right to"
+      },
+      {
+        "id": "b4cc4e43bb64",
+        "normalized": "a corporation conducts a rights offering to current shareholders the primary purpose of issuing rights is to"
+      },
+      {
+        "id": "02a7cc972b07",
+        "normalized": "stock subscription rights distributed to common shareholders typically have which of the following characteristics"
+      },
+      {
+        "id": "cbeaaa7456b5",
+        "normalized": "a companys stock trades cumrights at 30 the subscription price is 25 and four rights are required to purchase one new share what is the theoretical value of one right"
+      },
+      {
+        "id": "58d99e2f5468",
+        "normalized": "in a corporate liquidation which class of claimants is paid last out of remaining assets"
+      },
+      {
+        "id": "a27cc2955b2f",
+        "normalized": "within the equity portion of the capital structure preferred shareholders claim in liquidation is"
+      },
+      {
+        "id": "4e0001fab280",
+        "normalized": "a corporation issues cumulative preferred stock two annual dividends have been omitted passed in a subsequent liquidation the cumulative feature requires that"
+      },
+      {
+        "id": "6e865ada5b38",
+        "normalized": "in bankruptcy which group has the highest priority claim against the assets of a liquidating corporation"
+      },
+      {
+        "id": "bb0737fd5655",
+        "normalized": "which of the following best describes restricted stock"
+      },
+      {
+        "id": "809f211a99f1",
+        "normalized": "under rule 144 what is the minimum holding period before a nonaffiliate may resell restricted securities of an sec reporting issuer without volume or other limitations assuming current public information is available"
+      },
+      {
+        "id": "ccc825e515ec",
+        "normalized": "under rule 144 what is the minimum holding period for restricted securities of a nonreporting issuer before a nonaffiliate may resell without restriction"
+      },
+      {
+        "id": "f29ea32df8cc",
+        "normalized": "an affiliate of a reporting issuer wishes to sell shares under rule 144 the volume limitation in any threemonth period is the greater of"
+      },
+      {
+        "id": "0511746c7b15",
+        "normalized": "an affiliate plans to sell stock of a reporting company under rule 144 the company has 10000000 shares outstanding and the average weekly reported trading volume over the prior four weeks was 80000 shares what is the maximum number of shares the affiliate may sell in a threemonth period"
+      },
+      {
+        "id": "80fddc6b032c",
+        "normalized": "an affiliate selling securities pursuant to rule 144 must file a form 144 with the sec if during any threemonth period sales exceed"
+      },
+      {
+        "id": "a442d078da33",
+        "normalized": "rule 144a under the securities act of 1933 provides a safeharbor exemption for resales of restricted securities to"
+      },
+      {
+        "id": "6143eccc9fd6",
+        "normalized": "which of the following best distinguishes control stock from restricted stock as those terms are used in connection with rule 144"
+      },
+      {
+        "id": "c048c98c7092",
+        "normalized": "which body has the legal authority to declare a corporate dividend on common stock"
+      },
+      {
+        "id": "b7a9b6df8240",
+        "normalized": "common stockholders generally have which of the following with respect to dividends"
+      },
+      {
+        "id": "c6cd136ccbde",
+        "normalized": "place the following dividend dates in chronological order i record date ii declaration date iii payment date iv exdividend date"
+      },
+      {
+        "id": "0e637a3241c9",
+        "normalized": "cash dividends classified as qualified dividends under federal tax law are generally taxed at"
+      },
+      {
+        "id": "5a9418ff18eb",
+        "normalized": "to qualify for preferential qualified dividend tax rates on common stock the investor must satisfy a holdingperiod test that test generally requires the investor to hold the shares for more than"
+      },
+      {
+        "id": "260baef6661f",
+        "normalized": "an investor receives a 10 stock dividend on 100 shares purchased at 20 per share which of the following is true immediately after the distribution"
+      },
+      {
+        "id": "b85c9dac0b4b",
+        "normalized": "a corporation declares a 2for1 forward stock split an investor who owned 100 shares at a market price of 80 will immediately after the split own"
+      },
+      {
+        "id": "5d19680fd14d",
+        "normalized": "which of the following best distinguishes an incentive stock option iso from a nonqualified stock option nqso"
+      },
+      {
+        "id": "1da5f39c6ad4",
+        "normalized": "an employee exercises an incentive stock option iso when the fmv exceeds the strike price for regular federal income tax purposes what is the tax consequence at exercise assuming the shares are not sold in the same year"
+      },
+      {
+        "id": "331abd9b355c",
+        "normalized": "for an incentive stock option iso sale to be a qualifying disposition eligible for full longterm capital gain treatment the employee must hold the underlying shares for at least"
+      },
+      {
+        "id": "21e910c604b1",
+        "normalized": "an employee makes a disqualifying disposition of iso shares sells before satisfying the twoyearfromgrant and oneyearfromexercise holding requirements the primary tax consequence is that"
+      },
+      {
+        "id": "b104c8a75b59",
+        "normalized": "an employee exercises a nonqualified stock option nqso with a strike price of 20 when the stock is trading at 35 what is the federal income tax consequence at exercise assuming the option had no readily ascertainable fmv at grant"
+      },
+      {
+        "id": "3578e7590c91",
+        "normalized": "which of the following individuals may validly receive a grant of nonqualified stock options nqsos from a corporation"
+      },
+      {
+        "id": "cd6c8f344b8a",
+        "normalized": "when an employee exercises an incentive stock option iso the bargain element fmv at exercise minus strike price is treated for alternative minimum tax amt purposes as"
+      },
+      {
+        "id": "904da02af9d9",
+        "normalized": "an iso holder exercises options and sells the underlying shares more than two years after the grant date and more than one year after the exercise date the total gain sale price minus strike price is taxed as"
+      },
+      {
+        "id": "f89f51d9c015",
+        "normalized": "an issuer pays a regular cash dividend on its common stock which of the following statements about that dividend is most accurate"
+      },
+      {
+        "id": "b131cc97b5cf",
+        "normalized": "an employee receives 1000 shares of restricted stock not an option as compensation with a fouryear vesting schedule in the absence of a section 83b election when is the value of the shares included in the employees ordinary income"
+      },
+      {
+        "id": "3d28d794cc49",
+        "normalized": "preemptive rights are most commonly associated with which of the following corporate actions"
+      },
+      {
+        "id": "328d8d928365",
+        "normalized": "a commonstock investor receives a noncash distribution that is characterized as a return of capital rather than a dividend the primary tax effect is that the distribution"
+      }
+    ]
+  }
+}

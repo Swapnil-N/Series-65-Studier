@@ -1,0 +1,271 @@
+{
+  "subtopicId": "1.3",
+  "items": {
+    "lessons": [
+      {
+        "id": "1.3",
+        "normalized": "analytical methods time value of money statistics ratios and valuation"
+      }
+    ],
+    "cards": [
+      {
+        "id": "0e282ba2eaf1",
+        "normalized": "define future value fv in time value of money"
+      },
+      {
+        "id": "58db6544dcb3",
+        "normalized": "write the future value formula for a single cash flow compounded annually"
+      },
+      {
+        "id": "06f8983d9197",
+        "normalized": "how does more frequent compounding affect fv when the nominal rate is held constant"
+      },
+      {
+        "id": "bfb430865fa6",
+        "normalized": "define net present value npv"
+      },
+      {
+        "id": "819be56270ed",
+        "normalized": "state the npv acceptreject decision rule"
+      },
+      {
+        "id": "6c55b0b1a813",
+        "normalized": "define internal rate of return irr"
+      },
+      {
+        "id": "45c5f0be1327",
+        "normalized": "state the irr acceptreject decision rule"
+      },
+      {
+        "id": "26e53a7d59ab",
+        "normalized": "when npv and irr rank mutually exclusive projects differently which method should govern"
+      },
+      {
+        "id": "1b62de0532ce",
+        "normalized": "what does an arithmetic mean measure for a series of returns"
+      },
+      {
+        "id": "5942e895d06e",
+        "normalized": "how is the median of a data set determined"
+      },
+      {
+        "id": "23e08eaa9853",
+        "normalized": "what is the mode of a distribution"
+      },
+      {
+        "id": "e86ec686463d",
+        "normalized": "define the range of a data set"
+      },
+      {
+        "id": "835df65256f5",
+        "normalized": "what does standard deviation measure for an investments returns"
+      },
+      {
+        "id": "c41fe2035637",
+        "normalized": "define alpha in the context of portfolio performance"
+      },
+      {
+        "id": "084e2d204465",
+        "normalized": "define beta as a measure of risk"
+      },
+      {
+        "id": "4fc7caa244c8",
+        "normalized": "interpret a beta of 10 15 and 05"
+      },
+      {
+        "id": "e2b3ff77dfeb",
+        "normalized": "distinguish what alpha measures from what beta measures"
+      },
+      {
+        "id": "8eaf9b60b07c",
+        "normalized": "what does the sharpe ratio measure"
+      },
+      {
+        "id": "47f654b51a27",
+        "normalized": "write the formula for the sharpe ratio"
+      },
+      {
+        "id": "e6b0281021ac",
+        "normalized": "what is the range of the correlation coefficient and what do its endpoints mean"
+      },
+      {
+        "id": "7a6d318cacbd",
+        "normalized": "why does combining assets with low or negative correlation reduce portfolio risk"
+      },
+      {
+        "id": "b424c3441db7",
+        "normalized": "write the current ratio formula and what it measures"
+      },
+      {
+        "id": "458c63747604",
+        "normalized": "write the quick acidtest ratio formula"
+      },
+      {
+        "id": "19b0556e5286",
+        "normalized": "why does the quick ratio exclude inventory while the current ratio includes it"
+      },
+      {
+        "id": "ace7f7494e12",
+        "normalized": "write the debttoequity ratio formula and what it indicates"
+      },
+      {
+        "id": "195d715eacc2",
+        "normalized": "define the pricetoearnings pe ratio"
+      },
+      {
+        "id": "845f1e1f4294",
+        "normalized": "how is a relatively high pe typically interpreted"
+      },
+      {
+        "id": "4c0d32d4a04a",
+        "normalized": "define the pricetobook pb ratio"
+      }
+    ],
+    "questions": [
+      {
+        "id": "f356799cab7a",
+        "normalized": "an investor deposits 1000 in an account earning 5 simple interest annually what is the future value after 3 years"
+      },
+      {
+        "id": "85cef330f4ec",
+        "normalized": "what is the future value of 10000 invested for 2 years at 10 compounded annually"
+      },
+      {
+        "id": "ee46dfa20eab",
+        "normalized": "under the net present value npv decision rule an independent capital project should generally be accepted when"
+      },
+      {
+        "id": "4ea1b3940d22",
+        "normalized": "a project has an internal rate of return of 9 while the firms required rate of return is 11 under the irr decision rule the project should be"
+      },
+      {
+        "id": "9a7cc6d45278",
+        "normalized": "a portfolio earned the following annual returns over five years 4 6 8 10 and 12 what is the arithmetic mean return"
+      },
+      {
+        "id": "ed4217fb29a0",
+        "normalized": "a data set of stock returns is 3 5 7 9 16 what is the median return"
+      },
+      {
+        "id": "09dc9b49ee1f",
+        "normalized": "in statistics the mode of a data set is best defined as"
+      },
+      {
+        "id": "8fceb0a06ea5",
+        "normalized": "what is the range of the data set 5 8 12 15 20"
+      },
+      {
+        "id": "3d91fb5733ad",
+        "normalized": "a common stock has a beta of 10 compared to the broader market the stock is expected to"
+      },
+      {
+        "id": "32c5c44033da",
+        "normalized": "the current ratio is calculated as"
+      },
+      {
+        "id": "db705f09189b",
+        "normalized": "the debttoequity ratio is most commonly defined as"
+      },
+      {
+        "id": "1d320c828725",
+        "normalized": "the pricetoearnings pe ratio of a common stock is calculated by dividing"
+      },
+      {
+        "id": "2f5de9cd96e5",
+        "normalized": "a project requires a 10000 initial outlay and is expected to generate 5500 at the end of year 1 and 5500 at the end of year 2 using a 10 discount rate the projects npv is closest to"
+      },
+      {
+        "id": "7b033e65fcb3",
+        "normalized": "what is the future value of 5000 invested for 4 years at 8 compounded annually"
+      },
+      {
+        "id": "eea5691f4357",
+        "normalized": "the internal rate of return irr on a project is best described as"
+      },
+      {
+        "id": "e07966ea56cb",
+        "normalized": "standard deviation is widely used in portfolio analysis because it measures"
+      },
+      {
+        "id": "b9519f83ee85",
+        "normalized": "the sharpe ratio is calculated as"
+      },
+      {
+        "id": "c28ade8122ce",
+        "normalized": "all else equal a higher sharpe ratio indicates that a portfolio has"
+      },
+      {
+        "id": "27d5eb40262f",
+        "normalized": "in modern portfolio analysis alpha is best described as"
+      },
+      {
+        "id": "f215bd5f6041",
+        "normalized": "the correlation coefficient between two asset returns can take values"
+      },
+      {
+        "id": "737af5e2c6a9",
+        "normalized": "a correlation coefficient of zero between the returns of two assets implies that"
+      },
+      {
+        "id": "80419e0749e0",
+        "normalized": "the quick acidtest ratio differs from the current ratio in that it"
+      },
+      {
+        "id": "ce1e3f7bf3d5",
+        "normalized": "a company reports current assets of 500000 including 200000 of inventory and current liabilities of 250000 what is the quick ratio"
+      },
+      {
+        "id": "133bd03aeae1",
+        "normalized": "acme corp reports current assets of 300000 and current liabilities of 150000 its current ratio is"
+      },
+      {
+        "id": "ae7bdbb50b07",
+        "normalized": "all else equal a company with a debttoequity ratio significantly higher than its industry peers is generally considered to have"
+      },
+      {
+        "id": "2da67e49375e",
+        "normalized": "a growth stock typically trades at a higher pricetoearnings ratio than a value stock primarily because"
+      },
+      {
+        "id": "b6b76660ae78",
+        "normalized": "the pricetobook pb ratio is calculated by dividing"
+      },
+      {
+        "id": "fcea9694276b",
+        "normalized": "a pricetobook ratio of less than 10 most commonly indicates that"
+      },
+      {
+        "id": "f048b1b37b2b",
+        "normalized": "an investor seeking a defensive equity allocation in anticipation of a market downturn would most likely favor stocks with a beta of"
+      },
+      {
+        "id": "63b6773ea4b8",
+        "normalized": "when evaluating two mutually exclusive projects npv and irr can produce conflicting rankings in such cases capital budgeting theory generally favors"
+      },
+      {
+        "id": "9db2b7e5f5c1",
+        "normalized": "all else equal what happens to the npv of a projects expected future cash inflows when the discount rate increases"
+      },
+      {
+        "id": "bf132548f2dd",
+        "normalized": "portfolio x earns a 10 return with a standard deviation of 8 portfolio y earns 12 with a standard deviation of 14 assuming a 2 riskfree rate which statement is correct"
+      },
+      {
+        "id": "582886307975",
+        "normalized": "a portfolio earned 12 during a year when the market returned 10 and the riskfree rate was 2 the portfolios beta is 10 according to capm the managers alpha is approximately"
+      },
+      {
+        "id": "04bd6fbae3de",
+        "normalized": "combining two risky assets with a correlation coefficient of exactly 1 in the proper proportions can theoretically"
+      },
+      {
+        "id": "7924b01ca25c",
+        "normalized": "stock a has a pe of 20 and an expected earnings growth rate of 5 while stock b has a pe of 15 and an expected growth rate of 15 from a pegstyle perspective which is more attractively priced relative to its growth"
+      },
+      {
+        "id": "bffc879ca116",
+        "normalized": "an investor compares two accounts paying the same 8 stated annual rate account 1 compounds annually account 2 compounds quarterly for an identical deposit held for the same number of years which statement is correct"
+      }
+    ]
+  }
+}

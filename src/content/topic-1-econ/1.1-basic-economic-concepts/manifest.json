@@ -1,0 +1,283 @@
+{
+  "subtopicId": "1.1",
+  "items": {
+    "lessons": [
+      {
+        "id": "1.1",
+        "normalized": "basic economic concepts"
+      }
+    ],
+    "cards": [
+      {
+        "id": "60f215cd48fc",
+        "normalized": "what are the four phases of a typical business cycle"
+      },
+      {
+        "id": "3d137c9c1a9d",
+        "normalized": "define a recession in terms of gdp"
+      },
+      {
+        "id": "912fadc9b995",
+        "normalized": "distinguish a depression from a recession"
+      },
+      {
+        "id": "c9782f8ad8a4",
+        "normalized": "which federal body conducts us monetary policy and what are its three primary tools"
+      },
+      {
+        "id": "de19ec1ff6fa",
+        "normalized": "what is fiscal policy and who sets it in the united states"
+      },
+      {
+        "id": "828ba9dbf58a",
+        "normalized": "contrast expansionary and contractionary monetary policy"
+      },
+      {
+        "id": "9fbdeaf2f9ab",
+        "normalized": "define inflation and identify the mostwatched us measure of it"
+      },
+      {
+        "id": "159320965af0",
+        "normalized": "what is deflation and why is it economically dangerous"
+      },
+      {
+        "id": "4db74cd0a01a",
+        "normalized": "define stagflation"
+      },
+      {
+        "id": "2d75d5c3cc0e",
+        "normalized": "calculate the real interest rate when the nominal rate is 6 and inflation is 2"
+      },
+      {
+        "id": "e51abf0de760",
+        "normalized": "what does a normal upwardsloping yield curve indicate"
+      },
+      {
+        "id": "512c9c5d7b4f",
+        "normalized": "what is an inverted yield curve and what is it commonly viewed as a signal of"
+      },
+      {
+        "id": "2d4f9f9b3efa",
+        "normalized": "define credit spread"
+      },
+      {
+        "id": "5ab58cda80ba",
+        "normalized": "what is gross domestic product gdp"
+      },
+      {
+        "id": "10fd6cc6328d",
+        "normalized": "distinguish nominal gdp from real gdp"
+      },
+      {
+        "id": "b88d79ef5f06",
+        "normalized": "name two leading economic indicators"
+      },
+      {
+        "id": "1abdcf707725",
+        "normalized": "classify the unemployment rate leading coincident or lagging"
+      },
+      {
+        "id": "00c61f77c189",
+        "normalized": "what does cpi measure and which agency publishes it"
+      },
+      {
+        "id": "30ebbb9c7487",
+        "normalized": "what is a trade deficit"
+      },
+      {
+        "id": "70f29b5f8162",
+        "normalized": "how does a stronger us dollar typically affect us exporters"
+      },
+      {
+        "id": "a011e4e0d96a",
+        "normalized": "define an effective exchange rate"
+      },
+      {
+        "id": "0226fd784577",
+        "normalized": "what is sovereign debt"
+      },
+      {
+        "id": "c1c931826313",
+        "normalized": "how do geopolitical events typically affect financial markets in the short term"
+      },
+      {
+        "id": "120c3f491afd",
+        "normalized": "when the fed buys treasury securities in open market operations what is the typical effect on interest rates"
+      },
+      {
+        "id": "f8fb46743ff6",
+        "normalized": "differentiate frictional structural and cyclical unemployment"
+      },
+      {
+        "id": "f92e8e4a8c8a",
+        "normalized": "what is the discount rate"
+      },
+      {
+        "id": "4b6b016d3952",
+        "normalized": "what is the federal funds rate"
+      }
+    ],
+    "questions": [
+      {
+        "id": "fbea396d55a1",
+        "normalized": "which phase of the business cycle is characterized by rising real gdp increasing employment and growing consumer confidence"
+      },
+      {
+        "id": "2c67d2bbbd03",
+        "normalized": "a widely cited rule of thumb defines a recession as how many consecutive quarters of declining real gdp"
+      },
+      {
+        "id": "572341403279",
+        "normalized": "which of the following is conducted by the federal open market committee fomc as a tool of monetary policy"
+      },
+      {
+        "id": "45bbd5d029d9",
+        "normalized": "fiscal policy in the united states is set primarily by which body"
+      },
+      {
+        "id": "567d49c95794",
+        "normalized": "an investor reads that the us consumer price index cpi rose 32 over the past 12 months this figure is most directly a measure of"
+      },
+      {
+        "id": "d3d7af214530",
+        "normalized": "gross domestic product gdp measures"
+      },
+      {
+        "id": "46a4e3f84e3c",
+        "normalized": "which of the following best describes a normal upwardsloping yield curve"
+      },
+      {
+        "id": "330cb8de2f8b",
+        "normalized": "deflation is best defined as"
+      },
+      {
+        "id": "fa9007b0b35e",
+        "normalized": "a trade deficit exists when a countrys"
+      },
+      {
+        "id": "431695646c9e",
+        "normalized": "which agency calculates and publishes the us unemployment rate each month"
+      },
+      {
+        "id": "010edc376475",
+        "normalized": "if the federal reserve sells us treasury securities through open market operations the most likely shortterm effect is to"
+      },
+      {
+        "id": "1631028b0732",
+        "normalized": "an inverted yield curve where shortterm treasury yields exceed longterm treasury yields is most commonly interpreted by market participants as a signal of"
+      },
+      {
+        "id": "b5e05994ebe3",
+        "normalized": "a widening credit spread between investmentgrade corporate bonds and us treasuries of equivalent maturity most likely indicates"
+      },
+      {
+        "id": "36986297622c",
+        "normalized": "real gdp differs from nominal gdp in that real gdp"
+      },
+      {
+        "id": "33e063e83dc2",
+        "normalized": "which of the following is generally classified as a leading economic indicator"
+      },
+      {
+        "id": "f8bfe1ae97df",
+        "normalized": "if the us dollar appreciates significantly against the euro the most likely effect on us firms is"
+      },
+      {
+        "id": "ad790b26c7e6",
+        "normalized": "an investor concerned about purchasingpower risk is most worried about which economic phenomenon"
+      },
+      {
+        "id": "a67e6964f26b",
+        "normalized": "all else equal an increase in market interest rates will generally cause the price of an outstanding fixedrate bond to"
+      },
+      {
+        "id": "66d126a39e80",
+        "normalized": "sovereign debt risk is best described as the risk that"
+      },
+      {
+        "id": "b5ca05836af3",
+        "normalized": "which combination of policy moves would most clearly be considered expansionary"
+      },
+      {
+        "id": "212eac3f4036",
+        "normalized": "the federal reserves discount rate is best described as"
+      },
+      {
+        "id": "c45457f365f2",
+        "normalized": "which of the following is best described as a coincident economic indicator"
+      },
+      {
+        "id": "312d53f3e532",
+        "normalized": "stagflation is the unusual combination of"
+      },
+      {
+        "id": "5a4f773dc226",
+        "normalized": "an adviser tells a client that inflation has accelerated if the cpi yearoveryear change went from 20 to 35 this statement is"
+      },
+      {
+        "id": "0ee7f08be4d8",
+        "normalized": "a persistent us trade deficit financed by foreign capital inflows tends all else equal to"
+      },
+      {
+        "id": "10d92cab212a",
+        "normalized": "which federal reserve action would tend to be most contractionary"
+      },
+      {
+        "id": "53e7720dba3d",
+        "normalized": "an investor considering a 30year treasury bond is told the yield curve is steepening a steepening yield curve means"
+      },
+      {
+        "id": "ccb55fd49b09",
+        "normalized": "which of the following is generally considered a lagging indicator of the business cycle"
+      },
+      {
+        "id": "043ce9961df0",
+        "normalized": "a bondholder receives fixed semiannual coupon payments which type of risk is most directly increased by an unexpected rise in inflation"
+      },
+      {
+        "id": "eb974c094f00",
+        "normalized": "an effective exchange rate is best described as"
+      },
+      {
+        "id": "d02b761c47f5",
+        "normalized": "an investor holds a longduration bond fund if the federal reserve unexpectedly signals a series of rate hikes the most likely impact on the funds net asset value nav is"
+      },
+      {
+        "id": "711821670a09",
+        "normalized": "which of the following best describes how monetary and fiscal policies differ"
+      },
+      {
+        "id": "19bf6713e5a1",
+        "normalized": "a flight to quality during a period of geopolitical stress is most often associated with"
+      },
+      {
+        "id": "0fdfdccfeab8",
+        "normalized": "if the us experiences sustained higher inflation than its major trading partners and nominal exchange rates do not adjust us exports will most likely"
+      },
+      {
+        "id": "6400fb91fd18",
+        "normalized": "an investor compares the yield on a 10year us treasury inflationprotected security tips at 18 with the yield on a 10year nominal treasury at 43 the implied 10year breakeven inflation rate is approximately"
+      },
+      {
+        "id": "1803e88e72e1",
+        "normalized": "all else equal a sustained sharp depreciation of an emergingmarket countrys currency against the us dollar generally makes its usdollardenominated sovereign debt"
+      },
+      {
+        "id": "0a9cdaadd30a",
+        "normalized": "a central bank announces a large expansion of its balance sheet through quantitative easing qe in the short run the most likely effect on longterm treasury yields is"
+      },
+      {
+        "id": "a48125266ef4",
+        "normalized": "which scenario best describes crowding out as a potential consequence of expansionary fiscal policy"
+      },
+      {
+        "id": "a49713853c7f",
+        "normalized": "an investor is told that the labor force participation rate has fallen even though the unemployment rate also declined the most accurate interpretation is that"
+      },
+      {
+        "id": "dec0ef934c62",
+        "normalized": "a fixedincome investor expects the fomc to begin cutting the federal funds rate over the next 12 months all else equal which strategy is most consistent with that view"
+      }
+    ]
+  }
+}
