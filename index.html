@@ -19,6 +19,29 @@
 
     <title>Series 65 Studier</title>
 
+    <!-- SPA-on-GitHub-Pages: companion to public/404.html. When a direct
+         hit / refresh on a deep URL (e.g. /Series-65-Studier/cards) lands
+         on 404.html, that page rewrites the URL into a query string and
+         redirects here. This script reverses the rewrite so React Router
+         sees the original path. Must run BEFORE main.tsx mounts.
+         Pattern: github.com/rafgraph/spa-github-pages -->
+    <script>
+      (function (l) {
+        if (l.search[1] === "/") {
+          var decoded = l.search
+            .slice(1)
+            .split("&")
+            .map(function (s) { return s.replace(/~and~/g, "&"); })
+            .join("?");
+          window.history.replaceState(
+            null,
+            null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      })(window.location);
+    </script>
+
     <!-- Pre-mount appearance bootstrap. Reads a localStorage shadow of the
          user's appearance preferences (written whenever Dexie settings are
          saved) and applies .dark / .high-contrast classes + the
