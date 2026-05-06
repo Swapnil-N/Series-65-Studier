@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Series 65 Studier</title>
+    <!--
+      GitHub Pages SPA redirect.
+
+      Pages serves `404.html` for any URL that doesn't map to a real file.
+      For an SPA we want React Router to handle every path under
+      /Series-65-Studier/, so this script reconstructs the requested path
+      and redirects to the app's `index.html` with the original path
+      stashed in the query string. A small companion script at the top of
+      `index.html` reads that query string back and pushes it through
+      history.replaceState so React Router sees the original URL.
+
+      Pattern: github.com/rafgraph/spa-github-pages
+    -->
+    <script>
+      (function () {
+        // Path-segment count to skip — adjust if you change the project base.
+        // 1 = "/Series-65-Studier/" (the GH Pages project subfolder).
+        var pathSegmentsToKeep = 1;
+        var l = window.location;
+        l.replace(
+          l.protocol +
+            "//" +
+            l.hostname +
+            (l.port ? ":" + l.port : "") +
+            l.pathname
+              .split("/")
+              .slice(0, 1 + pathSegmentsToKeep)
+              .join("/") +
+            "/?/" +
+            l.pathname
+              .slice(1)
+              .split("/")
+              .slice(pathSegmentsToKeep)
+              .join("/")
+              .replace(/&/g, "~and~") +
+            (l.search ? "&" + l.search.slice(1).replace(/&/g, "~and~") : "") +
+            l.hash
+        );
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

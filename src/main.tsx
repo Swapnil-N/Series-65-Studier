@@ -35,9 +35,16 @@ if (typeof navigator !== "undefined" && navigator.storage?.persist) {
   });
 }
 
+// Vite injects `import.meta.env.BASE_URL` from `vite.config.ts`'s `base`
+// (currently "/Series-65-Studier/"). Trim trailing slash for BrowserRouter,
+// which expects a basename without a trailing slash. Without this, NavLinks
+// generate absolute paths from origin root ("/cards" instead of
+// "/Series-65-Studier/cards") and break the deployed site.
+const ROUTER_BASENAME = import.meta.env.BASE_URL.replace(/\/$/, "");
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={ROUTER_BASENAME}>
       <App />
     </BrowserRouter>
   </React.StrictMode>,
