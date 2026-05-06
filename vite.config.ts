@@ -6,8 +6,10 @@ import { VitePWA } from "vite-plugin-pwa";
 // GitHub Pages serves project sites at https://<user>.github.io/<repo>/, so
 // base must include the repo path. Confirmed by repo owner: deploys to
 // swapnil-n.github.io/Series-65-Studier/.
+const BASE = "/Series-65-Studier/";
+
 export default defineConfig({
-  base: "/Series-65-Studier/",
+  base: BASE,
   build: {
     // Split the biggest third-party trees into named vendor chunks so the
     // app's own code can update without busting a 1.2 MB monolith. Each
@@ -47,8 +49,13 @@ export default defineConfig({
         name: "Series 65 Studier",
         short_name: "S65",
         description: "Offline study app for NASAA Series 65.",
-        start_url: "/",
-        scope: "/",
+        // start_url + scope MUST live under the GH Pages project subfolder.
+        // iOS Safari uses start_url for the home-screen shortcut URL — if it
+        // points at "/" the icon opens https://swapnil-n.github.io/ which
+        // is a 404. The base-relative form keeps dev (localhost:5173/<base>)
+        // and prod (swapnil-n.github.io/<base>) consistent.
+        start_url: BASE,
+        scope: BASE,
         display: "standalone",
         orientation: "portrait",
         background_color: "#0a0a0a",
