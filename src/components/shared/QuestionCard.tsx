@@ -55,29 +55,38 @@ export function QuestionCard({
           const idx = i as ChoiceIndex;
           const isCorrect = idx === question.answerIndex;
           const isSelected = idx === selectedIndex;
-          // Default visual — updated on reveal to show correct / selected-wrong.
-          let className =
-            "min-h-[44px] w-full rounded-lg border px-4 py-2 text-left transition " +
-            "border-neutral-300 bg-white text-neutral-900 " +
-            "dark:border-neutral-700 dark:bg-ink-surface dark:text-ink-text ";
+          // Each state sets its own border/bg/text colors so Tailwind's
+          // compiled-CSS ordering doesn't let "base neutral" override
+          // "reveal green" (utilities for the same property merge
+          // alphabetically — neutral wins after green).
+          const base =
+            "min-h-[44px] w-full rounded-lg border px-4 py-2 text-left transition ";
+          let stateCls: string;
           if (!revealed) {
-            className += isSelected
-              ? "ring-2 ring-blue-500 "
-              : "hover:bg-neutral-50 dark:hover:bg-neutral-800 ";
+            stateCls =
+              "border-neutral-300 bg-white text-neutral-900 dark:border-neutral-700 dark:bg-ink-surface dark:text-ink-text " +
+              (isSelected
+                ? "ring-2 ring-blue-500 "
+                : "hover:bg-neutral-50 dark:hover:bg-neutral-800 ");
           } else if (isCorrect) {
-            className +=
-              "border-green-500 bg-green-50 text-green-900 dark:bg-green-950 dark:text-green-100 ";
+            // Correct answer is ALWAYS highlighted green when revealed,
+            // regardless of which choice the user picked. Bumped to
+            // -100 / -900 so it reads clearly against the page bg.
+            stateCls =
+              "border-2 border-green-600 bg-green-100 text-green-900 dark:border-green-400 dark:bg-green-900 dark:text-green-50 " +
+              (isSelected ? "ring-2 ring-green-400 " : "");
           } else if (isSelected) {
-            className +=
-              "border-red-500 bg-red-50 text-red-900 dark:bg-red-950 dark:text-red-100 ";
+            stateCls =
+              "border-2 border-red-600 bg-red-100 text-red-900 dark:border-red-400 dark:bg-red-900 dark:text-red-50 ";
           } else {
-            className += "opacity-60 ";
+            stateCls =
+              "border-neutral-300 bg-white text-neutral-500 opacity-60 dark:border-neutral-700 dark:bg-ink-surface dark:text-neutral-500 ";
           }
           return (
             <li key={i}>
               <button
                 type="button"
-                className={className}
+                className={base + stateCls}
                 disabled={revealed}
                 aria-pressed={isSelected}
                 onClick={() => onSelect(idx)}
